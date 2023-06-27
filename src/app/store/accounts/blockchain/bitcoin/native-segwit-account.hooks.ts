@@ -15,7 +15,7 @@ import {
   useMakeBitcoinNetworkSignersForPaymentType,
 } from './bitcoin-keychain';
 
-function useNativeSegwitActiveNetworkAccountPrivateKeychain() {
+export function useNativeSegwitActiveNetworkAccountPrivateKeychain() {
   const network = useCurrentNetwork();
   const selector = useMemo(
     () =>
