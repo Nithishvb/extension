@@ -235,5 +235,6 @@ export function useBitcoinContracts() {
     handleOffer,
     handleAccept,
     handleReject,
+    sendRpcResponse,
   };
 }

@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { RouteUrls } from '@shared/route-urls';
 
 import { useBitcoinContracts } from '@app/common/hooks/use-bitcoin-contracts';
 import { BitcoinContractOfferDetails } from '@app/common/hooks/use-bitcoin-contracts';
@@ -14,8 +17,9 @@ import { BitcoinContractRequestWarningLabel } from './components/bitcoin-contrac
 
 export function BitcoinContractRequest() {
   const getNativeSegwitSigner = useCurrentAccountNativeSegwitSigner();
+  const navigate = useNavigate();
 
-  const { handleOffer, handleAccept, handleReject } = useBitcoinContracts();
+  const { handleOffer, handleAccept, handleReject, sendRpcResponse } = useBitcoinContracts();
 
   const [bitcoinContractJSON, setBitcoinContractJSON] = useState<string>();
   const [bitcoinContractOfferDetails, setBitcoinContractOfferDetails] =
@@ -41,6 +45,23 @@ export function BitcoinContractRequest() {
     const counterpartyWalletURL = initialSearchParams.get('counterpartyWalletURL');
     const counterpartyWalletName = initialSearchParams.get('counterpartyWalletName');
     const counterpartyWalletIcon = initialSearchParams.get('counterpartyWalletIcon');
+
+    const bitcoinAccountDetails = getNativeSegwitSigner?.(0);
+
+    if (!bitcoinAccountDetails) return;
+
+    const currentBitcoinNetwork = bitcoinAccountDetails.network;
+
+    if (currentBitcoinNetwork !== 'testnet') {
+      navigate(RouteUrls.BitcoinContractLockError, {
+        state: {
+          error: new Error('invalid network'),
+          title: 'The account you are using is not on the Bitcoin Testnet',
+          body: 'Unable to interact with Bitcoin Contract',
+        },
+      });
+      sendRpcResponse('none', '', 'failed');
+    }
 
     if (
       !getNativeSegwitSigner ||

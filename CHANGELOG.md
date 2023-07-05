@@ -1,3 +1,65 @@
+## [4.35.0](https://github.com/hirosystems/wallet/compare/v4.34.0...v4.35.0) (2023-07-03)
+
+
+### Features
+
+* remove taproot address validator, closes [#3670](https://github.com/hirosystems/wallet/issues/3670) ([0f33a29](https://github.com/hirosystems/wallet/commit/0f33a29b910ad4921471876da9f7c8998b274021))
+
+
+### Bug Fixes
+
+* add alignItems center to ensure title aligns correctly, fixes [#3881](https://github.com/hirosystems/wallet/issues/3881) ([df8454d](https://github.com/hirosystems/wallet/commit/df8454d6cf16fbc0db4eb12442155489919eec56))
+* add pre-tweaked key ([52d2b33](https://github.com/hirosystems/wallet/commit/52d2b3386aa0b4e2e5573ba761444de62877b8fe))
+* ledger routing bug with broadcast error ([648af7c](https://github.com/hirosystems/wallet/commit/648af7cc8ae1e3049a19633d67ed9592c98dcc68))
+* **ledger:** reject when ledger wallet ([574d618](https://github.com/hirosystems/wallet/commit/574d618d17e053073e1097e636f00b630e20344a))
+* remove required payment type from sign msg ([d46b310](https://github.com/hirosystems/wallet/commit/d46b310884386eda4cabb7e769ea429d99c0975b))
+* subtract microblock txs from available balance, closes [#3898](https://github.com/hirosystems/wallet/issues/3898) ([78a4349](https://github.com/hirosystems/wallet/commit/78a434954c65b2649ad90951ebd315e3f01f7fba))
+
+
+### Internal
+
+* add note about refactoring to remove JS truncation ([a798bd1](https://github.com/hirosystems/wallet/commit/a798bd1a40faf97c7420e8db463e31a21dd45cf4))
+* remove leading as its not a valid CSS prop ([5632c1c](https://github.com/hirosystems/wallet/commit/5632c1cd9537a4af6ef4170e54c37c481e4d295b))
+
+## [4.34.0](https://github.com/hirosystems/wallet/compare/v4.33.0...v4.34.0) (2023-06-28)
+
+
+### Features
+
+* ignore resize observer error ([4a3a8a5](https://github.com/hirosystems/wallet/commit/4a3a8a5e36ae4024c6ce7ac4c52ce3ca469d214f))
+
+
+### Bug Fixes
+
+* **ledger:** broken activity page ([eeb535e](https://github.com/hirosystems/wallet/commit/eeb535e9023e08590120d7249c19e734534c58a1))
+* psbt network possibilities ([0021a3a](https://github.com/hirosystems/wallet/commit/0021a3a88b10599b7d700333ccb0c386d950652d))
+
+
+### Internal
+
+* add account to rpc methods ([c08b154](https://github.com/hirosystems/wallet/commit/c08b15421e86cd9f4bc50c88200e6ff1a252860f))
+* add network to other rpc methods ([fa2a097](https://github.com/hirosystems/wallet/commit/fa2a09729c104d8d7a6ee1cb54797ecc28d4acdd))
+
+## [4.33.0](https://github.com/hirosystems/wallet/compare/v4.32.1...v4.33.0) (2023-06-27)
+
+
+### Features
+
+* change btc available balance logic, closes [#3758](https://github.com/hirosystems/wallet/issues/3758) ([76515b1](https://github.com/hirosystems/wallet/commit/76515b1e56151ab2c12b365666a01612668c37f8))
+
+
+### Bug Fixes
+
+* ledger support link, closes [#3900](https://github.com/hirosystems/wallet/issues/3900) ([05f1d7f](https://github.com/hirosystems/wallet/commit/05f1d7f82deefbb1a22c80328e20f784dbf96df7))
+* negative stx available balance, closes [#3761](https://github.com/hirosystems/wallet/issues/3761) ([6a2adf0](https://github.com/hirosystems/wallet/commit/6a2adf05747f8a9b33e696d37519df8edf7a7e18))
+* trim recipient address field to remove leading/ trailing spaces, fixes [#2806](https://github.com/hirosystems/wallet/issues/2806) ([1a7f683](https://github.com/hirosystems/wallet/commit/1a7f6830eba0bcabc9559dadb4503caf7b445d68))
+
+
+### Internal
+
+* filter utxos, closes [#3732](https://github.com/hirosystems/wallet/issues/3732) ([ab7d24f](https://github.com/hirosystems/wallet/commit/ab7d24f98b33613b3f3150d9215b092924585369))
+* send form utxos ([11f8047](https://github.com/hirosystems/wallet/commit/11f8047f40df2a4198c00e92cbe841b7dddba90c))
+
 ## [4.32.1](https://github.com/hirosystems/wallet/compare/v4.32.0...v4.32.1) (2023-06-23)
 
 
