@@ -62,6 +62,8 @@ export function SettingsDropdown() {
 
   useOnClickOutside(ref, isShowing ? handleClose : null);
 
+  console.log('Theme location', location);
+
   return (
     <>
       {hasCreatedAccount && <Overlay />}
@@ -91,11 +93,15 @@ export function SettingsDropdown() {
                 </MenuItem>
               </>
             )}
+            {/* PETE: has to be close now, clicking this twice works but doesn't load the BG properly
+            also need to make sure these menus work from other pages like 'fund' */}
             <MenuItem
               data-testid={SettingsSelectors.ToggleTheme}
               onClick={wrappedCloseCallback(() => {
                 void analytics.track('click_change_theme_menu_item');
-                navigate(RouteUrls.ChangeTheme, {
+                navigate('/home/assets/change-theme', {
+                  // relative: 'path',
+                  ...location,
                   state: { backgroundLocation: location },
                 });
               })}
@@ -159,7 +165,6 @@ export function SettingsDropdown() {
                 <Caption data-testid={SettingsSelectors.CurrentNetwork}>{currentNetworkId}</Caption>
               </Flex>
             </MenuItem>
-
             <Divider />
             {showAdvancedMenuOptions && (
               <AdvancedMenuItems

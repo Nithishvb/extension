@@ -77,6 +77,7 @@ const settingsModalRoutes = (
   </Route>
 );
 
+// try to add `home/` before these to see if BG location works properly
 const sendOrdinalRoutes = (
   <Route path={RouteUrls.SendOrdinalInscription} element={<SendInscriptionContainer />}>
     <Route index element={<SendInscriptionForm />} />
@@ -97,7 +98,7 @@ export const homeModalRoutes = (
     <Route path={RouteUrls.ReceiveStx} element={<ReceiveStxModal />} />
     <Route path={RouteUrls.ReceiveBtc} element={<ReceiveBtcModal />} />
     {sendOrdinalRoutes}
-    {settingsModalRoutes}
+    {/* {settingsModalRoutes} */}
   </Route>
 );
 
@@ -221,7 +222,7 @@ function useAppRoutes() {
         <Route path={RouteUrls.IncreaseFeeSent} element={<IncreaseFeeSentDrawer />} />
         <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} />
 
-        {homeModalRoutes}
+        {/* {homeModalRoutes} */}
         {sendOrdinalRoutes}
 
         {ledgerStacksTxSigningRoutes}

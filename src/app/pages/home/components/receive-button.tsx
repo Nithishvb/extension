@@ -15,8 +15,8 @@ export function ReceiveButton(props: ButtonProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const isBitcoinEnabled = useConfigBitcoinEnabled();
-  const receivePath = isBitcoinEnabled ? RouteUrls.Receive : RouteUrls.ReceiveStx;
-
+  const receivePath = isBitcoinEnabled ? `/home${RouteUrls.Receive}` : RouteUrls.ReceiveStx;
+  console.log('ReceiveButton', location);
   return (
     <HomeActionButton
       buttonComponent={PrimaryButton}
@@ -25,7 +25,10 @@ export function ReceiveButton(props: ButtonProps) {
       label="Receive"
       onClick={() =>
         navigate(receivePath, {
-          state: { backgroundLocation: location },
+          state: {
+            ...location.state,
+            backgroundLocation: location,
+          },
         })
       }
       {...props}

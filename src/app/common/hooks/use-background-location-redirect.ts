@@ -24,7 +24,7 @@ export function useBackgroundLocationRedirect() {
 
         case backgroundLocation === undefined:
           return navigate(pathname, {
-            state: { backgroundLocation: { pathname: RouteUrls.Home } },
+            state: { backgroundLocation: { pathname: RouteUrls.Assets } },
           });
         default:
           return false;
