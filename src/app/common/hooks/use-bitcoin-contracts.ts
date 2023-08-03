@@ -52,9 +52,10 @@ export function useBitcoinContracts() {
   const currentIndex = useCurrentAccountIndex();
   const nativeSegwitPrivateKeychain =
     useNativeSegwitActiveNetworkAccountPrivateKeychain()?.(currentIndex);
-  const oracleAPI = 'https://testnet.dlc.link/oracle';
 
-  async function getBitcoinContractInterface(): Promise<JsDLCInterface | undefined> {
+  async function getBitcoinContractInterface(
+    attestorURLs: string[]
+  ): Promise<JsDLCInterface | undefined> {
     const bitcoinAccountDetails = getNativeSegwitSigner?.(0);
 
     if (!nativeSegwitPrivateKeychain || !bitcoinAccountDetails) return;
@@ -81,7 +82,7 @@ export function useBitcoinContracts() {
       currentAddress,
       currentBitcoinNetwork,
       blockchainAPI,
-      oracleAPI
+      JSON.stringify(attestorURLs)
     );
 
     return bitcoinContractInterface;
@@ -89,11 +90,10 @@ export function useBitcoinContracts() {
 
   function handleOffer(
     bitcoinContractOfferJSON: string,
-    counterpartyWalletURL: string,
-    counterpartyWalletName: string,
-    counterpartyWalletIcon: string
+    counterpartyWalletDetailsJSON: string
   ): BitcoinContractOfferDetails {
     const bitcoinContractOffer = JSON.parse(bitcoinContractOfferJSON);
+    const counterpartyWalletDetails = JSON.parse(counterpartyWalletDetailsJSON);
 
     const bitcoinContractId = bitcoinContractOffer.temporaryContractId;
     const bitcoinContractCollateralAmount =
@@ -108,12 +108,6 @@ export function useBitcoinContracts() {
       bitcoinContractExpirationDate,
     };
 
-    const counterpartyWalletDetails: CounterpartyWalletDetails = {
-      counterpartyWalletURL,
-      counterpartyWalletName,
-      counterpartyWalletIcon,
-    };
-
     const bitcoinContractOfferDetails: BitcoinContractOfferDetails = {
       simplifiedBitcoinContract: simplifiedBitcoinContractOffer,
       counterpartyWalletDetails,
@@ -124,11 +118,12 @@ export function useBitcoinContracts() {
 
   async function handleAccept(
     bitcoinContractJSON: string,
-    counterpartyWalletDetails: CounterpartyWalletDetails
+    counterpartyWalletDetails: CounterpartyWalletDetails,
+    attestorURLs: string[]
   ) {
     let bitcoinContractInterface: JsDLCInterface | undefined;
     try {
-      bitcoinContractInterface = await getBitcoinContractInterface();
+      bitcoinContractInterface = await getBitcoinContractInterface(attestorURLs);
     } catch (error) {
       navigate(RouteUrls.BitcoinContractLockError, {
         state: {

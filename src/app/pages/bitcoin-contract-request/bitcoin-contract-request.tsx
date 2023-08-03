@@ -25,26 +25,30 @@ export function BitcoinContractRequest() {
   const [bitcoinContractOfferDetails, setBitcoinContractOfferDetails] =
     useState<BitcoinContractOfferDetails>();
   const [bitcoinAddress, setBitcoinAddress] = useState<string>();
+  const [attestorURLs, setAttestorURLs] = useState<string[]>([]);
 
   const [isLoading, setLoading] = useState(true);
 
   const handleAcceptClick = async () => {
     if (!bitcoinContractJSON || !bitcoinContractOfferDetails) return;
 
-    await handleAccept(bitcoinContractJSON, bitcoinContractOfferDetails.counterpartyWalletDetails);
+    await handleAccept(
+      bitcoinContractJSON,
+      bitcoinContractOfferDetails.counterpartyWalletDetails,
+      attestorURLs
+    );
   };
 
   const handleRejectClick = async () => {
     if (!bitcoinContractOfferDetails) return;
 
-    await handleReject(bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractId);
+    handleReject(bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractId);
   };
 
   useOnMount(() => {
     const bitcoinContractOfferJSON = initialSearchParams.get('bitcoinContractOffer');
-    const counterpartyWalletURL = initialSearchParams.get('counterpartyWalletURL');
-    const counterpartyWalletName = initialSearchParams.get('counterpartyWalletName');
-    const counterpartyWalletIcon = initialSearchParams.get('counterpartyWalletIcon');
+    const counterpartyWalletDetailsJSON = initialSearchParams.get('counterpartyWalletDetails');
+    const attestorURLs = initialSearchParams.get('attestorURLs');
 
     const bitcoinAccountDetails = getNativeSegwitSigner?.(0);
 
@@ -66,17 +70,14 @@ export function BitcoinContractRequest() {
     if (
       !getNativeSegwitSigner ||
       !bitcoinContractOfferJSON ||
-      !counterpartyWalletURL ||
-      !counterpartyWalletName ||
-      !counterpartyWalletIcon
+      !counterpartyWalletDetailsJSON ||
+      !attestorURLs
     )
       return;
 
     const currentBitcoinContractOfferDetails = handleOffer(
       bitcoinContractOfferJSON,
-      counterpartyWalletURL,
-      counterpartyWalletName,
-      counterpartyWalletIcon
+      counterpartyWalletDetailsJSON
     );
 
     const currentAddress = getNativeSegwitSigner(0).address;
@@ -84,6 +85,7 @@ export function BitcoinContractRequest() {
     setBitcoinContractJSON(bitcoinContractOfferJSON);
     setBitcoinContractOfferDetails(currentBitcoinContractOfferDetails);
     setBitcoinAddress(currentAddress);
+    setAttestorURLs(JSON.parse(attestorURLs));
     setLoading(false);
   });
 

@@ -29,9 +29,8 @@ export async function rpcAcceptBitcoinContractOffer(
 
   const params: RequestParams = [
     ['bitcoinContractOffer', message.params.bitcoinContractOffer],
-    ['counterpartyWalletURL', message.params.counterpartyWalletURL],
-    ['counterpartyWalletName', message.params.counterpartyWalletName],
-    ['counterpartyWalletIcon', message.params.counterpartyWalletIcon],
+    ['attestorURLs', message.params.attestorURLs],
+    ['counterpartyWalletDetails', message.params.counterpartyWalletDetails],
     ['requestId', message.id],
   ];
 
