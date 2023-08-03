@@ -93,16 +93,12 @@ const receiveRoutes = (
     <Route path={RouteUrls.Receive} element={<ReceiveModal />}>
       <Route path={RouteUrls.ReceiveStx} element={<ReceiveStxModal />} />
       <Route path={RouteUrls.ReceiveBtc} element={<ReceiveBtcModal />} />
+      {/* <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />}>
+        <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
+      </Route> */}
     </Route>
-    <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
-    <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} />
-  </Route>
-);
-
-export const homeModalRoutes = (
-  <Route>
-    {sendOrdinalRoutes}
-    {settingsModalRoutes}
+    {/* <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
+    <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} /> */}
   </Route>
 );
 
@@ -205,7 +201,6 @@ function useAppRoutes() {
     createRoutesFromElements(
       <Route element={<Container />}>
         <Route path={RouteUrls.RequestDiagnostics} element={<AllowDiagnosticsPage />} />
-
         <Route
           path={`${RouteUrls.Home}*`}
           element={
@@ -214,21 +209,30 @@ function useAppRoutes() {
             </AccountGate>
           }
         >
-          {homeModalRoutes}
+          {/* 
+          for routes we want to have overlaid 
+          on home need to nest them here with relative routes
+          this can bring duplication though for other routes like
+          Send Ordinal
+          */}
+          {receiveRoutes}
+          {settingsModalRoutes}
+          {sendOrdinalRoutes}
         </Route>
+        {/* FIME - these routes need more work to be overlaid on Home
+          tricky as they are double nested
+         */}
+        <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
+        <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} />
 
-        {receiveRoutes}
         {requestBitcoinKeysRoutes}
         {requestStacksKeysRoutes}
         <Route path={RouteUrls.RetriveTaprootFunds} element={<RetrieveTaprootToNativeSegwit />} />
-
         <Route path={RouteUrls.IncreaseStxFee} element={<IncreaseStxFeeDrawer />}>
           {ledgerStacksTxSigningRoutes}
         </Route>
         <Route path={RouteUrls.IncreaseBtcFee} element={<IncreaseBtcFeeDrawer />} />
         <Route path={RouteUrls.IncreaseFeeSent} element={<IncreaseFeeSentDrawer />} />
-
-        {/* {sendOrdinalRoutes} */}
 
         {ledgerStacksTxSigningRoutes}
         <Route

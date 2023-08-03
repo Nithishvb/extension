@@ -22,7 +22,7 @@ export function Container() {
   const backgroundLocation = useLocationState('backgroundLocation');
   const analytics = useAnalytics();
   const hasStateRehydrated = useHasStateRehydrated();
-  console.info('container location:', location, 'bg:', backgroundLocation);
+  // console.info('container location:', location, 'bg:', backgroundLocation);
 
   useOnWalletLock(() => window.close());
   useOnSignOut(() => window.close());

@@ -38,7 +38,7 @@ export enum RouteUrls {
   IncreaseStxFee = '/increase-fee/stx',
   IncreaseBtcFee = '/increase-fee/btc',
   IncreaseFeeSent = '/increase-fee/sent',
-  Receive = '/receive',
+  Receive = 'receive',
   ReceiveStx = 'stx',
   ReceiveBtc = 'btc',
   ReceiveCollectible = '/receive/collectible',

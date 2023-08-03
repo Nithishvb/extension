@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import BitcoinStampImg from '@assets/images/bitcoin-stamp.png';
 import { Box, Stack, useClipboard } from '@stacks/ui';
@@ -48,37 +48,43 @@ export function ReceiveCollectible() {
   if (!btcAddressTaproot) return null;
 
   return (
-    <Stack spacing="loose" mt="base" mb="extra-loose">
-      <ReceiveCollectibleItem
-        address={btcAddressTaproot}
-        icon={<OrdinalIcon />}
-        data-testid={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
-        // PETE work on this, maybe nest this also?
-        onCopyAddress={() => {
-          void analytics.track('select_inscription_to_add_new_collectible');
-          navigate(RouteUrls.ReceiveCollectibleOrdinal, {
-            // relative: 'path',
-            state: { btcAddressTaproot, backgroundLocation: location },
-          });
-        }}
-        title="Ordinal inscription"
-      />
-      <ReceiveCollectibleItem
-        address={btcAddressNativeSegwit}
-        icon={
-          <Box>
-            <img src={BitcoinStampImg} width="36px" />
-          </Box>
-        }
-        onCopyAddress={() => copyBitcoinAddressToClipboard(onCopyBitcoin)}
-        title="Bitcoin Stamp"
-      />
-      <ReceiveCollectibleItem
-        address={stxAddress}
-        icon={<StxAvatar />}
-        onCopyAddress={() => copyStacksAddressToClipboard(onCopyStacks)}
-        title="Stacks NFT"
-      />
-    </Stack>
+    <>
+      <Stack spacing="loose" mt="base" mb="extra-loose">
+        <ReceiveCollectibleItem
+          address={btcAddressTaproot}
+          icon={<OrdinalIcon />}
+          data-testid={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
+          // PETE work on this, maybe nest this also?
+          onCopyAddress={() => {
+            void analytics.track('select_inscription_to_add_new_collectible');
+            navigate(RouteUrls.ReceiveCollectibleOrdinal, {
+              // relative: 'path',
+              state: {
+                btcAddressTaproot,
+                backgroundLocation: backgroundLocation,
+              },
+            });
+          }}
+          title="Ordinal inscription"
+        />
+        <ReceiveCollectibleItem
+          address={btcAddressNativeSegwit}
+          icon={
+            <Box>
+              <img src={BitcoinStampImg} width="36px" />
+            </Box>
+          }
+          onCopyAddress={() => copyBitcoinAddressToClipboard(onCopyBitcoin)}
+          title="Bitcoin Stamp"
+        />
+        <ReceiveCollectibleItem
+          address={stxAddress}
+          icon={<StxAvatar />}
+          onCopyAddress={() => copyStacksAddressToClipboard(onCopyStacks)}
+          title="Stacks NFT"
+        />
+      </Stack>
+      {/* <Outlet /> */}
+    </>
   );
 }
