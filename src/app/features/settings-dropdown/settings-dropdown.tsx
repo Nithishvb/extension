@@ -62,8 +62,6 @@ export function SettingsDropdown() {
 
   useOnClickOutside(ref, isShowing ? handleClose : null);
 
-  console.log('Theme location', location);
-
   return (
     <>
       {hasCreatedAccount && <Overlay />}
@@ -99,9 +97,7 @@ export function SettingsDropdown() {
               data-testid={SettingsSelectors.ToggleTheme}
               onClick={wrappedCloseCallback(() => {
                 void analytics.track('click_change_theme_menu_item');
-                navigate('/home/assets/change-theme', {
-                  // relative: 'path',
-                  ...location,
+                navigate(RouteUrls.ChangeTheme, {
                   state: { backgroundLocation: location },
                 });
               })}

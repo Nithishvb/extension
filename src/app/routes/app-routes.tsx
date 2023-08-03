@@ -11,8 +11,6 @@ import { RouteUrls } from '@shared/route-urls';
 
 import { BroadcastErrorDrawer } from '@app/components/broadcast-error-drawer/broadcast-error-drawer';
 import { LoadingSpinner } from '@app/components/loading-spinner';
-import { ActivityList } from '@app/features/activity-list/activity-list';
-import { AssetsList } from '@app/features/asset-list/asset-list';
 import { Container } from '@app/features/container/container';
 import { EditNonceDrawer } from '@app/features/edit-nonce-drawer/edit-nonce-drawer';
 import { IncreaseBtcFeeDrawer } from '@app/features/increase-fee-drawer/increase-btc-fee-drawer';
@@ -77,7 +75,6 @@ const settingsModalRoutes = (
   </Route>
 );
 
-// try to add `home/` before these to see if BG location works properly
 const sendOrdinalRoutes = (
   <Route path={RouteUrls.SendOrdinalInscription} element={<SendInscriptionContainer />}>
     <Route index element={<SendInscriptionForm />} />
@@ -98,7 +95,7 @@ export const homeModalRoutes = (
     <Route path={RouteUrls.ReceiveStx} element={<ReceiveStxModal />} />
     <Route path={RouteUrls.ReceiveBtc} element={<ReceiveBtcModal />} />
     {sendOrdinalRoutes}
-    {/* {settingsModalRoutes} */}
+    {settingsModalRoutes}
   </Route>
 );
 
@@ -199,17 +196,19 @@ function useAppRoutes() {
 
   return createHashRouter(
     createRoutesFromElements(
-      <Route path={RouteUrls.Container} element={<Container />}>
+      <Route element={<Container />}>
         <Route path={RouteUrls.RequestDiagnostics} element={<AllowDiagnosticsPage />} />
 
         <Route
-          path={`${RouteUrls.Home}/*`}
+          path={`${RouteUrls.Home}*`}
           element={
             <AccountGate>
               <Home />
             </AccountGate>
           }
-        />
+        >
+          {homeModalRoutes}
+        </Route>
 
         {requestBitcoinKeysRoutes}
         {requestStacksKeysRoutes}
@@ -222,8 +221,7 @@ function useAppRoutes() {
         <Route path={RouteUrls.IncreaseFeeSent} element={<IncreaseFeeSentDrawer />} />
         <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} />
 
-        {/* {homeModalRoutes} */}
-        {sendOrdinalRoutes}
+        {/* {sendOrdinalRoutes} */}
 
         {ledgerStacksTxSigningRoutes}
         <Route

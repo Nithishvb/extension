@@ -12,10 +12,7 @@ import { ActivityList } from '@app/features/activity-list/activity-list';
 import { AssetsList } from '@app/features/asset-list/asset-list';
 import { InAppMessages } from '@app/features/hiro-messages/in-app-messages';
 import { SuggestedFirstSteps } from '@app/features/suggested-first-steps/suggested-first-steps';
-import { ThemesDrawer } from '@app/features/theme-drawer/theme-drawer';
 import { HomeActions } from '@app/pages/home/components/home-actions';
-import { ReceiveModal } from '@app/pages/receive-tokens/receive-modal';
-import { homeModalRoutes } from '@app/routes/app-routes';
 
 import { CurrentAccount } from './components/account-area';
 import { HomeTabs } from './components/home-tabs';
@@ -27,14 +24,8 @@ export function Home() {
   const navigate = useNavigate();
 
   const location = useLocation();
+
   const backgroundLocation = useLocationState('backgroundLocation');
-  // || {
-  //   pathname: '/home/assets',
-  //   search: '',
-  //   hash: '',
-  //   state: null,
-  //   key: 'biwjxgci',
-  // };
   useTrackFirstDeposit();
 
   useRouteHeader(
@@ -43,8 +34,6 @@ export function Home() {
       <Header />
     </>
   );
-  console.info('Home backgroundLocation', backgroundLocation, location);
-  // I am setting the BG location weirdly and this is messing thigns up - need to strip back and simplify
 
   useOnMount(() => {
     if (decodedAuthRequest) navigate(RouteUrls.ChooseAccount);
@@ -58,13 +47,9 @@ export function Home() {
       <HomeTabs>
         <>
           <Routes location={backgroundLocation || location}>
-            <Route path={RouteUrls.Assets} element={<AssetsList />} />
+            <Route index element={<AssetsList />} />
             <Route path={RouteUrls.Activity} element={<ActivityList />} />
-
-            <Route path={`${RouteUrls.Assets}/change-theme`} element={<ThemesDrawer />} />
-            {homeModalRoutes}
-            <Route path={`/home/${RouteUrls.Receive}`} element={<ReceiveModal />} />
-            <Route path="*" element={<Navigate replace to={RouteUrls.Assets} />} />
+            <Route path="*" element={<Navigate replace to={RouteUrls.Home} />} />
           </Routes>
           {backgroundLocation && <Outlet />}
         </>

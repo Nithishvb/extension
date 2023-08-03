@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { FiCopy } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Box, Button, Flex, Stack, useClipboard } from '@stacks/ui';
 import { color, truncateMiddle } from '@stacks/ui-utils';
@@ -60,6 +60,7 @@ export function ReceiveModal() {
                     mode="tertiary"
                     onClick={() =>
                       navigate(RouteUrls.ReceiveBtc, {
+                        // relative: 'path'
                         state: { backgroundLocation },
                       })
                     }
@@ -94,6 +95,7 @@ export function ReceiveModal() {
                     mode="tertiary"
                     onClick={() =>
                       navigate(RouteUrls.ReceiveStx, {
+                        relative: 'route',
                         state: { backgroundLocation },
                       })
                     }

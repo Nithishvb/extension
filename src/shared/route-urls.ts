@@ -25,11 +25,9 @@ export enum RouteUrls {
   LedgerAddMoreKeys = 'add-more-keys',
 
   // Active wallet routes - home
-  Home = '/home',
+  Home = '/',
   // Tab nested relative paths
   Activity = 'activity',
-  Assets = 'assets',
-
   // Active wallet routes
   AddNetwork = '/add-network',
   ChooseAccount = '/choose-account',
@@ -40,11 +38,13 @@ export enum RouteUrls {
   IncreaseStxFee = '/increase-fee/stx',
   IncreaseBtcFee = '/increase-fee/btc',
   IncreaseFeeSent = '/increase-fee/sent',
-  Receive = '/receive',
+  // need these paths as relative to keep URL clean (no /home and also not crash )
+  // check here https://stackoverflow.com/questions/69299586/error-absolute-route-path-nested-under-path-app-is-not-valid
+  Receive = 'receive',
   ReceiveCollectible = '/receive/collectible',
-  ReceiveCollectibleOrdinal = '/receive/collectible/ordinal',
-  ReceiveStx = '/receive/stx',
-  ReceiveBtc = '/receive/btc',
+  ReceiveCollectibleOrdinal = 'receive/collectible/ordinal',
+  ReceiveStx = 'stx',
+  ReceiveBtc = 'btc',
   Send = '/send-transaction',
   ViewSecretKey = '/view-secret-key',
 
@@ -82,12 +82,12 @@ export enum RouteUrls {
   SentBrc20Summary = '/send/brc20/:ticker/summary',
 
   // Send ordinal inscriptions
-  SendOrdinalInscription = '/send/ordinal-inscription',
-  SendOrdinalInscriptionChooseFee = '/send/ordinal-inscription/choose-fee',
-  SendOrdinalInscriptionReview = '/send/ordinal-inscription/review',
-  SendOrdinalInscriptionSummary = '/send/ordinal-inscription/',
-  SendOrdinalInscriptionSent = '/send/ordinal-inscription/sent',
-  SendOrdinalInscriptionError = '/send/ordinal-inscription/error',
+  SendOrdinalInscription = 'send/ordinal-inscription',
+  SendOrdinalInscriptionChooseFee = 'send/ordinal-inscription/choose-fee',
+  SendOrdinalInscriptionReview = 'send/ordinal-inscription/review',
+  SendOrdinalInscriptionSummary = 'send/ordinal-inscription/',
+  SendOrdinalInscriptionSent = 'send/ordinal-inscription/sent',
+  SendOrdinalInscriptionError = 'send/ordinal-inscription/error',
 
   // Legacy request routes
   ProfileUpdateRequest = '/update-profile',
