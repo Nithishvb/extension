@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import BitcoinStampImg from '@assets/images/bitcoin-stamp.png';
 import { Box, Stack, useClipboard } from '@stacks/ui';
@@ -20,6 +20,7 @@ import { ReceiveCollectibleItem } from './receive-collectible-item';
 export function ReceiveCollectible() {
   const analytics = useAnalytics();
   const backgroundLocation = useLocationState('backgroundLocation');
+  const location = useLocation();
   const accountIndex = useLocationState('accountIndex');
   const navigate = useNavigate();
   const btcAddressNativeSegwit = useCurrentAccountNativeSegwitAddressIndexZero();
@@ -52,10 +53,12 @@ export function ReceiveCollectible() {
         address={btcAddressTaproot}
         icon={<OrdinalIcon />}
         data-testid={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
+        // PETE work on this, maybe nest this also?
         onCopyAddress={() => {
           void analytics.track('select_inscription_to_add_new_collectible');
           navigate(RouteUrls.ReceiveCollectibleOrdinal, {
-            state: { btcAddressTaproot, backgroundLocation },
+            // relative: 'path',
+            state: { btcAddressTaproot, backgroundLocation: location },
           });
         }}
         title="Ordinal inscription"

@@ -38,13 +38,11 @@ export enum RouteUrls {
   IncreaseStxFee = '/increase-fee/stx',
   IncreaseBtcFee = '/increase-fee/btc',
   IncreaseFeeSent = '/increase-fee/sent',
-  // need these paths as relative to keep URL clean (no /home and also not crash )
-  // check here https://stackoverflow.com/questions/69299586/error-absolute-route-path-nested-under-path-app-is-not-valid
-  Receive = 'receive',
-  ReceiveCollectible = '/receive/collectible',
-  ReceiveCollectibleOrdinal = 'receive/collectible/ordinal',
+  Receive = '/receive',
   ReceiveStx = 'stx',
   ReceiveBtc = 'btc',
+  ReceiveCollectible = '/receive/collectible',
+  ReceiveCollectibleOrdinal = '/receive/collectible/ordinal',
   Send = '/send-transaction',
   ViewSecretKey = '/view-secret-key',
 

@@ -88,12 +88,19 @@ const sendOrdinalRoutes = (
   </Route>
 );
 
+const receiveRoutes = (
+  <Route>
+    <Route path={RouteUrls.Receive} element={<ReceiveModal />}>
+      <Route path={RouteUrls.ReceiveStx} element={<ReceiveStxModal />} />
+      <Route path={RouteUrls.ReceiveBtc} element={<ReceiveBtcModal />} />
+    </Route>
+    <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
+    <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} />
+  </Route>
+);
+
 export const homeModalRoutes = (
   <Route>
-    <Route path={RouteUrls.Receive} element={<ReceiveModal />} />
-    <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
-    <Route path={RouteUrls.ReceiveStx} element={<ReceiveStxModal />} />
-    <Route path={RouteUrls.ReceiveBtc} element={<ReceiveBtcModal />} />
     {sendOrdinalRoutes}
     {settingsModalRoutes}
   </Route>
@@ -210,6 +217,7 @@ function useAppRoutes() {
           {homeModalRoutes}
         </Route>
 
+        {receiveRoutes}
         {requestBitcoinKeysRoutes}
         {requestStacksKeysRoutes}
         <Route path={RouteUrls.RetriveTaprootFunds} element={<RetrieveTaprootToNativeSegwit />} />
@@ -219,7 +227,6 @@ function useAppRoutes() {
         </Route>
         <Route path={RouteUrls.IncreaseBtcFee} element={<IncreaseBtcFeeDrawer />} />
         <Route path={RouteUrls.IncreaseFeeSent} element={<IncreaseFeeSentDrawer />} />
-        <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} />
 
         {/* {sendOrdinalRoutes} */}
 

@@ -19,13 +19,13 @@ export function useBackgroundLocationRedirect() {
       switch (true) {
         // FIXME ReceiveCollectibleOrdinal loses state?.btcAddressTaproot in a new tab
         // this can be improved to try and fetch btcAddressTaproot
-        case pathname === RouteUrls.ReceiveCollectibleOrdinal && !state?.btcAddressTaproot:
-          return navigate(RouteUrls.Home);
+        // case pathname === RouteUrls.ReceiveCollectibleOrdinal && !state?.btcAddressTaproot:
+        //   return navigate(RouteUrls.Home);
 
-        case backgroundLocation === undefined:
-          return navigate(pathname, {
-            state: { backgroundLocation: { pathname: RouteUrls.Home } },
-          });
+        // case backgroundLocation === undefined:
+        //   return navigate(pathname, {
+        //     state: { backgroundLocation: { pathname: RouteUrls.Home } },
+        //   });
         default:
           return false;
       }

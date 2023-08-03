@@ -19,6 +19,7 @@ export function HomeTabs({ children }: HomeTabsProps) {
   const location = useLocation();
   const backgroundLocation = useLocationState('backgroundLocation');
 
+  console.info('Home-tab: location:', location, 'bg:', backgroundLocation);
   const tabs = useMemo(
     () => [
       { slug: `${RouteUrls.Home}`, label: 'balances' },
