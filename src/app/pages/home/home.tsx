@@ -13,6 +13,7 @@ import { AssetsList } from '@app/features/asset-list/asset-list';
 import { InAppMessages } from '@app/features/hiro-messages/in-app-messages';
 import { SuggestedFirstSteps } from '@app/features/suggested-first-steps/suggested-first-steps';
 import { HomeActions } from '@app/pages/home/components/home-actions';
+import { receiveRoutes, settingsModalRoutes } from '@app/routes/app-routes';
 
 import { CurrentAccount } from './components/account-area';
 import { HomeTabs } from './components/home-tabs';
@@ -48,22 +49,13 @@ export function Home() {
         <>
           <Routes location={backgroundLocation || location}>
             <Route index element={<AssetsList />} />
-            <Route path={RouteUrls.Activity} element={<ActivityList />} />{' '}
-            {/* 
-            Route needs to be here to be recognised??? but not recieve. so weird
-           why no double nest?!?!  
-            */}
-            <Route
-              path="pete"
-              element={
-                <div>
-                  <Outlet />
-                </div>
-              }
-            >
-              <Route path="ordinal" element={<div>Chine</div>} />
-            </Route>
-            {/* <Route path="*" element={<Navigate replace to={RouteUrls.Home} />} /> */}
+            <Route path={RouteUrls.Activity} element={<ActivityList />} />
+            {/* Routes also need to be declared in here to open in new tab */}
+            {/* TODO- refactor this again so it's just one import */}
+            {receiveRoutes}
+            {settingsModalRoutes}
+
+            <Route path="*" element={<Navigate replace to={RouteUrls.Home} />} />
           </Routes>
           {backgroundLocation && <Outlet />}
         </>

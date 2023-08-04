@@ -68,7 +68,7 @@ export function AppRoutes() {
   const routes = useAppRoutes();
   return <RouterProvider router={routes} />;
 }
-const settingsModalRoutes = (
+export const settingsModalRoutes = (
   <Route>
     <Route path={RouteUrls.SignOutConfirm} element={<SignOutConfirmDrawer />} />
     <Route path={RouteUrls.ChangeTheme} element={<ThemesDrawer />} />
@@ -89,21 +89,21 @@ const sendOrdinalRoutes = (
   </Route>
 );
 
-const receiveRoutes = (
+export const receiveRoutes = (
   <Route>
     <Route path={RouteUrls.Receive} element={<ReceiveModal />}>
-      {/* <Route index element={<ReceiveModal />} /> */}
-      {/* ReceiveStx + ReceiveBtc aren't opening in new tabs properly */}
       <Route path={RouteUrls.ReceiveStx} element={<ReceiveStxModal />} />
       <Route path={RouteUrls.ReceiveBtc} element={<ReceiveBtcModal />} />
-
-      {/* Maybe I need a layout route for collectibles? */}
-      {/* <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />}>
-        <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
-      </Route> */}
+      {/* Needed to show receive ordinal in Receive flow */}
+      <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
     </Route>
-    {/* <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
-    <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} /> */}
+
+    {/* Needed to show receive ordinal in Add flow */}
+    <Route
+      path={`${RouteUrls.Receive}/${RouteUrls.ReceiveCollectible}`}
+      element={<ReceiveCollectibleModal />}
+    />
+    <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
   </Route>
 );
 
@@ -225,12 +225,6 @@ function useAppRoutes() {
           {settingsModalRoutes}
           {sendOrdinalRoutes}
         </Route>
-
-        {/* FIME - these routes need more work to be overlaid on Home
-          tricky as they are double nested
-         */}
-        <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
-        <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} />
 
         {requestBitcoinKeysRoutes}
         {requestStacksKeysRoutes}
