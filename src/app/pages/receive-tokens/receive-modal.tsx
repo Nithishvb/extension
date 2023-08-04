@@ -22,7 +22,7 @@ import { useCurrentAccountNativeSegwitAddressIndexZero } from '@app/store/accoun
 import { useCurrentAccountStxAddressState } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 
 export function ReceiveModal() {
-  // useBackgroundLocationRedirect();
+  useBackgroundLocationRedirect();
   const analytics = useAnalytics();
   const navigate = useNavigate();
   const backgroundLocation = useLocationState('backgroundLocation');

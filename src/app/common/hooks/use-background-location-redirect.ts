@@ -22,10 +22,10 @@ export function useBackgroundLocationRedirect() {
         // case pathname === RouteUrls.ReceiveCollectibleOrdinal && !state?.btcAddressTaproot:
         //   return navigate(RouteUrls.Home);
 
-        // case backgroundLocation === undefined:
-        //   return navigate(pathname, {
-        //     state: { backgroundLocation: { pathname: RouteUrls.Home } },
-        //   });
+        case backgroundLocation === undefined:
+          return navigate(pathname, {
+            state: { backgroundLocation: { pathname: RouteUrls.Home } },
+          });
         default:
           return false;
       }

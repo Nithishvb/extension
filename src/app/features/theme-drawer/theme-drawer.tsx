@@ -8,6 +8,7 @@ import { ThemeList } from './theme-list';
 
 export function ThemesDrawer() {
   useBackgroundLocationRedirect();
+  console.info('wizzle waxzxle');
   const navigate = useNavigate();
   const backgroundLocation = useLocationState('backgroundLocation');
   return (
