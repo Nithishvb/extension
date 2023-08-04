@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import {
   Navigate,
+  Outlet,
   Route,
   RouterProvider,
   createHashRouter,
@@ -91,8 +92,12 @@ const sendOrdinalRoutes = (
 const receiveRoutes = (
   <Route>
     <Route path={RouteUrls.Receive} element={<ReceiveModal />}>
+      {/* <Route index element={<ReceiveModal />} /> */}
+      {/* ReceiveStx + ReceiveBtc aren't opening in new tabs properly */}
       <Route path={RouteUrls.ReceiveStx} element={<ReceiveStxModal />} />
       <Route path={RouteUrls.ReceiveBtc} element={<ReceiveBtcModal />} />
+
+      {/* Maybe I need a layout route for collectibles? */}
       {/* <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />}>
         <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
       </Route> */}
@@ -100,6 +105,88 @@ const receiveRoutes = (
     {/* <Route path={RouteUrls.ReceiveCollectibleOrdinal} element={<ReceiveCollectibleOrdinal />} />
     <Route path={RouteUrls.ReceiveCollectible} element={<ReceiveCollectibleModal />} /> */}
   </Route>
+);
+
+const legacyRequestRoutes = (
+  <>
+    <Route
+      path={RouteUrls.TransactionRequest}
+      element={
+        <AccountGate>
+          <Suspense fallback={<LoadingSpinner height="600px" />}>
+            <TransactionRequest />
+          </Suspense>
+        </AccountGate>
+      }
+    >
+      {ledgerStacksTxSigningRoutes}
+      <Route path={RouteUrls.EditNonce} element={<EditNonceDrawer />} />
+      <Route path={RouteUrls.TransactionBroadcastError} element={<BroadcastErrorDrawer />} />
+    </Route>
+    <Route
+      path={RouteUrls.SignatureRequest}
+      element={
+        <AccountGate>
+          <Suspense fallback={<LoadingSpinner height="600px" />}>
+            <StacksMessageSigningRequest />
+          </Suspense>
+        </AccountGate>
+      }
+    >
+      {ledgerStacksMessageSigningRoutes}
+    </Route>
+    <Route
+      path={RouteUrls.ProfileUpdateRequest}
+      element={
+        <AccountGate>
+          <Suspense fallback={<LoadingSpinner height="600px" />}>
+            <ProfileUpdateRequest />
+          </Suspense>
+        </AccountGate>
+      }
+    />
+    <Route
+      path={RouteUrls.PsbtRequest}
+      element={
+        <AccountGate>
+          <Suspense fallback={<LoadingSpinner height="600px" />}>
+            <PsbtRequest />
+          </Suspense>
+        </AccountGate>
+      }
+    />
+  </>
+);
+
+const rpcRequestRoutes = (
+  <>
+    <Route
+      path={RouteUrls.RpcGetAddresses}
+      element={
+        <AccountGate>
+          <RpcGetAddresses />
+        </AccountGate>
+      }
+    />
+    {rpcSendTransferRoutes}
+    <Route
+      path={RouteUrls.RpcSignBip322Message}
+      lazy={async () => {
+        const { RpcSignBip322MessageRoute } = await import(
+          '@app/pages/rpc-sign-bip322-message/rpc-sign-bip322-message'
+        );
+        return { Component: RpcSignBip322MessageRoute };
+      }}
+    />
+    <Route
+      path={RouteUrls.RpcSignPsbt}
+      element={
+        <AccountGate>
+          <RpcSignPsbt />
+        </AccountGate>
+      }
+    />
+  </>
 );
 
 function useAppRoutes() {
@@ -114,88 +201,6 @@ function useAppRoutes() {
         </Route>
       )
     );
-
-  const legacyRequestRoutes = (
-    <>
-      <Route
-        path={RouteUrls.TransactionRequest}
-        element={
-          <AccountGate>
-            <Suspense fallback={<LoadingSpinner height="600px" />}>
-              <TransactionRequest />
-            </Suspense>
-          </AccountGate>
-        }
-      >
-        {ledgerStacksTxSigningRoutes}
-        <Route path={RouteUrls.EditNonce} element={<EditNonceDrawer />} />
-        <Route path={RouteUrls.TransactionBroadcastError} element={<BroadcastErrorDrawer />} />
-      </Route>
-      <Route
-        path={RouteUrls.SignatureRequest}
-        element={
-          <AccountGate>
-            <Suspense fallback={<LoadingSpinner height="600px" />}>
-              <StacksMessageSigningRequest />
-            </Suspense>
-          </AccountGate>
-        }
-      >
-        {ledgerStacksMessageSigningRoutes}
-      </Route>
-      <Route
-        path={RouteUrls.ProfileUpdateRequest}
-        element={
-          <AccountGate>
-            <Suspense fallback={<LoadingSpinner height="600px" />}>
-              <ProfileUpdateRequest />
-            </Suspense>
-          </AccountGate>
-        }
-      />
-      <Route
-        path={RouteUrls.PsbtRequest}
-        element={
-          <AccountGate>
-            <Suspense fallback={<LoadingSpinner height="600px" />}>
-              <PsbtRequest />
-            </Suspense>
-          </AccountGate>
-        }
-      />
-    </>
-  );
-
-  const rpcRequestRoutes = (
-    <>
-      <Route
-        path={RouteUrls.RpcGetAddresses}
-        element={
-          <AccountGate>
-            <RpcGetAddresses />
-          </AccountGate>
-        }
-      />
-      {rpcSendTransferRoutes}
-      <Route
-        path={RouteUrls.RpcSignBip322Message}
-        lazy={async () => {
-          const { RpcSignBip322MessageRoute } = await import(
-            '@app/pages/rpc-sign-bip322-message/rpc-sign-bip322-message'
-          );
-          return { Component: RpcSignBip322MessageRoute };
-        }}
-      />
-      <Route
-        path={RouteUrls.RpcSignPsbt}
-        element={
-          <AccountGate>
-            <RpcSignPsbt />
-          </AccountGate>
-        }
-      />
-    </>
-  );
 
   return createHashRouter(
     createRoutesFromElements(
@@ -215,10 +220,12 @@ function useAppRoutes() {
           this can bring duplication though for other routes like
           Send Ordinal
           */}
+
           {receiveRoutes}
           {settingsModalRoutes}
           {sendOrdinalRoutes}
         </Route>
+
         {/* FIME - these routes need more work to be overlaid on Home
           tricky as they are double nested
          */}

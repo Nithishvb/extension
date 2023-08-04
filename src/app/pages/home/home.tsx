@@ -48,8 +48,22 @@ export function Home() {
         <>
           <Routes location={backgroundLocation || location}>
             <Route index element={<AssetsList />} />
-            <Route path={RouteUrls.Activity} element={<ActivityList />} />
-            <Route path="*" element={<Navigate replace to={RouteUrls.Home} />} />
+            <Route path={RouteUrls.Activity} element={<ActivityList />} />{' '}
+            {/* 
+            Route needs to be here to be recognised??? but not recieve. so weird
+           why no double nest?!?!  
+            */}
+            <Route
+              path="pete"
+              element={
+                <div>
+                  <Outlet />
+                </div>
+              }
+            >
+              <Route path="ordinal" element={<div>Chine</div>} />
+            </Route>
+            {/* <Route path="*" element={<Navigate replace to={RouteUrls.Home} />} /> */}
           </Routes>
           {backgroundLocation && <Outlet />}
         </>

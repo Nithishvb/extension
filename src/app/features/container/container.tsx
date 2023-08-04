@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
 
 import { useInitalizeAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
