@@ -4,7 +4,10 @@ import { bytesToHex } from '@stacks/common';
 import { JsDLCInterface } from 'dlc-wasm-wallet';
 
 import { BITCOIN_API_BASE_URL_MAINNET, BITCOIN_API_BASE_URL_TESTNET } from '@shared/constants';
-import { deriveAddressIndexKeychainFromAccount } from '@shared/crypto/bitcoin/bitcoin.utils';
+import {
+  deriveAddressIndexKeychainFromAccount,
+  extractAddressIndexFromPath,
+} from '@shared/crypto/bitcoin/bitcoin.utils';
 import { createMoneyFromDecimal } from '@shared/models/money.model';
 import { RouteUrls } from '@shared/route-urls';
 import { makeRpcSuccessResponse } from '@shared/rpc/rpc-methods';
@@ -17,7 +20,7 @@ import {
 import { useCurrentAccountIndex } from '@app/store/accounts/account';
 import {
   useCurrentAccountNativeSegwitSigner,
-  useNativeSegwitActiveNetworkAccountPrivateKeychain,
+  useNativeSegwitAccountBuilder,
 } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 
 import { initialSearchParams } from '../initial-search-params';
@@ -50,19 +53,17 @@ export function useBitcoinContracts() {
   const calculateFiatValue = useCalculateBitcoinFiatValue();
   const getNativeSegwitSigner = useCurrentAccountNativeSegwitSigner();
   const currentIndex = useCurrentAccountIndex();
-  const nativeSegwitPrivateKeychain =
-    useNativeSegwitActiveNetworkAccountPrivateKeychain()?.(currentIndex);
+  const nativeSegwitPrivateKeychain = useNativeSegwitAccountBuilder()?.(currentIndex);
+  const oracleAPI = 'https://testnet.dlc.link/oracle';
 
-  async function getBitcoinContractInterface(
-    attestorURLs: string[]
-  ): Promise<JsDLCInterface | undefined> {
+  async function getBitcoinContractInterface(attestorURLs: string[]): Promise<JsDLCInterface | undefined> {
     const bitcoinAccountDetails = getNativeSegwitSigner?.(0);
 
     if (!nativeSegwitPrivateKeychain || !bitcoinAccountDetails) return;
 
     const currentBitcoinNetwork = bitcoinAccountDetails.network;
     const currentAddress = bitcoinAccountDetails.address;
-    const currentAccountIndex = bitcoinAccountDetails.addressIndex;
+    const currentAccountIndex = extractAddressIndexFromPath(bitcoinAccountDetails.derivationPath);
 
     const currentAddressPrivateKey = deriveAddressIndexKeychainFromAccount(
       nativeSegwitPrivateKeychain.keychain

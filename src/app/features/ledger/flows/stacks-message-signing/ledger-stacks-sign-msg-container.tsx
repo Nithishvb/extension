@@ -39,7 +39,7 @@ interface LedgerSignMsgData {
   unsignedMessage: UnsignedMessage;
 }
 interface LedgerSignMsgDataProps {
-  children({ account, unsignedMessage }: LedgerSignMsgData): JSX.Element;
+  children({ account, unsignedMessage }: LedgerSignMsgData): React.JSX.Element;
 }
 function LedgerSignMsgData({ children }: LedgerSignMsgDataProps) {
   const account = useCurrentStacksAccount();
@@ -88,7 +88,7 @@ function LedgerSignStacksMsg({ account, unsignedMessage }: LedgerSignMsgProps) {
     await verifyLedgerPublicKey(stacksApp);
 
     try {
-      ledgerNavigate.toConnectionSuccessStep();
+      ledgerNavigate.toConnectionSuccessStep('stacks');
       await delay(1000);
       ledgerNavigate.toAwaitingDeviceOperation({ hasApprovedOperation: false });
 

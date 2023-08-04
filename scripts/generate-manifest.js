@@ -3,9 +3,9 @@
  */
 const deepMerge = require('deepmerge');
 
-const IS_DEV = process.env.NODE_ENV === 'development';
+const IS_DEV = process.env.WALLET_ENVIRONMENT === 'development';
 
-const NODE_ENV = process.env.NODE_ENV ?? 'development';
+const WALLET_ENVIRONMENT = process.env.WALLET_ENVIRONMENT ?? 'development';
 
 const PREVIEW_RELEASE = process.env.PREVIEW_RELEASE;
 
@@ -31,8 +31,7 @@ const environmentIcons = {
 const contentSecurityPolicyEnvironment = {
   development:
     "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; frame-src 'none'; frame-ancestors 'none';",
-  production:
-    "default-src 'none'; connect-src *; style-src 'unsafe-inline'; img-src 'self' data: https:; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; frame-src 'none'; frame-ancestors 'none';",
+  production: `default-src 'none'; connect-src *; style-src 'unsafe-inline'; img-src 'self' data: https:; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; frame-src 'none'; frame-ancestors 'none';`,
 };
 
 const defaultIconEnvironment = {
@@ -54,6 +53,7 @@ const browserSpecificConfig = {
   chromium: {
     background: {
       service_worker: 'background.js',
+      type: 'module',
     },
   },
 };
@@ -78,13 +78,13 @@ const manifest = {
   },
   host_permissions: ['*://*/*'],
   content_security_policy: {
-    extension_pages: contentSecurityPolicyEnvironment[NODE_ENV],
+    extension_pages: contentSecurityPolicyEnvironment[WALLET_ENVIRONMENT],
   },
   web_accessible_resources: [{ resources: ['inpage.js'], matches: ['*://*/*'] }],
   action: {
     default_title: 'Stacks',
     default_popup: 'popup.html',
-    default_icon: defaultIconEnvironment[NODE_ENV],
+    default_icon: defaultIconEnvironment[WALLET_ENVIRONMENT],
   },
   options_ui: {
     page: 'index.html',
@@ -128,7 +128,7 @@ function generateManifest(packageVersion) {
     manifest,
     releaseEnvironmentConfig,
     browserConfig,
-    environmentIcons[NODE_ENV],
+    environmentIcons[WALLET_ENVIRONMENT],
   ]);
 }
 

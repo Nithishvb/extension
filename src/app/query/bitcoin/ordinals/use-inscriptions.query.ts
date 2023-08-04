@@ -6,9 +6,10 @@ import { InscriptionResponseItem } from '@shared/models/inscription.model';
 import { ensureArray } from '@shared/utils';
 
 import { createNumArrayOfRange } from '@app/common/utils';
+import { HIRO_INSCRIPTIONS_API_URL } from '@app/query/query-config';
 import { QueryPrefixes } from '@app/query/query-prefixes';
 import { useCurrentAccountNativeSegwitIndexZeroSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
-import { useTaprootCurrentPrivateAccount } from '@app/store/accounts/blockchain/bitcoin/taproot-account.hooks';
+import { useCurrentTaprootAccount } from '@app/store/accounts/blockchain/bitcoin/taproot-account.hooks';
 import { useCurrentNetwork } from '@app/store/networks/networks.selectors';
 
 import { getTaprootAddress } from './utils';
@@ -41,7 +42,7 @@ async function fetchInscriptions(addresses: string | string[], offset = 0, limit
   params.append('limit', limit.toString());
   params.append('offset', offset.toString());
 
-  const res = await fetch('https://api.hiro.so/ordinals/v1/inscriptions?' + params.toString());
+  const res = await fetch(`${HIRO_INSCRIPTIONS_API_URL}?${params.toString()}`);
   if (!res.ok) throw new Error('Error retrieving inscription metadata');
   const data = await res.json();
   return data as InscriptionsQueryResponse;
@@ -52,7 +53,7 @@ async function fetchInscriptions(addresses: string | string[], offset = 0, limit
  */
 export function useTaprootInscriptionsInfiniteQuery() {
   const network = useCurrentNetwork();
-  const account = useTaprootCurrentPrivateAccount();
+  const account = useCurrentTaprootAccount();
   const nativeSegwitSigner = useCurrentAccountNativeSegwitIndexZeroSigner();
   const currentBitcoinAddress = nativeSegwitSigner.address;
 
