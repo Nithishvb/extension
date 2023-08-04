@@ -1,8 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Box, Stack, StackProps, Text } from '@stacks/ui';
 import { HomePageSelectorsLegacy } from '@tests-legacy/page-objects/home.selectors';
 
+import { RouteUrls } from '@shared/route-urls';
+
 import { useBtcAssetBalance } from '@app/common/hooks/balance/btc/use-btc-balance';
 import { useStxBalance } from '@app/common/hooks/balance/stx/use-stx-balance';
+import { useBitcoinContracts } from '@app/common/hooks/use-bitcoin-contracts';
 import { ftDecimals } from '@app/common/stacks-utils';
 import { useWalletType } from '@app/common/use-wallet-type';
 import { Brc20TokensLoader } from '@app/components/brc20-tokens-loader';
@@ -13,7 +18,7 @@ import { LoadingSpinner } from '@app/components/loading-spinner';
 import { Caption } from '@app/components/typography';
 import { useConfigBitcoinEnabled } from '@app/query/common/remote-config/remote-config.query';
 import { useStacksFungibleTokenAssetBalancesAnchoredWithMetadata } from '@app/query/stacks/balance/stacks-ft-balances.hooks';
-import { useCurrentAccountNativeSegwitAddressIndexZero } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
+import { useCurrentAccountNativeSegwitIndexZeroSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 
 import { Collectibles } from '../collectibles/collectibles';
 import { PendingBrc20TransferList } from '../pending-brc-20-transfers/pending-brc-20-transfers';
@@ -27,7 +32,10 @@ interface BalancesListProps extends StackProps {
 export function BalancesList({ address, ...props }: BalancesListProps) {
   const stacksFtAssetBalances = useStacksFungibleTokenAssetBalancesAnchoredWithMetadata(address);
   const isBitcoinEnabled = useConfigBitcoinEnabled();
-  const btcAddress = useCurrentAccountNativeSegwitAddressIndexZero();
+  const navigate = useNavigate();
+  const nativeSegwitSigner = useCurrentAccountNativeSegwitIndexZeroSigner();
+  const { initialLockedBitcoinBalance } = useBitcoinContracts();
+
   const {
     stxEffectiveBalance,
     stxEffectiveUsdBalance,
@@ -35,7 +43,9 @@ export function BalancesList({ address, ...props }: BalancesListProps) {
     stxUsdLockedBalance,
     isLoading,
   } = useStxBalance();
-  const { btcAvailableAssetBalance, btcAvailableUsdBalance } = useBtcAssetBalance(btcAddress);
+  const { btcAvailableAssetBalance, btcAvailableUsdBalance } = useBtcAssetBalance(
+    nativeSegwitSigner.address
+  );
   const { whenWallet } = useWalletType();
 
   // Better handle loading state
@@ -57,12 +67,24 @@ export function BalancesList({ address, ...props }: BalancesListProps) {
       {...props}
     >
       {isBitcoinEnabled && (
-        <CryptoCurrencyAssetItem
-          assetBalance={btcAvailableAssetBalance}
-          usdBalance={btcAvailableUsdBalance}
-          icon={<Box as={BtcIcon} />}
-          address={btcAddress}
-        />
+        <>
+          <CryptoCurrencyAssetItem
+            assetBalance={btcAvailableAssetBalance}
+            usdBalance={btcAvailableUsdBalance}
+            icon={<Box as={BtcIcon} />}
+            address={nativeSegwitSigner.address}
+          />
+          <CryptoCurrencyAssetItem
+            assetBalance={
+              initialLockedBitcoinBalance.lockedBitcoinBalance as BitcoinCryptoCurrencyAssetBalance
+            }
+            usdBalance={initialLockedBitcoinBalance.lockedBitcoinBalanceInFiat}
+            icon={<Box as={BtcIcon} />}
+            address={nativeSegwitSigner.address}
+            isPressable={true}
+            onClick={() => navigate(RouteUrls.BitcoinContractList)}
+          />
+        </>
       )}
       <CryptoCurrencyAssetItem
         assetBalance={stxEffectiveBalance}

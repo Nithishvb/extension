@@ -226,6 +226,8 @@ export function useBitcoinContracts() {
     );
   }
 
+  const 
+
   return {
     handleOffer,
     handleAccept,
