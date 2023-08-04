@@ -62,6 +62,8 @@ export function SettingsDropdown() {
 
   useOnClickOutside(ref, isShowing ? handleClose : null);
 
+  console.info('settings, location', location);
+
   return (
     <>
       {hasCreatedAccount && <Overlay />}

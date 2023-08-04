@@ -309,6 +309,7 @@ function useAppRoutes() {
           <Route path={RouteUrls.FundReceiveBtc} element={<ReceiveBtcModal />} />
           {settingsModalRoutes}
         </Route>
+
         {sendCryptoAssetFormRoutes}
         <Route
           path={RouteUrls.ViewSecretKey}
@@ -334,6 +335,8 @@ function useAppRoutes() {
             </AccountGate>
           }
         />
+        {/*  needed so settings fire on fund page  - TODO refactor fund so modal can show overlaid there */}
+        {settingsModalRoutes}
         {/* Catch-all route redirects to onboarding */}
         <Route path="*" element={<Navigate replace to={RouteUrls.Onboarding} />} />
       </Route>
