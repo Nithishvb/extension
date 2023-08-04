@@ -56,7 +56,7 @@ export function ReceiveCollectible() {
           void analytics.track('select_inscription_to_add_new_collectible');
           // TODO improve and refactor
           // using absolute path here so it opens from Add new OR inside Receive modal
-          // FIXME - BUG - not seeing taproot when Add New from Home
+          // FIXME - BUG - not seeing taproot when open in new tab
           navigate(`/${RouteUrls.Receive}/${RouteUrls.ReceiveCollectibleOrdinal}`, {
             state: {
               btcAddressTaproot,
