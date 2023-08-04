@@ -10,7 +10,6 @@ import { RouteUrls } from '@shared/route-urls';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useBackgroundLocationRedirect } from '@app/common/hooks/use-background-location-redirect';
-// import { useLocationState } from '@app/common/hooks/use-location-state';
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
 import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { ErrorLabel } from '@app/components/error-label';
@@ -24,7 +23,6 @@ export function ReceiveCollectibleOrdinal() {
   const navigate = useNavigate();
   const analytics = useAnalytics();
   const { state } = useLocation();
-  // const backgroundLocation = useLocationState('backgroundLocation');
 
   const { onCopy } = useClipboard(state?.btcAddressTaproot);
 

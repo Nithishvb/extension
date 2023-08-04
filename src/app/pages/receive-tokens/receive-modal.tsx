@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { FiCopy } from 'react-icons/fi';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { Box, Button, Flex, Stack, useClipboard } from '@stacks/ui';
 import { color, truncateMiddle } from '@stacks/ui-utils';
@@ -115,6 +115,7 @@ export function ReceiveModal() {
           <ReceiveCollectible />
         </Box>
       </BaseDrawer>
+      {/* Outlet here for nested token routes */}
       <Outlet />
     </>
   );

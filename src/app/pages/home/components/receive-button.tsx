@@ -15,6 +15,7 @@ export function ReceiveButton(props: ButtonProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const isBitcoinEnabled = useConfigBitcoinEnabled();
+  /// need to check this works
   const receivePath = isBitcoinEnabled ? RouteUrls.Receive : RouteUrls.ReceiveStx;
   return (
     <HomeActionButton

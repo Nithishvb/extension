@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import {
   Navigate,
-  Outlet,
   Route,
   RouterProvider,
   createHashRouter,
@@ -214,12 +213,7 @@ function useAppRoutes() {
             </AccountGate>
           }
         >
-          {/* 
-          for routes we want to have overlaid 
-          on home need to nest them here with relative routes
-          this can bring duplication though for other routes like
-          Send Ordinal
-          */}
+          {/* Modal routes overlaid on home need to be nested here with relative paths to open in new tabs */}
 
           {receiveRoutes}
           {settingsModalRoutes}

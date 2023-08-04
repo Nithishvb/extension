@@ -5,7 +5,6 @@ import { Box, Button, Flex, Text, color } from '@stacks/ui';
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
 
 import { useBackgroundLocationRedirect } from '@app/common/hooks/use-background-location-redirect';
-// import { useLocationState } from '@app/common/hooks/use-location-state';
 import { AddressDisplayer } from '@app/components/address-displayer/address-displayer';
 import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { Title } from '@app/components/typography';
@@ -24,8 +23,6 @@ export function ReceiveTokensLayout(props: ReceiveTokensLayoutProps) {
   useBackgroundLocationRedirect();
   const { address, accountName, onCopyAddressToClipboard, title, warning, hasSubtitle } = props;
   const navigate = useNavigate();
-  // const backgroundLocation = useLocationState('backgroundLocation');
-
   return (
     <BaseDrawer title={title} isShowing onClose={() => navigate('..')}>
       <Flex alignItems="center" flexDirection="column" pb={['loose', '48px']} px="loose">

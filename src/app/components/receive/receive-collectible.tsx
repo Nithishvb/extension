@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import BitcoinStampImg from '@assets/images/bitcoin-stamp.png';
 import { Box, Stack, useClipboard } from '@stacks/ui';
@@ -47,45 +47,41 @@ export function ReceiveCollectible() {
   if (!btcAddressTaproot) return null;
 
   return (
-    <>
-      <Stack spacing="loose" mt="base" mb="extra-loose">
-        <ReceiveCollectibleItem
-          address={btcAddressTaproot}
-          icon={<OrdinalIcon />}
-          data-testid={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
-          // PETE work on this, maybe nest this also?
-          onCopyAddress={() => {
-            void analytics.track('select_inscription_to_add_new_collectible');
-            // TODO improve and refactor
-            // using absolute path here so it opens from Add new OR inside Receive modal
-            // FIXME - BUG - not seeing taproot when Add New from Home
-            navigate(`/${RouteUrls.Receive}/${RouteUrls.ReceiveCollectibleOrdinal}`, {
-              state: {
-                btcAddressTaproot,
-                backgroundLocation: backgroundLocation,
-              },
-            });
-          }}
-          title="Ordinal inscription"
-        />
-        <ReceiveCollectibleItem
-          address={btcAddressNativeSegwit}
-          icon={
-            <Box>
-              <img src={BitcoinStampImg} width="36px" />
-            </Box>
-          }
-          onCopyAddress={() => copyBitcoinAddressToClipboard(onCopyBitcoin)}
-          title="Bitcoin Stamp"
-        />
-        <ReceiveCollectibleItem
-          address={stxAddress}
-          icon={<StxAvatar />}
-          onCopyAddress={() => copyStacksAddressToClipboard(onCopyStacks)}
-          title="Stacks NFT"
-        />
-      </Stack>
-      {/* <Outlet /> */}
-    </>
+    <Stack spacing="loose" mt="base" mb="extra-loose">
+      <ReceiveCollectibleItem
+        address={btcAddressTaproot}
+        icon={<OrdinalIcon />}
+        data-testid={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
+        onCopyAddress={() => {
+          void analytics.track('select_inscription_to_add_new_collectible');
+          // TODO improve and refactor
+          // using absolute path here so it opens from Add new OR inside Receive modal
+          // FIXME - BUG - not seeing taproot when Add New from Home
+          navigate(`/${RouteUrls.Receive}/${RouteUrls.ReceiveCollectibleOrdinal}`, {
+            state: {
+              btcAddressTaproot,
+              backgroundLocation: backgroundLocation,
+            },
+          });
+        }}
+        title="Ordinal inscription"
+      />
+      <ReceiveCollectibleItem
+        address={btcAddressNativeSegwit}
+        icon={
+          <Box>
+            <img src={BitcoinStampImg} width="36px" />
+          </Box>
+        }
+        onCopyAddress={() => copyBitcoinAddressToClipboard(onCopyBitcoin)}
+        title="Bitcoin Stamp"
+      />
+      <ReceiveCollectibleItem
+        address={stxAddress}
+        icon={<StxAvatar />}
+        onCopyAddress={() => copyStacksAddressToClipboard(onCopyStacks)}
+        title="Stacks NFT"
+      />
+    </Stack>
   );
 }

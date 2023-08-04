@@ -91,8 +91,6 @@ export function SettingsDropdown() {
                 </MenuItem>
               </>
             )}
-            {/* PETE: has to be close now, clicking this twice works but doesn't load the BG properly
-            also need to make sure these menus work from other pages like 'fund' */}
             <MenuItem
               data-testid={SettingsSelectors.ToggleTheme}
               onClick={wrappedCloseCallback(() => {

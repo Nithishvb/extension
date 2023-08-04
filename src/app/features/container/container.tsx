@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import { useInitalizeAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
-import { useLocationState } from '@app/common/hooks/use-location-state';
 import { LoadingSpinner } from '@app/components/loading-spinner';
 import { useOnSignOut } from '@app/routes/hooks/use-on-sign-out';
 import { useOnWalletLock } from '@app/routes/hooks/use-on-wallet-lock';
@@ -18,11 +17,9 @@ import { ContainerLayout } from './container.layout';
 
 export function Container() {
   const [routeHeader] = useRouteHeaderState();
-  const location = useLocation();
-  const backgroundLocation = useLocationState('backgroundLocation');
+  const { pathname } = useLocation();
   const analytics = useAnalytics();
   const hasStateRehydrated = useHasStateRehydrated();
-  // console.info('container location:', location, 'bg:', backgroundLocation);
 
   useOnWalletLock(() => window.close());
   useOnSignOut(() => window.close());
@@ -31,10 +28,7 @@ export function Container() {
 
   useInitalizeAnalytics();
 
-  useEffect(
-    () => void analytics.page('view', `${location.pathname}`),
-    [analytics, location.pathname]
-  );
+  useEffect(() => void analytics.page('view', `${pathname}`), [analytics, pathname]);
 
   if (!hasStateRehydrated) return <LoadingSpinner />;
 

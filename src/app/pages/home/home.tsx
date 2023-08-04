@@ -50,11 +50,10 @@ export function Home() {
           <Routes location={backgroundLocation || location}>
             <Route index element={<AssetsList />} />
             <Route path={RouteUrls.Activity} element={<ActivityList />} />
-            {/* Routes also need to be declared in here to open in new tab */}
+            {/* Routes also need to be declared to work when opened in new tab */}
             {/* TODO- refactor this again so it's just one import */}
             {receiveRoutes}
             {settingsModalRoutes}
-
             <Route path="*" element={<Navigate replace to={RouteUrls.Home} />} />
           </Routes>
           {backgroundLocation && <Outlet />}
