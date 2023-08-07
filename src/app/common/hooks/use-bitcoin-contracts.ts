@@ -54,7 +54,6 @@ export function useBitcoinContracts() {
   const getNativeSegwitSigner = useCurrentAccountNativeSegwitSigner();
   const currentIndex = useCurrentAccountIndex();
   const nativeSegwitPrivateKeychain = useNativeSegwitAccountBuilder()?.(currentIndex);
-  const oracleAPI = 'https://testnet.dlc.link/oracle';
 
   async function getBitcoinContractInterface(
     attestorURLs: string[]

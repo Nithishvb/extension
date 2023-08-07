@@ -1,13 +1,13 @@
 import { DefineRpcMethod, RpcRequest, RpcResponse } from '@btckit/types';
-import { AllowAdditionaProperties } from '@btckit/types/dist/types/utils';
+import { AllowAdditionalProperties } from '@btckit/types/dist/types/utils';
 
-interface BitcoinContractResponseParams extends AllowAdditionaProperties {
+interface BitcoinContractResponseParams extends AllowAdditionalProperties {
   bitcoinContractOffer: string;
   attestorURLs: string;
   counterpartyWalletDetails: string;
 }
 
-interface BitcoinContractResponseBody extends AllowAdditionaProperties {
+interface BitcoinContractResponseBody extends AllowAdditionalProperties {
   contractId: string;
   action: string;
   txId?: string;
