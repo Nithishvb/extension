@@ -79,15 +79,15 @@ export function useGenerateSignedOrdinalTx(inscriptionUtxo: TaprootUtxo | Native
       outputs.forEach(output => tx.addOutputAddress(output.address, output.value, networkMode));
 
       // We know the first is TR and the rest are native segwit
-      for (let i = 0; i < tx.inputsLength; i++) {
-        if (i === 0) {
-          trSigner.signIndex(tx, i);
-          continue;
-        }
-        nativeSegwitSigner.signIndex(tx, i);
-      }
+      // for (let i = 0; i < tx.inputsLength; i++) {
+      //   if (i === 0) {
+      //     trSigner.signIndex(tx, i);
+      //     continue;
+      //   }
+      //   nativeSegwitSigner.signIndex(tx, i);
+      // }
 
-      tx.finalize();
+      // tx.finalize();
       return { hex: tx.hex };
     } catch (e) {
       logger.error('Unable to sign transaction');

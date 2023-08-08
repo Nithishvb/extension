@@ -79,7 +79,7 @@ export enum RouteUrls {
   SendOrdinalInscription = '/send/ordinal-inscription',
   SendOrdinalInscriptionChooseFee = '/send/ordinal-inscription/choose-fee',
   SendOrdinalInscriptionReview = '/send/ordinal-inscription/review',
-  SendOrdinalInscriptionSummary = '/send/ordinal-inscription/',
+  SendOrdinalInscriptionSummary = '/send/ordinal-inscription',
   SendOrdinalInscriptionSent = '/send/ordinal-inscription/sent',
   SendOrdinalInscriptionError = '/send/ordinal-inscription/error',
 
