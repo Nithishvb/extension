@@ -159,7 +159,7 @@ export function useBitcoinContracts() {
         counterpartyWalletDetails.counterpartyWalletURL
       );
 
-      const bitcoinContractId = signedBitcoinContract.id;
+      const bitcoinContractId = signedBitcoinContract.contractId;
 
       const txId = await bitcoinContractInterface.countersign_and_broadcast(
         JSON.stringify(signedBitcoinContract)

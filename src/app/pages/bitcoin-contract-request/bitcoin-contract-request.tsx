@@ -29,15 +29,17 @@ export function BitcoinContractRequest() {
   const [attestorURLs, setAttestorURLs] = useState<string[]>([]);
 
   const [isLoading, setLoading] = useState(true);
+  const [isProcessing, setProcessing] = useState(false);
 
   const handleAcceptClick = async () => {
     if (!bitcoinContractJSON || !bitcoinContractOfferDetails) return;
-
+    setProcessing(true);
     await handleAccept(
       bitcoinContractJSON,
       bitcoinContractOfferDetails.counterpartyWalletDetails,
       attestorURLs
     );
+    setProcessing(false);
   };
 
   const handleRejectClick = async () => {
@@ -105,7 +107,7 @@ export function BitcoinContractRequest() {
             appName={bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletName}
           />
           <BitcoinContractRequestActions
-            isLoading={isLoading}
+            isLoading={isProcessing}
             bitcoinAddress={bitcoinAddress}
             requiredAmount={
               bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractCollateralAmount
