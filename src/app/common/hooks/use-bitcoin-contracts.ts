@@ -237,6 +237,16 @@ export function useBitcoinContracts() {
         });
         break;
 
+      case BitcoinContractResponseStatus.NETWORK_ERROR:
+        response = makeRpcErrorResponse('acceptBitcoinContractOffer', {
+          id: requestId,
+          error: {
+            code: RpcErrorCode.INVALID_REQUEST,
+            message: responseStatus,
+          },
+        });
+        break;
+
       case BitcoinContractResponseStatus.BROADCAST_ERROR:
       case BitcoinContractResponseStatus.INTERFACE_ERROR:
         response = makeRpcErrorResponse('acceptBitcoinContractOffer', {
