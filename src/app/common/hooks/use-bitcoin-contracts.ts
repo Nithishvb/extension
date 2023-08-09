@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { RpcErrorCode } from '@btckit/types';
 import { bytesToHex } from '@stacks/common';
+import { truncateMiddle } from '@stacks/ui-utils';
 import { JsDLCInterface } from 'dlc-wasm-wallet';
 
 import { BITCOIN_API_BASE_URL_MAINNET, BITCOIN_API_BASE_URL_TESTNET } from '@shared/constants';
@@ -9,7 +10,7 @@ import {
   deriveAddressIndexKeychainFromAccount,
   extractAddressIndexFromPath,
 } from '@shared/crypto/bitcoin/bitcoin.utils';
-import { createMoneyFromDecimal } from '@shared/models/money.model';
+import { Money, createMoneyFromDecimal } from '@shared/models/money.model';
 import { RouteUrls } from '@shared/route-urls';
 import { BitcoinContractResponseStatus } from '@shared/rpc/methods/accept-bitcoin-contract';
 import { makeRpcSuccessResponse } from '@shared/rpc/rpc-methods';
@@ -42,6 +43,13 @@ interface CounterpartyWalletDetails {
   counterpartyWalletURL: string;
   counterpartyWalletName: string;
   counterpartyWalletIcon: string;
+}
+
+export interface BitcoinContractListItem {
+  id: string;
+  state: string;
+  collateralAmount: string;
+  txId: string;
 }
 
 export interface BitcoinContractOfferDetails {
@@ -199,6 +207,36 @@ export function useBitcoinContracts() {
     close();
   }
 
+  async function getAllSignedBitcoinContracts() {
+    let bitcoinContractInterface: JsDLCInterface | undefined;
+    try {
+      bitcoinContractInterface = await getBitcoinContractInterface([
+        'https://devnet.dlc.link/attestor-1/',
+        'https://devnet.dlc.link/attestor-2/',
+        'https://devnet.dlc.link/attestor-3/',
+      ]);
+    } catch (error) {
+      navigate(RouteUrls.BitcoinContractLockError, {
+        state: {
+          error,
+          title: 'There was an error with getting the Bitcoin Contract Interface',
+          body: 'Unable to setup Bitcoin Contract Interface',
+        },
+      });
+      sendRpcResponse(BitcoinContractResponseStatus.INTERFACE_ERROR);
+    }
+
+    if (!bitcoinContractInterface) return;
+
+    const bitcoinContracts = await bitcoinContractInterface.get_contracts();
+    const signedBitcoinContracts = bitcoinContracts.filter(
+      (bitcoinContract: { id: string; state: string; acceptorCollateral: string; txId: string }) =>
+        bitcoinContract.state === 'Signed'
+    );
+
+    return signedBitcoinContracts;
+  }
+
   function getTransactionDetails(txId: string, bitcoinCollateral: number) {
     const bitcoinValue = satToBtc(bitcoinCollateral);
     const txMoney = createMoneyFromDecimal(bitcoinValue, 'BTC');
@@ -214,6 +252,39 @@ export function useBitcoinContracts() {
       symbol: 'BTC',
       txLink,
     };
+  }
+
+  function formatBitcoinContracts(
+    bitcoinContracts: Record<string, any>[]
+  ): BitcoinContractListItem[] {
+    return bitcoinContracts.map(bitcoinContract => {
+      return {
+        id: truncateMiddle(bitcoinContract.id),
+        state: bitcoinContract.state,
+        collateralAmount: bitcoinContract.acceptorCollateral,
+        txId: bitcoinContract.txId,
+      };
+    });
+  }
+
+  async function sumBitcoinContractCollateralAmounts(): Promise<Money> {
+    let bitcoinContractsCollateralSum = 0;
+    const bitcoinContracts = await getAllSignedBitcoinContracts();
+    bitcoinContracts.forEach(
+      (bitcoinContract: {
+        id: string;
+        state: string;
+        acceptorCollateral: string;
+        txId: string;
+      }) => {
+        bitcoinContractsCollateralSum += parseInt(bitcoinContract.acceptorCollateral);
+      }
+    );
+    const bitcoinContractCollateralSumMoney = createMoneyFromDecimal(
+      satToBtc(bitcoinContractsCollateralSum),
+      'BTC'
+    );
+    return bitcoinContractCollateralSumMoney;
   }
 
   function sendRpcResponse(
@@ -272,12 +343,13 @@ export function useBitcoinContracts() {
     chrome.tabs.sendMessage(defaultParams.tabId, response);
   }
 
-  const 
-
   return {
     handleOffer,
     handleAccept,
     handleReject,
+    getAllSignedBitcoinContracts,
+    formatBitcoinContracts,
+    sumBitcoinContractCollateralAmounts,
     sendRpcResponse,
   };
 }

@@ -8,19 +8,23 @@ import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
 import { baseCurrencyAmountInQuote } from '@app/common/money/calculate-money';
 import { i18nFormatCurrency } from '@app/common/money/format-money';
 import { satToBtc } from '@app/common/money/unit-conversion';
-import { BtcIcon } from '@app/components/icons/btc-icon';
+import { BitcoinContractIcon } from '@app/components/icons/bitcoin-contract-icon';
 import { Flag } from '@app/components/layout/flag';
 import { SpaceBetween } from '@app/components/layout/space-between';
 import { Caption, Text } from '@app/components/typography';
 import { useCryptoCurrencyMarketData } from '@app/query/common/market-data/market-data.hooks';
 
 interface BitcoinContractListItemLayoutProps {
-  collateralAmount: number;
-  txID: string;
+  id: string;
+  state: string;
+  collateralAmount: string;
+  txId: string;
 }
 export function BitcoinContractListItemLayout({
+  id,
+  state,
   collateralAmount,
-  txID,
+  txId,
 }: BitcoinContractListItemLayoutProps) {
   const { handleOpenTxLink } = useExplorerLink();
   const bitcoinMarketData = useCryptoCurrencyMarketData('BTC');
@@ -36,26 +40,26 @@ export function BitcoinContractListItemLayout({
   return (
     <Flex
       margin={0}
-      padding={[5, 0, 5, 0]}
+      padding={[3, 0, 3, 0]}
       as={'button'}
       onClick={() =>
         handleOpenTxLink({
           blockchain: 'bitcoin',
           suffix: `&submitted=true`,
-          txid: txID,
+          txid: txId,
         })
       }
     >
-      <Flag img={<Box as={BtcIcon} />} align="middle" width="100%">
+      <Flag img={<Box as={BitcoinContractIcon} />} align="middle" width="100%">
         <SpaceBetween width="100%">
-          <Text>{'Bitcoin Contract'}</Text>
+          <Text>{id}</Text>
           <Text fontVariantNumeric="tabular-nums" textAlign="right">
-            {satToBtc(collateralAmount).toString()}
+            {satToBtc(parseInt(collateralAmount)).toString()}
           </Text>
         </SpaceBetween>
         <SpaceBetween height="1.25rem" width="100%">
-          <Caption>BTC</Caption>
-          <Caption>{getFiatValue(satToBtc(collateralAmount).toString())}</Caption>
+          <Caption>{state}</Caption>
+          <Caption>{getFiatValue(satToBtc(parseInt(collateralAmount)).toString())}</Caption>
         </SpaceBetween>
       </Flag>
     </Flex>

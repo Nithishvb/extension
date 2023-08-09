@@ -1,66 +1,41 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
 
-import { Transaction } from 'bitcoinjs-lib';
-
-import { initialBitcoinContracts } from '@shared/models/initial-bitcoin-contracts';
-
-// import useBitcoinContracts from '@app/common/hooks/use-bitcoin-contracts';
-import { LoadingSpinner } from '@app/components/loading-spinner';
+import {
+  BitcoinContractListItem,
+  useBitcoinContracts,
+} from '@app/common/hooks/use-bitcoin-contracts';
+import { useOnMount } from '@app/common/hooks/use-on-mount';
+import { FullPageLoadingSpinner } from '@app/components/loading-spinner';
 
 import { BitcoinContractListItemLayout } from './components/bitcoin-contract-list-item-layout';
 import { BitcoinContractListLayout } from './components/bitcoin-contract-list-layout';
 
-interface BitcoinContractListItemObject {
-  ID: string;
-  collateralAmount: number;
-  txID: string;
-}
-
 export function BitcoinContractList() {
-  // const bitcoinContractsInterface = useBitcoinContracts();
-  const [bitcoinContracts, setBitcoinContracts] = useState<BitcoinContractListItemObject[]>([]);
+  const { getAllSignedBitcoinContracts, formatBitcoinContracts } = useBitcoinContracts();
+  const [bitcoinContracts, setBitcoinContracts] = useState<BitcoinContractListItem[]>([]);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchBitcoinContracts = async () => {
-      try {
-        setLoading(true);
-        // TODO: Replace with actual call to wasm wallet interface
-        // const fetchedBitcoinContracts = await bitcoinContractsInterface.getAllContracts();
-        const formattedBitcoinContracts = formatBitcoinContracts(initialBitcoinContracts);
-        setBitcoinContracts(formattedBitcoinContracts);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
+  useOnMount(() => {
+    const fetchAndFormatBitcoinContracts = async () => {
+      const fetchedBitcoinContracts = await getAllSignedBitcoinContracts();
+      const formattedBitcoinContracts = formatBitcoinContracts(fetchedBitcoinContracts);
+      setBitcoinContracts(formattedBitcoinContracts);
+      setLoading(false);
     };
+    fetchAndFormatBitcoinContracts();
+  });
 
-    fetchBitcoinContracts();
-  }, []);
-
-  const formatBitcoinContracts = (
-    bitcoinContracts: Record<string, any>[]
-  ): BitcoinContractListItemObject[] => {
-    return bitcoinContracts.map(bitcoinContract => {
-      return {
-        ID: bitcoinContract.id,
-        collateralAmount: bitcoinContract.contractInfo.totalCollateral,
-        txID: Transaction.fromHex(bitcoinContract.dlcTransactions.fund).getId(),
-      };
-    });
-  };
-
-  if (isLoading) return <LoadingSpinner height="600px" />;
+  if (isLoading) return <FullPageLoadingSpinner />;
 
   return (
     <BitcoinContractListLayout>
       {bitcoinContracts.map(bitcoinContract => {
         return (
           <BitcoinContractListItemLayout
-            key={bitcoinContract.ID}
+            id={bitcoinContract.id}
             collateralAmount={bitcoinContract.collateralAmount}
-            txID={bitcoinContract.txID}
+            txId={bitcoinContract.txId}
+            state={bitcoinContract.state}
           />
         );
       })}

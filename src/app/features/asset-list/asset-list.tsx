@@ -8,6 +8,7 @@ import { LEDGER_BITCOIN_ENABLED } from '@shared/environment';
 
 import { useBtcAssetBalance } from '@app/common/hooks/balance/btc/use-btc-balance';
 import { useWalletType } from '@app/common/use-wallet-type';
+import { BitcoinContractEntryPoint } from '@app/components/bitcoin-contract-entry-point/bitcoin-contract-entry-point';
 import { Brc20TokensLoader } from '@app/components/brc20-tokens-loader';
 import { CryptoCurrencyAssetItem } from '@app/components/crypto-assets/crypto-currency-asset/crypto-currency-asset-item';
 import { BtcIcon } from '@app/components/icons/btc-icon';
@@ -29,6 +30,10 @@ export function AssetsList() {
   return (
     <Stack pb="extra-loose" spacing="loose" data-testid={HomePageSelectorsLegacy.BalancesList}>
       {/* Temporary duplication during Ledger Bitcoin feature dev */}
+      {whenWallet({
+        software: <BitcoinContractEntryPoint />,
+        ledger: null,
+      })}
       {whenWallet({
         software: (
           <CryptoCurrencyAssetItem
