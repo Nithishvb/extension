@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { RouteUrls } from '@shared/route-urls';
+import { BitcoinContractResponseStatus } from '@shared/rpc/methods/accept-bitcoin-contract';
 
 import { useBitcoinContracts } from '@app/common/hooks/use-bitcoin-contracts';
 import { BitcoinContractOfferDetails } from '@app/common/hooks/use-bitcoin-contracts';
@@ -28,21 +29,22 @@ export function BitcoinContractRequest() {
   const [attestorURLs, setAttestorURLs] = useState<string[]>([]);
 
   const [isLoading, setLoading] = useState(true);
+  const [isProcessing, setProcessing] = useState(false);
 
   const handleAcceptClick = async () => {
     if (!bitcoinContractJSON || !bitcoinContractOfferDetails) return;
-
+    setProcessing(true);
     await handleAccept(
       bitcoinContractJSON,
       bitcoinContractOfferDetails.counterpartyWalletDetails,
       attestorURLs
     );
+    setProcessing(false);
   };
 
   const handleRejectClick = async () => {
     if (!bitcoinContractOfferDetails) return;
-
-    handleReject(bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractId);
+    handleReject();
   };
 
   useOnMount(() => {
@@ -59,12 +61,12 @@ export function BitcoinContractRequest() {
     if (currentBitcoinNetwork !== 'testnet') {
       navigate(RouteUrls.BitcoinContractLockError, {
         state: {
-          error: new Error('invalid network'),
-          title: 'The account you are using is not on the Bitcoin Testnet',
-          body: 'Unable to interact with Bitcoin Contract',
+          error: new Error('Invalid Network'),
+          title: "Network doesn't support Bitcoin Contracts",
+          body: "The wallet's current selected network doesn't support Bitcoin Contracts",
         },
       });
-      sendRpcResponse('none', '', 'failed');
+      sendRpcResponse(BitcoinContractResponseStatus.NETWORK_ERROR);
     }
 
     if (
@@ -105,7 +107,7 @@ export function BitcoinContractRequest() {
             appName={bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletName}
           />
           <BitcoinContractRequestActions
-            isLoading={isLoading}
+            isLoading={isProcessing}
             bitcoinAddress={bitcoinAddress}
             requiredAmount={
               bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractCollateralAmount

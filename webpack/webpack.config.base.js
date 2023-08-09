@@ -17,12 +17,12 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const SRC_ROOT_PATH = path.join(__dirname, '../', 'src');
 const DIST_ROOT_PATH = path.join(__dirname, '../', 'dist');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
+const WALLET_ENVIRONMENT = process.env.WALLET_ENVIRONMENT || 'development';
 const ANALYZE_BUNDLE = process.env.ANALYZE === 'true';
 const IS_PUBLISHING = !!process.env.IS_PUBLISHING;
 const BRANCH = process.env.GITHUB_REF;
 
-const IS_DEV = NODE_ENV === 'development';
+const IS_DEV = WALLET_ENVIRONMENT === 'development';
 const IS_PROD = !IS_DEV;
 const MAIN_BRANCH = 'refs/heads/main';
 
@@ -96,6 +96,8 @@ const config = {
     plugins: [new TsconfigPathsPlugin()],
     alias: aliases,
     fallback: {
+      global: false,
+      node: false,
       crypto: require.resolve('crypto-browserify'),
       stream: require.resolve('stream-browserify'),
       vm: require.resolve('vm-browserify'),

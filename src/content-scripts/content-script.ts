@@ -21,9 +21,16 @@ import {
 } from '@shared/message-types';
 import { RouteUrls } from '@shared/route-urls';
 
+let backgroundPort: any;
+
 // Connection to background script - fires onConnect event in background script
 // and establishes two-way communication
-const backgroundPort = chrome.runtime.connect({ name: CONTENT_SCRIPT_PORT });
+function connect() {
+  backgroundPort = chrome.runtime.connect({ name: CONTENT_SCRIPT_PORT });
+  backgroundPort.onDisconnect.addListener(connect);
+}
+
+connect();
 
 // Sends message to background script that an event has fired
 function sendMessageToBackground(message: LegacyMessageFromContentScript) {
@@ -121,8 +128,12 @@ document.addEventListener(DomEventName.psbtRequest, ((event: PsbtRequestEvent) =
   });
 }) as EventListener);
 
-// Inject inpage script (Stacks Provider)
-const inpage = document.createElement('script');
-inpage.src = chrome.runtime.getURL('inpage.js');
-inpage.id = 'stacks-wallet-provider';
-document.body.appendChild(inpage);
+function addHiroWalletToPage() {
+  const inpage = document.createElement('script');
+  inpage.src = chrome.runtime.getURL('inpage.js');
+  inpage.id = 'hiro-wallet-provider';
+  document.body.appendChild(inpage);
+}
+
+// Don't block thread to add Hiro Wallet to page
+requestAnimationFrame(() => addHiroWalletToPage());

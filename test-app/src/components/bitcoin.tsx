@@ -84,6 +84,7 @@ function buildTestNativeSegwitPsbtRequestWithIndexes(pubKey: Uint8Array): PsbtRe
   tx.addInput({
     index: 0,
     txid: '5be910a6557bae29b8ff2dbf4607dbf783eaf82802896d13f61d975c133ccce7',
+    sighashType: 1,
     witnessUtxo: {
       amount: BigInt(1268294),
       script: p2wpkh.script,
@@ -104,7 +105,7 @@ function buildTestNativeSegwitPsbtRequestWithIndexes(pubKey: Uint8Array): PsbtRe
 
   const psbt = tx.toPSBT();
 
-  return { signAtIndex: [0, 1], hex: bytesToHex(psbt) };
+  return { signAtIndex: [0, 1], hex: bytesToHex(psbt), allowedSighash: [2] };
 }
 
 function buildTestTaprootPsbtRequest(pubKey: Uint8Array): PsbtRequestOptions {
@@ -138,6 +139,7 @@ function buildTestTaprootPsbtRequestWithIndex(pubKey: Uint8Array): PsbtRequestOp
   tx.addInput({
     index: 0,
     txid: '4f4cc7cb40b04978bd7704798dc1adf55b58196cef616b0fac8181965abc4726',
+    // tapInternalKey: payment.tapInternalKey,
     witnessUtxo: {
       amount: BigInt(1000),
       script: payment.script,

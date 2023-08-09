@@ -22,16 +22,20 @@ export enum RouteUrls {
   LedgerUnsupportedBrowser = 'unsupported-browser',
   LedgerOutdatedAppWarning = 'outdated-app-warning',
   LedgerBroadcastError = 'transaction-broadcast-error',
+  LedgerAddMoreKeys = 'add-more-keys',
 
   // Active wallet routes
   Home = '/',
+  Activity = '/activity',
   AddNetwork = '/add-network',
   ChooseAccount = '/choose-account',
   Fund = '/fund',
   FundReceive = '/fund/receive',
   FundReceiveStx = '/fund/receive/stx',
   FundReceiveBtc = '/fund/receive/btc',
-  IncreaseFee = '/increase-fee',
+  IncreaseStxFee = '/increase-fee/stx',
+  IncreaseBtcFee = '/increase-fee/btc',
+  IncreaseFeeSent = '/increase-fee/sent',
   Receive = '/receive',
   ReceiveCollectible = '/receive/collectible',
   ReceiveCollectibleOrdinal = '/receive/collectible/ordinal',
@@ -39,14 +43,6 @@ export enum RouteUrls {
   ReceiveBtc = '/receive/btc',
   Send = '/send-transaction',
   ViewSecretKey = '/view-secret-key',
-
-  // App requests (legacy)
-  ProfileUpdateRequest = '/update-profile',
-  PsbtRequest = '/psbt',
-  SignatureRequest = '/signature',
-  TransactionRequest = '/transaction',
-  TransactionBroadcastError = 'broadcast-error',
-  UnauthorizedRequest = '/unauthorized-request',
 
   // Locked wallet route
   Unlock = '/unlock',
@@ -89,13 +85,25 @@ export enum RouteUrls {
   SendOrdinalInscriptionSent = '/send/ordinal-inscription/sent',
   SendOrdinalInscriptionError = '/send/ordinal-inscription/error',
 
-  // Request routes
+  // Legacy request routes
+  ProfileUpdateRequest = '/update-profile',
+  PsbtRequest = '/psbt',
+  SignatureRequest = '/signature',
+  TransactionRequest = '/transaction',
+  TransactionBroadcastError = 'broadcast-error',
+
+  // Rpc request routes
   RpcGetAddresses = '/get-addresses',
   RpcSignPsbt = '/sign-psbt',
+  RpcSignPsbtSummary = '/sign-psbt/summary',
   RpcSendTransfer = '/send-transfer',
   RpcSendTransferChooseFee = '/send-transfer/choose-fee',
   RpcSendTransferConfirmation = '/send-transfer/confirm',
   RpcSendTransferSummary = '/send-transfer/summary',
   RpcReceiveBitcoinContractOffer = '/bitcoin-contract-offer/:bitcoinContractOffer/:counterpartyWalletURL',
   RpcSignBip322Message = '/sign-bip322-message',
+
+  // Shared legacy and rpc request routes
+  RequestError = '/request-error',
+  UnauthorizedRequest = '/unauthorized-request',
 }
