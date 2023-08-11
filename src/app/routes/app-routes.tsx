@@ -216,9 +216,7 @@ function useAppRoutes() {
             <Route
               path={RouteUrls.SendOrdinalInscriptionChooseFee}
               element={<SendInscriptionChooseFee />}
-            >
-              {ledgerBitcoinTxSigningRoutes}
-            </Route>
+            />
             <Route
               path={RouteUrls.SendOrdinalInscriptionReview}
               element={<SendInscriptionReview />}
@@ -228,6 +226,7 @@ function useAppRoutes() {
               element={<SendInscriptionSummary />}
             />
             <Route path={RouteUrls.SendOrdinalInscriptionError} element={<BroadcastError />} />
+            {ledgerBitcoinTxSigningRoutes}
           </Route>
 
           {settingsModalRoutes}
