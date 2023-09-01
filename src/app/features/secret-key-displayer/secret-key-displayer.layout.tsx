@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { SettingsSelectors } from '@tests-legacy/integration/settings.selectors';
-import { Box, Flex, Stack, styled } from 'leaf-styles/jsx';
+import { Box, Flex, Grid, GridItem, Stack, styled } from 'leaf-styles/jsx';
 
 import { LeatherButton } from '@app/components/button/button';
 
@@ -32,7 +32,30 @@ export function SecretKeyDisplayerLayout(props: SecretKeyDisplayerLayoutProps) {
           </styled.h1>
         ) : null}
 
-        <Flex justifyContent="center" rowGap="tight" flexWrap="wrap" gap="space.01">
+        <Grid gridTemplateColumns={[2, 4]} width="100%">
+          {secretKeyWords?.map((word, index) => (
+            <GridItem
+              key={word}
+              px="space.04"
+              py="space.03"
+              display="flex"
+              textAlign="center"
+              justifyContent="center"
+              alignItems="center"
+              alignSelf="stretch"
+            >
+              {/* TODO move to `secret-word-key` */}
+              <styled.span minWidth="24px" textAlign="right">
+                {index + 1}.
+              </styled.span>
+              <styled.span width="100%" ml="space.02" textAlign="left">
+                {showSecretKey ? word : '*'.repeat(8)}
+              </styled.span>
+            </GridItem>
+          ))}
+        </Grid>
+
+        {/* <Flex justifyContent="center" rowGap="tight" flexWrap="wrap" gap="space.01">
           {secretKeyWords?.map((word, index) => (
             <SecretKeyWord
               key={word}
@@ -41,7 +64,7 @@ export function SecretKeyDisplayerLayout(props: SecretKeyDisplayerLayoutProps) {
               num={index + 1}
             />
           ))}
-        </Flex>
+        </Flex> */}
         <Flex gap="space.02" alignItems="center" width="100%">
           <LeatherButton
             variant="outline"
