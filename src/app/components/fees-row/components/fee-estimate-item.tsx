@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
-import { FiCheck, FiChevronDown } from 'react-icons/fi';
+import { FiCheck } from 'react-icons/fi';
 
 import { Stack, Text, color } from '@stacks/ui';
+
+import { ChevronDownIcon } from '@app/components/icons/chevron-down-icon';
 
 const labels = ['Low', 'Standard', 'High', 'Custom'];
 const testLabels = labels.map(label => label.toLowerCase());
@@ -35,7 +37,7 @@ export function FeeEstimateItem(props: FeeEstimateItemProps) {
       <Text fontSize={1} fontWeight={500} ml="2px">
         {labels[index]}
       </Text>
-      {isVisible ? selectedIcon : <FiChevronDown />}
+      {isVisible ? selectedIcon : <ChevronDownIcon />}
     </Stack>
   );
 }

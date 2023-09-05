@@ -1,7 +1,7 @@
-import { FiChevronDown } from 'react-icons/fi';
-
 import { Box, Text, color } from '@stacks/ui';
 import { token } from 'leather-styles/tokens';
+
+import { ChevronDownIcon } from '@app/components/icons/chevron-down-icon';
 
 const labels = ['Address', 'BNS Name'];
 const testLabels = ['address', 'bns-name'];
@@ -37,7 +37,8 @@ export function RecipientDropdownItem(props: RecipientDropdownItemProps) {
       >
         {labels[index]}
       </Text>
-      {isVisible ? <></> : <FiChevronDown color={token('colors.brown.12')} />}
+      {/* TODO - check if color needs to be passed to icon */}
+      {isVisible ? <></> : <ChevronDownIcon color={token('colors.brown.12')} />}
     </Box>
   );
 }
