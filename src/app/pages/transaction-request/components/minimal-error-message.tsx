@@ -1,7 +1,7 @@
 import { Suspense, memo } from 'react';
 
-import { Stack, StackProps, color } from '@stacks/ui';
 import { TransactionRequestSelectors } from '@tests/selectors/requests.selectors';
+import { Stack, StackProps } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 import { ErrorIcon } from '@app/components/icons/error-icon';
@@ -37,8 +37,10 @@ function MinimalErrorMessageSuspense(props: StackProps) {
       alignItems="center"
       bg="#FCEEED"
       borderRadius="12px"
-      color={color('feedback-error')}
-      isInline
+      color={token('colors.error')}
+      data-testid={TransactionRequestSelectors.TransactionErrorMessage}
+      // TODO refctor stack isInline
+      // isInline
       p="base"
       width="100%"
       {...props}

@@ -1,7 +1,7 @@
 import { FiExternalLink } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Stack, Text } from '@stacks/ui';
+import { Box, Stack, styled } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 
@@ -10,14 +10,14 @@ import { GenericError } from '@app/components/generic-error/generic-error';
 
 const body = 'Sending bitcoin is temporarily disabled';
 const helpTextList = [
-  <Box as="li" mt="base" key={1}>
+  <styled.li mt="base" key={1}>
     <Stack alignItems="center" isInline>
-      <Text>Learm more on Twitter at @LeatherBTC</Text>
+      <styled.span>Learm more on Twitter at @LeatherBTC</styled.span>
       <Box as="button" onClick={() => openInNewTab('https://twitter.com/leatherbtc')}>
         <FiExternalLink />
       </Box>
     </Stack>
-  </Box>,
+  </styled.li>,
 ];
 const title = 'Temporarily disabled';
 

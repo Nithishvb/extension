@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import SignLedgerTransaction from '@assets/images/ledger/sign-ledger-transaction.png';
-import { Box, Flex, color } from '@stacks/ui';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { DeviceOperationApprovalStatus } from '@app/features/ledger/components/device-approval-status';
 import { LedgerScreenDetail } from '@app/features/ledger/components/ledger-screen-detail';
@@ -26,7 +26,7 @@ export function SignJwtHash() {
         status={hasApprovedOperation ? 'approved' : 'awaiting-approval'}
       />
       <Flex
-        bg={color('bg-4')}
+        bg={token('colors.accent.background-secondary')}
         borderRadius="16px"
         flexDirection="column"
         textAlign="left"

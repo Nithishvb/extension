@@ -1,4 +1,4 @@
-import { Stack, StackProps, color } from '@stacks/ui';
+import { Stack, StackProps } from 'leather-styles/jsx';
 
 import { HasChildren } from '@app/common/has-children';
 
@@ -6,10 +6,10 @@ export function PsbtRequestDetailsSectionLayout({ children, ...props }: HasChild
   return (
     <Stack
       border="4px solid"
-      borderColor={color('border')}
+      borderColor={token('colors.accent.background-primary')}
       borderRadius="16px"
       p="loose"
-      spacing="extra-tight"
+      gap="extra-tight"
       width="100%"
       {...props}
     >

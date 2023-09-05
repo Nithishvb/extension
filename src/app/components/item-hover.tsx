@@ -1,4 +1,4 @@
-import { Box, BoxProps, transition } from '@stacks/ui';
+import { Box, BoxProps, transition } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 import { useFocus, useHover } from 'use-events';
 

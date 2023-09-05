@@ -1,4 +1,4 @@
-import { FiArrowDown as IconArrowDown, FiArrowUp as IconArrowUp } from 'react-icons/fi';
+import { FiArrowDown, FiArrowUp } from 'react-icons/fi';
 
 import { BitcoinTx } from '@shared/models/transactions/bitcoin-transaction.model';
 
@@ -32,7 +32,7 @@ const statusFromTx = (tx: BitcoinTx): BtcTxStatus => {
   if (tx.status.confirmed) return 'success';
   return 'pending';
 };
-
+// #4164 FIXME migrate to new colors
 export const colorFromTx = (tx: BitcoinTx): ColorsStringLiteral => {
   const colorMap: BtcStatusColorMap = {
     pending: 'feedback-alert',
@@ -42,9 +42,10 @@ export const colorFromTx = (tx: BitcoinTx): ColorsStringLiteral => {
   return colorMap[statusFromTx(tx)] ?? 'feedback-error';
 };
 
+// #4164 FIXME refactor this to return JSX with size
 export function IconForTx(address: string, tx: BitcoinTx) {
-  if (isBitcoinTxInbound(address, tx)) return IconArrowDown;
-  return IconArrowUp;
+  if (isBitcoinTxInbound(address, tx)) return FiArrowDown;
+  return FiArrowUp;
 }
 
 export function containsTaprootInput(tx: BitcoinTx) {

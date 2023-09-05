@@ -1,4 +1,4 @@
-import { Box, Text, color } from '@stacks/ui';
+import { Box, Text } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { ChevronDownIcon } from '@app/components/icons/chevron-down-icon';

@@ -1,7 +1,7 @@
 import { FiInfo } from 'react-icons/fi';
 import { useLocation, useParams } from 'react-router-dom';
 
-import { Box, Stack, Tooltip, color } from '@stacks/ui';
+import { Box, Stack, Tooltip } from 'leather-styles/jsx';
 import get from 'lodash.get';
 
 import { CryptoCurrencies } from '@shared/models/currencies.model';

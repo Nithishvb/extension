@@ -1,12 +1,12 @@
 import { Suspense, lazy } from 'react';
 
-import { Box } from '@stacks/ui';
+import { Box } from 'leather-styles/jsx';
+import { Divider } from 'leather-styles/jsx';
 
 import { SupportedBlockchains } from '@shared/constants';
 
 import { LeatherButton } from '@app/components/button/button';
 import { ExternalLink } from '@app/components/external-link';
-import { Divider } from '@app/components/layout/divider';
 import { Capitalize } from '@app/components/text/capitalize';
 import { Caption } from '@app/components/typography';
 

@@ -1,5 +1,5 @@
 import BroadcastError from '@assets/images/unhappy-face-ui.png';
-import { Box, Button, Flex } from '@stacks/ui';
+import { Box, Button, Flex } from 'leather-styles/jsx';
 
 import { Body } from '@app/components/typography';
 

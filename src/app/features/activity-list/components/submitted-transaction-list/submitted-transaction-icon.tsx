@@ -1,5 +1,5 @@
 import { PayloadType, StacksTransaction, addressToString } from '@stacks/transactions';
-import { BoxProps, DynamicColorCircle } from '@stacks/ui';
+import { BoxProps, DynamicColorCircle } from 'leather-styles/jsx';
 
 import { StacksTx } from '@shared/models/transactions/stacks-transaction.model';
 

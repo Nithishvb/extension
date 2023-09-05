@@ -1,4 +1,4 @@
-import { Box, Circle, Flex, color } from '@stacks/ui';
+import { Box, Circle, Flex } from 'leather-styles/jsx';
 
 import { SupportedInscription } from '@shared/models/inscription.model';
 import { BitcoinTx } from '@shared/models/transactions/bitcoin-transaction.model';
@@ -18,7 +18,7 @@ function InscriptionIcon({ inscription, ...rest }: { inscription: SupportedInscr
       return (
         <Circle
           bg={color('accent')}
-          color={color('bg')}
+          color={token('colors.accent.background-primary')}
           flexShrink={0}
           position="relative"
           size="36px"
@@ -56,9 +56,9 @@ export function BitcoinTransactionInscriptionIcon({
         position="absolute"
         size="21px"
         bg={color(colorFromTx(transaction))}
-        color={color('bg')}
+        color={token('colors.accent.background-primary')}
         border="2px solid"
-        borderColor={color('bg')}
+        borderColor={token('colors.accent.background-primary')}
         {...rest}
       >
         <Box size="13px" as={IconForTx(btcAddress, transaction)} />

@@ -1,4 +1,4 @@
-import { Flex, color } from '@stacks/ui';
+import { Flex } from 'leather-styles/jsx';
 
 import { Text } from '@app/components/typography';
 

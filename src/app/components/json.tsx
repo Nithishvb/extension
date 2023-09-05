@@ -1,6 +1,6 @@
 import { bytesToHex } from '@stacks/common';
-import { Box } from '@stacks/ui';
 import { css } from 'leather-styles/css';
+import { Box } from 'leather-styles/jsx';
 
 import { isBigInt, isTypedArray } from '@shared/utils';
 

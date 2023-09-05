@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex } from '@stacks/ui';
+import { Box, BoxProps, Flex } from 'leather-styles/jsx';
 
 export function LedgerWrapper({ children, ...props }: BoxProps) {
   return (

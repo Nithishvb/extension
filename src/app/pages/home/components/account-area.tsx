@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { Stack, StackProps } from '@stacks/ui';
+import { Stack, StackProps } from 'leather-styles/jsx';
 
 import { CurrentAccountAvatar } from '@app/features/current-account/current-account-avatar';
 import { CurrentAccountName } from '@app/features/current-account/current-account-name';
@@ -15,9 +15,9 @@ export const CurrentAccount = memo((props: StackProps) => {
 
   if (!currentAccount) return null;
   return (
-    <Stack spacing="base-tight" alignItems="center" isInline {...props}>
+    <Stack gap="base-tight" alignItems="center" isInline {...props}>
       <CurrentAccountAvatar />
-      <Stack overflow="hidden" display="block" alignItems="flex-start" spacing="base-tight">
+      <Stack overflow="hidden" display="block" alignItems="flex-start" gap="base-tight">
         <CurrentAccountName />
         <Stack isInline>
           <AccountTotalBalance stxAddress={currentAccount.address} btcAddress={btcAddress} />

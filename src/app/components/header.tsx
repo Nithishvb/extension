@@ -2,20 +2,20 @@ import { memo, useMemo } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Box, Flex, FlexProps, IconButton, Stack, Text, useMediaQuery } from '@stacks/ui';
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
+import { Box, Flex, FlexProps, IconButton, Stack, Text, useMediaQuery } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { BRANCH_NAME, COMMIT_SHA } from '@shared/environment';
 import { RouteUrls } from '@shared/route-urls';
 
 import { useDrawers } from '@app/common/hooks/use-drawers';
+import { LeatherButton } from '@app/components/button/button';
 import { LeatherLogo } from '@app/components/leather-logo';
 import { NetworkModeBadge } from '@app/components/network-mode-badge';
 import { Title } from '@app/components/typography';
 
-import { LeatherButton } from './button/button';
 import { HamburgerIcon } from './icons/hamburger-icon';
 
 interface HeaderProps extends FlexProps {

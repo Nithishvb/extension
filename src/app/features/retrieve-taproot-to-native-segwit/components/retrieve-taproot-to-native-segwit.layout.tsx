@@ -1,4 +1,4 @@
-import { Flex } from '@stacks/ui';
+import { Flex } from 'leather-styles/jsx';
 
 import { LeatherButton } from '@app/components/button/button';
 import { BaseDrawer } from '@app/components/drawer/base-drawer';

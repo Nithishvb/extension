@@ -1,5 +1,5 @@
 import LedgerWithRedOutline from '@assets/images/ledger/ledger-red-outline.png';
-import { Box, Flex, Text, color } from '@stacks/ui';
+import { Box, Flex, Text } from 'leather-styles/jsx';
 
 import { LeatherButton } from '@app/components/button/button';
 import { Title } from '@app/components/typography';

@@ -5,7 +5,7 @@ import {
   FiPlus as IconPlus,
 } from 'react-icons/fi';
 
-import { BoxProps, ColorsStringLiteral, color } from '@stacks/ui';
+import { BoxProps, ColorsStringLiteral } from 'leather-styles/jsx';
 import FunctionIcon from 'mdi-react/FunctionIcon';
 
 import { StacksTx, StacksTxStatus } from '@shared/models/transactions/stacks-transaction.model';
@@ -37,7 +37,7 @@ function IconForTx(tx: StacksTx, currentAccountStxAddress: string | undefined) {
       ? () => (
           <MicroblockIcon
             size="13px"
-            fill={color('bg')}
+            fill={token('colors.accent.background-primary')}
             borderColor={color('invert')}
             bg={color(colorFromTx(tx))}
           />

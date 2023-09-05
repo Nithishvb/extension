@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { FiCheck } from 'react-icons/fi';
 
-import { Stack, Text, color } from '@stacks/ui';
+import { Stack, Text } from 'leather-styles/jsx';
 
 import { ChevronDownIcon } from '@app/components/icons/chevron-down-icon';
 

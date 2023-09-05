@@ -1,7 +1,7 @@
 import { FiCircle } from 'react-icons/fi';
 
 import ConnectLedgerError from '@assets/images/ledger/connect-ledger-error.png';
-import { Box, Flex, Stack, color } from '@stacks/ui';
+import { Box, Flex, Stack } from 'leather-styles/jsx';
 
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
 import { LeatherButton } from '@app/components/button/button';
@@ -56,11 +56,11 @@ export function ConnectLedgerErrorLayout(props: ConnectLedgerErrorLayoutProps) {
       )}
       <Stack
         border="2px solid"
-        borderColor={color('border')}
+        borderColor={token('colors.accent.background-primary')}
         borderRadius="12px"
         my="loose"
         mx="base"
-        spacing="base"
+        gap="base"
         textAlign="left"
         p="extra-loose"
       >

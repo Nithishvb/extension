@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
 import GenericError from '@assets/images/generic-error.png';
-import { Box, Text, color } from '@stacks/ui';
-import { Flex, FlexProps, HStack, styled } from 'leather-styles/jsx';
+import { Text } from 'leather-styles/jsx';
+import { Box, Flex, FlexProps, HStack, styled } from 'leather-styles/jsx';
 
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
+import { LeatherButton } from '@app/components/button/button';
 
-import { LeatherButton } from '../button/button';
 import { ExternalLinkIcon } from '../icons/external-link-icon';
 
 const supportUrl =
@@ -44,8 +44,7 @@ export function GenericErrorLayout(props: GenericErrorProps) {
       >
         {body}
       </styled.h2>
-      <Box
-        as="ul"
+      <styled.ul
         border="2px solid #EFEFF2"
         borderRadius="12px"
         color={color('text-caption')}
@@ -61,15 +60,17 @@ export function GenericErrorLayout(props: GenericErrorProps) {
         width="100%"
       >
         {helpTextList}
-        <Box as="li" mt="base" textAlign="left">
+        <styled.li mt="base" textAlign="left">
           <HStack alignItems="center">
             <Text>Reach out to our support team</Text>
-            <Box as="button" onClick={() => openInNewTab(supportUrl)}>
+            {/* TODO check this button is OK */}
+            <LeatherButton variant="link" onClick={() => openInNewTab(supportUrl)}>
               <ExternalLinkIcon />
-            </Box>
+            </LeatherButton>
           </HStack>
-        </Box>
-      </Box>
+        </styled.li>
+      </styled.ul>
+
       <LeatherButton fontSize="14px" mt="space.05" onClick={onClose} variant="link">
         Close window
       </LeatherButton>

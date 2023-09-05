@@ -1,8 +1,8 @@
 import { ReactNode, Suspense, memo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Flex, FlexProps, transition, useEventListener } from '@stacks/ui';
 import { css } from 'leather-styles/css';
+import { Box, Flex, FlexProps, transition, useEventListener } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { noop } from '@shared/utils';

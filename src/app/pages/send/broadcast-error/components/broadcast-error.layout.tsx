@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
 import BroadcastError from '@assets/images/unhappy-face-ui.png';
-import { Box, Flex, FlexProps, Text, color } from '@stacks/ui';
+import { Box, Flex, FlexProps, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { Title } from '@app/components/typography';
 
@@ -22,15 +23,16 @@ export function BroadcastErrorLayout(props: BroadcastErrorProps) {
       <Title fontSize={4} mx="loose" mt="base-loose" lineHeight={1.5}>
         {title}
       </Title>
-      <Text
-        color={color('text-caption')}
+      <styled.span
+        textStyle="caption.02"
+        // color={color('text-caption')}
         fontSize="16px"
         lineHeight="1.6"
         mt="base"
         textAlign="center"
       >
         {body}
-      </Text>
+      </styled.span>
       {errorPayload && (
         <Box
           p="base"
@@ -39,7 +41,7 @@ export function BroadcastErrorLayout(props: BroadcastErrorProps) {
           fontSize="12px"
           mx="loose"
           mt="loose"
-          background={color('bg-4')}
+          background={token('colors.accent.background-secondary')}
           color="ink.600"
           fontFamily="mono"
           wordBreak="break-all"

@@ -1,4 +1,4 @@
-import { Flex, FlexProps, Spinner, color } from '@stacks/ui';
+import { Flex, FlexProps, Spinner } from 'leather-styles/jsx';
 
 export function LoadingSpinner(props: FlexProps) {
   return (

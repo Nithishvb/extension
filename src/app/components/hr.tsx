@@ -1,5 +1,6 @@
-import { Box, BoxProps } from '@stacks/ui';
 import { styled } from 'leather-styles/jsx';
+// FIXME - figure out what this does. maybe style a <hr with no box
+import { Box, BoxProps } from 'leather-styles/jsx';
 import { JsxStyleProps } from 'leather-styles/types';
 
 export function Hr(props: BoxProps) {

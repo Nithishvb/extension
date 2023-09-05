@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Flex, Spinner, Stack } from '@stacks/ui';
+import { Flex, Spinner, Stack } from 'leather-styles/jsx';
 
 import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { Caption } from '@app/components/typography';
@@ -16,7 +16,7 @@ export function IncreaseFeeDrawer({ feeForm, onClose, isShowing }: IncreaseFeeDr
   return (
     <>
       <BaseDrawer isShowing={isShowing} onClose={onClose} title="Increase transaction fee">
-        <Stack px="loose" spacing="loose" pb="extra-loose">
+        <Stack px="loose" gap="loose" pb="extra-loose">
           <Suspense
             fallback={
               <Flex alignItems="center" justifyContent="center" p="extra-loose">

@@ -1,4 +1,4 @@
-import { Box, Button, CodeBlock, Stack, color } from '@stacks/ui';
+import { Box, Button, CodeBlock, Stack } from 'leather-styles/jsx';
 
 import { Prism } from '@app/common/clarity-prism';
 import { HasChildren } from '@app/common/has-children';
@@ -15,7 +15,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   useRouteHeader(<Header />);
 
   return (
-    <Stack spacing="extra-loose" flexGrow={1}>
+    <Stack gap="extra-loose" flexGrow={1}>
       <Title fontSize={3}>Something went wrong</Title>
       <Box className="error-codeblock" maxWidth="100vw" overflow="hidden">
         {value && (
@@ -25,7 +25,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
             overflow="auto"
             maxHeight="305px"
             border="4px solid"
-            borderColor={color('border')}
+            borderColor={token('colors.accent.background-primary')}
             borderRadius="12px"
             backgroundColor="ink.1000"
             width="100%"
@@ -35,7 +35,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
           />
         )}
       </Box>
-      <Stack mt="auto" spacing="base">
+      <Stack mt="auto" gap="base">
         <Button onClick={resetErrorBoundary}>Reload extension</Button>
         <Button
           mode="tertiary"

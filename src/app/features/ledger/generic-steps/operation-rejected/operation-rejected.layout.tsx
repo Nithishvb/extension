@@ -1,5 +1,5 @@
 import LedgerTxRejected from '@assets/images/ledger/transaction-rejected.png';
-import { Box, Button, Flex, Text, color } from '@stacks/ui';
+import { Box, Button, Flex, Text } from 'leather-styles/jsx';
 
 import { LedgerTitle } from '../../components/ledger-title';
 

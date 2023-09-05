@@ -1,9 +1,9 @@
 import { Ref, useRef } from 'react';
 
-import { Box, Flex, FlexProps, Input, Text, color } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
 import { useField } from 'formik';
 import { css } from 'leather-styles/css';
+import { Box, Flex, FlexProps, Input, Text } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { useShowFieldError } from '@app/common/form-utils';
@@ -117,7 +117,7 @@ export function TextInputField({
         </SpaceBetween>
         <Input
           ref={inputRef || ref}
-          _disabled={{ bg: color('bg') }}
+          _disabled={{ bg: token('colors.accent.background-primary') }}
           _focus={{ border: 'none' }}
           autoComplete="off"
           border="none"

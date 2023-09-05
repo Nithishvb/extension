@@ -1,4 +1,4 @@
-import { Flex } from '@stacks/ui';
+import { Flex } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 import { Favicon } from '@app/components/favicon';

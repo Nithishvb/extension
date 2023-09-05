@@ -1,4 +1,4 @@
-import { Text } from '@stacks/ui';
+import { Text } from 'leather-styles/jsx';
 
 import { SupportedBlockchains } from '@shared/constants';
 

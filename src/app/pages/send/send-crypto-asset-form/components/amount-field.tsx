@@ -1,9 +1,9 @@
 import type { ChangeEvent } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { Box, Flex, Input, Stack, Text, color } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
 import { useField } from 'formik';
+import { Box, Flex, Input, Stack, Text } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { STX_DECIMALS, TOKEN_NAME_LENGTH } from '@shared/constants';
@@ -142,7 +142,7 @@ export function AmountField({
     <Stack
       alignItems="center"
       px="extra-loose"
-      spacing={['base', showError ? 'base' : '48px']}
+      gap={['base', showError ? 'base' : '48px']}
       width="100%"
     >
       <Flex alignItems="center" flexDirection="column" onClick={onClickFocusInput}>
@@ -156,7 +156,7 @@ export function AmountField({
         >
           {isSendingMax ? <Text fontSize={fontSize + 'px'}>~</Text> : null}
           <Input
-            _disabled={{ bg: color('bg') }}
+            _disabled={{ bg: token('colors.accent.background-primary') }}
             _focus={{
               border: 'none',
               color: token('colors.accent.text-primary'),

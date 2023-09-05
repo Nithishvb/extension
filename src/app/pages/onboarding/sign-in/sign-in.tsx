@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Grid, Input } from '@stacks/ui';
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
+import { Grid, Input } from 'leather-styles/jsx';
 import { Box, Flex, Stack, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 import { useFocus } from 'use-events';
@@ -43,7 +43,7 @@ function MnemonicWordInput({
         spellCheck={false}
         autoComplete="off"
         data-testid={`mnemonic-input-${index}`}
-        onPaste={e => {
+        onPaste={(e: React.ClipboardEvent<HTMLElement>) => {
           const pasteValue = extractPhraseFromString(e.clipboardData.getData('text'));
           if (pasteValue.includes(' ')) {
             e.preventDefault();
@@ -132,7 +132,7 @@ export function SignIn() {
         <Stack gap="base-tight" mb="space.05">
           <Grid
             mx="base"
-            templateColumns={['repeat(2, minmax(30%, 1fr))', 'repeat(3, minmax(120px, 1fr))']}
+            gridTemplateColumns={['repeat(2, minmax(30%, 1fr))', 'repeat(3, minmax(120px, 1fr))']}
             rowGap="15px"
             columnGap="15px"
           >

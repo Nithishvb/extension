@@ -1,8 +1,8 @@
 import { Suspense, useCallback, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Box, Stack } from '@stacks/ui';
-import type { StackProps } from '@stacks/ui';
+import { Box, Stack } from 'leather-styles/jsx';
+import type { StackProps } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 
@@ -36,7 +36,7 @@ export function HomeTabs({ children }: HomeTabsProps) {
   );
 
   return (
-    <Stack flexGrow={1} mt="loose" spacing="extra-loose">
+    <Stack flexGrow={1} mt="loose" gap="extra-loose">
       <Tabs tabs={tabs} activeTab={getActiveTab()} onTabClick={setActiveTab} />
       <Suspense fallback={<LoadingSpinner pb="72px" />}>
         <Box width="100%">{children}</Box>

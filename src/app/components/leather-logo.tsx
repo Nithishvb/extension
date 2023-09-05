@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { Stack, StackProps, color } from '@stacks/ui';
+import { Stack, StackProps } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { LeatherIcon } from './icons/leather-icon';

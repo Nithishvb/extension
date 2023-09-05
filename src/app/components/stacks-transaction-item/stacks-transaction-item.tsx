@@ -1,8 +1,8 @@
 import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
 
 import type { MempoolTransaction } from '@stacks/stacks-blockchain-api-types';
-import { BoxProps, Text, color } from '@stacks/ui';
 import { isPendingTx } from '@stacks/ui-utils';
+import { BoxProps, Text } from 'leather-styles/jsx';
 
 import { StacksTx, TxTransferDetails } from '@shared/models/transactions/stacks-transaction.model';
 import { RouteUrls } from '@shared/route-urls';

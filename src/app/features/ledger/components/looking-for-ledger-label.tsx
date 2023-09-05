@@ -1,4 +1,4 @@
-import { Flex, FlexProps, Spinner, color } from '@stacks/ui';
+import { Flex, FlexProps, Spinner } from 'leather-styles/jsx';
 
 import { Caption } from '@app/components/typography';
 

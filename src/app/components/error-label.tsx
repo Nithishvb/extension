@@ -1,21 +1,15 @@
 import { FiAlertCircle } from 'react-icons/fi';
 
-import { Box, Stack, StackProps, color } from '@stacks/ui';
+import { Box, Stack, StackProps } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 export function ErrorLabel({ children, ...rest }: StackProps) {
   return (
-    <Stack
-      spacing="tight"
-      color={color('feedback-error')}
-      isInline
-      alignItems="flex-start"
-      {...rest}
-    >
-      <Box
+    <Stack gap="tight" color={color('feedback-error')} isInline alignItems="flex-start" {...rest}>
+      <FiAlertCircle
         size="1rem"
-        color={color('feedback-error')}
-        as={FiAlertCircle}
-        position="relative"
+        color={token('colors.error')}
+        style={{ position: 'relative' }}
         strokeWidth={1.5}
       />
       <Box>{children}</Box>

@@ -1,4 +1,4 @@
-import { Stack, StackProps, Text } from '@stacks/ui';
+import { Stack, StackProps, Text } from 'leather-styles/jsx';
 
 import { isValidUrl } from '@shared/utils/validate-url';
 

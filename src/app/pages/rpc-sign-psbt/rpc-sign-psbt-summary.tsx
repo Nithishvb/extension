@@ -2,7 +2,7 @@ import toast from 'react-hot-toast';
 import { FiCheck, FiCopy, FiExternalLink } from 'react-icons/fi';
 import { useLocation } from 'react-router-dom';
 
-import { Flex, Stack, useClipboard } from '@stacks/ui';
+import { Flex, Stack, useClipboard } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
@@ -55,7 +55,12 @@ export function RpcSignPsbtSummary() {
           <InfoCardRow title="Fee" value={fee} />
         </Stack>
         <InfoCardFooter>
-          <Stack isInline spacing="base" width="100%">
+          <Stack
+            // #4164 FIXME migrate
+            // isInline
+            gap="base"
+            width="100%"
+          >
             <InfoCardBtn icon={FiExternalLink} label="View Details" onClick={onClickLink} />
             <InfoCardBtn icon={FiCopy} label="Copy ID" onClick={onClickCopy} />
           </Stack>

@@ -1,4 +1,4 @@
-import { Text } from '@stacks/ui';
+import { Text } from 'leather-styles/jsx';
 
 import { useStxBalance } from '@app/common/hooks/balance/stx/use-stx-balance';
 import { ftDecimals } from '@app/common/stacks-utils';

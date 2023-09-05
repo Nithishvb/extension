@@ -1,4 +1,4 @@
-import { Box, Stack } from '@stacks/ui';
+import { Box, Stack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
@@ -17,7 +17,12 @@ export function PsbtRequestDetailsHeader() {
   const labelColor = isPsbtMutable ? token('colors.red.600') : token('colors.accent.text-subdued');
 
   return (
-    <Stack alignItems="center" isInline spacing="tight">
+    <Stack
+      alignItems="center"
+      // #4164 FIXME migrate
+      //isInline
+      gap="tight"
+    >
       <styled.h2 textStyle="heading.05">Transaction</styled.h2>
       <Tooltip
         label={isPsbtMutable ? uncertainLabel : immutableLabel}
@@ -29,12 +34,14 @@ export function PsbtRequestDetailsHeader() {
           border="1px solid"
           borderColor={labelColor}
           borderRadius="24px"
-          isInline
+          // #4164 FIXME migrate
+          //isInline
           px="tight"
           py="extra-tight"
-          spacing="extra-tight"
+          gap="extra-tight"
         >
-          <Box size="12px">
+          {/*  #4164 FIXME migrate check if we need this wrapper box  */}
+          <Box height="12px" width="12px">
             {isPsbtMutable ? (
               <UnlockIcon color={labelColor} height="12px" width="12px" />
             ) : (

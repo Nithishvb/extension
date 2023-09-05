@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { Input, InputGroup, Stack, Text } from '@stacks/ui';
 import { useField } from 'formik';
+import { Input, InputGroup, Stack, Text } from 'leather-styles/jsx';
 
 import { microStxToStx, stxToMicroStx } from '@app/common/money/unit-conversion';
 import { ErrorLabel } from '@app/components/error-label';

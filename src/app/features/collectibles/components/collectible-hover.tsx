@@ -1,4 +1,4 @@
-import { Box, Flex, color } from '@stacks/ui';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { figmaTheme } from '@app/common/utils/figma-theme';
 import { ArrowIcon } from '@app/components/icons/arrow-icon';
@@ -42,7 +42,7 @@ export function CollectibleHover({
           top="12px"
           width="30px"
           height="30px"
-          backgroundColor={color('bg')}
+          backgroundColor={token('colors.accent.background-primary')}
           borderRadius="50%"
           justifyContent="center"
           alignItems="center"

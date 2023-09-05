@@ -1,8 +1,8 @@
 import { FormEvent, useCallback } from 'react';
 
-import { Input, InputGroup, Stack, StackProps, color } from '@stacks/ui';
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
 import { useField } from 'formik';
+import { Input, InputGroup, Stack, StackProps } from 'leather-styles/jsx';
 
 import { CryptoCurrencies } from '@shared/models/currencies.model';
 import { StacksFeeEstimate } from '@shared/models/fees/stacks-fees.model';

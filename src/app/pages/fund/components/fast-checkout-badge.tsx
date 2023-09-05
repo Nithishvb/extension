@@ -1,6 +1,6 @@
 import { FiZap } from 'react-icons/fi';
 
-import { Stack, color } from '@stacks/ui';
+import { Stack } from 'leather-styles/jsx';
 
 import { Caption } from '@app/components/typography';
 
@@ -13,11 +13,12 @@ export function FastCheckoutBadge() {
       borderRadius="24px"
       color={color('text-caption')}
       height="24px"
-      isInline
+      // #4164 FIXME migrate
+      //      isInline
       justifyContent="center"
       paddingX="tight"
       paddingY="extra-tight"
-      spacing="extra-tight"
+      gap="extra-tight"
     >
       <FiZap color="#008051" size="12px" strokeWidth="2.5px" />
       <Caption color="#008051" fontWeight={500} variant="c2">

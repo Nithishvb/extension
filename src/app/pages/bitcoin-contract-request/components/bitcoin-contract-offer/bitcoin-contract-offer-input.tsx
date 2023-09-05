@@ -1,5 +1,5 @@
-import { Stack, Text } from '@stacks/ui';
 import { truncateMiddle } from '@stacks/ui-utils';
+import { Stack, Text } from 'leather-styles/jsx';
 
 import { createMoneyFromDecimal } from '@shared/models/money.model';
 
@@ -27,7 +27,7 @@ export function BitcoinContractOfferInput({
   const formattedFiatValue = i18nFormatCurrency(fiatValue);
 
   return (
-    <Stack p="loose" spacing="loose" width="100%">
+    <Stack p="loose" gap="loose" width="100%">
       <Text fontWeight="bold">Amount</Text>
       <BitcoinContractLockAmount
         hoverLabel={addressNativeSegwit}

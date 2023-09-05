@@ -1,5 +1,5 @@
-import { Box, Spinner, Text } from '@stacks/ui';
 import { sanitize } from 'dompurify';
+import { Box, Spinner, Text } from 'leather-styles/jsx';
 
 import { figmaTheme } from '@app/common/utils/figma-theme';
 import { useTextInscriptionContentQuery } from '@app/query/bitcoin/ordinals/use-text-ordinal-content.query';

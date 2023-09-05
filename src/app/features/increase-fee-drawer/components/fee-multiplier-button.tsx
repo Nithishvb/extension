@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@stacks/ui';
+import { Button, ButtonProps } from 'leather-styles/jsx';
 
 interface FeeMultiplierButtonProps extends ButtonProps {
   multiplier: number;

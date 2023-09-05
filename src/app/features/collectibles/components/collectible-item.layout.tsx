@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { Box, Button, Stack, Text } from '@stacks/ui';
-import type { BoxProps } from '@stacks/ui';
+import { Box, Button, Stack, Text } from 'leather-styles/jsx';
+import type { BoxProps } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 import { useHover } from 'use-events';
 
@@ -76,7 +76,7 @@ export function CollectibleItemLayout({
             {children}
           </Box>
         </Box>
-        <Stack mt="base" pl="tight" spacing="extra-tight" textAlign="left">
+        <Stack mt="base" pl="tight" gap="extra-tight" textAlign="left">
           <Text
             color={token('colors.accent.text-primary')}
             fontWeight="500"

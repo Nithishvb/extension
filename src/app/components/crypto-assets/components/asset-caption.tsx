@@ -1,6 +1,8 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { Box, Flex, Stack, Tooltip, color } from '@stacks/ui';
+// #4164 FIXME migrate Tooltip - use radix instead
+import { Tooltip } from '@stacks/ui';
+import { Flex, Stack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 interface AssetCaptionProps {
@@ -23,12 +25,13 @@ export function AssetCaption({ caption, isUnanchored }: AssetCaptionProps) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Box
-                  _hover={{ cursor: 'pointer' }}
+                <FiInfo
+                  // #4164 FIXME check if we need cursor pointer
+                  // _hover={{ cursor: 'pointer' }}
                   size="12px"
-                  color={color('text-caption')}
-                  as={FiInfo}
-                  ml={1}
+                  // #4164 FIXME check if we need this color
+                  // color={color('text-caption')}
+                  style={{ marginLeft: '1px' }} // check this margin
                 />
               </a>
             </Stack>

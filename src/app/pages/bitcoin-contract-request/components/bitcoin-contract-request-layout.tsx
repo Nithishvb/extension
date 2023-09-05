@@ -1,4 +1,4 @@
-import { Stack } from '@stacks/ui';
+import { Stack } from 'leather-styles/jsx';
 
 interface BitcoinContractRequestLayoutProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export function BitcoinContractRequestLayout({ children }: BitcoinContractReques
       overflowY="scroll"
       pb="120px"
       px="loose"
-      spacing="tight"
+      gap="tight"
       width="100%"
     >
       {children}

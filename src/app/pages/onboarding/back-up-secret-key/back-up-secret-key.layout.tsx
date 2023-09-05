@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@stacks/ui';
+import { useMediaQuery } from 'leather-styles/jsx';
 import { Box, Flex, Stack, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 

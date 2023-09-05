@@ -1,7 +1,7 @@
 import { FiCheck } from 'react-icons/fi';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import { Box, Flex } from '@stacks/ui';
+import { Flex } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 
@@ -16,7 +16,8 @@ export function IncreaseFeeSentDrawer() {
     <>
       <BaseDrawer isShowing={isShowing} onClose={() => navigate(RouteUrls.Home)} title="Confirmed">
         <Flex px="loose" pb="extra-loose" justifyContent="center">
-          <Box size="32px" as={FiCheck} mt="2px" />
+          {/* TODO - check if this needs a color wrapper */}
+          <FiCheck size="32px" style={{ marginTop: '2px' }} />
         </Flex>
       </BaseDrawer>
       <Outlet />

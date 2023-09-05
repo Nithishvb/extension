@@ -2,8 +2,8 @@ import { toast } from 'react-hot-toast';
 import { FiCheck, FiCopy, FiExternalLink } from 'react-icons/fi';
 import { useLocation } from 'react-router-dom';
 
-import { Stack, useClipboard } from '@stacks/ui';
-import { Text } from '@stacks/ui';
+import { Stack, useClipboard } from 'leather-styles/jsx';
+import { Text } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
@@ -55,7 +55,7 @@ export function LockBitcoinSummary() {
         with borrowing against it.
       </Text>
       <InfoCardFooter>
-        <Stack spacing="base" isInline width="100%">
+        <Stack gap="base" isInline width="100%">
           <InfoCardBtn onClick={onClickLink} icon={FiExternalLink} label="View Details" />
           <InfoCardBtn onClick={onClickCopy} icon={FiCopy} label="Copy ID" />
         </Stack>

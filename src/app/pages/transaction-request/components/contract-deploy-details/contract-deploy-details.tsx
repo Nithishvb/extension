@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
-import { BoxProps, CodeBlock, Stack, color } from '@stacks/ui';
+// #4164 FIXME migrate CodeBlock
+import { CodeBlock } from '@stacks/ui';
+import { BoxProps, Stack } from 'leather-styles/jsx';
+import { Divider } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { Prism } from '@app/common/clarity-prism';
-import { Divider } from '@app/components/layout/divider';
 import { Caption, Title } from '@app/components/typography';
 import { AttachmentRow } from '@app/pages/transaction-request/components/attachment-row';
 import { ContractPreviewLayout } from '@app/pages/transaction-request/components/contract-preview';
@@ -33,7 +36,7 @@ function ContractCodeSection(): React.JSX.Element | null {
     <CodeBlock
       overflow="auto"
       border="4px solid"
-      borderColor={color('border')}
+      borderColor={token('colors.accent.background-primary')}
       borderRadius="12px"
       backgroundColor="ink.1000"
       width="100%"
@@ -57,7 +60,7 @@ function TabButton(props: TabButtonProps): React.JSX.Element {
       borderRadius="8px"
       px="base"
       py="base"
-      bg={isActive ? color('bg-4') : 'transparent'}
+      bg={isActive ? token('colors.accent.background-secondary') : 'transparent'}
       fontWeight={isActive ? 600 : 500}
       {...rest}
     />
@@ -80,8 +83,8 @@ export function ContractDeployDetails(): React.JSX.Element | null {
   }
 
   return (
-    <Stack mb="loose" spacing="loose">
-      <Stack spacing="0" isInline>
+    <Stack mb="loose" gap="loose">
+      <Stack gap="0" isInline>
         <TabButton onClick={() => setTab('details')} isActive={tab === 'details'}>
           Details
         </TabButton>
@@ -91,9 +94,9 @@ export function ContractDeployDetails(): React.JSX.Element | null {
       </Stack>
       {tab === 'details' ? (
         <Stack
-          spacing="loose"
+          gap="loose"
           border="4px solid"
-          borderColor={color('border')}
+          borderColor={token('colors.accent.background-primary')}
           borderRadius="12px"
           py="extra-loose"
           px="base-loose"
@@ -105,7 +108,7 @@ export function ContractDeployDetails(): React.JSX.Element | null {
             contractAddress={currentAccountStxAddress}
             contractName={transactionRequest.contractName}
           />
-          <Stack spacing="base-loose" divider={<Divider />}>
+          <Stack gap="base-loose" divider={<Divider />}>
             {currentAccountStxAddress && (
               <Row name="Contract address" value={currentAccountStxAddress} type="Principal" />
             )}

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Flex, Stack, Text } from '@stacks/ui';
+import { Box, Flex, Stack, Text } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 import { noop } from '@shared/utils';

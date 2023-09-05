@@ -1,4 +1,4 @@
-import { Box, BoxProps, Text, color } from '@stacks/ui';
+import { Box, BoxProps, Text } from 'leather-styles/jsx';
 
 export function InsufficientBalanceError(props: BoxProps) {
   return (

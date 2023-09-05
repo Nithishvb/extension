@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useCallback, useRef } from 'react';
 
 import { Link } from '@radix-ui/themes';
-import { Stack } from '@stacks/ui';
 import { Form, Formik } from 'formik';
+import { Stack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 import * as yup from 'yup';
 
@@ -81,8 +81,8 @@ export function BitcoinCustomFee({
       {props => {
         return (
           <Form>
-            <Stack spacing="extra-loose" mt="8px">
-              <Stack spacing="loose">
+            <Stack gap="extra-loose" mt="8px">
+              <Stack gap="loose">
                 <styled.span textStyle="body.02" maxWidth="21.5rem">
                   {'Higher fee rates typically lead to faster confirmation times. '}
                   <Link
@@ -93,7 +93,7 @@ export function BitcoinCustomFee({
                     View fee calculator
                   </Link>
                 </styled.span>
-                <Stack spacing="extra-tight">
+                <Stack gap="extra-tight">
                   <TextInputField
                     hasError={hasInsufficientBalanceError}
                     label={feeInputLabel}

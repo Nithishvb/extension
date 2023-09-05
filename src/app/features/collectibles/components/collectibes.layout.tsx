@@ -1,4 +1,4 @@
-import { Flex, Grid, Spinner, color } from '@stacks/ui';
+import { Flex, Grid, Spinner } from 'leather-styles/jsx';
 
 import { RefreshIcon } from '@app/components/icons/refresh-icon';
 import { LoadingSpinner } from '@app/components/loading-spinner';

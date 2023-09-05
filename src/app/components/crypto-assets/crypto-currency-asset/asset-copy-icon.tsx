@@ -1,7 +1,7 @@
 import { FiCheck, FiCopy } from 'react-icons/fi';
 
-import { Box, Flex, color } from '@stacks/ui';
 import { UserAreaSelectors } from '@tests-legacy/integration/user-area.selectors';
+import { Box, Flex } from 'leather-styles/jsx';
 
 interface AssetItemCopyIconProps {
   hasCopied: boolean;

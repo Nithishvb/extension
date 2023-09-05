@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Box, Flex, SlideFade, Stack, color } from '@stacks/ui';
+import { Box, Flex, SlideFade, Stack } from '@stacks/ui';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 
 import { RouteUrls } from '@shared/route-urls';
@@ -15,7 +15,6 @@ import { useOnClickOutside } from '@app/common/hooks/use-onclickoutside';
 import { useWalletType } from '@app/common/use-wallet-type';
 import { whenPageMode } from '@app/common/utils';
 import { openInNewTab, openIndexPageInNewTab } from '@app/common/utils/open-in-new-tab';
-import { Divider } from '@app/components/layout/divider';
 import { Caption } from '@app/components/typography';
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { useCurrentKeyDetails } from '@app/store/keys/key.selectors';
@@ -93,7 +92,7 @@ export function SettingsDropdown() {
                   openIndexPageInNewTab(location.pathname);
                 }}
               >
-                <Stack isInline>
+                <Stack>
                   <Box>Open in new tab</Box>
                   <FiExternalLink />
                 </Stack>
@@ -107,7 +106,8 @@ export function SettingsDropdown() {
               openInNewTab('https://leather.gitbook.io/guides/installing/contact-support');
             })}
           >
-            <Stack isInline>
+            {/* FIXME - replace isInline */}
+            <Stack>
               <Box>Get support</Box>
               <FiExternalLink />
             </Stack>
@@ -118,7 +118,8 @@ export function SettingsDropdown() {
               openInNewTab('https://leather.canny.io/feature-requests');
             })}
           >
-            <Stack isInline>
+            {/* FIXME - replace isInline */}
+            <Stack>
               <Box>Request feature</Box>
               <FiExternalLink />
             </Stack>
@@ -157,7 +158,7 @@ export function SettingsDropdown() {
             </MenuItem>
           )}
           <MenuItem
-            color={color('feedback-error')}
+            color={token('colors.error')}
             onClick={wrappedCloseCallback(() =>
               navigate(RouteUrls.SignOutConfirm, { relative: 'path' })
             )}

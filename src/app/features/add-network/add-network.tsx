@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ChainID } from '@stacks/transactions';
-import { Input, Stack } from '@stacks/ui';
 import { NetworkSelectors } from '@tests-legacy/integration/network.selectors';
 import { Formik } from 'formik';
+import { Input, Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { DefaultNetworkConfigurations } from '@shared/constants';
@@ -122,7 +122,7 @@ export function AddNetwork() {
             <Stack
               maxWidth={token('sizes.centeredPageFullWidth')}
               px={['loose', 'base-loose']}
-              spacing="loose"
+              gap="loose"
               textAlign={['left', 'center']}
             >
               <Text>

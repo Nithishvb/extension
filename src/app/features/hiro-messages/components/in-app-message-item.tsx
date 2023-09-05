@@ -1,6 +1,6 @@
 import { FiX } from 'react-icons/fi';
 
-import { Box, Flex, Text } from '@stacks/ui';
+import { Box, Flex, Text } from 'leather-styles/jsx';
 
 import { HiroMessage } from '@app/query/common/remote-config/remote-config.query';
 

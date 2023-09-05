@@ -1,5 +1,5 @@
-import { Box, Grid, transition } from '@stacks/ui';
 import { HomePageSelectors } from '@tests/selectors/home.selectors';
+import { Box, Grid, transition } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 interface HeaderActionButtonProps {

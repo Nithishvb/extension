@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { FiCopy } from 'react-icons/fi';
 
-import { Box, Text, color, useClipboard } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
+import { Box, Text, color, useClipboard } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { SpaceBetween } from '@app/components/layout/space-between';

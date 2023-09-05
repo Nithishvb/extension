@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Box, BoxProps } from '@stacks/ui';
+import { Box, BoxProps } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 

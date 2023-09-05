@@ -1,6 +1,7 @@
 import { FiStar } from 'react-icons/fi';
 
-import { Stack, color } from '@stacks/ui';
+import { Stack } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { Caption } from '@app/components/typography';
 
@@ -11,13 +12,15 @@ export function ZeroPercentFeesBadge() {
       border="1px solid"
       borderColor="#FFE0C2"
       borderRadius="24px"
-      color={color('text-caption')}
+      // #4164 FIXME migrate check text-caption colour
+      color={token('colors.accent.text-primary')}
       height="24px"
-      isInline
+      // #4164 FIXME migrate
+      // isInline
       justifyContent="center"
       paddingX="tight"
       paddingY="extra-tight"
-      spacing="extra-tight"
+      gap="extra-tight"
     >
       <FiStar color="#F59300" size="12px" strokeWidth="2.5px" />
       <Caption color="#FFA953" fontWeight={500} variant="c2">

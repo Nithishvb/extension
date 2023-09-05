@@ -1,6 +1,6 @@
 import { FiCheck } from 'react-icons/fi';
 
-import { Flex, FlexProps, color } from '@stacks/ui';
+import { Flex, FlexProps } from 'leather-styles/jsx';
 
 import { Caption } from '@app/components/typography';
 

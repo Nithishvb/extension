@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { Box, Stack } from '@stacks/ui';
+import { Box, Stack } from 'leather-styles/jsx';
 
 import { createNullArrayOfLength } from '@app/common/utils';
 import { ValidatedPassword } from '@app/common/validation/validate-password';

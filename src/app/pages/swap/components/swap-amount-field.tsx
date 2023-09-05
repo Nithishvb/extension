@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 
-import { Input, Stack, color } from '@stacks/ui';
 import { useField, useFormikContext } from 'formik';
+import { Input, Stack } from 'leather-styles/jsx';
 
 import { useShowFieldError } from '@app/common/form-utils';
 import { Caption } from '@app/components/typography';
@@ -28,7 +28,7 @@ export function SwapAmountField({ amountAsFiat, isDisabled, name }: SwapAmountFi
   }
 
   return (
-    <Stack alignItems="flex-end" spacing="extra-tight">
+    <Stack alignItems="flex-end" gap="extra-tight">
       <Caption as="label" hidden htmlFor={name}>
         {name}
       </Caption>

@@ -1,5 +1,5 @@
-import { Box, Flex } from '@stacks/ui';
-import { Text } from '@stacks/ui';
+import { Box, Flex } from 'leather-styles/jsx';
+import { Text } from 'leather-styles/jsx';
 
 import { figmaTheme } from '@app/common/utils/figma-theme';
 import { EyeSlashIcon } from '@app/components/icons/eye-slash-icon';

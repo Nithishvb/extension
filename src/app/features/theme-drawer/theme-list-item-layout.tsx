@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex } from '@stacks/ui';
+import { Box, BoxProps, Flex } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { CheckmarkIcon } from '@app/components/icons/checkmark-icon';

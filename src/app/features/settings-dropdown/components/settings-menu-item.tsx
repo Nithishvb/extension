@@ -1,12 +1,12 @@
 import { memo } from 'react';
 
-import { BoxProps, Text, color } from '@stacks/ui';
+import { BoxProps, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 export const SettingsMenuItem = memo((props: BoxProps) => {
   const { onClick, children, ...rest } = props;
   return (
-    <Text
+    <styled.div
       width="100%"
       px="base"
       py="base"
@@ -20,6 +20,6 @@ export const SettingsMenuItem = memo((props: BoxProps) => {
       {...rest}
     >
       {children}
-    </Text>
+    </styled.div>
   );
 });

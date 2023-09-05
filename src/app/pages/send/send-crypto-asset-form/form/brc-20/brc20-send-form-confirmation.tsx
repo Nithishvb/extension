@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Stack } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
+import { Stack } from 'leather-styles/jsx';
 import get from 'lodash.get';
 
 import { decodeBitcoinTx } from '@shared/crypto/bitcoin/bitcoin.utils';

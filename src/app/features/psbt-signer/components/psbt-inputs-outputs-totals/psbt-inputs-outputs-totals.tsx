@@ -34,7 +34,9 @@ export function PsbtInputsOutputsTotals() {
           <PsbtAddressTransferTotals showNativeSegwitTotal={isNativeSegwitTotalGreaterThanZero} />
         </Box>
       ) : null}
-      {showDivider ? <Hr backgroundColor={color('border')} height="3px" /> : null}
+      {showDivider ? (
+        <Hr backgroundColor={token('colors.accent.background-primary')} height="3px" />
+      ) : null}
       {isReceiving ? (
         <Box p="space.05">
           <PsbtRequestDetailsSectionHeader title="You'll receive" />

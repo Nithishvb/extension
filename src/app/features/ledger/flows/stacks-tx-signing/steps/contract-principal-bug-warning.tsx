@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import GenericErrorImg from '@assets/images/generic-error.png';
-import { Box, Button, Stack } from '@stacks/ui';
+import { Box, Button, Stack } from 'leather-styles/jsx';
 
 import { useLoading } from '@app/common/hooks/use-loading';
 import { delay } from '@app/common/utils';

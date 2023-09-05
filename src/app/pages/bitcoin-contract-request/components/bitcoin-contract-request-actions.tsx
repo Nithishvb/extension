@@ -1,4 +1,5 @@
-import { Box, Button, Stack, color } from '@stacks/ui';
+import { Box, Button, Stack } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { useBtcAssetBalance } from '@app/common/hooks/balance/btc/use-btc-balance';
 import { LeatherButton } from '@app/components/button/button';
@@ -22,7 +23,7 @@ export function BitcoinContractRequestActions({
 
   return (
     <Box
-      bg={color('bg')}
+      bg={token('colors.accent.background-primary')}
       borderTop="1px solid #DCDDE2"
       bottom="0px"
       height="96px"
@@ -31,7 +32,12 @@ export function BitcoinContractRequestActions({
       width="100%"
       zIndex={999}
     >
-      <Stack isInline mt="loose" spacing="base">
+      <Stack
+        // #4164 FIXME migrate
+        // isInline
+        mt="loose"
+        gap="base"
+      >
         <Button
           borderRadius="10px"
           flexGrow={1}

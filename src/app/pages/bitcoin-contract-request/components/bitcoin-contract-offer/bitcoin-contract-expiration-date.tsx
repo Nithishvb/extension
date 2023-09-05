@@ -1,4 +1,4 @@
-import { Flex } from '@stacks/ui';
+import { Flex } from 'leather-styles/jsx';
 
 import { Text } from '@app/components/typography';
 
@@ -9,7 +9,7 @@ export function BitcoinContractExpirationDate({
   expirationDate,
 }: BitcoinContractExpirationDateProps) {
   return (
-    <Flex p="loose" spacing="loose" width="100%" justifyContent="space-between">
+    <Flex p="loose" gap="loose" width="100%" justifyContent="space-between">
       <Text fontSize={2} fontWeight="bold">
         Expiration Date
       </Text>

@@ -1,4 +1,4 @@
-import { color } from '@stacks/ui';
+import { color } from 'leather-styles/jsx';
 
 import { PasswordStrength, ValidatedPassword } from '@app/common/validation/validate-password';
 

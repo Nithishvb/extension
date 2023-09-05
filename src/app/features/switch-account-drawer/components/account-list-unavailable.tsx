@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { Box, Flex } from '@stacks/ui';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { Body, Title } from '@app/components/typography';
 

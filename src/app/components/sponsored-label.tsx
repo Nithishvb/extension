@@ -1,13 +1,13 @@
 import { FiAlertCircle } from 'react-icons/fi';
 
-import { Box, Stack, Text, color } from '@stacks/ui';
+import { Box, Stack, Text } from 'leather-styles/jsx';
 
 export function SponsoredLabel(): React.JSX.Element {
   return (
     <Stack width="100%">
       <Stack
         alignItems="center"
-        bg={color('bg-4')}
+        bg={token('colors.accent.background-secondary')}
         borderRadius="10px"
         height="48px"
         isInline

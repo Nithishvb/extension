@@ -1,5 +1,5 @@
-import { Stack, StackProps } from '@stacks/ui';
 import { CryptoAssetSelectors } from '@tests/selectors/crypto-asset.selectors';
+import { Stack, StackProps } from 'leather-styles/jsx';
 
 export function Brc20AssetListLayout({ children }: StackProps) {
   return (
@@ -8,7 +8,7 @@ export function Brc20AssetListLayout({ children }: StackProps) {
       data-testid={CryptoAssetSelectors.CryptoAssetList}
       pb="extra-loose"
       px="loose"
-      spacing="extra-loose"
+      gap="extra-loose"
     >
       {children}
     </Stack>

@@ -1,7 +1,7 @@
-import { Flex, StackProps } from '@stacks/ui';
 import { forwardRefWithAs } from '@stacks/ui-core';
 import { truncateMiddle } from '@stacks/ui-utils';
 import { CryptoAssetSelectors } from '@tests/selectors/crypto-asset.selectors';
+import { Flex, StackProps } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 import { CryptoCurrencies } from '@shared/models/currencies.model';
@@ -65,12 +65,7 @@ export const CryptoCurrencyAssetItemLayout = forwardRefWithAs(
         {...rest}
         {...bind}
       >
-        <Flag
-          align="middle"
-          img={isHovered && copyIcon ? copyIcon : icon}
-          spacing="base"
-          width="100%"
-        >
+        <Flag align="middle" img={isHovered && copyIcon ? copyIcon : icon} gap="base" width="100%">
           <SpaceBetween width="100%">
             <styled.span textStyle="label.01">
               {isHovered ? truncateMiddle(address, 6) : title}

@@ -1,7 +1,7 @@
 import { FormEvent, memo } from 'react';
 
-import { Input } from '@stacks/ui';
 import { useField } from 'formik';
+import { Input } from 'leather-styles/jsx';
 import { Stack, StackProps, styled } from 'leather-styles/jsx';
 
 import { ErrorLabel } from '@app/components/error-label';

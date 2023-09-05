@@ -1,5 +1,5 @@
-import { Stack, color } from '@stacks/ui';
 import { truncateMiddle } from '@stacks/ui-utils';
+import { Stack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
@@ -13,10 +13,10 @@ export function SendTransferDetails({ address, amount, currentAddress }: SendTra
   return (
     <Stack
       border="4px solid"
-      borderColor={color('border')}
+      borderColor={token('colors.accent.background-primary')}
       borderRadius="16px"
       p="loose"
-      spacing="base"
+      gap="base"
       width="100%"
     >
       <SpaceBetween spacing="base">

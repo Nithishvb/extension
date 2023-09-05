@@ -1,5 +1,5 @@
-import { Button, Stack } from '@stacks/ui';
 import { useFormikContext } from 'formik';
+import { Button, Stack } from 'leather-styles/jsx';
 
 import {
   BitcoinSendFormValues,
@@ -20,7 +20,7 @@ export function HighFeeConfirmation(props: { learnMoreUrl: string }) {
   const { setIsShowingHighFeeConfirmation } = useDrawers();
 
   return (
-    <Stack px="loose" spacing="loose" pb="extra-loose">
+    <Stack px="loose" gap="loose" pb="extra-loose">
       <Title fontSize="20px" fontWeight={400} lineHeight="28px">
         Are you sure you want to pay {values.fee} {values.feeCurrency} in fees for this transaction?
       </Title>

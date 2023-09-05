@@ -1,5 +1,5 @@
-import { Stack, StackProps } from '@stacks/ui';
 import { useField } from 'formik';
+import { Stack, StackProps } from 'leather-styles/jsx';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
 import { SponsoredLabel } from '@app/components/sponsored-label';
@@ -17,7 +17,7 @@ export function FeesRowLayout(props: FeesRowLayoutProps) {
   const [_, meta] = useField('fee');
 
   return (
-    <Stack spacing="base" width="100%" {...rest}>
+    <Stack gap="base" width="100%" {...rest}>
       <SpaceBetween position="relative">
         <Stack alignItems="center" isInline>
           <Caption>Fee</Caption>

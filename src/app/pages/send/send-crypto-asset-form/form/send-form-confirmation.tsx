@@ -1,5 +1,5 @@
-import { Stack } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
+import { Stack } from 'leather-styles/jsx';
 
 import { whenPageMode } from '@app/common/utils';
 import { FormAddressDisplayer } from '@app/components/address-displayer/form-address-displayer';

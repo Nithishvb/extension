@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 
-import { Box, color } from '@stacks/ui';
+import { Box } from 'leather-styles/jsx';
 
 import { useDrawers } from '@app/common/hooks/use-drawers';
 import { ControlledDrawer } from '@app/components/drawer/controlled-drawer';

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Button, ButtonGroup } from '@stacks/ui';
+import { Button, ButtonGroup } from 'leather-styles/jsx';
 
 import { Caption } from '@app/components/typography';
 import { LedgerTitle } from '@app/features/ledger/components/ledger-title';

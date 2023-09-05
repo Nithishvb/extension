@@ -1,4 +1,4 @@
-import { Text, color } from '@stacks/ui';
+import { Text } from 'leather-styles/jsx';
 
 interface BitcoinTransactionCaptionProps {
   children: string;

@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ChainID } from '@stacks/transactions';
-import { Flex, FlexProps, Text } from '@stacks/ui';
+import { Flex, FlexProps, Text } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { RouteUrls } from '@shared/route-urls';

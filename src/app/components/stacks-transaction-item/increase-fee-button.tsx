@@ -1,6 +1,6 @@
 import { FiFastForward } from 'react-icons/fi';
 
-import { Box, Button, color } from '@stacks/ui';
+import { Box, Button } from 'leather-styles/jsx';
 
 interface IncreaseFeeButtonProps {
   isEnabled?: boolean;

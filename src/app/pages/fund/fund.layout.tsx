@@ -1,4 +1,4 @@
-import { Flex, Stack, useMediaQuery } from '@stacks/ui';
+import { Flex, Stack, useMediaQuery } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
@@ -29,7 +29,7 @@ export function FundLayout(props: FundLayoutProps) {
         alignItems={['left', 'center']}
         pb={['loose', 'unset']}
         px={['loose', 'loose', 'unset']}
-        spacing={['base', 'loose']}
+        gap={['base', 'loose']}
         mt={['base', 'unset']}
       >
         <PageTitle

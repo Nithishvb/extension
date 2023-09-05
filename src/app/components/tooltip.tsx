@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react';
 
-import { Box, BoxProps } from '@stacks/ui';
 import Tippy, { TippyProps } from '@tippyjs/react';
+import { Box, BoxProps } from 'leather-styles/jsx';
 
 interface TooltipProps extends TippyProps {
   hideOnClick?: boolean;

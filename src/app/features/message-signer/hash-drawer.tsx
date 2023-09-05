@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Flex } from '@stacks/ui';
+import { Flex } from 'leather-styles/jsx';
 import { Box, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 

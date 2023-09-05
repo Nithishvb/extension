@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Box, StackProps } from '@stacks/ui';
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
 import BigNumber from 'bignumber.js';
 import { useField } from 'formik';
+import { Box, StackProps } from 'leather-styles/jsx';
 
 import { FeeTypes, Fees } from '@shared/models/fees/fees.model';
 import { createMoney } from '@shared/models/money.model';

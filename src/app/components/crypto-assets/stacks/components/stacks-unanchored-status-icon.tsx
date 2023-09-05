@@ -9,7 +9,7 @@ export function StacksUnanchoredStatusIcon() {
       bg="invert"
       icon={() => (
         <MicroblockIcon
-          fill={color('bg')}
+          fill={token('colors.accent.background-primary')}
           bg={color('accent')}
           borderColor={color('invert')}
           size="13px"

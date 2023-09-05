@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { safeAwait } from '@stacks/ui';
+import { safeAwait } from 'leather-styles/jsx';
 
 import { delay } from '@app/common/utils';
 

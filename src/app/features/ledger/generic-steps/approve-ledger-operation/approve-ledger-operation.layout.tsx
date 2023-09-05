@@ -1,5 +1,5 @@
 import SignLedgerTransaction from '@assets/images/ledger/sign-ledger-transaction.png';
-import { Box, Flex, color } from '@stacks/ui';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { DividerSeparator } from '@app/components/layout/divider-separator';
 
@@ -25,7 +25,7 @@ export function ApproveLedgerOperationLayout(props: ApproveLedgerOperationLayout
       </LedgerTitle>
       <DeviceOperationApprovalStatus status={status} />
       <Flex
-        bg={color('bg-4')}
+        bg={token('colors.accent.background-secondary')}
         borderRadius="16px"
         flexDirection="column"
         textAlign="left"

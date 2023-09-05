@@ -1,5 +1,5 @@
 import UnsupportedBrowserImg from '@assets/images/ledger/unsupported-browser.png';
-import { Box, Flex, Text } from '@stacks/ui';
+import { Box, Flex, Text } from 'leather-styles/jsx';
 
 import { figmaTheme } from '@app/common/utils/figma-theme';
 import { ExternalLink } from '@app/components/external-link';

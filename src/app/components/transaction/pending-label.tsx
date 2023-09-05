@@ -1,6 +1,6 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { Box, Flex, Stack, Text, color } from '@stacks/ui';
+import { Box, Flex, Stack, Text } from 'leather-styles/jsx';
 
 import { Tooltip } from '@app/components/tooltip';
 

@@ -2,6 +2,7 @@ import toast from 'react-hot-toast';
 import { Outlet } from 'react-router-dom';
 
 import WaxSeal from '@assets/illustrations/wax-seal.png';
+// #4164 FIXME migrate useClipboard
 import { useClipboard } from '@stacks/ui';
 import { useFormikContext } from 'formik';
 import { HStack, styled } from 'leather-styles/jsx';

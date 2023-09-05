@@ -1,8 +1,8 @@
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import { Stack } from '@stacks/ui';
 import { truncateMiddle } from '@stacks/ui-utils';
+import { Stack } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 

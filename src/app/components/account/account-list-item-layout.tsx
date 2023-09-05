@@ -1,6 +1,6 @@
-import { Flex, Spinner, Stack, StackProps, color, useMediaQuery } from '@stacks/ui';
 import { truncateMiddle } from '@stacks/ui-utils';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
+import { Flex, Spinner, Stack, StackProps, color, useMediaQuery } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 import { useConfigBitcoinEnabled } from '@app/query/common/remote-config/remote-config.query';
@@ -56,9 +56,10 @@ export function AccountListItemLayout(props: AccountListItemLayoutProps) {
       {...rest}
     >
       <Flag align="middle" img={avatar} spacing="base" width="100%">
-        <Stack spacing="extra-tight">
+        {/* // FIXME isinline */}
+        <Stack gap="extra-tight">
           <SpaceBetween>
-            <Stack alignItems="center" isInline space="tight">
+            <Stack alignItems="center" gap="tight">
               {accountName}
               {isActive && <CheckmarkIcon />}
             </Stack>
@@ -74,7 +75,13 @@ export function AccountListItemLayout(props: AccountListItemLayoutProps) {
               balanceLabel
             )}
           </SpaceBetween>
-          <Stack alignItems="center" spacing="6px" isInline whiteSpace="nowrap">
+          <Stack
+            alignItems="center"
+            gap="6px"
+            // #4164 FIXME migrate
+            //isInline
+            whiteSpace="nowrap"
+          >
             <CaptionDotSeparator>
               <styled.span textStyle="caption.02">
                 {truncateMiddle(stxAddress, isNarrowViewport ? 3 : 4)}

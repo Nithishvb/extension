@@ -1,4 +1,4 @@
-import { BoxProps, Svg } from '@stacks/ui';
+import { BoxProps, Svg } from 'leather-styles/jsx';
 
 export function StxIcon(props: BoxProps) {
   return (

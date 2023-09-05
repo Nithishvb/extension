@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from 'react';
 
-import { Box, Fade, Stack, color } from '@stacks/ui';
+import { Box, Fade, Stack } from 'leather-styles/jsx';
 
 import { useOnClickOutside } from '@app/common/hooks/use-onclickoutside';
 
@@ -24,7 +24,7 @@ export function RecipientDropdownLayout(props: RecipientDropdownLayoutProps) {
       <Fade in={isVisible}>
         {styles => (
           <Stack
-            bg={color('bg')}
+            bg={token('colors.accent.background-primary')}
             borderRadius="8px"
             boxShadow="high"
             flexDirection="column"

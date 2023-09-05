@@ -1,4 +1,6 @@
-import { Box, Flex, FlexProps, Spacing } from '@stacks/ui';
+import { Spacing } from '@stacks/ui';
+// #4164 FIXME migrate this spacing type and update
+import { Box, Flex, FlexProps } from 'leather-styles/jsx';
 
 import { SpaceBetween } from './space-between';
 

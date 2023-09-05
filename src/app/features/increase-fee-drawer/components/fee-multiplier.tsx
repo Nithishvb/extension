@@ -1,4 +1,4 @@
-import { Stack, StackProps } from '@stacks/ui';
+import { Stack, StackProps } from 'leather-styles/jsx';
 
 import { FeeMultiplierButton } from './fee-multiplier-button';
 

@@ -1,5 +1,8 @@
-import { DynamicColorCircle, Stack, StackProps, color } from '@stacks/ui';
+// #4164 FIXME migrate DynamicColorCircle
+import { DynamicColorCircle } from '@stacks/ui';
 import { truncateMiddle } from '@stacks/ui-utils';
+import { Stack, StackProps } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { formatContractId } from '@app/common/utils';
 import { Caption, Title } from '@app/components/typography';
@@ -17,11 +20,11 @@ export function ContractPreviewLayout(props: ContractPreviewLayoutProps) {
     <Stack
       p="base"
       borderRadius="12px"
-      spacing="base"
+      gap="base"
       alignItems="center"
       isInline
       border="1px solid"
-      borderColor={color('border')}
+      borderColor={token('colors.accent.background-primary')}
       _hover={
         rest.onClick
           ? {
@@ -39,7 +42,7 @@ export function ContractPreviewLayout(props: ContractPreviewLayoutProps) {
         }`}
         backgroundSize="100%"
       />
-      <Stack spacing="base-tight">
+      <Stack gap="base-tight">
         <Title as="h3" fontWeight="500">
           {functionName || contractName}
         </Title>

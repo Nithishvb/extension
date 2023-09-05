@@ -1,4 +1,4 @@
-import { BoxProps, Circle, color } from '@stacks/ui';
+import { BoxProps, Circle } from 'leather-styles/jsx';
 
 import { StxIcon } from '@app/components/icons/stx-icon';
 
@@ -9,7 +9,13 @@ interface StxAvatarProps extends BoxProps {
 }
 export function StxAvatar({ isUnanchored, ...props }: StxAvatarProps) {
   return (
-    <Circle bg={color('accent')} color={color('bg')} position="relative" size="36px" {...props}>
+    <Circle
+      bg={color('accent')}
+      color={token('colors.accent.background-primary')}
+      position="relative"
+      size="36px"
+      {...props}
+    >
       <StxIcon />
       {isUnanchored ? <StacksUnanchoredStatusIcon /> : null}
     </Circle>

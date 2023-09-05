@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
-import { Box } from '@stacks/ui';
+import { Box } from 'leather-styles/jsx';
 
 import { StacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.models';
 

@@ -1,6 +1,6 @@
 import { KeyboardEvent } from 'react';
 
-import { BoxProps, Text, color } from '@stacks/ui';
+import { BoxProps, Text } from 'leather-styles/jsx';
 
 export const buildEnterKeyEvent = (onClick: () => void) => {
   return (event: KeyboardEvent) => {

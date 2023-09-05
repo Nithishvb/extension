@@ -1,5 +1,5 @@
 import LedgerDisconnected from '@assets/images/ledger/ledger-disconnected.png';
-import { Box, Button, Stack } from '@stacks/ui';
+import { Box, Button, Stack } from 'leather-styles/jsx';
 
 import { LeatherButton } from '@app/components/button/button';
 

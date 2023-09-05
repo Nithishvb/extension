@@ -1,5 +1,5 @@
-import { Box, color } from '@stacks/ui';
 import { forwardRefWithAs } from '@stacks/ui-core';
+import { Box } from 'leather-styles/jsx';
 
 export const MenuWrapper = forwardRefWithAs((props, ref) => (
   <Box
@@ -12,8 +12,8 @@ export const MenuWrapper = forwardRefWithAs((props, ref) => (
     boxShadow="0px 8px 16px rgba(27, 39, 51, 0.08);"
     zIndex={2000}
     border="1px solid"
-    bg={color('bg')}
-    borderColor={color('border')}
+    bg={token('colors.accent.background-primary')}
+    borderColor={token('colors.accent.background-primary')}
     py="tight"
     transformOrigin="top right"
     {...(props as any)}

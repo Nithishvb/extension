@@ -1,4 +1,4 @@
-import { Stack } from '@stacks/ui';
+import { Stack } from 'leather-styles/jsx';
 
 import { PageTop } from './page-top';
 
@@ -7,7 +7,7 @@ interface ProfileUpdateRequestLayoutProps {
 }
 export function ProfileUpdateRequestLayout({ children }: ProfileUpdateRequestLayoutProps) {
   return (
-    <Stack px={['loose', 'unset']} spacing="loose" width="100%">
+    <Stack px={['loose', 'unset']} gap="loose" width="100%">
       <PageTop />
       {children}
     </Stack>

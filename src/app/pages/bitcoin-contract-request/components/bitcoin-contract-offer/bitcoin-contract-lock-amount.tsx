@@ -1,6 +1,6 @@
 import { FiArrowUpRight, FiCopy } from 'react-icons/fi';
 
-import { Box, Stack, Text, color, useClipboard } from '@stacks/ui';
+import { Box, Stack, Text, color, useClipboard } from 'leather-styles/jsx';
 
 import { BtcIcon } from '@app/components/icons/btc-icon';
 import { Flag } from '@app/components/layout/flag';

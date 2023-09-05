@@ -2,8 +2,10 @@ import { memo } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { STXTransferPayload, TransactionTypes } from '@stacks/connect';
-import { Fade, Flex, Stack, color } from '@stacks/ui';
-import { truncateMiddle } from '@stacks/ui-utils';
+//  #4164 FIXME migrate - assess and refactor this Fade - do we need it, can we rewrite + improve
+import { Fade } from '@stacks/ui';
+import { Flex, Stack } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { RouteUrls } from '@shared/route-urls';
 
@@ -11,6 +13,8 @@ import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useDrawers } from '@app/common/hooks/use-drawers';
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { stacksValue } from '@app/common/stacks-utils';
+import { truncateMiddle } from '@app/common/utils/stacks-ui';
+//FIXME - PETE rebase onto 1 PR soon to solve this
 import { LeatherButton } from '@app/components/button/button';
 import { SpaceBetween } from '@app/components/layout/space-between';
 import { Caption } from '@app/components/typography';
@@ -61,12 +65,12 @@ export const StxTransferInsufficientFundsErrorMessage = memo(props => {
     <ErrorMessage
       title="Insufficient balance"
       body={
-        <Stack spacing="loose">
-          <Caption color={color('text-body')}>
+        <Stack gap="loose">
+          <Caption color={token('colors.accent.text-primary')}>
             You don't have enough STX to make this transfer. Send some STX to this address, or
             switch to another account.
           </Caption>
-          <Stack spacing="base" justifyContent="flex-end" textAlign="right">
+          <Stack gap="base" justifyContent="flex-end" textAlign="right">
             <SpaceBetween>
               <Caption>Current balance</Caption>
               <Caption>
@@ -157,7 +161,7 @@ export const ExpiredRequestErrorMessage = memo(props => {
             title="Expired request"
             body="This transaction request has expired or cannot be validated, try to re-initiate this transaction request from the original app."
             border={'1px solid'}
-            borderColor={color('border')}
+            borderColor={token('colors.accent.text-primary')}
             boxShadow="high"
             css={{
               '& > *': {

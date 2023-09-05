@@ -1,4 +1,7 @@
-import { Box, BoxProps, Circle, Flex, color } from '@stacks/ui';
+// #4164 FIXME migrate colorFromTx then remove this
+import { Box, color } from '@stacks/ui';
+import { BoxProps, Circle, Flex } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { BitcoinTx } from '@shared/models/transactions/bitcoin-transaction.model';
 
@@ -14,18 +17,19 @@ interface TransactionIconProps extends BoxProps {
 export function BitcoinTransactionIcon({ transaction, btcAddress, ...rest }: TransactionIconProps) {
   return (
     <Flex position="relative">
-      <Box as={BtcIcon} />
+      <BtcIcon />
       <Circle
         bottom="-2px"
         right="-9px"
         position="absolute"
         size="21px"
         bg={color(colorFromTx(transaction))}
-        color={color('bg')}
+        color={token('colors.accent.background-primary')}
         border="2px solid"
-        borderColor={color('bg')}
+        borderColor={token('colors.accent.background-primary')}
         {...rest}
       >
+        {/* // #4164 FIXME refactor this IconForTx */}
         <Box size="13px" as={IconForTx(btcAddress, transaction)} />
       </Circle>
     </Flex>

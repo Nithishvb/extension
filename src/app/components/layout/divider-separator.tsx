@@ -1,9 +1,10 @@
 import React, { cloneElement, isValidElement } from 'react';
 
-import { BoxProps } from '@stacks/ui';
+import { BoxProps } from 'leather-styles/jsx';
 
 import { Hr } from '../hr';
 
+// FIXME - to be refactored / removed
 interface DividerSeparatorProps extends BoxProps {
   children: React.ReactNode;
 }

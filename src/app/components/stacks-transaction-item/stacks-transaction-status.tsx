@@ -1,6 +1,6 @@
 import type { MempoolTransaction } from '@stacks/stacks-blockchain-api-types';
-import { Text, color } from '@stacks/ui';
 import { isPendingTx } from '@stacks/ui-utils';
+import { Text } from 'leather-styles/jsx';
 
 import { StacksTx } from '@shared/models/transactions/stacks-transaction.model';
 

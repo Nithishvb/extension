@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@stacks/ui';
+import { Box, BoxProps } from 'leather-styles/jsx';
 
 export function WalletTypeLedgerIcon(props: BoxProps) {
   return (

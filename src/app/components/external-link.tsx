@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BoxProps, Text, color } from '@stacks/ui';
+import { BoxProps, Text } from 'leather-styles/jsx';
 
 interface ExternalLinkProps extends BoxProps {
   href: string;

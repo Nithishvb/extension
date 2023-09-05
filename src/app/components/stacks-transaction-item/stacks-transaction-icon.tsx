@@ -1,6 +1,6 @@
 import { FiAlertOctagon, FiList } from 'react-icons/fi';
 
-import { BoxProps, DynamicColorCircle } from '@stacks/ui';
+import { BoxProps, DynamicColorCircle } from 'leather-styles/jsx';
 
 import { StacksTx } from '@shared/models/transactions/stacks-transaction.model';
 

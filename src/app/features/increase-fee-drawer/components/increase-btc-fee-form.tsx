@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Stack } from '@stacks/ui';
 import { Formik } from 'formik';
+import { Stack } from 'leather-styles/jsx';
 
 import { BitcoinTx } from '@shared/models/transactions/bitcoin-transaction.model';
 import { RouteUrls } from '@shared/route-urls';
@@ -49,10 +49,10 @@ export function IncreaseBtcFeeForm({ btcTx }: IncreaseBtcFeeFormProps) {
       validateOnMount={false}
       validationSchema={validationSchema}
     >
-      <Stack spacing="extra-loose">
+      <Stack gap="extra-loose">
         {btcTx && <BitcoinTransactionItem position="relative" transaction={btcTx} zIndex={99} />}
-        <Stack spacing="base">
-          <Stack spacing="extra-tight">
+        <Stack gap="base">
+          <Stack gap="extra-tight">
             <TextInputField label={feeInputLabel} name="feeRate" placeholder={feeInputLabel} />
             <BitcoinCustomFeeFiat
               recipient={recipient}

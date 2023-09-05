@@ -1,5 +1,5 @@
-import { DynamicColorCircle } from '@stacks/ui';
 import { BoxProps } from '@stacks/ui-core';
+import { DynamicColorCircle } from 'leather-styles/jsx';
 
 import { StacksUnanchoredStatusIcon } from './stacks-unanchored-status-icon';
 import { StxAvatar } from './stx-avatar';
