@@ -62,7 +62,7 @@ export const Caption = forwardRefWithAs<{ variant?: 'c1' | 'c2' | 'c3' } & BoxPr
     <BaseText
       letterSpacing="-0.01em"
       css={captionStyles(variant)}
-      color={color('text-caption')}
+      color={token('colors.accent.text-subdued')}
       display="block"
       ref={ref}
       {...props}
@@ -72,7 +72,7 @@ export const Caption = forwardRefWithAs<{ variant?: 'c1' | 'c2' | 'c3' } & BoxPr
 
 export function CaptionSeparatorDot(props: BoxProps) {
   return (
-    <Text color={color('text-caption')} fontSize="10px" {...props}>
+    <Text color={token('colors.accent.text-subdued')} fontSize="10px" {...props}>
       •
     </Text>
   );

@@ -33,7 +33,7 @@ export function SwapAmountField({ amountAsFiat, isDisabled, name }: SwapAmountFi
         {name}
       </Caption>
       <Input
-        _disabled={{ border: 'none', color: color('text-caption') }}
+        _disabled={{ border: 'none', color: token('colors.accent.text-subdued') }}
         _focus={{ border: 'none' }}
         autoComplete="off"
         border="none"
@@ -50,7 +50,7 @@ export function SwapAmountField({ amountAsFiat, isDisabled, name }: SwapAmountFi
         {...field}
         onChange={onChange}
       />
-      <Caption color={showError ? color('feedback-error') : color('text-caption')}>
+      <Caption color={showError ? color('feedback-error') : token('colors.accent.text-subdued')}>
         {amountAsFiat}
       </Caption>
     </Stack>

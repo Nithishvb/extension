@@ -20,7 +20,7 @@ export function CollectiblesLayout(props: CollectiblesLayoutProps) {
         <Flex columnGap="8px">
           <Caption>{title}</Caption>
           {isLoading ? (
-            <Spinner color={color('text-caption')} opacity={0.5} size="16px" />
+            <Spinner color={token('colors.accent.text-subdued')} opacity={0.5} size="16px" />
           ) : (
             <RefreshIcon cursor="pointer" onClick={() => onRefresh()} />
           )}

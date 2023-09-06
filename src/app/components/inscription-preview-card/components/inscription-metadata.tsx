@@ -22,7 +22,7 @@ export function InscriptionMetadata({
       <Text fontSize={2} fontWeight="500">
         {title}
       </Text>
-      <Text color={color('text-caption')} fontSize={1}>
+      <Text color={token('colors.accent.text-subdued')} fontSize={1}>
         {subtitle}
       </Text>
       {action ? (

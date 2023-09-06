@@ -30,7 +30,7 @@ export function AssetCaption({ caption, isUnanchored }: AssetCaptionProps) {
                   // _hover={{ cursor: 'pointer' }}
                   size="12px"
                   // #4164 FIXME check if we need this color
-                  // color={color('text-caption')}
+                  // color={token('colors.accent.text-subdued')}
                   style={{ marginLeft: '1px' }} // check this margin
                 />
               </a>

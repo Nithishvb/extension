@@ -14,7 +14,7 @@ export function TransactionsByDateLayout({
 }: TransactionByDateLayoutProps) {
   return (
     <Box key={date}>
-      <Text textStyle="body.small" color={color('text-caption')}>
+      <Text textStyle="body.small" color={token('colors.accent.text-subdued')}>
         {displayDate}
       </Text>
       <Stack mt="base-loose" gap="loose">

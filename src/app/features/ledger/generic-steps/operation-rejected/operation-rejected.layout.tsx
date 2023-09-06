@@ -19,7 +19,7 @@ export function LedgerOperationRejectedLayout({
       <LedgerTitle mt="extra-loose" mx="40px" lineHeight="1.6">
         {description}
       </LedgerTitle>
-      <Text mt="base-tight" lineHeight="24px" color={color('text-caption')}></Text>
+      <Text mt="base-tight" lineHeight="24px" color={token('colors.accent.text-subdued')}></Text>
       <Button mode="tertiary" mt="base" mr="base-tight" mb="tight" onClick={onClose}>
         Close
       </Button>

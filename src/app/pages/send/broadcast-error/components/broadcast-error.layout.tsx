@@ -25,7 +25,7 @@ export function BroadcastErrorLayout(props: BroadcastErrorProps) {
       </Title>
       <styled.span
         textStyle="caption.02"
-        // color={color('text-caption')}
+        // color={token('colors.accent.text-subdued')}
         fontSize="16px"
         lineHeight="1.6"
         mt="base"

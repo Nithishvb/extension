@@ -12,7 +12,7 @@ export function AssetItemCopyIcon({ hasCopied }: AssetItemCopyIconProps) {
     <Flex alignItems="center" justifyContent="center" size="36px">
       <Box
         size="16px"
-        color={color('text-caption')}
+        color={token('colors.accent.text-subdued')}
         data-testid={UserAreaSelectors.AccountCopyAddress}
         as={hasCopied ? FiCheck : FiCopy}
         mt="2px"

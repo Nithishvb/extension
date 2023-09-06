@@ -50,12 +50,12 @@ export function BitcoinContractLockAmount({
             <Box
               _hover={{ cursor: 'pointer' }}
               as="button"
-              color={color('text-caption')}
+              color={token('colors.accent.text-subdued')}
               display="flex"
               onClick={onCopy}
               type="button"
             >
-              <Text color={color('text-caption')} fontSize={1} mr="extra-tight">
+              <Text color={token('colors.accent.text-subdued')} fontSize={1} mr="extra-tight">
                 {subtitle}
               </Text>
               {hoverLabel ? <FiCopy size="14px" /> : null}
@@ -64,7 +64,10 @@ export function BitcoinContractLockAmount({
         ) : null}
         {subValue ? (
           <Stack as="button" isInline onClick={subValueAction} spacing="extra-tight" type="button">
-            <Text color={subValueAction ? color('accent') : color('text-caption')} fontSize={1}>
+            <Text
+              color={subValueAction ? color('accent') : token('colors.accent.text-subdued')}
+              fontSize={1}
+            >
               {subValue}
             </Text>
             {subValueAction ? <FiArrowUpRight color={color('accent')} /> : null}

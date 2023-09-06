@@ -47,7 +47,7 @@ export function CustomFeeField(props: CustomFeeFieldProps) {
         <Input
           autoComplete="off"
           borderRadius="8px"
-          color={color('text-caption')}
+          color={token('colors.accent.text-subdued')}
           data-testid={SharedComponentsSelectors.CustomFeeFieldInput}
           display="block"
           height="32px"

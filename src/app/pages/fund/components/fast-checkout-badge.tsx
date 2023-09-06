@@ -11,7 +11,7 @@ export function FastCheckoutBadge() {
       border="1px solid"
       borderColor="#D9EDD4"
       borderRadius="24px"
-      color={color('text-caption')}
+      color={token('colors.accent.text-subdued')}
       height="24px"
       // #4164 FIXME migrate
       //      isInline

@@ -26,24 +26,24 @@ export function SendTransferConfirmationDetails({
       width="100%"
     >
       <SpaceBetween spacing="base">
-        <Text color={color('text-caption')}>From</Text>
+        <Text color={token('colors.accent.text-subdued')}>From</Text>
         <Text>{currentAddress}</Text>
       </SpaceBetween>
       <SpaceBetween spacing="base">
-        <Text color={color('text-caption')}>To</Text>
+        <Text color={token('colors.accent.text-subdued')}>To</Text>
         <Text>{recipient}</Text>
       </SpaceBetween>
       <SpaceBetween spacing="base">
-        <Text color={color('text-caption')}>Fee</Text>
+        <Text color={token('colors.accent.text-subdued')}>Fee</Text>
         <Text>{feeRowValue}</Text>
       </SpaceBetween>
       <SpaceBetween spacing="base">
-        <Text color={color('text-caption')}>Total</Text>
+        <Text color={token('colors.accent.text-subdued')}>Total</Text>
         <Text>{total}</Text>
       </SpaceBetween>
       {time && (
         <SpaceBetween spacing="base">
-          <Text color={color('text-caption')}>Estimated Time</Text>
+          <Text color={token('colors.accent.text-subdued')}>Estimated Time</Text>
           <Text>{time}</Text>
         </SpaceBetween>
       )}

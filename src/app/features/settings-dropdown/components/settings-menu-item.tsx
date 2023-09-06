@@ -11,7 +11,7 @@ export const SettingsMenuItem = memo((props: BoxProps) => {
       px="base"
       py="base"
       cursor="pointer"
-      color={color('text-title')}
+      color={token('colors.accent.action-primary-default')}
       _hover={{ backgroundColor: token('colors.brown.2') }}
       onClick={e => {
         onClick?.(e);

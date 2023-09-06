@@ -68,7 +68,7 @@ export function AccountListItemLayout(props: AccountListItemLayoutProps) {
                 position="absolute"
                 right={0}
                 top="calc(50% - 8px)"
-                color={color('text-caption')}
+                color={token('colors.accent.text-subdued')}
                 size="18px"
               />
             ) : (

@@ -23,7 +23,7 @@ export function RecipientAddressDisplayer({ address }: RecipientAddressDisplayer
   return (
     <SpaceBetween mb="base" width="100%">
       <Text
-        color={color('text-caption')}
+        color={token('colors.accent.text-subdued')}
         data-testid={SendCryptoAssetSelectors.RecipientBnsAddressLabel}
         fontSize={0}
       >
@@ -33,7 +33,7 @@ export function RecipientAddressDisplayer({ address }: RecipientAddressDisplayer
         <Box
           _hover={{ cursor: 'pointer' }}
           as="button"
-          color={color('text-caption')}
+          color={token('colors.accent.text-subdued')}
           data-testid={SendCryptoAssetSelectors.RecipientBnsAddressCopyToClipboard}
           onClick={copyToClipboard}
           type="button"

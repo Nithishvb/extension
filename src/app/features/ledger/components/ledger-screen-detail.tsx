@@ -22,7 +22,7 @@ export function LedgerScreenDetail(props: LedgerScreenDetailProps) {
               {title}
               <Box
                 as={FiInfo}
-                color={color('text-caption')}
+                color={token('colors.accent.text-subdued')}
                 ml="extra-tight"
                 size="14px"
                 mt="3px"

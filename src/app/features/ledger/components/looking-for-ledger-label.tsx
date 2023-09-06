@@ -8,7 +8,7 @@ interface LookingForLedgerLabelProps extends FlexProps {
 export function LookingForLedgerLabel({ children, ...props }: LookingForLedgerLabelProps) {
   return (
     <Flex alignItems="center" flexDirection="row" {...props}>
-      <Spinner color={color('text-caption')} opacity={0.5} size="sm" />
+      <Spinner color={token('colors.accent.text-subdued')} opacity={0.5} size="sm" />
       <Caption ml="tight">{children}</Caption>
     </Flex>
   );

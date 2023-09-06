@@ -93,7 +93,7 @@ export function StacksTransactionItem({
   );
   const txStatus = transaction && <StacksTransactionStatus transaction={transaction} />;
   const txCaption = (
-    <Text color={color('text-caption')} fontSize={0} whiteSpace="nowrap">
+    <Text color={token('colors.accent.text-subdued')} fontSize={0} whiteSpace="nowrap">
       {caption}
     </Text>
   );

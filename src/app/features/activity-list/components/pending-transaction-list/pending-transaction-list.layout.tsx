@@ -8,7 +8,7 @@ interface PendingTransactionListLayoutProps {
 export function PendingTransactionListLayout({ children }: PendingTransactionListLayoutProps) {
   return (
     <>
-      <Text color={color('text-caption')} textStyle="body.small">
+      <Text color={token('colors.accent.text-subdued')} textStyle="body.small">
         Pending
       </Text>
       <Stack mt="base-loose" pb="extra-loose" gap="loose">

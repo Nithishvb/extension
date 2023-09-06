@@ -22,7 +22,7 @@ function PossibleReasonUnableToConnect(props: PossibleReasonUnableToConnectProps
   return (
     <Flex>
       <Box mr="tight" mt="3px">
-        <FiCircle fill={color('text-caption')} size="4px" />
+        <FiCircle fill={token('colors.accent.text-subdued')} size="4px" />
       </Box>
       <Caption>{text}</Caption>
     </Flex>

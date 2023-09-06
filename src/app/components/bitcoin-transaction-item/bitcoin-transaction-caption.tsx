@@ -5,7 +5,7 @@ interface BitcoinTransactionCaptionProps {
 }
 export function BitcoinTransactionCaption({ children }: BitcoinTransactionCaptionProps) {
   return (
-    <Text color={color('text-caption')} fontSize={0} whiteSpace="nowrap">
+    <Text color={token('colors.accent.text-subdued')} fontSize={0} whiteSpace="nowrap">
       {children}
     </Text>
   );

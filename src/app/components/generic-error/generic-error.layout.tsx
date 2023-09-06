@@ -47,7 +47,7 @@ export function GenericErrorLayout(props: GenericErrorProps) {
       <styled.ul
         border="2px solid #EFEFF2"
         borderRadius="12px"
-        color={color('text-caption')}
+        color={token('colors.accent.text-subdued')}
         fontSize="14px"
         lineHeight="1.6"
         listStyleType="circle"

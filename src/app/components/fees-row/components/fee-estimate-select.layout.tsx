@@ -36,6 +36,7 @@ var Fade = function Fade(_ref) {
 export { Fade };
  */
 import { Box, Fade, Stack, Tooltip } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { FeeTypes } from '@shared/models/fees/fees.model';
 
@@ -96,7 +97,7 @@ export function FeeEstimateSelectLayout(props: FeeEstimateSelectLayoutProps) {
           <Box
             _hover={{ cursor: 'pointer' }}
             as={FiInfo}
-            color={color('text-caption')}
+            color={token('c')}
             onClick={() => openInNewTab(url)}
             size="14px"
           />

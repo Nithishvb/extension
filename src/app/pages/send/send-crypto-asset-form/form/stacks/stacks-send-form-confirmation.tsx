@@ -58,7 +58,7 @@ export function StacksSendFormConfirmation() {
         <Box
           _hover={{ cursor: 'pointer' }}
           as={FiInfo}
-          color={color('text-caption')}
+          color={token('colors.accent.text-subdued')}
           size="14px"
           ml="4px"
         />
