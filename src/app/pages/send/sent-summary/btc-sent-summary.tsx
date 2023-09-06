@@ -2,7 +2,9 @@ import { toast } from 'react-hot-toast';
 import { FiCopy, FiExternalLink } from 'react-icons/fi';
 import { useLocation } from 'react-router-dom';
 
-import { Stack, useClipboard } from 'leather-styles/jsx';
+// #4164 FIXME migrate useClipboard
+import { useClipboard } from '@stacks/ui';
+import { Stack } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';

@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 
 import GenericError from '@assets/images/generic-error.png';
-import { Text } from 'leather-styles/jsx';
 import { Box, Flex, FlexProps, HStack, styled } from 'leather-styles/jsx';
 
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
@@ -62,7 +61,7 @@ export function GenericErrorLayout(props: GenericErrorProps) {
         {helpTextList}
         <styled.li mt="base" textAlign="left">
           <HStack alignItems="center">
-            <Text>Reach out to our support team</Text>
+            <styled.span>Reach out to our support team</styled.span>
             {/* TODO check this button is OK */}
             <LeatherButton variant="link" onClick={() => openInNewTab(supportUrl)}>
               <ExternalLinkIcon />

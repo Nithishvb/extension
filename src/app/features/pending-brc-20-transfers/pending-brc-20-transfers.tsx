@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Flex, Stack, Text } from 'leather-styles/jsx';
+import { Box, Flex, Stack } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 import { noop } from '@shared/utils';
@@ -45,17 +45,17 @@ function StatusLabel({ status }: { status: OrdinalsbotInscriptionStatus }) {
     case 'paid':
       return (
         <Tooltip label="Your funds have been received. Your inscription will be available shortly.">
-          <Text>Creating transfer inscription…</Text>
+          <styled.span>Creating transfer inscription…</styled.span>
         </Tooltip>
       );
     case 'waiting-for-indexer':
       return (
         <Tooltip label="Inscription complete, awaiting metadata">
-          <Text>Receiving transfer inscription…</Text>
+          <styled.span>Receiving transfer inscription…</styled.span>
         </Tooltip>
       );
     case 'ready':
-      return <Text>Ready to transfer</Text>;
+      return <styled.span>Ready to transfer</styled.span>;
     default:
       return null;
   }
@@ -124,9 +124,9 @@ function PendingBrcTransfer({ order }: PendingBrcTransferProps) {
       }
       {...(order.status === 'ready' ? bind : {})}
     >
-      <Text>
+      <styled.span>
         {order.amount} {order.tick}
-      </Text>
+      </styled.span>
       <Stack isInline width="100%" mt="tight">
         <CaptionDotSeparator>
           <Flex as={Caption}>

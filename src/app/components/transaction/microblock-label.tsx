@@ -1,6 +1,6 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { Box, Flex, Stack, Text } from 'leather-styles/jsx';
+import { Box, Flex, Stack } from 'leather-styles/jsx';
 
 import { Tooltip } from '@app/components/tooltip';
 
@@ -10,9 +10,9 @@ const inMicroblockMessage =
 export function MicroblockLabel() {
   return (
     <Flex alignItems="center">
-      <Text color={color('feedback-alert')} fontSize={0} mr="2px">
+      <styled.span color={color('feedback-alert')} fontSize={0} mr="2px">
         In microblock
-      </Text>
+      </styled.span>
       <Tooltip label={inMicroblockMessage} placement="bottom">
         <Stack>
           <Box

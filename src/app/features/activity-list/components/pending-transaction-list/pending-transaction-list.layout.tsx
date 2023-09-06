@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Stack, Text } from 'leather-styles/jsx';
+import { Stack } from 'leather-styles/jsx';
 
 interface PendingTransactionListLayoutProps {
   children: ReactNode;
@@ -8,9 +8,9 @@ interface PendingTransactionListLayoutProps {
 export function PendingTransactionListLayout({ children }: PendingTransactionListLayoutProps) {
   return (
     <>
-      <Text color={token('colors.accent.text-subdued')} textStyle="body.small">
+      <styled.span color={token('colors.accent.text-subdued')} textStyle="body.small">
         Pending
-      </Text>
+      </styled.span>
       <Stack mt="base-loose" pb="extra-loose" gap="loose">
         {children}
       </Stack>

@@ -1,5 +1,5 @@
 import { truncateMiddle } from '@stacks/ui-utils';
-import { Stack, Text } from 'leather-styles/jsx';
+import { Stack } from 'leather-styles/jsx';
 
 import { createMoneyFromDecimal } from '@shared/models/money.model';
 
@@ -28,7 +28,7 @@ export function BitcoinContractOfferInput({
 
   return (
     <Stack p="loose" gap="loose" width="100%">
-      <Text fontWeight="bold">Amount</Text>
+      <styled.span fontWeight="bold">Amount</styled.span>
       <BitcoinContractLockAmount
         hoverLabel={addressNativeSegwit}
         subtitle={truncateMiddle(addressNativeSegwit)}

@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { FiCheck } from 'react-icons/fi';
 
-import { Stack, Text } from 'leather-styles/jsx';
+import { Stack, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { ChevronDownIcon } from '@app/components/icons/chevron-down-icon';
 
@@ -19,14 +20,17 @@ export function FeeEstimateItem(props: FeeEstimateItemProps) {
 
   const selectedIcon = useMemo(() => {
     const isSelected = index === selectedItem;
-    return isSelected ? <FiCheck color={color('accent')} size="14px" /> : <></>;
+    return isSelected ? <FiCheck size="14px" /> : <></>;
   }, [index, selectedItem]);
 
   return (
     <Stack
       alignItems="center"
       data-testid={`${testLabels[index]}-fee`}
-      _hover={{ bg: isVisible ? color('bg-alt') : 'none', borderRadius: '8px' }}
+      _hover={{
+        bg: isVisible ? token('colors.accent.background-secondary') : 'none',
+        borderRadius: '8px',
+      }}
       height="32px"
       isInline
       mb="0px !important"
@@ -34,9 +38,9 @@ export function FeeEstimateItem(props: FeeEstimateItemProps) {
       onClick={() => onSelectItem(index)}
       p="tight"
     >
-      <Text fontSize={1} fontWeight={500} ml="2px">
+      <styled.span fontSize={1} fontWeight={500} ml="2px">
         {labels[index]}
-      </Text>
+      </styled.span>
       {isVisible ? selectedIcon : <ChevronDownIcon />}
     </Stack>
   );

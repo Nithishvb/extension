@@ -1,7 +1,7 @@
 import { ReactNode, useMemo } from 'react';
 
 import { deserializeTransaction } from '@stacks/transactions';
-import { Stack, Text } from 'leather-styles/jsx';
+import { Stack } from 'leather-styles/jsx';
 
 import { SubmittedTransactionItem } from '@app/features/activity-list/components/submitted-transaction-list/submitted-transaction-item';
 import { SubmittedTransaction } from '@app/store/submitted-transactions/submitted-transactions.slice';
@@ -19,9 +19,9 @@ interface SubmittedTransactionListLayoutProps {
 export function SubmittedTransactionListLayout({ children }: SubmittedTransactionListLayoutProps) {
   return (
     <>
-      <Text textStyle="body.small" color={token('colors.accent.text-subdued')}>
+      <styled.span textStyle="body.small" color={token('colors.accent.text-subdued')}>
         Submitted
-      </Text>
+      </styled.span>
       <Stack mt="base-loose" pb="extra-loose" gap="loose">
         {children}
       </Stack>

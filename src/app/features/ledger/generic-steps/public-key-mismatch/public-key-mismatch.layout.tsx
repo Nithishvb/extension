@@ -1,5 +1,5 @@
 import LedgerWithRedOutline from '@assets/images/ledger/ledger-red-outline.png';
-import { Box, Button, Flex, Text } from 'leather-styles/jsx';
+import { Box, Button, Flex } from 'leather-styles/jsx';
 
 import { Title } from '@app/components/typography';
 
@@ -16,9 +16,9 @@ export function PublicKeyMismatchLayout({ onClose, onTryAgain }: PublicKeyMismat
         <img src={LedgerWithRedOutline} width="247px" height="55px" />
       </Box>
       <Title mt="extra-loose">Public key does not match</Title>
-      <Text mt="base-tight" lineHeight="24px" color={token('colors.accent.text-subdued')}>
+      <styled.span mt="base-tight" lineHeight="24px" color={token('colors.accent.text-subdued')}>
         Ensure you're using the same Ledger you used when setting up the Leather
-      </Text>
+      </styled.span>
       <Flex mt="base-loose">
         <Button mode="tertiary" mr="base-tight" onClick={onClose}>
           Close

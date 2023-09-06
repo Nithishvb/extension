@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
-import { Box, Flex, FlexProps, IconButton, Stack, Text, useMediaQuery } from 'leather-styles/jsx';
+import { Box, Flex, FlexProps, IconButton, Stack, useMediaQuery } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { BRANCH_NAME, COMMIT_SHA } from '@shared/environment';
@@ -86,7 +86,7 @@ export const Header: React.FC<HeaderProps> = memo(props => {
               isClickable={leatherLogoIsClickable}
               onClick={leatherLogoIsClickable ? () => navigate(RouteUrls.Home) : undefined}
             />
-            <Text
+            <styled.span
               display={!version ? 'none' : 'unset'}
               fontFamily="mono"
               fontSize="10px"
@@ -96,7 +96,7 @@ export const Header: React.FC<HeaderProps> = memo(props => {
               opacity={0.5}
             >
               {version}
-            </Text>
+            </styled.span>
           </Flex>
         </Flex>
       ) : (

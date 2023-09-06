@@ -3,7 +3,7 @@ import { Ref, useRef } from 'react';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
 import { useField } from 'formik';
 import { css } from 'leather-styles/css';
-import { Box, Flex, FlexProps, Input, Text } from 'leather-styles/jsx';
+import { Box, Flex, FlexProps, Input } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { useShowFieldError } from '@app/common/form-utils';
@@ -79,19 +79,19 @@ export function TextInputField({
         <SpaceBetween maxHeight="20px" mb="extra-tight">
           <Flex alignItems="center">
             {label && field.value ? (
-              <Text
+              <styled.span
                 color={showError ? token('colors.error') : token('colors.ink.11')}
                 fontSize={1}
                 fontWeight={500}
                 mr="tight"
               >
                 {label}
-              </Text>
+              </styled.span>
             ) : null}
             {topInputOverlay ? <Box zIndex={999}>{topInputOverlay}</Box> : null}
           </Flex>
           {labelAction ? (
-            <Text
+            <styled.span
               _hover={{ cursor: 'pointer', textDecoration: 'underline' }}
               data-testid={SendCryptoAssetSelectors.RecipientChooseAccountButton}
               as="button"
@@ -112,7 +112,7 @@ export function TextInputField({
               zIndex={999}
             >
               {labelAction}
-            </Text>
+            </styled.span>
           ) : null}
         </SpaceBetween>
         <Input
@@ -140,7 +140,7 @@ export function TextInputField({
           }}
         />
       </Flex>
-      <TextInputFieldError name={name} />
+      <styled.spanInputFieldError name={name} />
     </>
   );
 }

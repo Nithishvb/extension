@@ -44,7 +44,7 @@ export function FundLayout(props: FundLayoutProps) {
             {desktopViewport ? 'Let’s get STX into your wallet' : 'Get STX'}
           </styled.h1>
         </PageTitle>
-        <Text
+        <styled.span
           color={!desktopViewport ? 'unset' : 'accent.text-primary'}
           maxWidth="544px"
           textAlign={['left', 'center']}
@@ -54,7 +54,7 @@ export function FundLayout(props: FundLayoutProps) {
             Exchanges with “Fast checkout” make it easier to purchase STX for direct deposit into
             your wallet with a credit card.
           </styled.span>
-        </Text>
+        </styled.span>
       </Stack>
       <FiatProvidersList address={address} />
     </Flex>

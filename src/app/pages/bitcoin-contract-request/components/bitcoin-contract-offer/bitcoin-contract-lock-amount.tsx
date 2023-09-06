@@ -1,6 +1,8 @@
 import { FiArrowUpRight, FiCopy } from 'react-icons/fi';
 
-import { Box, Stack, Text, color, useClipboard } from 'leather-styles/jsx';
+// #4164 FIXME migrate useClipboard
+import { useClipboard } from '@stacks/ui';
+import { Box, Stack } from 'leather-styles/jsx';
 
 import { BtcIcon } from '@app/components/icons/btc-icon';
 import { Flag } from '@app/components/layout/flag';
@@ -30,12 +32,12 @@ export function BitcoinContractLockAmount({
   return (
     <Flag img={image || <BtcIcon />} align="middle" width="100%">
       <SpaceBetween>
-        <Text fontSize={2} fontWeight="500">
+        <styled.span fontSize={2} fontWeight="500">
           {title ? title : 'BTC'}
-        </Text>
-        <Text fontSize={2} fontWeight="500">
+        </styled.span>
+        <styled.span fontSize={2} fontWeight="500">
           {value}
-        </Text>
+        </styled.span>
       </SpaceBetween>
       <SpaceBetween mt="tight">
         {subtitle ? (
@@ -55,21 +57,25 @@ export function BitcoinContractLockAmount({
               onClick={onCopy}
               type="button"
             >
-              <Text color={token('colors.accent.text-subdued')} fontSize={1} mr="extra-tight">
+              <styled.span
+                color={token('colors.accent.text-subdued')}
+                fontSize={1}
+                mr="extra-tight"
+              >
                 {subtitle}
-              </Text>
+              </styled.span>
               {hoverLabel ? <FiCopy size="14px" /> : null}
             </Box>
           </Tooltip>
         ) : null}
         {subValue ? (
           <Stack as="button" isInline onClick={subValueAction} spacing="extra-tight" type="button">
-            <Text
+            <styled.span
               color={subValueAction ? color('accent') : token('colors.accent.text-subdued')}
               fontSize={1}
             >
               {subValue}
-            </Text>
+            </styled.span>
             {subValueAction ? <FiArrowUpRight color={color('accent')} /> : null}
           </Stack>
         ) : null}

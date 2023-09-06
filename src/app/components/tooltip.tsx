@@ -1,3 +1,5 @@
+// #4164 FIXME replace with radix tooltip
+// not sure why we have 2 types of tooltip
 import { memo, useMemo } from 'react';
 
 import Tippy, { TippyProps } from '@tippyjs/react';

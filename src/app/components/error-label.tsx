@@ -5,7 +5,7 @@ import { token } from 'leather-styles/tokens';
 
 export function ErrorLabel({ children, ...rest }: StackProps) {
   return (
-    <Stack gap="tight" color={color('feedback-error')} isInline alignItems="flex-start" {...rest}>
+    <Stack gap="tight" color={token('colors.error')} isInline alignItems="flex-start" {...rest}>
       <FiAlertCircle
         size="1rem"
         color={token('colors.error')}

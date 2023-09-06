@@ -1,6 +1,6 @@
 import { FiMoreHorizontal } from 'react-icons/fi';
 
-import { Box, IconButton, Stack, Text } from 'leather-styles/jsx';
+import { Box, IconButton, Stack } from 'leather-styles/jsx';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
 import { Caption } from '@app/components/typography';
@@ -25,9 +25,9 @@ export function EventCard(props: EventCardProps): React.JSX.Element {
     <>
       <Stack p="base-loose" gap="base-loose">
         <SpaceBetween position="relative">
-          <Text fontSize={2} fontWeight={500}>
+          <styled.span fontSize={2} fontWeight={500}>
             {title}
-          </Text>
+          </styled.span>
           {actions && (
             <IconButton size="24px" icon={FiMoreHorizontal} position="absolute" right={0} />
           )}

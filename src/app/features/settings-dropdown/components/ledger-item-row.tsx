@@ -1,4 +1,4 @@
-import { Flex, Text } from 'leather-styles/jsx';
+import { Flex } from 'leather-styles/jsx';
 import { Divider } from 'leather-styles/jsx';
 
 import { WalletTypeLedgerIcon } from '@app/components/icons/wallet-type-ledger-icon';
@@ -11,9 +11,9 @@ export function LedgerDeviceItemRow({ deviceType }: LedgerDeviceItemRowProps) {
     <>
       <Flex my="base-tight" mb="base" mx="base" fontSize="14px" alignItems="center">
         <WalletTypeLedgerIcon mr="base-tight" />
-        <Text color={color('text-body')} cursor="default">
+        <styled.span color={color('text-body')} cursor="default">
           Ledger {deviceType ?? ''}
-        </Text>
+        </styled.span>
       </Flex>
       <Divider />
     </>

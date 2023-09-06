@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BoxProps, Text } from 'leather-styles/jsx';
+import { BoxProps } from 'leather-styles/jsx';
 
 interface ExternalLinkProps extends BoxProps {
   href: string;
@@ -8,8 +8,8 @@ interface ExternalLinkProps extends BoxProps {
 }
 export function ExternalLink(props: ExternalLinkProps) {
   return (
-    <Text as="a" color={color('accent')} target="_blank" {...props}>
+    <styled.span as="a" color={color('accent')} target="_blank" {...props}>
       {props.children}
-    </Text>
+    </styled.span>
   );
 }

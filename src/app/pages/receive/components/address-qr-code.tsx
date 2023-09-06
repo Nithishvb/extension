@@ -10,8 +10,9 @@ export const QrCode = memo(({ principal, ...rest }: { principal: string } & Flex
       createQR(principal, {
         ecc: 0,
         qrSize: 180,
-        backgroundColor: color('text-body'),
-        foregroundColor: color('invert'),
+        //  #4164 FIXME check these colors
+        backgroundColor: token('colors.accent.text-primary'), //color('text-body'),
+        foregroundColor: token('colors.accent.background-primary'), //color('invert'),
       }),
     [principal]
   );

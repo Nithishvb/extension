@@ -1,8 +1,10 @@
 import { useCallback } from 'react';
 import { FiCopy } from 'react-icons/fi';
 
+// #4164 FIXME migrate useClipboard
+import { useClipboard } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
-import { Box, Text, color, useClipboard } from 'leather-styles/jsx';
+import { Box, styled } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { SpaceBetween } from '@app/components/layout/space-between';
@@ -22,13 +24,13 @@ export function RecipientAddressDisplayer({ address }: RecipientAddressDisplayer
 
   return (
     <SpaceBetween mb="base" width="100%">
-      <Text
+      <styled.span
         color={token('colors.accent.text-subdued')}
         data-testid={SendCryptoAssetSelectors.RecipientBnsAddressLabel}
         fontSize={0}
       >
         {address}
-      </Text>
+      </styled.span>
       <Tooltip hideOnClick={false} label={hasCopied ? 'Copied!' : 'Copy address'} placement="right">
         <Box
           _hover={{ cursor: 'pointer' }}

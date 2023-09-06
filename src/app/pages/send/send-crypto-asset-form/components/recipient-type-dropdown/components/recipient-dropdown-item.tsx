@@ -1,4 +1,5 @@
-import { Box, Text } from 'leather-styles/jsx';
+import { color } from '@stacks/ui-utils';
+import { Box, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { ChevronDownIcon } from '@app/components/icons/chevron-down-icon';
@@ -28,7 +29,7 @@ export function RecipientDropdownItem(props: RecipientDropdownItemProps) {
       pl={isVisible ? 'tight' : 'unset'}
       type="button"
     >
-      <Text
+      <styled.span
         color={isVisible ? color('text-body') : token('colors.brown.12')}
         fontSize={1}
         fontWeight={isVisible ? 400 : 500}
@@ -36,7 +37,7 @@ export function RecipientDropdownItem(props: RecipientDropdownItemProps) {
         mr="tight"
       >
         {labels[index]}
-      </Text>
+      </styled.span>
       {/* TODO - check if color needs to be passed to icon */}
       {isVisible ? <></> : <ChevronDownIcon color={token('colors.brown.12')} />}
     </Box>

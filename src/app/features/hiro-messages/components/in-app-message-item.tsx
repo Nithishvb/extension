@@ -1,6 +1,6 @@
 import { FiX } from 'react-icons/fi';
 
-import { Box, Flex, Text } from 'leather-styles/jsx';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { HiroMessage } from '@app/query/common/remote-config/remote-config.query';
 
@@ -45,11 +45,11 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
       )}
       <Box fontSize="13px" lineHeight="20px">
         {title && (
-          <Text display="block" lineHeight="inherit">
+          <styled.span display="block" lineHeight="inherit">
             {title}
-          </Text>
+          </styled.span>
         )}
-        <Text
+        <styled.span
           display="inline"
           fontSize="inherit"
           ml={[null, null, 'base']}
@@ -57,9 +57,9 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
           lineHeight="inherit"
         >
           {text}
-        </Text>
+        </styled.span>
         {learnMoreUrl && (
-          <Text
+          <styled.span
             as="a"
             display="inline-block"
             textDecoration="underline"
@@ -68,7 +68,7 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
             target="_blank"
           >
             {learnMoreText ? learnMoreText : 'Learn more ↗'}
-          </Text>
+          </styled.span>
         )}
       </Box>
     </Flex>

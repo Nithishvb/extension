@@ -1,6 +1,6 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { Box, Flex, Stack, Text } from 'leather-styles/jsx';
+import { Box, Flex, Stack } from 'leather-styles/jsx';
 
 import { Tooltip } from '@app/components/tooltip';
 
@@ -16,9 +16,9 @@ export function PendingLabel({
 }: PendingLabelProps) {
   return (
     <Flex alignItems="center">
-      <Text color={color('feedback-alert')} fontSize={0} mr="2px">
+      <styled.span color={color('feedback-alert')} fontSize={0} mr="2px">
         Pending
-      </Text>
+      </styled.span>
       <Tooltip label={pendingWaitingMessage} placement="bottom">
         <Stack>
           <Box

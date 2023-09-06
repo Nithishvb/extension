@@ -94,7 +94,7 @@ export function BitcoinCustomFee({
                   </Link>
                 </styled.span>
                 <Stack gap="extra-tight">
-                  <TextInputField
+                  <styled.spanInputField
                     hasError={hasInsufficientBalanceError}
                     label={feeInputLabel}
                     name="feeRate"

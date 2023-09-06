@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import { useField } from 'formik';
-import { Input, InputGroup, Stack, Text } from 'leather-styles/jsx';
+import { Input, InputGroup, Stack } from 'leather-styles/jsx';
 
 import { microStxToStx, stxToMicroStx } from '@app/common/money/unit-conversion';
 import { ErrorLabel } from '@app/components/error-label';
@@ -47,9 +47,16 @@ export function IncreaseFeeField(props: IncreaseFeeFieldProps): React.JSX.Elemen
         />
 
         <InputGroup flexDirection="column">
-          <Text as="label" display="block" mb="tight" fontSize={1} fontWeight="500" htmlFor="fee">
+          <styled.span
+            as="label"
+            display="block"
+            mb="tight"
+            fontSize={1}
+            fontWeight="500"
+            htmlFor="fee"
+          >
             Fee
-          </Text>
+          </styled.span>
           <Input
             display="block"
             type="number"
@@ -63,9 +70,9 @@ export function IncreaseFeeField(props: IncreaseFeeFieldProps): React.JSX.Elemen
       </Stack>
       {meta.error && (
         <ErrorLabel>
-          <Text textStyle="caption" lineHeight="18px">
+          <styled.span textStyle="caption" lineHeight="18px">
             {meta.error}
-          </Text>
+          </styled.span>
         </ErrorLabel>
       )}
     </>

@@ -1,4 +1,5 @@
-import { Stack, Text } from 'leather-styles/jsx';
+import { Stack, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
 
@@ -26,25 +27,25 @@ export function SendTransferConfirmationDetails({
       width="100%"
     >
       <SpaceBetween spacing="base">
-        <Text color={token('colors.accent.text-subdued')}>From</Text>
-        <Text>{currentAddress}</Text>
+        <styled.span color={token('colors.accent.text-subdued')}>From</styled.span>
+        <styled.span>{currentAddress}</styled.span>
       </SpaceBetween>
       <SpaceBetween spacing="base">
-        <Text color={token('colors.accent.text-subdued')}>To</Text>
-        <Text>{recipient}</Text>
+        <styled.span color={token('colors.accent.text-subdued')}>To</styled.span>
+        <styled.span>{recipient}</styled.span>
       </SpaceBetween>
       <SpaceBetween spacing="base">
-        <Text color={token('colors.accent.text-subdued')}>Fee</Text>
-        <Text>{feeRowValue}</Text>
+        <styled.span color={token('colors.accent.text-subdued')}>Fee</styled.span>
+        <styled.span>{feeRowValue}</styled.span>
       </SpaceBetween>
       <SpaceBetween spacing="base">
-        <Text color={token('colors.accent.text-subdued')}>Total</Text>
-        <Text>{total}</Text>
+        <styled.span color={token('colors.accent.text-subdued')}>Total</styled.span>
+        <styled.span>{total}</styled.span>
       </SpaceBetween>
       {time && (
         <SpaceBetween spacing="base">
-          <Text color={token('colors.accent.text-subdued')}>Estimated Time</Text>
-          <Text>{time}</Text>
+          <styled.span color={token('colors.accent.text-subdued')}>Estimated Time</styled.span>
+          <styled.span>{time}</styled.span>
         </SpaceBetween>
       )}
     </Stack>

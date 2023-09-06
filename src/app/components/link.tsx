@@ -1,6 +1,6 @@
 import { KeyboardEvent } from 'react';
 
-import { BoxProps, Text } from 'leather-styles/jsx';
+import { BoxProps } from 'leather-styles/jsx';
 
 export const buildEnterKeyEvent = (onClick: () => void) => {
   return (event: KeyboardEvent) => {
@@ -13,7 +13,7 @@ export const buildEnterKeyEvent = (onClick: () => void) => {
 export function Link(props: BoxProps): React.JSX.Element {
   const { _hover = {}, children, fontSize = '12px', onClick, ...rest } = props;
   return (
-    <Text
+    <styled.span
       _hover={{ textDecoration: 'underline', cursor: 'pointer', ..._hover }}
       fontSize={fontSize}
       color={color('brand')}
@@ -23,6 +23,6 @@ export function Link(props: BoxProps): React.JSX.Element {
       {...rest}
     >
       {children}
-    </Text>
+    </styled.span>
   );
 }

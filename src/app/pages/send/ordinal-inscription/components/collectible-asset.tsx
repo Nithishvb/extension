@@ -24,10 +24,10 @@ export function CollectibleAsset({ icon, name, symbol }: CollectibleAssetProps) 
       <SpaceBetween>
         <Flex alignItems="center">
           {icon}
-          <Text ml="tight" mr="extra-tight">
+          <styled.span ml="tight" mr="extra-tight">
             {name}
-          </Text>
-          {symbol && <Text>({symbol.toUpperCase()})</Text>}
+          </styled.span>
+          {symbol && <styled.span>({symbol.toUpperCase()})</styled.span>}
         </Flex>
       </SpaceBetween>
     </Flex>

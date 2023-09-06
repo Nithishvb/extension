@@ -53,7 +53,11 @@ export function IncreaseBtcFeeForm({ btcTx }: IncreaseBtcFeeFormProps) {
         {btcTx && <BitcoinTransactionItem position="relative" transaction={btcTx} zIndex={99} />}
         <Stack gap="base">
           <Stack gap="extra-tight">
-            <TextInputField label={feeInputLabel} name="feeRate" placeholder={feeInputLabel} />
+            <styled.spanInputField
+              label={feeInputLabel}
+              name="feeRate"
+              placeholder={feeInputLabel}
+            />
             <BitcoinCustomFeeFiat
               recipient={recipient}
               isSendingMax={false}

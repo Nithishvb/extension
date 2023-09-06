@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { useField } from 'formik';
-import { Flex, Text } from 'leather-styles/jsx';
+import { Flex } from 'leather-styles/jsx';
 
 import { satToBtc } from '@app/common/money/unit-conversion';
 
@@ -33,8 +33,8 @@ export function BitcoinCustomFeeFiat({
 
   return (
     <Flex justifyContent="space-between" color="#74777D" fontSize="14px">
-      <Text>{feeData.fiatFeeValue}</Text>
-      <Text>{feeData.feeInBtc} BTC</Text>
+      <styled.span>{feeData.fiatFeeValue}</styled.span>
+      <styled.span>{feeData.feeInBtc} BTC</styled.span>
     </Flex>
   );
 }

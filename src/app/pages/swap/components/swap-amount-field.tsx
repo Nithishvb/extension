@@ -2,6 +2,7 @@ import { ChangeEvent } from 'react';
 
 import { useField, useFormikContext } from 'formik';
 import { Input, Stack } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { useShowFieldError } from '@app/common/form-utils';
 import { Caption } from '@app/components/typography';
@@ -37,7 +38,7 @@ export function SwapAmountField({ amountAsFiat, isDisabled, name }: SwapAmountFi
         _focus={{ border: 'none' }}
         autoComplete="off"
         border="none"
-        color={showError ? color('feedback-error') : 'unset'}
+        color={showError ? token('colors.error') : 'unset'}
         display="block"
         fontSize="20px"
         height="28px"
@@ -50,7 +51,7 @@ export function SwapAmountField({ amountAsFiat, isDisabled, name }: SwapAmountFi
         {...field}
         onChange={onChange}
       />
-      <Caption color={showError ? color('feedback-error') : token('colors.accent.text-subdued')}>
+      <Caption color={showError ? token('colors.error') : token('colors.accent.text-subdued')}>
         {amountAsFiat}
       </Caption>
     </Stack>

@@ -1,6 +1,6 @@
 import { FiAlertCircle } from 'react-icons/fi';
 
-import { Box, Stack, Text } from 'leather-styles/jsx';
+import { Box, Stack } from 'leather-styles/jsx';
 
 export function SponsoredLabel(): React.JSX.Element {
   return (
@@ -19,13 +19,13 @@ export function SponsoredLabel(): React.JSX.Element {
           color={color('accent')}
           size="16px"
         />
-        <Text
+        <styled.span
           color={token('colors.accent.action-primary-default')}
           fontSize="12px"
           fontWeight="500"
         >
           This transaction is sponsored, so no fee is charged
-        </Text>
+        </styled.span>
       </Stack>
     </Stack>
   );

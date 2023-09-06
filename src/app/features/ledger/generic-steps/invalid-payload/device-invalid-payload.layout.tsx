@@ -1,5 +1,5 @@
 import LedgerWithRedOutline from '@assets/images/ledger/ledger-red-outline.png';
-import { Box, Flex, Text } from 'leather-styles/jsx';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { LeatherButton } from '@app/components/button/button';
 import { Title } from '@app/components/typography';
@@ -18,9 +18,9 @@ export function LedgerDeviceInvalidPayloadLayout({
         <img src={LedgerWithRedOutline} width="247px" height="55px" />
       </Box>
       <Title mt="extra-loose">Data Invalid</Title>
-      <Text mt="base-tight" lineHeight="24px" color={token('colors.accent.text-subdued')}>
+      <styled.span mt="base-tight" lineHeight="24px" color={token('colors.accent.text-subdued')}>
         Your Ledger device has rejected the payload stating it is invalid
-      </Text>
+      </styled.span>
       <Flex mt="base-loose">
         <LeatherButton variant="ghost" mr="base-tight" onClick={onClose}>
           Close

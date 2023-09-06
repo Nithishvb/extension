@@ -1,5 +1,5 @@
 import UnsupportedBrowserImg from '@assets/images/ledger/unsupported-browser.png';
-import { Box, Flex, Text } from 'leather-styles/jsx';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { figmaTheme } from '@app/common/utils/figma-theme';
 import { ExternalLink } from '@app/components/external-link';
@@ -13,7 +13,7 @@ export function UnsupportedBrowserLayout() {
         <img src={UnsupportedBrowserImg} width="239px" height="177px" />
       </Box>
       <LedgerTitle mt="tight">Your browser isn't supported</LedgerTitle>
-      <Text
+      <styled.span
         as="p"
         fontSize="16px"
         lineHeight="1.7"
@@ -25,7 +25,7 @@ export function UnsupportedBrowserLayout() {
         To connect your Ledger with the Leather try{' '}
         <ExternalLink href="https://www.google.com/chrome/">Chrome</ExternalLink> or{' '}
         <ExternalLink href="https://brave.com/download/">Brave</ExternalLink>.
-      </Text>
+      </styled.span>
     </Flex>
   );
 }

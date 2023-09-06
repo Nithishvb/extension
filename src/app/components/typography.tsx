@@ -54,7 +54,7 @@ export const Text = forwardRefWithAs<BoxProps, 'span'>((props, ref) => (
 ));
 
 export function Body(props: BoxProps) {
-  return <Text css={c1} {...props} />;
+  return <styled.span css={c1} {...props} />;
 }
 
 export const Caption = forwardRefWithAs<{ variant?: 'c1' | 'c2' | 'c3' } & BoxProps, 'span'>(
@@ -72,8 +72,8 @@ export const Caption = forwardRefWithAs<{ variant?: 'c1' | 'c2' | 'c3' } & BoxPr
 
 export function CaptionSeparatorDot(props: BoxProps) {
   return (
-    <Text color={token('colors.accent.text-subdued')} fontSize="10px" {...props}>
+    <styled.span color={token('colors.accent.text-subdued')} fontSize="10px" {...props}>
       •
-    </Text>
+    </styled.span>
   );
 }

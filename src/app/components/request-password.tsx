@@ -76,7 +76,7 @@ export function RequestPassword({ title, caption, onSuccess }: RequestPasswordPr
         {error && (
           <Box>
             <ErrorLabel>
-              <Text textStyle="caption">{error}</Text>
+              <styled.span textStyle="caption">{error}</styled.span>
             </ErrorLabel>
           </Box>
         )}

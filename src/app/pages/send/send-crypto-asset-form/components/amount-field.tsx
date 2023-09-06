@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
 import { useField } from 'formik';
-import { Box, Flex, Input, Stack, Text } from 'leather-styles/jsx';
+import { Box, Flex, Input, Stack, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { STX_DECIMALS, TOKEN_NAME_LENGTH } from '@shared/constants';
@@ -154,7 +154,7 @@ export function AmountField({
           position="relative"
           fontFamily="Marche"
         >
-          {isSendingMax ? <Text fontSize={fontSize + 'px'}>~</Text> : null}
+          {isSendingMax ? <styled.span fontSize={fontSize + 'px'}>~</styled.span> : null}
           <Input
             _disabled={{ bg: token('colors.accent.background-primary') }}
             _focus={{
@@ -192,7 +192,7 @@ export function AmountField({
            * This is what we use to measure the size of the input, it's hidden
            * and with no pointer events so users can't interact with it
            */}
-          <Text
+          <styled.span
             position="absolute"
             ref={fieldRef}
             visibility="hidden"
@@ -205,8 +205,8 @@ export function AmountField({
             minWidth={1 + 'ch'}
           >
             {field.value}
-          </Text>
-          <Text
+          </styled.span>
+          <styled.span
             fontFamily="Marche"
             color={token('colors.accent.text-primary')}
             fontSize={fontSize + 'px'}
@@ -214,7 +214,7 @@ export function AmountField({
             pl="tight"
           >
             {symbol.toUpperCase()}
-          </Text>
+          </styled.span>
         </Flex>
         <Box mt="12px">{switchableAmount && switchableAmount}</Box>
       </Flex>

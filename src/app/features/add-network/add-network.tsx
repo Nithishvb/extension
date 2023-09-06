@@ -125,7 +125,7 @@ export function AddNetwork() {
               gap="loose"
               textAlign={['left', 'center']}
             >
-              <Text>
+              <styled.span>
                 Use this form to add a new instance of the{' '}
                 <a
                   href="https://github.com/blockstack/stacks-blockchain-api"
@@ -135,7 +135,7 @@ export function AddNetwork() {
                   Stacks Blockchain API
                 </a>
                 . Make sure you review and trust the host before you add it.
-              </Text>
+              </styled.span>
               <Input
                 autoFocus
                 borderRadius="10px"
@@ -169,9 +169,9 @@ export function AddNetwork() {
               />
               {error ? (
                 <ErrorLabel>
-                  <Text textStyle="caption" data-testid={NetworkSelectors.ErrorText}>
+                  <styled.span textStyle="caption" data-testid={NetworkSelectors.ErrorText}>
                     {error}
-                  </Text>
+                  </styled.span>
                 </ErrorLabel>
               ) : null}
               <LeatherButton

@@ -19,14 +19,14 @@ export function InscriptionMetadata({
   return (
     <Flex alignItems="flex-start" flexDirection="column" justifyContent="center">
       {icon && icon}
-      <Text fontSize={2} fontWeight="500">
+      <styled.span fontSize={2} fontWeight="500">
         {title}
-      </Text>
-      <Text color={token('colors.accent.text-subdued')} fontSize={1}>
+      </styled.span>
+      <styled.span color={token('colors.accent.text-subdued')} fontSize={1}>
         {subtitle}
-      </Text>
+      </styled.span>
       {action ? (
-        <Text
+        <styled.span
           _hover={{ cursor: 'pointer', textDecoration: 'underline' }}
           as="button"
           color={color('accent')}
@@ -35,7 +35,7 @@ export function InscriptionMetadata({
           type="button"
         >
           {actionLabel}
-        </Text>
+        </styled.span>
       ) : null}
     </Flex>
   );

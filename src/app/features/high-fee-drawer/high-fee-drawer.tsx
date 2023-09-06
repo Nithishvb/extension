@@ -20,7 +20,7 @@ export function HighFeeDrawer(props: { learnMoreUrl: string }) {
 
   return (
     <ControlledDrawer
-      icon={<Box as={FiAlertTriangle} color={color('feedback-error')} size="36px" />}
+      icon={<Box as={FiAlertTriangle} color={token('colors.error')} size="36px" />}
       isShowing={isShowingHighFeeConfirmation}
       onClose={() => setIsShowingHighFeeConfirmation(false)}
     >

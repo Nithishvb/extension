@@ -1,7 +1,6 @@
 import { ReactNode, useRef } from 'react';
 import { FiInfo } from 'react-icons/fi';
 
-import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
 // TODO assess + refactor stacks/ui FADE
 // Can probably just replace with Panda Easings https://panda-css.com/docs/theming/tokens#easings
 
@@ -35,7 +34,10 @@ var Fade = function Fade(_ref) {
 
 export { Fade };
  */
-import { Box, Fade, Stack, Tooltip } from 'leather-styles/jsx';
+// #4164 FIXME replace with radix tooltip replace Fade
+import { Fade, Tooltip } from '@stacks/ui';
+import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
+import { Box, Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { FeeTypes } from '@shared/models/fees/fees.model';
@@ -97,7 +99,7 @@ export function FeeEstimateSelectLayout(props: FeeEstimateSelectLayoutProps) {
           <Box
             _hover={{ cursor: 'pointer' }}
             as={FiInfo}
-            color={token('c')}
+            color={token('colors.accent.text-subdued')}
             onClick={() => openInNewTab(url)}
             size="14px"
           />

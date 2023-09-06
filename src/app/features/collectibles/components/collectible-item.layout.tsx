@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Box, Button, Stack, Text } from 'leather-styles/jsx';
+import { Box, Button, Stack } from 'leather-styles/jsx';
 import type { BoxProps } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 import { useHover } from 'use-events';
@@ -77,7 +77,7 @@ export function CollectibleItemLayout({
           </Box>
         </Box>
         <Stack mt="base" pl="tight" gap="extra-tight" textAlign="left">
-          <Text
+          <styled.span
             color={token('colors.accent.text-primary')}
             fontWeight="500"
             overflow="hidden"
@@ -86,10 +86,10 @@ export function CollectibleItemLayout({
             width="95%"
           >
             {title}
-          </Text>
-          <Text color={token('colors.accent.text-subdued')} fontSize={1}>
+          </styled.span>
+          <styled.span color={token('colors.accent.text-subdued')} fontSize={1}>
             {subtitle}
-          </Text>
+          </styled.span>
         </Stack>
 
         {onClickSend ? (

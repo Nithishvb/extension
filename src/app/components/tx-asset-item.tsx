@@ -1,4 +1,4 @@
-import { Stack, StackProps, Text } from 'leather-styles/jsx';
+import { Stack, StackProps } from 'leather-styles/jsx';
 
 import { isValidUrl } from '@shared/utils/validate-url';
 
@@ -24,13 +24,13 @@ export function TxAssetItem(props: AssetItemProps): React.JSX.Element {
           isStx={iconString === 'STX'}
           size="32px"
         />
-        <Text fontWeight="500" fontSize={4}>
+        <styled.span fontWeight="500" fontSize={4}>
           {ticker}
-        </Text>
+        </styled.span>
       </Stack>
-      <Text fontWeight="500" fontSize={4}>
+      <styled.span fontWeight="500" fontSize={4}>
         {amount}
-      </Text>
+      </styled.span>
     </SpaceBetween>
   );
 }

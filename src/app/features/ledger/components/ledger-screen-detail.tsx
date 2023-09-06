@@ -1,6 +1,6 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { Box, Flex, Text } from 'leather-styles/jsx';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { Tooltip } from '@app/components/tooltip';
 import { Caption } from '@app/components/typography';
@@ -34,9 +34,9 @@ export function LedgerScreenDetail(props: LedgerScreenDetailProps) {
         )}
       </Caption>
       <Flex alignItems="center" mt="base">
-        <Text overflowWrap="break-word" width="100%">
+        <styled.span overflowWrap="break-word" width="100%">
           {children}
-        </Text>
+        </styled.span>
       </Flex>
     </Flex>
   );
