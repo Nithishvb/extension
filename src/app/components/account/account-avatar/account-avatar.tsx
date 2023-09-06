@@ -40,7 +40,7 @@ export const AccountAvatar = memo(({ name, publicKey, index, ...props }: Account
       flexShrink={0}
       background={isFirstGraphemeEmoji ? '#f4f4f6' : token('colors.accent.background-primary')}
       backgroundImage={isFirstGraphemeEmoji ? undefined : gradient}
-      color={color('text-title')}
+      color={token('colors.accent.action-primary-default')}
       userSelect="none"
       {...props}
     >

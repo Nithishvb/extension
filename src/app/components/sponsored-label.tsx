@@ -19,7 +19,11 @@ export function SponsoredLabel(): React.JSX.Element {
           color={color('accent')}
           size="16px"
         />
-        <Text color={color('text-title')} fontSize="12px" fontWeight="500">
+        <Text
+          color={token('colors.accent.action-primary-default')}
+          fontSize="12px"
+          fontWeight="500"
+        >
           This transaction is sponsored, so no fee is charged
         </Text>
       </Stack>

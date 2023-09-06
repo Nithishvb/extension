@@ -42,7 +42,7 @@ export function PasswordField({ strengthResult, isDisabled }: PasswordFieldProps
           _hover={{ bg: 'transparent', boxShadow: 'none' }}
           bg="transparent"
           boxShadow="none"
-          color={color('text-title')}
+          color={token('colors.accent.action-primary-default')}
           height="20px"
           onClick={() => setShowPassword(!showPassword)}
           position="absolute"

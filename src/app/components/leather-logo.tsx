@@ -15,7 +15,7 @@ export const LeatherLogo = memo((props: LeatherLogoProps) => {
     <Stack
       _hover={{ color: token('colors.brown.11') }}
       alignItems="center"
-      color={color('text-title')}
+      color={token('colors.accent.action-primary-default')}
       cursor={isClickable ? 'pointer' : 'unset'}
       isInline
       {...rest}

@@ -15,7 +15,7 @@ export function IncreaseFeeButton(props: IncreaseFeeButtonProps) {
   return (
     <Button
       _hover={{
-        color: color('text-title'),
+        color: token('colors.accent.action-primary-default'),
       }}
       color={color('text-body')}
       fontSize={0}
