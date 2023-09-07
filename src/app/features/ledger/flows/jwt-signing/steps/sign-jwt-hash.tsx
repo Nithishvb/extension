@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import SignLedgerTransaction from '@assets/images/ledger/sign-ledger-transaction.png';
 import { Box, Flex } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { DeviceOperationApprovalStatus } from '@app/features/ledger/components/device-approval-status';
 import { LedgerScreenDetail } from '@app/features/ledger/components/ledger-screen-detail';

@@ -1,7 +1,9 @@
 import { ChangeEvent } from 'react';
 
+// #4164 FIXME migrate Input
+import { Input } from '@stacks/ui';
 import { useField, useFormikContext } from 'formik';
-import { Input, Stack } from 'leather-styles/jsx';
+import { Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { useShowFieldError } from '@app/common/form-utils';
@@ -29,7 +31,7 @@ export function SwapAmountField({ amountAsFiat, isDisabled, name }: SwapAmountFi
   }
 
   return (
-    <Stack alignItems="flex-end" gap="extra-tight">
+    <Stack alignItems="flex-end" gap="space.01">
       <Caption as="label" hidden htmlFor={name}>
         {name}
       </Caption>

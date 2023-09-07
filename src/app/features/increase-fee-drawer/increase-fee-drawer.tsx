@@ -1,13 +1,15 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Flex, Spinner, Stack } from 'leather-styles/jsx';
+// #4164 FIXME migrate Spinner
+import { Spinner } from '@stacks/ui';
+import { Flex, Stack } from 'leather-styles/jsx';
 
 import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { Caption } from '@app/components/typography';
 
 interface IncreaseFeeDrawerProps {
-  feeForm: JSX.Element;
+  feeForm: React.JSX.Element;
   onClose: () => void;
   isShowing: boolean;
 }

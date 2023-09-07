@@ -1,7 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
 
+// #4164 FIXME migrate Input, InputGroup,
+import { Input, InputGroup } from '@stacks/ui';
 import { useField } from 'formik';
-import { Input, InputGroup, Stack } from 'leather-styles/jsx';
+import { Stack, styled } from 'leather-styles/jsx';
 
 import { microStxToStx, stxToMicroStx } from '@app/common/money/unit-conversion';
 import { ErrorLabel } from '@app/components/error-label';
@@ -36,7 +38,7 @@ export function IncreaseFeeField(props: IncreaseFeeFieldProps): React.JSX.Elemen
       <Stack width="100%" position="relative">
         <FeeMultiplier
           pt="base-loose"
-          pr="base-tight"
+          pr="space.03"
           height="100%"
           top={0}
           right={0}
@@ -47,16 +49,9 @@ export function IncreaseFeeField(props: IncreaseFeeFieldProps): React.JSX.Elemen
         />
 
         <InputGroup flexDirection="column">
-          <styled.span
-            as="label"
-            display="block"
-            mb="space.02"
-            fontSize={1}
-            fontWeight="500"
-            htmlFor="fee"
-          >
+          <styled.label display="block" mb="space.02" textStyle="label.01" htmlFor="fee">
             Fee
-          </styled.span>
+          </styled.label>
           <Input
             display="block"
             type="number"

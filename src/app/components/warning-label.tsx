@@ -20,7 +20,7 @@ export function WarningLabel({ children, title, ...props }: WarningLabelProps) {
         img={<AlertIcon color={token('colors.yellow.600')} />}
         minHeight="48px"
         px="space.04"
-        py="base-tight"
+        py="space.03"
         width="100%"
       >
         {title ? (

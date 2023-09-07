@@ -1,6 +1,7 @@
 import { memo } from 'react';
 
 import { BoxProps, Circle } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { useAccountGradient } from '@app/common/hooks/account/use-account-gradient';
 
@@ -38,6 +39,7 @@ export const AccountAvatar = memo(({ name, publicKey, index, ...props }: Account
   return (
     <Circle
       flexShrink={0}
+      // #4164 FIXME migrate color  '#f4f4f6'
       background={isFirstGraphemeEmoji ? '#f4f4f6' : token('colors.accent.background-primary')}
       backgroundImage={isFirstGraphemeEmoji ? undefined : gradient}
       color={token('colors.accent.action-primary-default')}

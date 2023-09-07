@@ -8,7 +8,7 @@ export function PsbtRequestSighashWarningLabel() {
       The details you see here are not guaranteed. Be sure to fully trust your counterparty, who can
       later modify this transaction to send or receive other assets from your account, and possibly
       even drain it.
-      <styled.span display="inline" pl="extra-tight" textDecoration="underline">
+      <styled.span display="inline" pl="space.01" textDecoration="underline">
         Learn more↗
       </styled.span>
     </WarningLabel>

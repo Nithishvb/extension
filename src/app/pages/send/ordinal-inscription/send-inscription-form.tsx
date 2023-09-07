@@ -45,7 +45,7 @@ export function SendInscriptionForm() {
                 subtitle="Ordinal inscription"
                 title={inscription.title}
               />
-              <Box mt={['base', 'extra-loose', '100px']}>
+              <Box mt={['space.04', 'space.06', '100px']}>
                 <Flex flexDirection="column" mt="space.05" width="100%">
                   <CollectibleAsset icon={<OrdinalIcon />} name="Ordinal inscription" />
                   <RecipientField

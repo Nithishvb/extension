@@ -47,7 +47,8 @@ export { ScaleFade };
  *
  *
  */
-import { SlideFade } from 'leather-styles/jsx';
+// #4164 FIXME migrate SlideFade
+import { SlideFade } from '@stacks/ui';
 import { Box, Flex, Stack, StackProps } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
@@ -85,7 +86,7 @@ export function ChooseFeeTabs(props: ChooseFeeTabsProps) {
         {activeTab === 0 && (
           <Suspense fallback={<LoadingSpinner pb="72px" />}>
             <SlideFade in={true}>
-              {styles => (
+              {(styles: React.CSSProperties) => (
                 <Box style={styles} width="100%">
                   {feesList}
                 </Box>
@@ -96,7 +97,7 @@ export function ChooseFeeTabs(props: ChooseFeeTabsProps) {
         {activeTab === 1 && (
           <Suspense fallback={<LoadingSpinner pb="72px" />}>
             <SlideFade in={true}>
-              {styles => (
+              {(styles: React.CSSProperties) => (
                 <Box width="100%" style={styles}>
                   {customFee}
                 </Box>

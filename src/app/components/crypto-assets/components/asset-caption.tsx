@@ -2,7 +2,7 @@ import { FiInfo } from 'react-icons/fi';
 
 // #4164 FIXME migrate Tooltip - use radix instead
 import { Tooltip } from '@stacks/ui';
-import { Flex, Stack } from 'leather-styles/jsx';
+import { Flex, HStack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 interface AssetCaptionProps {
@@ -19,7 +19,7 @@ export function AssetCaption({ caption, isUnanchored }: AssetCaptionProps) {
             • Microblock
           </styled.span>
           <Tooltip placement="right-end" label={'Learn more about microblocks'}>
-            <Stack isInline>
+            <HStack>
               <a
                 href="https://docs.stacks.co/understand-stacks/microblocks"
                 target="_blank"
@@ -34,7 +34,7 @@ export function AssetCaption({ caption, isUnanchored }: AssetCaptionProps) {
                   style={{ marginLeft: '1px' }} // check this margin
                 />
               </a>
-            </Stack>
+            </HStack>
           </Tooltip>
         </>
       ) : (

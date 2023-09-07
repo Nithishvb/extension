@@ -75,8 +75,8 @@ export function NetworkListItemLayout(props: NetworkListItemLayoutProps) {
         {isCustom && (
           <LeatherButton
             type="button"
+            // #4164 FIXME migrate tertiary
             variant="ghost"
-            // mode="tertiary"
             ml="space.04"
             onClick={(e: React.MouseEvent<HTMLElement>) => {
               e.stopPropagation();

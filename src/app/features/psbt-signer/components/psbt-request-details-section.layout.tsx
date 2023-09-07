@@ -1,4 +1,5 @@
 import { Stack, StackProps } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { HasChildren } from '@app/common/has-children';
 
@@ -9,7 +10,7 @@ export function PsbtRequestDetailsSectionLayout({ children, ...props }: HasChild
       borderColor={token('colors.accent.background-primary')}
       borderRadius="16px"
       p="space.05"
-      gap="extra-tight"
+      gap="space.01"
       width="100%"
       {...props}
     >

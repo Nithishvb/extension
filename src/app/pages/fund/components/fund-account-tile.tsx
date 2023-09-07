@@ -16,7 +16,7 @@ export function FundAccountTile(props: FundAccountTileProps) {
   const { attributes, description, icon, onClickTile, receiveStxIcon, testId, title } = props;
 
   return (
-    <Box
+    <styled.button
       _focus={{
         border: '3px solid',
         borderColor: '#5546FF',
@@ -27,7 +27,6 @@ export function FundAccountTile(props: FundAccountTileProps) {
         boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.08)',
         cursor: 'pointer',
       }}
-      as="button"
       border="1px solid"
       borderColor={token('colors.accent.background-primary')}
       backgroundColor={token('colors.accent.background-primary')}
@@ -42,7 +41,7 @@ export function FundAccountTile(props: FundAccountTileProps) {
       height="11.3rem"
     >
       <Stack alignItems="flex-start" p={token('spacing.space.05')} gap={token('spacing.space.05')}>
-        <Stack alignItems="center" isInline spacing={receiveStxIcon ? 'tight' : 'base'}>
+        <HStack alignItems="center" gap={receiveStxIcon ? 'space.02' : 'space.04'}>
           {receiveStxIcon}
           <Box
             alignItems="center"
@@ -64,7 +63,7 @@ export function FundAccountTile(props: FundAccountTileProps) {
           >
             {title}
           </styled.span>
-        </Stack>
+        </HStack>
         <styled.span
           textStyle="body.02"
           data-testid={FundPageSelectors.FiatProviderName}
@@ -73,14 +72,8 @@ export function FundAccountTile(props: FundAccountTileProps) {
         >
           {description}
         </styled.span>
-        <Stack
-          // #4164 FIXME migrate
-          //isInline
-          gap="space.02"
-        >
-          {attributes}
-        </Stack>
+        <HStack gap="space.02">{attributes}</HStack>
       </Stack>
-    </Box>
+    </styled.button>
   );
 }

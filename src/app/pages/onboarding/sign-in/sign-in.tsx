@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// #4164 FIXME migrate Input
+import { Input } from '@stacks/ui';
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
-import { Grid, Input } from 'leather-styles/jsx';
+import { Grid } from 'leather-styles/jsx';
 import { Box, Flex, Stack, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 import { useFocus } from 'use-events';
@@ -129,7 +131,7 @@ export function SignIn() {
         <styled.h2 textStyle="heading.03" mb="space.04" hideBelow="sm" textAlign="center">
           Your Secret Key
         </styled.h2>
-        <Stack gap="base-tight" mb="space.05">
+        <Stack gap="space.03" mb="space.05">
           <Grid
             mx="space.04"
             gridTemplateColumns={['repeat(2, minmax(30%, 1fr))', 'repeat(3, minmax(120px, 1fr))']}

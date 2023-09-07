@@ -1,4 +1,4 @@
-import { Box, Flex, Stack } from 'leather-styles/jsx';
+import { Box, Flex, HStack } from 'leather-styles/jsx';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
 
@@ -25,10 +25,8 @@ export function TransactionItemLayout({
 }: TransactionItemLayoutProps) {
   return (
     <Box position="relative" cursor="pointer" {...rest}>
-      <Stack
+      <HStack
         alignItems="center"
-        // #4164 FIXME migrate
-        // isInline
         onClick={openTxLink}
         position="relative"
         gap="base-loose"
@@ -39,16 +37,12 @@ export function TransactionItemLayout({
           <SpaceBetween spacing="space.06">
             {txTitle} {txValue}
           </SpaceBetween>
-          <Stack
-            alignItems="center"
-            // #4164 FIXME migrate
-            //isInline
-          >
+          <HStack alignItems="center">
             {txCaption} {txStatus && txStatus}
             {belowCaptionEl ? belowCaptionEl : null}
-          </Stack>
+          </HStack>
         </Flex>
-      </Stack>
+      </HStack>
       {children}
     </Box>
   );

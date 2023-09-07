@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import GenericError from '@assets/images/generic-error.png';
 import { Box, Flex, FlexProps, HStack, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
 import { LeatherButton } from '@app/components/button/button';

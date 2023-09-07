@@ -1,6 +1,7 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { Box, Flex } from 'leather-styles/jsx';
+import { Flex, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { Tooltip } from '@app/components/tooltip';
 import { Caption } from '@app/components/typography';
@@ -20,12 +21,10 @@ export function LedgerScreenDetail(props: LedgerScreenDetailProps) {
           <Tooltip label={tooltipLabel} placement="top">
             <Flex display="inline-flex" cursor="question">
               {title}
-              <Box
-                as={FiInfo}
+              <FiInfo
                 color={token('colors.accent.text-subdued')}
-                ml="extra-tight"
+                style={{ marginLeft: 'space.01', marginTop: '3px' }}
                 size="14px"
-                mt="3px"
               />
             </Flex>
           </Tooltip>

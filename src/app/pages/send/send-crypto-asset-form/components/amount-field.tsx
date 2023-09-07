@@ -1,9 +1,11 @@
 import type { ChangeEvent } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+// #4164 FIXME migrate Input
+import { Input } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
 import { useField } from 'formik';
-import { Box, Flex, Input, Stack, styled } from 'leather-styles/jsx';
+import { Box, Flex, Stack, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { STX_DECIMALS, TOKEN_NAME_LENGTH } from '@shared/constants';
@@ -142,7 +144,7 @@ export function AmountField({
     <Stack
       alignItems="center"
       px="space.06"
-      gap={['base', showError ? 'base' : '48px']}
+      gap={['space.04', showError ? 'space.04' : '48px']}
       width="100%"
     >
       <Flex alignItems="center" flexDirection="column" onClick={onClickFocusInput}>

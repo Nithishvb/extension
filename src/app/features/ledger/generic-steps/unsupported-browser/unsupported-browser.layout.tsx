@@ -17,7 +17,7 @@ export function UnsupportedBrowserLayout() {
         fontSize="16px"
         lineHeight="1.7"
         mt="space.04"
-        pb="base-tight"
+        pb="space.03"
         mx="space.06"
         color={figmaTheme.textSubdued}
       >

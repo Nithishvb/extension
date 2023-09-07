@@ -8,7 +8,7 @@ import { token } from 'leather-styles/tokens';
   test divider class is working https://panda-css.com/docs/concepts/patterns#divider 
    */
 
-function Divider() {
+export function Divider() {
   return (
     <styled.span
       className={divider({

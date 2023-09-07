@@ -1,4 +1,5 @@
-import { Box, Flex } from 'leather-styles/jsx';
+import { Box, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { figmaTheme } from '@app/common/utils/figma-theme';
 import { ArrowIcon } from '@app/components/icons/arrow-icon';
@@ -15,7 +16,7 @@ export function CollectibleHover({
 }: CollectibleHoverProps) {
   return (
     <Box
-      sx={{ opacity: isHovered ? 'inherit' : '0' }}
+      style={{ opacity: isHovered ? 'inherit' : '0' }}
       _focusWithin={{ opacity: 'inherit' }}
       display="flex"
       height="100%"
@@ -31,12 +32,11 @@ export function CollectibleHover({
         {collectibleTypeIcon}
       </Box>
       {onClickCallToAction && (
-        <Flex
+        <styled.button
           onClick={e => {
             e.stopPropagation();
             onClickCallToAction();
           }}
-          as="button"
           position="absolute"
           right="12px"
           top="12px"
@@ -50,7 +50,7 @@ export function CollectibleHover({
           _focus={{ outline: `4px solid ${figmaTheme.borderFocused}` }}
         >
           <ArrowIcon />
-        </Flex>
+        </styled.button>
       )}
     </Box>
   );

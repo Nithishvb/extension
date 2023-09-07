@@ -16,7 +16,13 @@ export function BroadcastErrorLayout(props: BroadcastErrorProps) {
   const { body, errorPayload, title, children, ...rest } = props;
 
   return (
-    <Flex alignItems="center" flexDirection="column" px={['loose', 'unset']} width="100%" {...rest}>
+    <Flex
+      alignItems="center"
+      flexDirection="column"
+      px={['space.05', 'unset']}
+      width="100%"
+      {...rest}
+    >
       <Box mt="space.05">
         <img src={BroadcastError} alt="Unhappy user interface cloud" width="106px" />
       </Box>

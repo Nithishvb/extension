@@ -1,5 +1,5 @@
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
-import { Box, Flex, styled } from 'leather-styles/jsx';
+import { Flex, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 // TODO replace transistion with Easings token
@@ -26,9 +26,8 @@ export function FeesListItem({
   ...props
 }: FeesListItemProps) {
   return (
-    <Box
-      _hover={{ background: token('colors.accent.component-background-hover') }}
-      as="button"
+    <styled.button
+      _hover={{ background: '#F9F9FA' }}
       border={isSelected ? '4px solid' : '1px solid'}
       borderColor={token('colors.accent.action-primary-default')}
       borderRadius="16px"
@@ -54,6 +53,6 @@ export function FeesListItem({
           {`${feeFiatValue} | ${feeRate} sats/vB | ${feeAmount}`}
         </styled.span>
       </Flex>
-    </Box>
+    </styled.button>
   );
 }

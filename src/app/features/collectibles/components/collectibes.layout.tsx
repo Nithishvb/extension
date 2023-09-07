@@ -1,4 +1,7 @@
-import { Flex, Grid, Spinner } from 'leather-styles/jsx';
+// #4164 FIXME migrate Spinner
+import { Spinner } from '@stacks/ui';
+import { Flex, Grid } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { RefreshIcon } from '@app/components/icons/refresh-icon';
 import { LoadingSpinner } from '@app/components/loading-spinner';
@@ -30,7 +33,7 @@ export function CollectiblesLayout(props: CollectiblesLayoutProps) {
       <Grid
         gap="space.04"
         rowGap="space.06"
-        templateColumns={[
+        gridTemplateColumns={[
           'repeat(auto-fill, minmax(164px, 1fr))',
           'repeat(auto-fill, minmax(184px, 1fr))',
         ]}

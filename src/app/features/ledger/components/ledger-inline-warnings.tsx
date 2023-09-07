@@ -23,9 +23,9 @@ export function CommonLedgerDeviceInlineWarnings({
     return (
       <WarningLabel fontSize="14px" textAlign="left">
         Latest version of <Capitalize>{chain} app</Capitalize> required
-        <styled.span as="a" textDecoration="underline" href="ledgerlive://manager">
+        <styled.a textDecoration="underline" href="ledgerlive://manager">
           Update on Ledger Live to continue
-        </styled.span>
+        </styled.a>
       </WarningLabel>
     );
   }

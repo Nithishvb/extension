@@ -15,7 +15,7 @@ export function Row(props: RowProps): React.JSX.Element {
   const { name, type, value, ...rest } = props;
 
   return (
-    <Stack gap="base-tight" {...rest}>
+    <Stack gap="space.03" {...rest}>
       <SpaceBetween flexShrink={0}>
         {name && <Caption>{name}</Caption>}
         {type && <Caption>{type}</Caption>}

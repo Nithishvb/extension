@@ -47,7 +47,7 @@ export function AdvancedMenuItems({ closeHandler, settingsShown }: AdvancedMenuI
         })}
       >
         Copy diagnostics to clipboard
-        <Caption mt="extra-tight" fontSize="12px !important">
+        <Caption mt="space.01" fontSize="12px !important">
           Contains private wallet usage activity
         </Caption>
       </MenuItem>
@@ -58,7 +58,7 @@ export function AdvancedMenuItems({ closeHandler, settingsShown }: AdvancedMenuI
         })}
       >
         Clear diagnostic information
-        <Caption mt="extra-tight" fontSize="12px !important">
+        <Caption mt="space.01" fontSize="12px !important">
           {diagnosticLogText}
         </Caption>
       </MenuItem>

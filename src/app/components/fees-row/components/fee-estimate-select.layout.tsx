@@ -37,7 +37,7 @@ export { Fade };
 // #4164 FIXME replace with radix tooltip replace Fade
 import { Fade, Tooltip } from '@stacks/ui';
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
-import { Box, Stack } from 'leather-styles/jsx';
+import { Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { FeeTypes } from '@shared/models/fees/fees.model';
@@ -72,7 +72,7 @@ export function FeeEstimateSelectLayout(props: FeeEstimateSelectLayoutProps) {
           selectedItem={FeeTypes.Middle}
         />
         <Fade in={isVisible}>
-          {styles => (
+          {(styles: React.CSSProperties) => (
             <Stack
               bg={token('colors.accent.background-primary')}
               borderRadius="8px"
@@ -82,7 +82,7 @@ export function FeeEstimateSelectLayout(props: FeeEstimateSelectLayoutProps) {
               minHeight="96px"
               minWidth="100px"
               overflow="hidden"
-              p="extra-tight"
+              p="space.01"
               position="absolute"
               ref={ref}
               style={styles}
@@ -96,9 +96,7 @@ export function FeeEstimateSelectLayout(props: FeeEstimateSelectLayoutProps) {
       </Stack>
       <Tooltip label={feesInfo} placement="bottom">
         <Stack>
-          <Box
-            _hover={{ cursor: 'pointer' }}
-            as={FiInfo}
+          <FiInfo
             color={token('colors.accent.text-subdued')}
             onClick={() => openInNewTab(url)}
             size="14px"

@@ -1,8 +1,10 @@
 import { ReactNode, Suspense, memo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// #4164 FIXME migrate transition, useEventListener
+import { transition, useEventListener } from '@stacks/ui';
 import { css } from 'leather-styles/css';
-import { Box, Flex, FlexProps, transition, useEventListener } from 'leather-styles/jsx';
+import { Box, Flex, FlexProps } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { noop } from '@shared/utils';

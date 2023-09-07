@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { safeAwait } from 'leather-styles/jsx';
+// #4164 FIXME migrate safeAwait
+import { safeAwait } from '@stacks/ui';
 
 import { delay } from '@app/common/utils';
 

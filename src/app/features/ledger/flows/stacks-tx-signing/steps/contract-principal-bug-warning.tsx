@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 
 import GenericErrorImg from '@assets/images/generic-error.png';
-import { Box, Button, Stack } from 'leather-styles/jsx';
+import { Box, HStack, styled } from 'leather-styles/jsx';
 
 import { useLoading } from '@app/common/hooks/use-loading';
 import { delay } from '@app/common/utils';
+import { LeatherButton } from '@app/components/button/button';
 import { Body } from '@app/components/typography';
 import { LedgerTitle } from '@app/features/ledger/components/ledger-title';
 import { LedgerWrapper } from '@app/features/ledger/components/ledger-wrapper';
@@ -13,7 +14,7 @@ import { ledgerTxSigningContext } from '../ledger-sign-tx.context';
 
 export function ContractPrincipalBugWarning() {
   const { hasUserSkippedBuggyAppWarning } = useContext(ledgerTxSigningContext);
-  const { isLoading, setIsLoading, setIsIdle } = useLoading('temp-spinner-deep-link');
+  const { /*isLoading,*/ setIsLoading, setIsIdle } = useLoading('temp-spinner-deep-link');
   return (
     <LedgerWrapper>
       <Box mb="space.02" mt="space.02">
@@ -27,11 +28,11 @@ export function ContractPrincipalBugWarning() {
         </a>{' '}
         and try again.
       </Body>
-      <Stack isInline mb="space.05" mt="space.06">
-        <Button
-          as="a"
+      <HStack mb="space.05" mt="space.06">
+        <styled.a
           href="ledgerlive://manager"
-          isLoading={isLoading}
+          // #4164 FIXME migrate isLoading if needed
+          // isLoading={isLoading}
           onClick={async () => {
             setIsLoading();
             await delay(300);
@@ -39,14 +40,16 @@ export function ContractPrincipalBugWarning() {
           }}
         >
           Open Ledger Live ↗
-        </Button>
-        <Button
-          mode="tertiary"
+        </styled.a>
+        <LeatherButton
+          // #4164 FIXME migrate tertiary
+          variant="ghost"
+          // mode="tertiary"
           onClick={() => hasUserSkippedBuggyAppWarning.done('ignored-warning')}
         >
           Continue anyway
-        </Button>
-      </Stack>
+        </LeatherButton>
+      </HStack>
     </LedgerWrapper>
   );
 }

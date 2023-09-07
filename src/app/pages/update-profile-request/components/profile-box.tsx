@@ -64,7 +64,7 @@ export function ProfileBox({ profile }: { profile: Profile }): React.JSX.Element
           borderRadius="16px"
           backgroundColor={'white'}
         >
-          <Box gap="base-tight">
+          <Box gap="space.03">
             <Properties p={profile._profile} />
           </Box>
         </Box>

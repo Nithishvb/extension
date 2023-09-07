@@ -1,6 +1,7 @@
 import { KeyboardEvent } from 'react';
 
-import { BoxProps } from 'leather-styles/jsx';
+import { BoxProps, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 export const buildEnterKeyEvent = (onClick: () => void) => {
   return (event: KeyboardEvent) => {
@@ -16,7 +17,8 @@ export function Link(props: BoxProps): React.JSX.Element {
     <styled.span
       _hover={{ textDecoration: 'underline', cursor: 'pointer', ..._hover }}
       fontSize={fontSize}
-      color={color('brand')}
+      // #4164 FIXME migrate color('brand')?
+      color={token('colors.accent.text-primary')}
       onKeyPress={buildEnterKeyEvent(onClick as any)}
       onClick={onClick}
       tabIndex={0}

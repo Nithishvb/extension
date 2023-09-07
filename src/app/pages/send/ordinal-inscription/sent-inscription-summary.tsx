@@ -3,7 +3,7 @@ import { FiCheck, FiCopy, FiExternalLink } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useClipboard } from '@stacks/ui';
-import { Box, Stack } from 'leather-styles/jsx';
+import { Box, HStack, Stack } from 'leather-styles/jsx';
 import get from 'lodash.get';
 
 import { Blockchains } from '@shared/models/blockchain.model';
@@ -77,10 +77,10 @@ export function SendInscriptionSummary() {
           <InfoCardRow title="Fee" value={feeRowValue} />
         </Stack>
 
-        <Stack gap="space.04" isInline width="100%">
-          <InfoCardBtn onClick={onClickLink} icon={FiExternalLink} label="View Details" />
-          <InfoCardBtn onClick={onClickCopy} icon={FiCopy} label="Copy ID" />
-        </Stack>
+        <HStack gap="space.04" width="100%">
+          <InfoCardBtn onClick={onClickLink} icon={<FiExternalLink />} label="View Details" />
+          <InfoCardBtn onClick={onClickCopy} icon={<FiCopy />} label="Copy ID" />
+        </HStack>
       </InfoCard>
     </BaseDrawer>
   );

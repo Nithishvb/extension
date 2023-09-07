@@ -3,7 +3,7 @@ import { FiPlusCircle } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { Virtuoso } from 'react-virtuoso';
 
-import { Box, BoxProps, FlexProps, Stack } from 'leather-styles/jsx';
+import { Box, BoxProps, FlexProps, HStack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
@@ -112,11 +112,11 @@ const AddAccountAction = memo(() => {
   };
 
   return (
-    <Box mb="space.05" px="base-tight" py="space.02" onClick={onCreateAccount} {...bind}>
-      <Stack isInline alignItems="center">
+    <Box mb="space.05" px="space.03" py="space.02" onClick={onCreateAccount} {...bind}>
+      <HStack alignItems="center">
         <FiPlusCircle width="16px" height="16px" />
         <styled.span color="currentColor">Generate new account</styled.span>
-      </Stack>
+      </HStack>
       {component}
     </Box>
   );

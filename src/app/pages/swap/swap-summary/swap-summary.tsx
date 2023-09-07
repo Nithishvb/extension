@@ -11,7 +11,6 @@ import { logger } from '@shared/logger';
 import { isUndefined } from '@shared/utils';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
-// import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { CopyIcon } from '@app/components/icons/copy-icon';
 import { ExternalLinkIcon } from '@app/components/icons/external-link-icon';

@@ -1,5 +1,5 @@
 import { StacksTransaction } from '@stacks/transactions';
-import { Box, BoxProps, Stack } from 'leather-styles/jsx';
+import { Box, BoxProps, HStack, Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
@@ -36,10 +36,8 @@ export function SubmittedTransactionItem(props: SubmittedTransactionItemProps) {
 
   return (
     <Box {...bind} {...rest}>
-      <Stack
+      <HStack
         alignItems="center"
-        // #4164 FIXME migrate
-        // isInline
         onClick={() =>
           handleOpenTxLink({
             blockchain: 'stacks',
@@ -53,13 +51,9 @@ export function SubmittedTransactionItem(props: SubmittedTransactionItemProps) {
       >
         <SubmittedTransactionIcon transaction={transaction} />
         <SpaceBetween flexGrow={1}>
-          <Stack minWidth="0px" gap="base-tight">
+          <Stack minWidth="0px" gap="space.03">
             <TransactionTitle title={title} />
-            <Stack
-              // #4164 FIXME migrate
-              // isInline
-              flexWrap="wrap"
-            >
+            <HStack flexWrap="wrap">
               <Caption variant="c2">{caption}</Caption>
               <Tooltip
                 placement="bottom"
@@ -70,7 +64,7 @@ export function SubmittedTransactionItem(props: SubmittedTransactionItemProps) {
                   Submitted
                 </Caption>
               </Tooltip>
-            </Stack>
+            </HStack>
           </Stack>
           <Box alignItems="flex-end">
             {value && (
@@ -80,7 +74,7 @@ export function SubmittedTransactionItem(props: SubmittedTransactionItemProps) {
             )}
           </Box>
         </SpaceBetween>
-      </Stack>
+      </HStack>
       {component}
     </Box>
   );

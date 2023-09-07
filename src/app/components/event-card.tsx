@@ -1,6 +1,9 @@
 import { FiMoreHorizontal } from 'react-icons/fi';
 
-import { Box, IconButton, Stack } from 'leather-styles/jsx';
+// #4164 FIXME migrate IconButton
+import { IconButton } from '@stacks/ui';
+import { Box, Stack, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
 import { Caption } from '@app/components/typography';
@@ -25,7 +28,7 @@ export function EventCard(props: EventCardProps): React.JSX.Element {
     <>
       <Stack p="base-loose" gap="base-loose">
         <SpaceBetween position="relative">
-          <styled.span fontSize={2} fontWeight={500}>
+          <styled.span fontSize={2} textStyle="label.02">
             {title}
           </styled.span>
           {actions && (

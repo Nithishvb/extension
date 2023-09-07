@@ -1,5 +1,6 @@
 import { forwardRefWithAs } from '@stacks/ui-core';
 import { Box } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 export const MenuWrapper = forwardRefWithAs((props, ref) => (
   <Box

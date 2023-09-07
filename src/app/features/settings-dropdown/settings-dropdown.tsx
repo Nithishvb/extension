@@ -2,8 +2,11 @@ import { useCallback, useRef } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Box, Flex, SlideFade, Stack } from '@stacks/ui';
+// #4164 FIXME migrate SlideFade
+import { SlideFade } from '@stacks/ui';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
+import { Box, Divider, Flex, HStack, Stack } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { RouteUrls } from '@shared/route-urls';
 
@@ -56,7 +59,7 @@ export function SettingsDropdown() {
 
   return (
     <SlideFade initialOffset="-20px" timeout={150} in={isShowing}>
-      {styles => (
+      {(styles: React.CSSProperties) => (
         <MenuWrapper ref={ref} style={styles} pointerEvents={!isShowing ? 'none' : 'all'}>
           {key && key.type === 'ledger' && (
             <LedgerDeviceItemRow deviceType={extractDeviceNameFromKnownTargetIds(key.targetId)} />
@@ -106,11 +109,10 @@ export function SettingsDropdown() {
               openInNewTab('https://leather.gitbook.io/guides/installing/contact-support');
             })}
           >
-            {/* FIXME - replace isInline */}
-            <Stack>
+            <HStack>
               <Box>Get support</Box>
               <FiExternalLink />
-            </Stack>
+            </HStack>
           </MenuItem>
           <MenuItem
             onClick={wrappedCloseCallback(() => {
@@ -118,11 +120,10 @@ export function SettingsDropdown() {
               openInNewTab('https://leather.canny.io/feature-requests');
             })}
           >
-            {/* FIXME - replace isInline */}
-            <Stack>
+            <HStack>
               <Box>Request feature</Box>
               <FiExternalLink />
-            </Stack>
+            </HStack>
           </MenuItem>
           {hasGeneratedWallet ? <Divider /> : null}
           <MenuItem

@@ -1,6 +1,7 @@
 import { truncateMiddle } from '@stacks/ui-utils';
 import { Stack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
 

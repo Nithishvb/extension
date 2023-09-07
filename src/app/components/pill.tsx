@@ -14,7 +14,7 @@ export function Pill({ hoverLabel, label, ...props }: PillProps) {
         borderRadius="24px"
         borderColor="#DCDDE2"
         lineHeight="16px"
-        ml="base-tight"
+        ml="space.03"
         px="space.02"
         {...props}
       >

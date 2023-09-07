@@ -1,8 +1,6 @@
-import { Flex } from '@stacks/ui';
-import { token } from 'leather-styles/tokens';
+import { Flex, styled } from 'leather-styles/jsx';
 
 import { SpaceBetween } from '@app/components/layout/space-between';
-import { Text } from '@app/components/typography';
 
 interface CollectibleAssetProps {
   icon: React.JSX.Element;
@@ -24,7 +22,7 @@ export function CollectibleAsset({ icon, name, symbol }: CollectibleAssetProps) 
       <SpaceBetween>
         <Flex alignItems="center">
           {icon}
-          <styled.span ml="space.02" mr="extra-tight">
+          <styled.span ml="space.02" mr="space.01">
             {name}
           </styled.span>
           {symbol && <styled.span>({symbol.toUpperCase()})</styled.span>}

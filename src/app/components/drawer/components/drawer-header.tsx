@@ -44,7 +44,8 @@ export function DrawerHeader({
           onAction={onGoBack}
         />
       ) : (
-        <Box size="36px" />
+        // #4164 FIXME migrate check and refactor if this is needed
+        <Box width="36px" height="36px" />
       )}
       {icon && icon}
       {title && <styled.h1 textStyle="heading.05">{title}</styled.h1>}

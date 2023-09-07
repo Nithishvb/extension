@@ -14,8 +14,8 @@ import { useDrawers } from '@app/common/hooks/use-drawers';
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { stacksValue } from '@app/common/stacks-utils';
 // PETE fix this now merging my PRs
-// figure out what isInline means on <Stack
-import { truncateMiddle } from '@app/common/utils/stacks-ui';
+// #4164 FIXME migrate truncateMiddle
+// import { truncateMiddle } from '@app/common/utils/stacks-ui';
 //FIXME - PETE rebase onto 1 PR soon to solve this
 import { LeatherButton } from '@app/components/button/button';
 import { SpaceBetween } from '@app/components/layout/space-between';
@@ -111,9 +111,11 @@ export const NoContractErrorMessage = memo(props => {
   return (
     <ErrorMessage
       title="Contract not found"
-      body={`The contract (${truncateMiddle(pendingTransaction.contractAddress)}.${
-        pendingTransaction.contractName
-      }) that you are trying to call cannot be found on ${network.mode}.`}
+      // #4164 FIXME migrate truncateMiddle
+      body={`The contract (${pendingTransaction.contractAddress}.${pendingTransaction.contractName}) that you are trying to call cannot be found on ${network.mode}.`}
+      // body={`The contract (${truncateMiddle(pendingTransaction.contractAddress)}.${
+      //   pendingTransaction.contractName
+      // }) that you are trying to call cannot be found on ${network.mode}.`}
       {...props}
     />
   );
@@ -127,9 +129,11 @@ export const IncorrectContractAddressMessage = memo(props => {
   return (
     <ErrorMessage
       title="Invalid contract address"
-      body={`The contract address (${truncateMiddle(
-        pendingTransaction.contractAddress
-      )}) that you are trying to call is not a valid Stacks address.`}
+      // #4164 FIXME migrate truncateMiddle
+      body={`The contract address (${pendingTransaction.contractAddress}) that you are trying to call is not a valid Stacks address.`}
+      // body={`The contract address (${truncateMiddle(
+      //   pendingTransaction.contractAddress
+      // )}) that you are trying to call is not a valid Stacks address.`}
       {...props}
     />
   );
@@ -144,7 +148,7 @@ export const ExpiredRequestErrorMessage = memo(props => {
   useScrollLock(true);
   return (
     <Fade in>
-      {styles => (
+      {(styles: React.CSSProperties) => (
         <Flex
           position="fixed"
           width="100%"

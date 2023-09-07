@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 
 // #4164 FIXME replace with radix tooltip
 import { Tooltip } from '@stacks/ui';
-import { Box, Stack } from 'leather-styles/jsx';
+import { Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 import get from 'lodash.get';
 

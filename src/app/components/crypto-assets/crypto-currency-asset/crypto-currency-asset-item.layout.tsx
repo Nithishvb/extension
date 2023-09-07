@@ -29,6 +29,15 @@ interface CryptoCurrencyAssetItemLayoutProps extends StackProps {
   additionalBalanceInfo?: React.JSX.Element;
   additionalUsdBalanceInfo?: React.JSX.Element;
 }
+
+// const Wrapper = (props: CryptoCurrencyAssetItemLayoutProps) => {
+//   props.isPressable ? (
+//     <styled.button {...props}>{props.children}</styled.button>
+//   ) : (
+//     <styled.div {...props}>{props.children}</styled.div>
+//   );
+// };
+
 export const CryptoCurrencyAssetItemLayout = forwardRefWithAs(
   (props: CryptoCurrencyAssetItemLayoutProps, ref) => {
     const {
@@ -58,7 +67,9 @@ export const CryptoCurrencyAssetItemLayout = forwardRefWithAs(
 
     return (
       <Flex
-        as={isPressable ? 'button' : 'div'}
+        // #4164 FIXME migrate - check if this needs to change between button / div
+        // if so use Wrapper
+        // as={isPressable ? 'button' : 'div'}
         data-testid={dataTestId}
         outline={0}
         ref={ref}

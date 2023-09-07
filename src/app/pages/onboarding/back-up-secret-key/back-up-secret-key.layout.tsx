@@ -1,4 +1,5 @@
-import { useMediaQuery } from 'leather-styles/jsx';
+// #4164 FIXME migrate useMediaQuery
+import { useMediaQuery } from '@stacks/ui';
 import { Box, Flex, Stack, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
@@ -45,7 +46,7 @@ export function BackUpSecretKeyLayout(props: BackUpSecretKeyLayoutProps): React.
         flexGrow={1}
         flex="1"
         justifyContent="center"
-        mt={['loose', 'loose', 'unset']}
+        mt={['space.05', 'space.05', 'unset']}
       >
         <Box minWidth={['344px', '446px']}>{secretKeyDisplay}</Box>
       </Flex>

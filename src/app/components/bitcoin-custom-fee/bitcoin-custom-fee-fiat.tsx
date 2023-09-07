@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { useField } from 'formik';
-import { Flex } from 'leather-styles/jsx';
+import { Flex, styled } from 'leather-styles/jsx';
 
 import { satToBtc } from '@app/common/money/unit-conversion';
 

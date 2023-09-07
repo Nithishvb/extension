@@ -1,5 +1,6 @@
 import { truncateMiddle } from '@stacks/ui-utils';
 import { Stack } from 'leather-styles/jsx';
+import { styled } from 'leather-styles/jsx';
 
 import { createMoneyFromDecimal } from '@shared/models/money.model';
 

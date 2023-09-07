@@ -1,6 +1,6 @@
 import { FiX } from 'react-icons/fi';
 
-import { Box, Flex } from 'leather-styles/jsx';
+import { Box, Flex, styled } from 'leather-styles/jsx';
 
 import { HiroMessage } from '@app/query/common/remote-config/remote-config.query';
 
@@ -22,13 +22,12 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
       p="space.04"
     >
       {dismissible && (
-        <Box
-          as="button"
+        <styled.button
           position="absolute"
           p="space.02"
           top={[0, 0, '50%']}
-          mr={['tight']}
-          mt={['tight', null, 'unset']}
+          mr={['space.02']}
+          mt={['space.02', null, 'unset']}
           transform={[null, null, 'translateY(-50%)']}
           right={0}
           borderRadius="50%"
@@ -36,10 +35,10 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
           onClick={() => onDismiss(id)}
         >
           <FiX />
-        </Box>
+        </styled.button>
       )}
       {img && (
-        <Box mb={['base-tight', null, 'unset']}>
+        <Box mb={['space.03', null, 'unset']}>
           <img width={imgWidth} src={img} />
         </Box>
       )}
@@ -52,15 +51,15 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
         <styled.span
           display="inline"
           fontSize="inherit"
-          ml={[null, null, 'base']}
-          mr={['tight', 'base']}
+          ml={[null, null, 'space.04']}
+          mr={['space.02', 'space.04']}
           lineHeight="inherit"
         >
           {text}
         </styled.span>
+        {/* #4164 FIXME use ExternalLink */}
         {learnMoreUrl && (
-          <styled.span
-            as="a"
+          <styled.a
             display="inline-block"
             textDecoration="underline"
             href={learnMoreUrl}
@@ -68,7 +67,7 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
             target="_blank"
           >
             {learnMoreText ? learnMoreText : 'Learn more ↗'}
-          </styled.span>
+          </styled.a>
         )}
       </Box>
     </Flex>

@@ -2,7 +2,9 @@ import { toast } from 'react-hot-toast';
 import { FiCheck, FiCopy, FiExternalLink } from 'react-icons/fi';
 import { useLocation } from 'react-router-dom';
 
-import { Stack, useClipboard } from 'leather-styles/jsx';
+// #4164 FIXME migrate useClipboard
+import { useClipboard } from '@stacks/ui';
+import { HStack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
@@ -45,7 +47,7 @@ export function LockBitcoinSummary() {
         fiatValue={txFiatValue}
         fiatSymbol={txFiatValueSymbol}
         symbol={symbol}
-        icon={FiCheck}
+        icon={<FiCheck size="32px" />}
         my="space.05"
         px="space.05"
       />
@@ -55,10 +57,10 @@ export function LockBitcoinSummary() {
         with borrowing against it.
       </styled.span>
       <InfoCardFooter>
-        <Stack gap="space.04" isInline width="100%">
-          <InfoCardBtn onClick={onClickLink} icon={FiExternalLink} label="View Details" />
-          <InfoCardBtn onClick={onClickCopy} icon={FiCopy} label="Copy ID" />
-        </Stack>
+        <HStack gap="space.04" width="100%">
+          <InfoCardBtn onClick={onClickLink} icon={<FiExternalLink />} label="View Details" />
+          <InfoCardBtn onClick={onClickCopy} icon={<FiCopy />} label="Copy ID" />
+        </HStack>
       </InfoCardFooter>
     </InfoCard>
   );

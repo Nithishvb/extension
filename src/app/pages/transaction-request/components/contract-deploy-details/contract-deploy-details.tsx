@@ -2,8 +2,7 @@ import { useState } from 'react';
 
 // #4164 FIXME migrate CodeBlock
 import { CodeBlock } from '@stacks/ui';
-import { BoxProps, Stack } from 'leather-styles/jsx';
-import { Divider } from 'leather-styles/jsx';
+import { BoxProps, HStack, Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { Prism } from '@app/common/clarity-prism';
@@ -84,14 +83,14 @@ export function ContractDeployDetails(): React.JSX.Element | null {
 
   return (
     <Stack mb="space.05" gap="space.05">
-      <Stack gap="0" isInline>
+      <HStack gap="0">
         <TabButton onClick={() => setTab('details')} isActive={tab === 'details'}>
           Details
         </TabButton>
         <TabButton onClick={() => setTab('code')} isActive={tab === 'code'}>
           Code
         </TabButton>
-      </Stack>
+      </HStack>
       {tab === 'details' ? (
         <Stack
           gap="space.05"
@@ -108,7 +107,8 @@ export function ContractDeployDetails(): React.JSX.Element | null {
             contractAddress={currentAccountStxAddress}
             contractName={transactionRequest.contractName}
           />
-          <Stack gap="base-loose" divider={<Divider />}>
+          {/* // #4164 FIXME migrate <Divider */}
+          <Stack gap="base-loose" /* divider={<Divider />} */>
             {currentAccountStxAddress && (
               <Row name="Contract address" value={currentAccountStxAddress} type="Principal" />
             )}

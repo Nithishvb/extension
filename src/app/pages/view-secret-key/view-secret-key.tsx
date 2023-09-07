@@ -30,9 +30,9 @@ export function ViewSecretKey() {
   return (
     <CenteredPageContainer>
       <Stack
-        maxWidth={token('sizes.centeredPageFullWidth')}
-        pb={['loose', 'unset']}
-        px={['loose', 'base-loose']}
+        maxWidth={token('sizes.centredPageFullWidth')}
+        pb={['space.05', 'unset']}
+        px={['space.05', 'base-loose']}
         gap="space.05" // TODO - make sure spacing maps to gap
         textAlign={['left', 'center']}
         width="100%"

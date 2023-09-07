@@ -34,7 +34,7 @@ export function RecipientField({
   }, [name, field.value, setFieldValue]);
 
   return (
-    <styled.spanInputField
+    <TextInputField
       dataTestId={SendCryptoAssetSelectors.RecipientFieldInput}
       isDisabled={isDisabled}
       label={label}

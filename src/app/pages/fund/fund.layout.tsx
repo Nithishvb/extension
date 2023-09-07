@@ -1,9 +1,10 @@
-import { Flex, Stack, useMediaQuery } from 'leather-styles/jsx';
+// #4164 FIXME migrate useMediaQuery
+import { useMediaQuery } from '@stacks/ui';
+import { Flex, Stack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { PageTitle } from '@app/components/page-title';
-import { Text } from '@app/components/typography';
 
 import { FiatProvidersList } from './components/fiat-providers-list';
 
@@ -27,10 +28,10 @@ export function FundLayout(props: FundLayoutProps) {
     >
       <Stack
         alignItems={['left', 'center']}
-        pb={['loose', 'unset']}
-        px={['loose', 'loose', 'unset']}
-        gap={['base', 'loose']}
-        mt={['base', 'unset']}
+        pb={['space.05', 'unset']}
+        px={['space.05', 'space.05', 'unset']}
+        gap={['space.04', 'space.05']}
+        mt={['space.04', 'unset']}
       >
         <PageTitle
           fontSize={['24px', '32px', '48px']}

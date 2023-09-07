@@ -1,4 +1,7 @@
-import { Flex, FlexProps, Spinner } from 'leather-styles/jsx';
+// #4164 FIXME migrate Spinner
+import { Spinner } from '@stacks/ui';
+import { Flex, FlexProps } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { Caption } from '@app/components/typography';
 

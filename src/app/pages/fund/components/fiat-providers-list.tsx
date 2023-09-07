@@ -37,7 +37,7 @@ export function FiatProvidersList(props: FiatProvidersProps) {
     <Grid
       columnGap="auto"
       justifyContent="center"
-      mt={['base', '48px']}
+      mt={['space.04', '48px']}
       p="0 3rem"
       rowGap="1.5rem"
       gridTemplateColumns="repeat(auto-fill, minmax(270px, 1fr))"

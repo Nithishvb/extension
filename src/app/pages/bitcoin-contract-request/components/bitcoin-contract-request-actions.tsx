@@ -1,4 +1,4 @@
-import { Box, Button, Stack } from 'leather-styles/jsx';
+import { Box, HStack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { useBtcAssetBalance } from '@app/common/hooks/balance/btc/use-btc-balance';
@@ -32,20 +32,16 @@ export function BitcoinContractRequestActions({
       width="100%"
       zIndex={999}
     >
-      <Stack
-        // #4164 FIXME migrate
-        // isInline
-        mt="space.05"
-        gap="space.04"
-      >
-        <Button
+      <HStack mt="space.05" gap="space.04">
+        <LeatherButton
           borderRadius="10px"
           flexGrow={1}
-          mode="tertiary"
+          // #4164 FIXME migrate tertiary
+          variant="ghost"
           onClick={onRejectBitcoinContractOffer}
         >
           Reject
-        </Button>
+        </LeatherButton>
         <LeatherButton
           borderRadius="10px"
           flexGrow={1}
@@ -55,7 +51,7 @@ export function BitcoinContractRequestActions({
         >
           Accept
         </LeatherButton>
-      </Stack>
+      </HStack>
     </Box>
   );
 }

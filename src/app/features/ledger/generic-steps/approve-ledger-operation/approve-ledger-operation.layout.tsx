@@ -1,5 +1,6 @@
 import SignLedgerTransaction from '@assets/images/ledger/sign-ledger-transaction.png';
 import { Box, Flex } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { DividerSeparator } from '@app/components/layout/divider-separator';
 
@@ -33,7 +34,7 @@ export function ApproveLedgerOperationLayout(props: ApproveLedgerOperationLayout
         py="space.06"
         width="100%"
       >
-        <DividerSeparator my="base-loose">
+        <DividerSeparator>
           {details.map(([title, value, tooltipLabel]) => (
             <LedgerScreenDetail key={value} title={title} tooltipLabel={tooltipLabel}>
               {value}

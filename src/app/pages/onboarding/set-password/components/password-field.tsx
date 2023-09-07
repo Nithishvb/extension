@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
+// #4164 FIXME migrate Input
+import { Input } from '@stacks/ui';
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { useField } from 'formik';
-import { Box, Button, Flex, Input } from 'leather-styles/jsx';
+import { Box, Flex } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { ValidatedPassword } from '@app/common/validation/validate-password';
+import { LeatherButton } from '@app/components/button/button';
 import { Caption } from '@app/components/typography';
 
 import { getIndicatorsOfPasswordStrength } from './password-field.utils';
@@ -37,7 +40,7 @@ export function PasswordField({ strengthResult, isDisabled }: PasswordFieldProps
           isDisabled={isDisabled}
           {...field}
         />
-        <Button
+        <LeatherButton
           _focus={{ bg: 'transparent', boxShadow: 'none' }}
           _hover={{ bg: 'transparent', boxShadow: 'none' }}
           bg="transparent"
@@ -53,11 +56,11 @@ export function PasswordField({ strengthResult, isDisabled }: PasswordFieldProps
           width="20px"
         >
           {showPassword ? <FiEyeOff size="20px" /> : <FiEye size="20px" />}
-        </Button>
+        </LeatherButton>
       </Box>
       <PasswordStrengthIndicator strengthColor={strengthColor} strengthResult={strengthResult} />
       <Flex alignItems="center">
-        <Caption mx="extra-tight">Password strength:</Caption>
+        <Caption mx="space.01">Password strength:</Caption>
         <Caption>{field.value ? strengthText : '—'}</Caption>
       </Flex>
     </>

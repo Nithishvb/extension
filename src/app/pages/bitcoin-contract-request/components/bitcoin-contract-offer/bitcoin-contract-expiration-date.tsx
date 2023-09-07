@@ -1,6 +1,4 @@
-import { Flex } from 'leather-styles/jsx';
-
-import { Text } from '@app/components/typography';
+import { Flex, styled } from 'leather-styles/jsx';
 
 interface BitcoinContractExpirationDateProps {
   expirationDate: string;

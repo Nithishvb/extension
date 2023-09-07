@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { Stack, StackProps } from 'leather-styles/jsx';
+import { HStack, Stack, StackProps } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
@@ -23,14 +23,13 @@ export const ErrorMessage = memo(({ title, body, actions, ...rest }: ErrorMessag
       {...rest}
     >
       <Stack gap="base-loose">
-        {/* FIXME - isInline */}
-        <Stack alignItems="center" color={token('colors.error')}>
+        <HStack alignItems="center" color={token('colors.error')}>
           <ErrorIcon />
           <styled.h1 textStyle="label.01">{title}</styled.h1>
-        </Stack>
+        </HStack>
         <styled.span textStyle="caption.01">{body}</styled.span>
       </Stack>
-      {actions && <Stack gap="base-tight">{actions}</Stack>}
+      {actions && <Stack gap="space.03">{actions}</Stack>}
     </Stack>
   );
 });

@@ -1,7 +1,8 @@
 import { ReactNode, useMemo } from 'react';
 
 import { deserializeTransaction } from '@stacks/transactions';
-import { Stack } from 'leather-styles/jsx';
+import { Stack, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { SubmittedTransactionItem } from '@app/features/activity-list/components/submitted-transaction-list/submitted-transaction-item';
 import { SubmittedTransaction } from '@app/store/submitted-transactions/submitted-transactions.slice';

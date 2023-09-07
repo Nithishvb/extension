@@ -4,7 +4,8 @@ import { FiCopy } from 'react-icons/fi';
 // #4164 FIXME migrate useClipboard
 import { useClipboard } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
-import { Box, styled } from 'leather-styles/jsx';
+import { styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { SpaceBetween } from '@app/components/layout/space-between';
@@ -32,16 +33,15 @@ export function RecipientAddressDisplayer({ address }: RecipientAddressDisplayer
         {address}
       </styled.span>
       <Tooltip hideOnClick={false} label={hasCopied ? 'Copied!' : 'Copy address'} placement="right">
-        <Box
+        <styled.button
           _hover={{ cursor: 'pointer' }}
-          as="button"
           color={token('colors.accent.text-subdued')}
           data-testid={SendCryptoAssetSelectors.RecipientBnsAddressCopyToClipboard}
           onClick={copyToClipboard}
           type="button"
         >
           <FiCopy size="16px" />
-        </Box>
+        </styled.button>
       </Tooltip>
     </SpaceBetween>
   );

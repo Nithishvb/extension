@@ -1,8 +1,11 @@
 import { FormEvent, useCallback } from 'react';
 
+// #4164 FIXME migrate Input, InputGroup
+import { Input, InputGroup } from '@stacks/ui';
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
 import { useField } from 'formik';
-import { Input, InputGroup, Stack, StackProps } from 'leather-styles/jsx';
+import { Stack, StackProps } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { CryptoCurrencies } from '@shared/models/currencies.model';
 import { StacksFeeEstimate } from '@shared/models/fees/stacks-fees.model';

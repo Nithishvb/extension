@@ -93,8 +93,8 @@ export function BitcoinCustomFee({
                     View fee calculator
                   </Link>
                 </styled.span>
-                <Stack gap="extra-tight">
-                  <styled.spanInputField
+                <Stack gap="space.01">
+                  <TextInputField
                     hasError={hasInsufficientBalanceError}
                     label={feeInputLabel}
                     name="feeRate"

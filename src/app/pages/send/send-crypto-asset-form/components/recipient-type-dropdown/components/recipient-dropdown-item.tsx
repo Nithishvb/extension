@@ -1,5 +1,5 @@
 import { color } from '@stacks/ui-utils';
-import { Box, styled } from 'leather-styles/jsx';
+import { styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { ChevronDownIcon } from '@app/components/icons/chevron-down-icon';
@@ -16,17 +16,16 @@ export function RecipientDropdownItem(props: RecipientDropdownItemProps) {
   const { index, isVisible, onSelectItem } = props;
 
   return (
-    <Box
+    <styled.button
       _hover={{ bg: isVisible ? color('bg-alt') : 'none', borderRadius: '8px' }}
       alignItems="center"
-      as="button"
       data-testid={`recipient-select-field-${testLabels[index]}`}
       display="flex"
       height="32px"
       mb="0px !important"
       minWidth="110px"
       onClick={() => onSelectItem(index)}
-      pl={isVisible ? 'tight' : 'unset'}
+      pl={isVisible ? 'space.02' : 'unset'}
       type="button"
     >
       <styled.span
@@ -40,6 +39,6 @@ export function RecipientDropdownItem(props: RecipientDropdownItemProps) {
       </styled.span>
       {/* TODO - check if color needs to be passed to icon */}
       {isVisible ? <></> : <ChevronDownIcon color={token('colors.brown.12')} />}
-    </Box>
+    </styled.button>
   );
 }

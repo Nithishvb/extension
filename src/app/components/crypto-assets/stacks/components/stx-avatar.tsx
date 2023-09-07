@@ -1,4 +1,5 @@
 import { BoxProps, Circle } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { StxIcon } from '@app/components/icons/stx-icon';
 
@@ -10,7 +11,7 @@ interface StxAvatarProps extends BoxProps {
 export function StxAvatar({ isUnanchored, ...props }: StxAvatarProps) {
   return (
     <Circle
-      bg={color('accent')}
+      bg={token('colors.accent.background-primary')}
       color={token('colors.accent.background-primary')}
       position="relative"
       size="36px"

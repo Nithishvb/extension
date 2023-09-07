@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Flex, Stack } from 'leather-styles/jsx';
+import { Box, Flex, HStack, Stack, styled } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 import { noop } from '@shared/utils';
@@ -100,7 +100,7 @@ function PendingBrcTransfer({ order }: PendingBrcTransferProps) {
   return (
     <Box
       key={order.id}
-      my="base-tight"
+      my="space.03"
       onClick={
         hasPositiveBtcBalanceForFees
           ? order.status === 'ready'
@@ -127,9 +127,10 @@ function PendingBrcTransfer({ order }: PendingBrcTransferProps) {
       <styled.span>
         {order.amount} {order.tick}
       </styled.span>
-      <Stack isInline width="100%" mt="space.02">
+      <HStack width="100%" mt="space.02">
         <CaptionDotSeparator>
-          <Flex as={Caption}>
+          {/* // #4164 FIXME migrate - check this Caption is OK */}
+          <Caption>
             <Flag
               ml="space.02"
               align="middle"
@@ -138,9 +139,9 @@ function PendingBrcTransfer({ order }: PendingBrcTransferProps) {
             >
               <StatusLabel status={order.status} />
             </Flag>
-          </Flex>
+          </Caption>
         </CaptionDotSeparator>
-      </Stack>
+      </HStack>
       {component}
     </Box>
   );

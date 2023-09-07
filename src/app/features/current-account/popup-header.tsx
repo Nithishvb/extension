@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Box, Stack } from 'leather-styles/jsx';
+import { Box, HStack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { BtcBalance } from '@app/components/balance-btc';
@@ -45,19 +45,20 @@ function PopupHeaderSuspense({ displayAddresssBalanceOf = 'stx' }: PopupHeaderPr
             color={token('colors.white')}
             fontSize="16px"
             fontWeight={500}
-            size="32px"
+            height="32px"
+            width="32px"
           />
         }
       >
         <SpaceBetween>
           <CurrentAccountName as="h3" />
-          <Stack isInline alignItems="center" justifyContent="right">
+          <HStack alignItems="center" justifyContent="right">
             <NetworkModeBadge />
             {account && displayAddresssBalanceOf === 'stx' && (
               <StxBalance address={account.address} />
             )}
             {isBitcoinEnabled && displayAddresssBalanceOf === 'all' && <BtcBalance />}
-          </Stack>
+          </HStack>
         </SpaceBetween>
       </Flag>
     </PopupHeaderLayout>

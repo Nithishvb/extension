@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import { HomePageSelectorsLegacy } from '@tests-legacy/page-objects/home.selectors';
-import { Box, Stack } from 'leather-styles/jsx';
+import { Stack } from 'leather-styles/jsx';
 
 import { LEDGER_BITCOIN_ENABLED } from '@shared/environment';
 
@@ -34,7 +34,7 @@ export function AssetsList() {
           <CryptoCurrencyAssetItem
             assetBalance={btcAvailableAssetBalance}
             usdBalance={btcAvailableUsdBalance}
-            icon={<Box as={BtcIcon} />}
+            icon={<BtcIcon />}
             address={btcAddress}
           />
         ),
@@ -42,7 +42,7 @@ export function AssetsList() {
           <CryptoCurrencyAssetItem
             assetBalance={btcAvailableAssetBalance}
             usdBalance={btcAvailableUsdBalance}
-            icon={<Box as={BtcIcon} />}
+            icon={<BtcIcon />}
             address={btcAddress}
             // add conditionally if not bitcoin keys
             isPressable={!btcAddress}

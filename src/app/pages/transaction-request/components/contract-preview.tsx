@@ -1,13 +1,13 @@
 // #4164 FIXME migrate DynamicColorCircle
 import { DynamicColorCircle } from '@stacks/ui';
 import { truncateMiddle } from '@stacks/ui-utils';
-import { Stack, StackProps } from 'leather-styles/jsx';
+import { HStack, HstackProps, Stack } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { formatContractId } from '@app/common/utils';
 import { Caption, Title } from '@app/components/typography';
 
-interface ContractPreviewLayoutProps extends StackProps {
+interface ContractPreviewLayoutProps extends HstackProps {
   contractAddress: string;
   contractName: string;
   functionName?: string;
@@ -17,12 +17,11 @@ export function ContractPreviewLayout(props: ContractPreviewLayoutProps) {
   const { contractAddress, contractName, functionName, ...rest } = props;
 
   return (
-    <Stack
+    <HStack
       p="space.04"
       borderRadius="12px"
       gap="space.04"
       alignItems="center"
-      isInline
       border="1px solid"
       borderColor={token('colors.accent.background-primary')}
       _hover={
@@ -42,7 +41,7 @@ export function ContractPreviewLayout(props: ContractPreviewLayoutProps) {
         }`}
         backgroundSize="100%"
       />
-      <Stack gap="base-tight">
+      <Stack gap="space.03">
         <Title as="h3" fontWeight="500">
           {functionName || contractName}
         </Title>
@@ -51,6 +50,6 @@ export function ContractPreviewLayout(props: ContractPreviewLayoutProps) {
           {functionName ? `.${contractName}` : ''}
         </Caption>
       </Stack>
-    </Stack>
+    </HStack>
   );
 }

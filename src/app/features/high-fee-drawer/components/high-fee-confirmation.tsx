@@ -1,5 +1,5 @@
 import { useFormikContext } from 'formik';
-import { Button, Stack } from 'leather-styles/jsx';
+import { HStack, Stack } from 'leather-styles/jsx';
 
 import {
   BitcoinSendFormValues,
@@ -9,6 +9,7 @@ import {
 
 import { useDrawers } from '@app/common/hooks/use-drawers';
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
+import { LeatherButton } from '@app/components/button/button';
 import { Link } from '@app/components/link';
 import { Caption, Title } from '@app/components/typography';
 
@@ -30,19 +31,21 @@ export function HighFeeConfirmation(props: { learnMoreUrl: string }) {
           Learn more
         </Link>
       </Caption>
-      <Stack isInline mt="space.05">
-        <Button
+      <HStack mt="space.05">
+        <LeatherButton
           borderRadius="10px"
-          mode="tertiary"
+          // #4164 FIXME migrate tertiary
+          // mode="tertiary"
+          variant="ghost"
           onClick={() => setIsShowingHighFeeConfirmation(false)}
           width="50%"
         >
           Edit fee
-        </Button>
-        <Button borderRadius="10px" onClick={() => handleSubmit()} width="50%">
+        </LeatherButton>
+        <LeatherButton borderRadius="10px" onClick={() => handleSubmit()} width="50%">
           Yes, I'm sure
-        </Button>
-      </Stack>
+        </LeatherButton>
+      </HStack>
     </Stack>
   );
 }

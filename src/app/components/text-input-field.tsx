@@ -27,6 +27,7 @@ interface TextInputFieldProps extends FlexProps {
   topInputOverlay?: React.JSX.Element;
   hasError?: boolean;
 }
+
 export function TextInputField({
   dataTestId,
   isDisabled,
@@ -39,8 +40,9 @@ export function TextInputField({
   topInputOverlay,
   inputRef,
   hasError,
-  ...props
-}: TextInputFieldProps) {
+}: // #4164 FIXME migrate - check other props passed
+// ...props
+TextInputFieldProps) {
   const [field] = useField(name);
   const ref = useRef<HTMLInputElement>(null);
 
@@ -48,7 +50,7 @@ export function TextInputField({
 
   return (
     <>
-      <Flex
+      <styled.label
         _before={{
           content: '""',
           position: 'absolute',
@@ -59,7 +61,6 @@ export function TextInputField({
           top: '-1px',
           bottom: '-1px',
         }}
-        as="label"
         border={`1px solid ${token('colors.accent.border-default')}`}
         borderRadius="10px"
         className={css({
@@ -70,15 +71,15 @@ export function TextInputField({
         flexDirection="column"
         htmlFor={name}
         justifyContent="center"
-        mb={showError ? 'tight' : 'base'}
+        mb={showError ? 'space.02' : 'space.04'}
         minHeight="64px"
         px="space.04"
-        py="base-tight"
+        py="space.03"
         position="relative"
         width="100%"
-        {...props}
+        // {...props}
       >
-        <SpaceBetween maxHeight="20px" mb="extra-tight">
+        <SpaceBetween maxHeight="20px" mb="space.01">
           <Flex alignItems="center">
             {label && field.value ? (
               <styled.span
@@ -138,7 +139,7 @@ export function TextInputField({
             field.onBlur(e);
           }}
         />
-      </Flex>
+      </styled.label>
       <TextInputFieldError name={name} />
     </>
   );

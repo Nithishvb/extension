@@ -1,8 +1,12 @@
-import { Box, Button, CodeBlock, Stack } from 'leather-styles/jsx';
+// #4164 FIXME migrate CodeBlock
+import { CodeBlock } from '@stacks/ui';
+import { Box, Stack } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { Prism } from '@app/common/clarity-prism';
 import { HasChildren } from '@app/common/has-children';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
+import { LeatherButton } from '@app/components/button/button';
 import { Header } from '@app/components/header';
 import { Title } from '@app/components/typography';
 import { ErrorBoundary, FallbackProps, useErrorHandler } from '@app/features/errors/error-boundary';
@@ -29,20 +33,22 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
             borderRadius="12px"
             backgroundColor="ink.1000"
             width="100%"
-            code={value as string}
+            code={value}
             language="bash"
             Prism={Prism as any}
           />
         )}
       </Box>
       <Stack mt="auto" gap="space.04">
-        <Button onClick={resetErrorBoundary}>Reload extension</Button>
-        <Button
-          mode="tertiary"
+        <LeatherButton onClick={resetErrorBoundary}>Reload extension</LeatherButton>
+        <LeatherButton
+          // // #4164 FIXME tertiary
+          // mode="tertiary"
+          variant="ghost"
           onClick={() => openGithubIssue({ message: error.message, stackTrace: value })}
         >
           Report issue on GitHub
-        </Button>
+        </LeatherButton>
       </Stack>
     </Stack>
   );

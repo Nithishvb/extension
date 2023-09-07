@@ -2,6 +2,7 @@ import { FiCircle } from 'react-icons/fi';
 
 import ConnectLedgerError from '@assets/images/ledger/connect-ledger-error.png';
 import { Box, Flex, Stack } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
 import { LeatherButton } from '@app/components/button/button';

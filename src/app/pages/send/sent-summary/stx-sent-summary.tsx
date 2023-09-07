@@ -2,7 +2,9 @@ import { toast } from 'react-hot-toast';
 import { FiCopy, FiExternalLink } from 'react-icons/fi';
 import { useLocation } from 'react-router-dom';
 
-import { Stack, useClipboard } from 'leather-styles/jsx';
+// #4164 FIXME migrate useClipboard
+import { useClipboard } from '@stacks/ui';
+import { HStack, Stack } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
@@ -76,10 +78,10 @@ export function StxSentSummary() {
       </Stack>
 
       <InfoCardFooter>
-        <Stack gap="space.04" isInline width="100%">
-          <InfoCardBtn onClick={onClickLink} icon={FiExternalLink} label="View Details" />
-          <InfoCardBtn onClick={onClickCopy} icon={FiCopy} label="Copy ID" />
-        </Stack>
+        <HStack gap="space.04" width="100%">
+          <InfoCardBtn onClick={onClickLink} icon={<FiExternalLink />} label="View Details" />
+          <InfoCardBtn onClick={onClickCopy} icon={<FiCopy />} label="Copy ID" />
+        </HStack>
       </InfoCardFooter>
     </InfoCard>
   );

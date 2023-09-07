@@ -1,7 +1,7 @@
 import { FiExternalLink } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Stack } from 'leather-styles/jsx';
+import { HStack, Stack } from 'leather-styles/jsx';
 import get from 'lodash.get';
 
 import { createMoney } from '@shared/models/money.model';
@@ -81,14 +81,13 @@ export function Brc20SentSummary() {
         <InfoCardRow title="Total fee" value={totalFee} />
       </Stack>
       <InfoCardFooter>
-        {/* FIXME isInline */}
-        <Stack gap="space.04" width="100%">
+        <HStack gap="space.04" width="100%">
           <InfoCardBtn
             onClick={onClickLink}
-            icon={FiExternalLink}
+            icon={<FiExternalLink />}
             label="Pending BRC-20 transfers"
           />
-        </Stack>
+        </HStack>
       </InfoCardFooter>
     </InfoCard>
   );

@@ -74,7 +74,7 @@ export { useClipboard };
  * 
  * 
  */
-import { Stack } from 'leather-styles/jsx';
+import { HStack, Stack } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
@@ -132,8 +132,8 @@ export function RpcSendTransferSummary() {
           fiatValue={txFiatValue}
           fiatSymbol={txFiatValueSymbol}
           symbol={symbol}
-          icon={FiCheck}
-          mb="space.05"
+          icon={<FiCheck />}
+          mb="space.05 "
         />
         <Stack pb="space.06" width="100%">
           <InfoCardRow title="To" value={<FormAddressDisplayer address={recipient} />} />
@@ -144,15 +144,10 @@ export function RpcSendTransferSummary() {
           {arrivesIn && <InfoCardRow title="Estimated confirmation time" value={arrivesIn} />}
         </Stack>
         <InfoCardFooter>
-          <Stack
-            // #4164 FIXME migrate
-            //isInline
-            gap="space.04"
-            width="100%"
-          >
-            <InfoCardBtn icon={FiExternalLink} label="View Details" onClick={onClickLink} />
-            <InfoCardBtn icon={FiCopy} label="Copy ID" onClick={onClickCopy} />
-          </Stack>
+          <HStack gap="space.04" width="100%">
+            <InfoCardBtn icon={<FiExternalLink />} label="View Details" onClick={onClickLink} />
+            <InfoCardBtn icon={<FiCopy />} label="Copy ID" onClick={onClickCopy} />
+          </HStack>
         </InfoCardFooter>
       </InfoCard>
     </>

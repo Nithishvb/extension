@@ -1,8 +1,4 @@
-import { FiArrowDown, FiArrowUp } from 'react-icons/fi';
-
 import { BitcoinTx } from '@shared/models/transactions/bitcoin-transaction.model';
-
-import { isBitcoinTxInbound } from '@app/common/transactions/bitcoin/utils';
 
 type ColorsStringLiteral =
   | 'accent'
@@ -41,12 +37,6 @@ export const colorFromTx = (tx: BitcoinTx): ColorsStringLiteral => {
 
   return colorMap[statusFromTx(tx)] ?? 'feedback-error';
 };
-
-// #4164 FIXME refactor this to return JSX with size
-export function IconForTx(address: string, tx: BitcoinTx) {
-  if (isBitcoinTxInbound(address, tx)) return FiArrowDown;
-  return FiArrowUp;
-}
 
 export function containsTaprootInput(tx: BitcoinTx) {
   return tx.vin.some(input => input.prevout.scriptpubkey_type === 'v1_p2tr');

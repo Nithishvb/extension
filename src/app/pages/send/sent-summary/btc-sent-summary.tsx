@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 // #4164 FIXME migrate useClipboard
 import { useClipboard } from '@stacks/ui';
-import { Stack } from 'leather-styles/jsx';
+import { HStack, Stack } from 'leather-styles/jsx';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
@@ -77,10 +77,10 @@ export function BtcSentSummary() {
       </Stack>
 
       <InfoCardFooter>
-        <Stack gap="space.04" isInline width="100%">
-          <InfoCardBtn onClick={onClickLink} icon={FiExternalLink} label="View Details" />
-          <InfoCardBtn onClick={onClickCopy} icon={FiCopy} label="Copy ID" />
-        </Stack>
+        <HStack gap="space.04" width="100%">
+          <InfoCardBtn onClick={onClickLink} icon={<FiExternalLink />} label="View Details" />
+          <InfoCardBtn onClick={onClickCopy} icon={<FiCopy />} label="Copy ID" />
+        </HStack>
       </InfoCardFooter>
     </InfoCard>
   );

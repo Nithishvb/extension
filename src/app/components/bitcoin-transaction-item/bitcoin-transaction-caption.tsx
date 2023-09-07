@@ -1,4 +1,5 @@
 import { styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
 
 interface BitcoinTransactionCaptionProps {
   children: string;

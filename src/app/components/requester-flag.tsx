@@ -13,7 +13,7 @@ export function RequesterFlag({ requester }: RequesterFlagProps) {
       img={<Favicon origin={requester} />}
       alignItems="center"
       justifyContent="center"
-      py="extra-tight"
+      py="space.01"
       px="space.02"
       borderRadius="10px"
       width="fit-content"

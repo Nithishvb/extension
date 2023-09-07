@@ -13,7 +13,7 @@ export function SwapStatusItemLayout({ icon, text, timestamp }: SwapStatusItemLa
   return (
     <Flag align="middle" img={icon} py="space.02" spacing="space.04">
       <SpaceBetween>
-        <Stack gap="extra-tight">
+        <Stack gap="space.01">
           {timestamp ? <styled.span fontWeight={500}>{timestamp}</styled.span> : null}
           <styled.span>{text}</styled.span>
         </Stack>
