@@ -49,7 +49,8 @@ export function ConnectLedgerLayout(props: ConnectLedgerLayoutProps) {
           </Caption>
           <ExternalLink
             href="https://www.hiro.so/wallet-faq/how-can-i-use-my-ledger-device-with-hiro-wallet"
-            fontSize={1}
+            // #4164 FIXME migrate - check this text size
+            // fontSize={1}
           >
             See how to download the <Capitalize>{chain}</Capitalize> app
           </ExternalLink>

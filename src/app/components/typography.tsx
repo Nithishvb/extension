@@ -1,5 +1,8 @@
 import { forwardRefWithAs } from '@stacks/ui-core';
-import { Text as BaseText, BoxProps } from 'leather-styles/jsx';
+import { BoxProps, styled } from 'leather-styles/jsx';
+import { token } from 'leather-styles/tokens';
+
+// #4164 FIXME migrate - get rid of this file when possible
 
 const interMetrics = {
   capHeight: 2048,
@@ -38,7 +41,7 @@ const captionStyles = (variant?: 'c1' | 'c2' | 'c3') => {
 type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
 
 export const Title = forwardRefWithAs<BoxProps, Headings>((props, ref) => (
-  <BaseText
+  <styled.span
     userSelect="none"
     letterSpacing="-0.01em"
     fontFamily="Diatype"
@@ -50,16 +53,16 @@ export const Title = forwardRefWithAs<BoxProps, Headings>((props, ref) => (
 ));
 
 export const Text = forwardRefWithAs<BoxProps, 'span'>((props, ref) => (
-  <BaseText letterSpacing="-0.01em" display="block" lineHeight="1.5" ref={ref} {...props} />
+  <styled.span letterSpacing="-0.01em" display="block" lineHeight="1.5" ref={ref} {...props} />
 ));
 
 export function Body(props: BoxProps) {
   return <styled.span css={c1} {...props} />;
 }
-
+// #4164 FIXME migrate - need to refactor all <Captions
 export const Caption = forwardRefWithAs<{ variant?: 'c1' | 'c2' | 'c3' } & BoxProps, 'span'>(
   ({ variant, ...props }, ref) => (
-    <BaseText
+    <styled.span
       letterSpacing="-0.01em"
       css={captionStyles(variant)}
       color={token('colors.accent.text-subdued')}

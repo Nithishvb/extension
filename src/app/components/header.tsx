@@ -2,10 +2,11 @@ import { memo, useMemo } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+// #4164 FIXME migrate  IconButton, useMediaQuery
 import { IconButton, useMediaQuery } from '@stacks/ui';
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
-import { Box, Flex, FlexProps, IconButton, Stack, useMediaQuery } from 'leather-styles/jsx';
+import { Flex, FlexProps, HStack, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { BRANCH_NAME, COMMIT_SHA } from '@shared/environment';
@@ -15,7 +16,6 @@ import { useDrawers } from '@app/common/hooks/use-drawers';
 import { LeatherButton } from '@app/components/button/button';
 import { LeatherLogo } from '@app/components/leather-logo';
 import { NetworkModeBadge } from '@app/components/network-mode-badge';
-import { Title } from '@app/components/typography';
 
 import { HamburgerIcon } from './icons/hamburger-icon';
 
@@ -70,9 +70,9 @@ export const Header: React.FC<HeaderProps> = memo(props => {
       {...rest}
     >
       {onClose ? (
-        <Box flexBasis="20%" onClick={onClose} as="button">
+        <styled.button flexBasis="20%" onClick={onClose}>
           <IconButton alignSelf="center" icon={FiArrowLeft} iconSize="16px" />
-        </Box>
+        </styled.button>
       ) : null}
       {!title && (!onClose || desktopViewport) ? (
         <Flex
@@ -101,17 +101,18 @@ export const Header: React.FC<HeaderProps> = memo(props => {
           </Flex>
         </Flex>
       ) : (
-        <Title
+        <styled.span
           alignSelf="center"
           flexBasis="60%"
           fontSize="16px"
           fontWeight={500}
+          textStyle="label.02"
           lineHeight="24px"
           textAlign="center"
-          {...rest}
         >
           {title}
-        </Title>
+          {/*  #4164 TODO check this looks OK, then migrate remaining style */}
+        </styled.span>
       )}
       <HStack alignItems="center" flexBasis="20%" justifyContent="flex-end">
         <NetworkModeBadge />
