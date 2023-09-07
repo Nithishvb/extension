@@ -21,7 +21,7 @@ export function AvailableBalance(props: { balance: Money; balanceTooltipLabel?: 
   return (
     <SpaceBetween>
       <Flex alignItems="center">
-        <Caption mr="tight">Available balance</Caption>
+        <Caption mr="space.02">Available balance</Caption>
         <Tooltip placement="top" label={balanceTooltipLabel}>
           <Stack>
             {/* TODO: refactor this to be a generic icon wrapper */}

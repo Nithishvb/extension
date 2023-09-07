@@ -21,7 +21,7 @@ export function PsbtRequestDetailsHeader() {
       alignItems="center"
       // #4164 FIXME migrate
       //isInline
-      gap="tight"
+      gap="space.02"
     >
       <styled.h2 textStyle="heading.05">Transaction</styled.h2>
       <Tooltip
@@ -36,7 +36,7 @@ export function PsbtRequestDetailsHeader() {
           borderRadius="24px"
           // #4164 FIXME migrate
           //isInline
-          px="tight"
+          px="space.02"
           py="extra-tight"
           gap="extra-tight"
         >

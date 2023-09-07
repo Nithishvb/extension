@@ -48,7 +48,7 @@ export function StacksCommonSendForm({
   const { onFormStateChange } = useUpdatePersistedSendFormValues();
 
   return (
-    <Box width="100%" pb="base">
+    <Box width="100%" pb="space.04">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -65,10 +65,10 @@ export function StacksCommonSendForm({
                   {selectedAssetField}
                   <StacksRecipientField />
                   <MemoField />
-                  <FeesRow fees={fees} isSponsored={false} mt="base" />
+                  <FeesRow fees={fees} isSponsored={false} mt="space.04" />
                   <EditNonceButton
                     alignSelf="flex-end"
-                    mt="base"
+                    mt="space.04"
                     onEditNonce={() => navigate(RouteUrls.EditNonce)}
                   />
                 </SendCryptoAssetFormLayout>

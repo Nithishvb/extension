@@ -34,17 +34,17 @@ export function ConnectLedgerLayout(props: ConnectLedgerLayoutProps) {
           <PluggingInLedgerCableAnimation position="absolute" top="-80px" />
         </Suspense>
       </Box>
-      <LedgerConnectInstructionTitle chain={chain} mt="extra-loose" mx="50px" />
-      <LeatherButton my="base" onClick={onConnectLedger} aria-busy={awaitingLedgerConnection}>
+      <LedgerConnectInstructionTitle chain={chain} mt="space.06" mx="50px" />
+      <LeatherButton my="space.04" onClick={onConnectLedger} aria-busy={awaitingLedgerConnection}>
         Connect
       </LeatherButton>
-      <Box mb="base" mx="extra-loose">
+      <Box mb="space.04" mx="space.06">
         {warning}
       </Box>
       {showInstructions ? (
         <Box width="100%">
           <Divider />
-          <Caption mb="tight" mt="loose">
+          <Caption mb="space.02" mt="space.05">
             First time using Ledger on Leather?
           </Caption>
           <ExternalLink

@@ -58,8 +58,8 @@ function TabButton(props: TabButtonProps): React.JSX.Element {
       as="button"
       border={0}
       borderRadius="8px"
-      px="base"
-      py="base"
+      px="space.04"
+      py="space.04"
       bg={isActive ? token('colors.accent.background-secondary') : 'transparent'}
       fontWeight={isActive ? 600 : 500}
       {...rest}
@@ -83,7 +83,7 @@ export function ContractDeployDetails(): React.JSX.Element | null {
   }
 
   return (
-    <Stack mb="loose" gap="loose">
+    <Stack mb="space.05" gap="space.05">
       <Stack gap="0" isInline>
         <TabButton onClick={() => setTab('details')} isActive={tab === 'details'}>
           Details
@@ -94,11 +94,11 @@ export function ContractDeployDetails(): React.JSX.Element | null {
       </Stack>
       {tab === 'details' ? (
         <Stack
-          gap="loose"
+          gap="space.05"
           border="4px solid"
           borderColor={token('colors.accent.background-primary')}
           borderRadius="12px"
-          py="extra-loose"
+          py="space.06"
           px="base-loose"
         >
           <Title as="h2" fontWeight="500">

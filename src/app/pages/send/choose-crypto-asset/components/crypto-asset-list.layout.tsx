@@ -6,9 +6,9 @@ export function CryptoAssetListLayout({ children }: StackProps) {
     <Stack
       width="100%"
       data-testid={CryptoAssetSelectors.CryptoAssetList}
-      pb="extra-loose"
-      px="loose"
-      gap="extra-loose"
+      pb="space.06"
+      px="space.05"
+      gap="space.06"
     >
       {children}
     </Stack>

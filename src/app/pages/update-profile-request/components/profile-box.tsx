@@ -36,7 +36,7 @@ function Properties({ p }: { p: any }) {
         .filter(k => !k.startsWith('@'))
         .map(k => {
           return (
-            <Box key={k} textIndent="-1em" ml="loose">
+            <Box key={k} textIndent="-1em" ml="space.05">
               {/* TODO check color - text caption, mabe replace with styled.span variant */}
               <span style={{ color: token('colors.accent.text-primary') }}>{k}:</span>{' '}
               <Value v={p[k]} />
@@ -57,7 +57,13 @@ export function ProfileBox({ profile }: { profile: Profile }): React.JSX.Element
         borderRadius="20px"
         backgroundColor={token('colors.accent.border-default')}
       >
-        <Box py="loose" px="loose" gap="loose" borderRadius="16px" backgroundColor={'white'}>
+        <Box
+          py="space.05"
+          px="space.05"
+          gap="space.05"
+          borderRadius="16px"
+          backgroundColor={'white'}
+        >
           <Box gap="base-tight">
             <Properties p={profile._profile} />
           </Box>

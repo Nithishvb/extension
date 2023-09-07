@@ -8,7 +8,7 @@ import { GenericError } from '@app/components/generic-error/generic-error';
 
 const body = 'Check balance and try again';
 const helpTextList = [
-  <Box as="li" mt="base" key={1}>
+  <Box as="li" mt="space.04" key={1}>
     <styled.span>Possibly caused by api issues</styled.span>
   </Box>,
 ];
@@ -18,7 +18,7 @@ export function FeesListError() {
   const navigate = useNavigate();
 
   return (
-    <Box textAlign="center" px={['unset', 'loose']} py="base" width="100%">
+    <Box textAlign="center" px={['unset', 'loose']} py="space.04" width="100%">
       <GenericError
         body={body}
         helpTextList={helpTextList}

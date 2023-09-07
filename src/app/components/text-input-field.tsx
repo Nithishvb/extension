@@ -1,9 +1,11 @@
 import { Ref, useRef } from 'react';
 
+// #4164 FIXME migrate Input
+import { Input } from '@stacks/ui';
 import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
 import { useField } from 'formik';
 import { css } from 'leather-styles/css';
-import { Box, Flex, FlexProps, Input } from 'leather-styles/jsx';
+import { Box, Flex, FlexProps, styled } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
 import { useShowFieldError } from '@app/common/form-utils';
@@ -70,7 +72,7 @@ export function TextInputField({
         justifyContent="center"
         mb={showError ? 'tight' : 'base'}
         minHeight="64px"
-        px="base"
+        px="space.04"
         py="base-tight"
         position="relative"
         width="100%"
@@ -83,7 +85,7 @@ export function TextInputField({
                 color={showError ? token('colors.error') : token('colors.ink.11')}
                 fontSize={1}
                 fontWeight={500}
-                mr="tight"
+                mr="space.02"
               >
                 {label}
               </styled.span>
@@ -91,13 +93,10 @@ export function TextInputField({
             {topInputOverlay ? <Box zIndex={999}>{topInputOverlay}</Box> : null}
           </Flex>
           {labelAction ? (
-            <styled.span
+            <styled.button
               _hover={{ cursor: 'pointer', textDecoration: 'underline' }}
               data-testid={SendCryptoAssetSelectors.RecipientChooseAccountButton}
-              as="button"
-              color={token('colors.brown.12')}
-              fontSize={1}
-              fontWeight={500}
+              textStyle="label.01"
               // Prevents focusing underlying input
               onMouseDown={e => e.preventDefault()}
               onClick={() => {
@@ -112,7 +111,7 @@ export function TextInputField({
               zIndex={999}
             >
               {labelAction}
-            </styled.span>
+            </styled.button>
           ) : null}
         </SpaceBetween>
         <Input
@@ -140,7 +139,7 @@ export function TextInputField({
           }}
         />
       </Flex>
-      <styled.spanInputFieldError name={name} />
+      <TextInputFieldError name={name} />
     </>
   );
 }

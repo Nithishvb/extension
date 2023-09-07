@@ -35,7 +35,7 @@ function PostConditionsSuspense(): React.JSX.Element | null {
       borderColor={token('colors.accent.border-default')}
       borderRadius="12px"
       flexDirection="column"
-      mb="loose"
+      mb="space.05"
       width="100%"
     >
       {hasPostConditions ? (

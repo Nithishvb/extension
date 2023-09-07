@@ -26,7 +26,7 @@ export function ThemeList(props: FlexProps) {
   const { userSelectedTheme } = useThemeSwitcher();
 
   return (
-    <Flex flexWrap="wrap" flexDirection="column" pb="extra-loose" {...props}>
+    <Flex flexWrap="wrap" flexDirection="column" pb="space.06" {...props}>
       {themes.map(theme => (
         <ThemeListItem
           key={theme}

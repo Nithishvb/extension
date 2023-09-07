@@ -11,7 +11,7 @@ export function SponsoredLabel(): React.JSX.Element {
         borderRadius="10px"
         height="48px"
         isInline
-        pl="base"
+        pl="space.04"
       >
         <Box
           _hover={{ cursor: 'pointer' }}

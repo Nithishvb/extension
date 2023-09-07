@@ -12,11 +12,11 @@ export function LedgerOperationRejectedLayout({
   description,
 }: LedgerOperationRejectedLayoutProps) {
   return (
-    <Flex alignItems="center" flexDirection="column" pb="extra-loose" px="loose" textAlign="center">
+    <Flex alignItems="center" flexDirection="column" pb="space.06" px="space.05" textAlign="center">
       <Box>
         <img src={LedgerTxRejected} width="227px" height="63px" />
       </Box>
-      <LedgerTitle mt="extra-loose" mx="40px" lineHeight="1.6">
+      <LedgerTitle mt="space.06" mx="40px" lineHeight="1.6">
         {description}
       </LedgerTitle>
       <styled.span
@@ -24,7 +24,7 @@ export function LedgerOperationRejectedLayout({
         lineHeight="24px"
         color={token('colors.accent.text-subdued')}
       ></styled.span>
-      <Button mode="tertiary" mt="base" mr="base-tight" mb="tight" onClick={onClose}>
+      <Button mode="tertiary" mt="space.04" mr="base-tight" mb="space.02" onClick={onClose}>
         Close
       </Button>
     </Flex>

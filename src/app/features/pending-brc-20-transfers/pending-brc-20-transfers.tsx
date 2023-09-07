@@ -75,7 +75,7 @@ export function PendingBrc20TransferList() {
       <Flex columnGap="8px">
         <Caption>Pending BRC-20 transfers</Caption>
       </Flex>
-      <Stack mt="tight">
+      <Stack mt="space.02">
         {transferOrders.map(order => (
           <PendingBrcTransfer key={order.id} order={order} />
         ))}
@@ -127,13 +127,13 @@ function PendingBrcTransfer({ order }: PendingBrcTransferProps) {
       <styled.span>
         {order.amount} {order.tick}
       </styled.span>
-      <Stack isInline width="100%" mt="tight">
+      <Stack isInline width="100%" mt="space.02">
         <CaptionDotSeparator>
           <Flex as={Caption}>
             <Flag
-              ml="tight"
+              ml="space.02"
               align="middle"
-              spacing="tight"
+              spacing="space.02"
               img={<StatusIcon status={order.status} />}
             >
               <StatusLabel status={order.status} />

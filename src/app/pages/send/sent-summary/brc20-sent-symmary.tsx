@@ -53,10 +53,10 @@ export function Brc20SentSummary() {
     <InfoCard>
       <TxDone />
 
-      <InfoCardAssetValue value={Number(amount)} symbol={tick} px="loose" />
+      <InfoCardAssetValue value={Number(amount)} symbol={tick} px="space.05" />
 
-      <Stack width="100%" px="extra-loose" pb="extra-loose">
-        <InfoLabel mb="loose" title="One more step is required to send tokens">
+      <Stack width="100%" px="space.06" pb="space.06">
+        <InfoLabel mb="space.05" title="One more step is required to send tokens">
           {`You'll need to send the transfer inscription to your recipient of choice from the home screen once its status changes to "Ready to send"`}
           <br />
           <br />
@@ -82,7 +82,7 @@ export function Brc20SentSummary() {
       </Stack>
       <InfoCardFooter>
         {/* FIXME isInline */}
-        <Stack gap="base" width="100%">
+        <Stack gap="space.04" width="100%">
           <InfoCardBtn
             onClick={onClickLink}
             icon={FiExternalLink}

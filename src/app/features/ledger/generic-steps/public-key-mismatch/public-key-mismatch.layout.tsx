@@ -15,7 +15,7 @@ export function PublicKeyMismatchLayout({ onClose, onTryAgain }: PublicKeyMismat
       <Box>
         <img src={LedgerWithRedOutline} width="247px" height="55px" />
       </Box>
-      <Title mt="extra-loose">Public key does not match</Title>
+      <Title mt="space.06">Public key does not match</Title>
       <styled.span mt="base-tight" lineHeight="24px" color={token('colors.accent.text-subdued')}>
         Ensure you're using the same Ledger you used when setting up the Leather
       </styled.span>

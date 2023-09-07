@@ -28,8 +28,8 @@ export function CollectiblesLayout(props: CollectiblesLayoutProps) {
         {subHeader}
       </Flex>
       <Grid
-        gap="base"
-        rowGap="extra-loose"
+        gap="space.04"
+        rowGap="space.06"
         templateColumns={[
           'repeat(auto-fill, minmax(164px, 1fr))',
           'repeat(auto-fill, minmax(184px, 1fr))',

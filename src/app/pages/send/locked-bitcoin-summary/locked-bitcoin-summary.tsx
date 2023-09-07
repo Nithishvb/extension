@@ -46,8 +46,8 @@ export function LockBitcoinSummary() {
         fiatSymbol={txFiatValueSymbol}
         symbol={symbol}
         icon={FiCheck}
-        my="loose"
-        px="loose"
+        my="space.05"
+        px="space.05"
       />
       <styled.span fontSize={2} fontWeight={200} padding={'25px'} textAlign={'justify'}>
         <span style={{ fontWeight: 500 }}>Success!</span> Your bitcoin has been locked securely. All
@@ -55,7 +55,7 @@ export function LockBitcoinSummary() {
         with borrowing against it.
       </styled.span>
       <InfoCardFooter>
-        <Stack gap="base" isInline width="100%">
+        <Stack gap="space.04" isInline width="100%">
           <InfoCardBtn onClick={onClickLink} icon={FiExternalLink} label="View Details" />
           <InfoCardBtn onClick={onClickCopy} icon={FiCopy} label="Copy ID" />
         </Stack>

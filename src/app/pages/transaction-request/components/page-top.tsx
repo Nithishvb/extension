@@ -29,15 +29,15 @@ function PageTopBase() {
   return (
     <Stack
       data-testid={TransactionRequestSelectors.TransactionRequestPage}
-      mb="loose"
-      gap="base"
+      mb="space.05"
+      gap="space.04"
       width="100%"
     >
       <styled.h1 mb="space.04" textStyle="heading.03">
         {pageTitle}
       </styled.h1>
       {caption && (
-        <Flag align="middle" img={<Favicon origin={origin ?? ''} />} pl="tight">
+        <Flag align="middle" img={<Favicon origin={origin ?? ''} />} pl="space.02">
           <styled.span textStyle="label.02" wordBreak="break-word">
             {caption}
           </styled.span>

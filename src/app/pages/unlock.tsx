@@ -44,7 +44,7 @@ export function Unlock() {
       <Stack
         maxWidth={token('sizes.centeredPageFullWidth')}
         px={['loose', 'base-loose']}
-        gap="loose"
+        gap="space.05"
         textAlign={['left', 'center']}
         width="100%"
       >

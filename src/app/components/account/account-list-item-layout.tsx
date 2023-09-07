@@ -55,11 +55,11 @@ export function AccountListItemLayout(props: AccountListItemLayoutProps) {
       onClick={onSelectAccount}
       {...rest}
     >
-      <Flag align="middle" img={avatar} spacing="base" width="100%">
+      <Flag align="middle" img={avatar} spacing="space.04" width="100%">
         {/* // FIXME isinline */}
         <Stack gap="extra-tight">
           <SpaceBetween>
-            <Stack alignItems="center" gap="tight">
+            <Stack alignItems="center" gap="space.02">
               {accountName}
               {isActive && <CheckmarkIcon />}
             </Stack>

@@ -23,7 +23,7 @@ export function BackUpSecretKeyActions(props: BackUpSecretKeyLayoutProps): React
         <FiEyeOff size="12px" />
         <styled.span textStyle="body.02">Never share your Secret Key with anyone</styled.span>
       </Stack>
-      <Stack alignItems="center" isInline mb="loose">
+      <Stack alignItems="center" isInline mb="space.05">
         <FiLock size="12px" />
         <styled.span textStyle="body.02">Store it somewhere 100% private and secure</styled.span>
       </Stack>

@@ -14,13 +14,13 @@ export function LedgerDisconnectedLayout(props: LedgerDisconnectedLayoutProps) {
   const { onConnectAgain, onClose } = props;
   return (
     <LedgerWrapper>
-      <Box mb="loose" mt="tight">
+      <Box mb="space.05" mt="space.02">
         <img src={LedgerDisconnected} width="242px" />
       </Box>
-      <LedgerTitle mb="loose" mt="loose" mx="40px">
+      <LedgerTitle mb="space.05" mt="space.05" mx="40px">
         Your Ledger has disconnected
       </LedgerTitle>
-      <Stack isInline mb="loose">
+      <Stack isInline mb="space.05">
         <Button borderRadius="10px" mode="tertiary" onClick={onClose}>
           Close
         </Button>

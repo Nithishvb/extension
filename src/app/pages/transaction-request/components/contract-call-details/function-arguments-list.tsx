@@ -26,7 +26,7 @@ function FunctionArgumentsListBase(props: StackProps): React.JSX.Element | null 
             thickness: '1px',
             color: token('colors.accent.border-default'),
           })}
-          gap="base"
+          gap="space.04"
           {...props}
         >
           {transactionRequest.functionArgs.map((arg, index) => {

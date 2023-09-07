@@ -76,7 +76,7 @@ export function FundAccountTile(props: FundAccountTileProps) {
         <Stack
           // #4164 FIXME migrate
           //isInline
-          gap="tight"
+          gap="space.02"
         >
           {attributes}
         </Stack>

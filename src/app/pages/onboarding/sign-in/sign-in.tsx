@@ -87,7 +87,7 @@ export function SignIn() {
     <Flex
       flexDirection={['column', 'column', 'column', 'row']}
       mt={['space.05', 'space.06']}
-      pb="loose"
+      pb="space.05"
       px={['space.05', 'space.05', 'space.11']}
       width="100%"
       gap={['space.03', 'space.09']}
@@ -131,7 +131,7 @@ export function SignIn() {
         </styled.h2>
         <Stack gap="base-tight" mb="space.05">
           <Grid
-            mx="base"
+            mx="space.04"
             gridTemplateColumns={['repeat(2, minmax(30%, 1fr))', 'repeat(3, minmax(120px, 1fr))']}
             rowGap="15px"
             columnGap="15px"
@@ -152,8 +152,8 @@ export function SignIn() {
         </Stack>
         <Flex flexDirection="column" justifyContent="center" alignItems="center">
           {error && (
-            <ErrorLabel mb="loose" alignItems="center">
-              <styled.p data-testid="sign-in-seed-error" pr="extra-loose" textStyle="caption">
+            <ErrorLabel mb="space.05" alignItems="center">
+              <styled.p data-testid="sign-in-seed-error" pr="space.06" textStyle="caption">
                 {error}
               </styled.p>
             </ErrorLabel>

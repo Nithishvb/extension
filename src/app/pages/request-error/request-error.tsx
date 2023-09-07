@@ -6,7 +6,7 @@ import get from 'lodash.get';
 import { GenericError } from '@app/components/generic-error/generic-error';
 
 const helpTextList = [
-  <styled.li mt="base" key={1}>
+  <styled.li mt="space.04" key={1}>
     Please report issue to requesting app
   </styled.li>,
 ];

@@ -15,13 +15,13 @@ export function LedgerBroadcastErrorLayout(props: LedgerBroadcastErrorLayoutProp
 
   return (
     <LedgerWrapper>
-      <Box mb="loose" mt="tight">
+      <Box mb="space.05" mt="space.02">
         <img src={BroadcastError} width="242px" />
       </Box>
-      <LedgerTitle mb="loose" mt="loose" mx="40px">
+      <LedgerTitle mb="space.05" mt="space.05" mx="40px">
         Transaction Broadcast Error
       </LedgerTitle>
-      <Body mt="base-tight" px="base">
+      <Body mt="base-tight" px="space.04">
         Your transaction failed to broadcast {error && <>because of the error: {error}</>}
       </Body>
       <Flex mt="base-loose">

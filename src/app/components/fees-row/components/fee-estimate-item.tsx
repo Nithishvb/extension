@@ -36,7 +36,7 @@ export function FeeEstimateItem(props: FeeEstimateItemProps) {
       mb="0px !important"
       minWidth="100px"
       onClick={() => onSelectItem(index)}
-      p="tight"
+      p="space.02"
     >
       <styled.span fontSize={1} fontWeight={500} ml="2px">
         {labels[index]}

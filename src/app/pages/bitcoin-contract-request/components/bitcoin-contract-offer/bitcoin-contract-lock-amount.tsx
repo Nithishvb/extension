@@ -39,7 +39,7 @@ export function BitcoinContractLockAmount({
           {value}
         </styled.span>
       </SpaceBetween>
-      <SpaceBetween mt="tight">
+      <SpaceBetween mt="space.02">
         {subtitle ? (
           <Tooltip
             disabled={!hoverLabel}

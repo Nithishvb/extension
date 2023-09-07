@@ -8,7 +8,7 @@ export function PsbtRequestDetailsSectionLayout({ children, ...props }: HasChild
       border="4px solid"
       borderColor={token('colors.accent.background-primary')}
       borderRadius="16px"
-      p="loose"
+      p="space.05"
       gap="extra-tight"
       width="100%"
       {...props}

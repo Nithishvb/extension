@@ -17,7 +17,7 @@ export function FeesRowLayout(props: FeesRowLayoutProps) {
   const [_, meta] = useField('fee');
 
   return (
-    <Stack gap="base" width="100%" {...rest}>
+    <Stack gap="space.04" width="100%" {...rest}>
       <SpaceBetween position="relative">
         <Stack alignItems="center" isInline>
           <Caption>Fee</Caption>

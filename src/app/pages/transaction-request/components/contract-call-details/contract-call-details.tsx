@@ -25,10 +25,10 @@ function ContractCallDetailsSuspense() {
       border="4px solid"
       borderColor={token('colors.accent.border-default')}
       borderRadius="12px"
-      mb="loose"
+      mb="space.05"
       px="base-loose"
-      py="extra-loose"
-      gap="loose"
+      py="space.06"
+      gap="space.05"
       width="100%"
     >
       <Title as="h2" fontWeight="500">
@@ -48,7 +48,7 @@ function ContractCallDetailsSuspense() {
       />
       {/* TODO - make sure this looks OK then come up with a better way of sharing this logic - new component <DividedStack  */}
       <Stack
-        gap="base"
+        gap="space.04"
         className={divider({
           orientation: 'horizontal',
           thickness: '1px',

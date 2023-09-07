@@ -40,16 +40,16 @@ export function RpcSignPsbtSummary() {
   }
 
   return (
-    <Flex alignItems="center" flexDirection="column" p="loose" width="100%">
+    <Flex alignItems="center" flexDirection="column" p="space.05" width="100%">
       <InfoCard>
         <InfoCardAssetValue
           value={txValue}
           fiatValue={txFiatValue}
           fiatSymbol={txFiatValueSymbol}
           icon={FiCheck}
-          mb="loose"
+          mb="space.05"
         />
-        <Stack pb="extra-loose" width="100%">
+        <Stack pb="space.06" width="100%">
           <InfoCardRow title="Total spend" value={totalSpend} />
           <InfoCardRow title="Sending" value={sendingValue} />
           <InfoCardRow title="Fee" value={fee} />
@@ -58,7 +58,7 @@ export function RpcSignPsbtSummary() {
           <Stack
             // #4164 FIXME migrate
             // isInline
-            gap="base"
+            gap="space.04"
             width="100%"
           >
             <InfoCardBtn icon={FiExternalLink} label="View Details" onClick={onClickLink} />

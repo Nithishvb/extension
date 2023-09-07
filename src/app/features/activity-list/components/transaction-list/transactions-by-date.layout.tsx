@@ -17,7 +17,7 @@ export function TransactionsByDateLayout({
       <styled.span textStyle="body.small" color={token('colors.accent.text-subdued')}>
         {displayDate}
       </styled.span>
-      <Stack mt="base-loose" gap="loose">
+      <Stack mt="base-loose" gap="space.05">
         {children}
       </Stack>
     </Box>

@@ -9,7 +9,7 @@ export function LookingForLedgerLabel({ children, ...props }: LookingForLedgerLa
   return (
     <Flex alignItems="center" flexDirection="row" {...props}>
       <Spinner color={token('colors.accent.text-subdued')} opacity={0.5} size="sm" />
-      <Caption ml="tight">{children}</Caption>
+      <Caption ml="space.02">{children}</Caption>
     </Flex>
   );
 }

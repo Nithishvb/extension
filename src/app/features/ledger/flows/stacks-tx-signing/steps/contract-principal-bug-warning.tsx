@@ -16,18 +16,18 @@ export function ContractPrincipalBugWarning() {
   const { isLoading, setIsLoading, setIsIdle } = useLoading('temp-spinner-deep-link');
   return (
     <LedgerWrapper>
-      <Box mb="tight" mt="tight">
+      <Box mb="space.02" mt="space.02">
         <img src={GenericErrorImg} width="106px" />
       </Box>
       <LedgerTitle mt="base-loose">Stacks Ledger app is outdated</LedgerTitle>
-      <Body mt="base" mx="tight">
+      <Body mt="space.04" mx="space.02">
         Some transactions are not compatible with outdated app versions. Update your app in{' '}
         <a href="ledgerlive://manager" style={{ textDecoration: 'underline' }}>
           Ledger Live
         </a>{' '}
         and try again.
       </Body>
-      <Stack isInline mb="loose" mt="extra-loose">
+      <Stack isInline mb="space.05" mt="space.06">
         <Button
           as="a"
           href="ledgerlive://manager"

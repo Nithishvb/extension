@@ -46,7 +46,7 @@ export function PasswordField({ strengthResult, isDisabled }: PasswordFieldProps
           height="20px"
           onClick={() => setShowPassword(!showPassword)}
           position="absolute"
-          right="base"
+          right="space.04"
           top="20px"
           transform="matrix(-1, 0, 0, 1, 0, 0)"
           type="button"

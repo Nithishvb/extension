@@ -14,9 +14,9 @@ export function InfoLabel({ children, title, ...rest }: InfoLabelProps) {
         bg="accent.disabled"
         borderRadius="10px"
         minHeight="48px"
-        px="base"
+        px="space.04"
         py="base-tight"
-        gap="tight"
+        gap="space.02"
         width="100%"
         color="accent.notification-text"
       >

@@ -74,7 +74,7 @@ export const SwitchAccountListItem = memo(
         hasCopied={hasCopied}
         onCopyToClipboard={onCopyToClipboard}
         onClickBtcCopyIcon={onClickBtcCopyIcon}
-        mt="loose"
+        mt="space.05"
         {...bind}
       >
         {component}

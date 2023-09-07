@@ -19,8 +19,8 @@ export function SendTransferFooter({ children }: HasChildren) {
         full: 'unset',
         popup: 'fixed',
       })}
-      px="extra-loose"
-      py="loose"
+      px="space.06"
+      py="space.05"
       width="100%"
       zIndex={999}
     >

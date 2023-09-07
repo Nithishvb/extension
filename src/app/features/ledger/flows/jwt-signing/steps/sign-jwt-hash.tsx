@@ -16,10 +16,10 @@ export function SignJwtHash() {
 
   return (
     <LedgerWrapper>
-      <Box mt="tight">
+      <Box mt="space.02">
         <img src={SignLedgerTransaction} width="228px" />
       </Box>
-      <LedgerTitle mt="loose" mx="50px">
+      <LedgerTitle mt="space.05" mx="50px">
         Approve the JWT hash on your device
       </LedgerTitle>
       <DeviceOperationApprovalStatus
@@ -30,8 +30,8 @@ export function SignJwtHash() {
         borderRadius="16px"
         flexDirection="column"
         textAlign="left"
-        px="extra-loose"
-        py="extra-loose"
+        px="space.06"
+        py="space.06"
         width="100%"
       >
         <LedgerScreenDetail

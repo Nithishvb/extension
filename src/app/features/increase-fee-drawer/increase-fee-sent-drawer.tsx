@@ -15,7 +15,7 @@ export function IncreaseFeeSentDrawer() {
   return (
     <>
       <BaseDrawer isShowing={isShowing} onClose={() => navigate(RouteUrls.Home)} title="Confirmed">
-        <Flex px="loose" pb="extra-loose" justifyContent="center">
+        <Flex px="space.05" pb="space.06" justifyContent="center">
           {/* TODO - check if this needs a color wrapper */}
           <FiCheck size="32px" style={{ marginTop: '2px' }} />
         </Flex>

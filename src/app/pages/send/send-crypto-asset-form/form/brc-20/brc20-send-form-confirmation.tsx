@@ -111,12 +111,12 @@ export function Brc20SendFormConfirmation() {
         value={Number(amount)}
         symbol={tick}
         data-testid={SendCryptoAssetSelectors.ConfirmationDetailsAssetValue}
-        mt="loose"
-        mb="extra-loose"
-        px="loose"
+        mt="space.05"
+        mb="space.06"
+        px="space.05"
       />
 
-      <Stack width="100%" px="extra-loose" pb="extra-loose">
+      <Stack width="100%" px="space.06" pb="space.06">
         <InfoCardRow title="Sending" value={amountFormatted} />
         <InfoCardRow title="Inscription service fee" value={serviceFeeFormatted} />
         <InfoCardRow

@@ -7,7 +7,7 @@ interface TransactionListLayoutProps {
 }
 export function TransactionListLayout({ children }: TransactionListLayoutProps) {
   return (
-    <Stack pb="extra-loose" gap="extra-loose">
+    <Stack pb="space.06" gap="space.06">
       {children}
     </Stack>
   );

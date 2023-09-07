@@ -122,7 +122,7 @@ export function AddNetwork() {
             <Stack
               maxWidth={token('sizes.centeredPageFullWidth')}
               px={['loose', 'base-loose']}
-              gap="loose"
+              gap="space.05"
               textAlign={['left', 'center']}
             >
               <styled.span>

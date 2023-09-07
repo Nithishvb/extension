@@ -55,7 +55,7 @@ export function RequestPassword({ title, caption, onSuccess }: RequestPasswordPr
     <>
       <styled.h1 textStyle="heading.02">{title}</styled.h1>
       <styled.p textStyle="body.02">{(isRunning && waitingMessage) || caption}</styled.p>
-      <Stack gap="base">
+      <Stack gap="space.04">
         <Input
           autoFocus
           _focus={{ border: `2px solid ${token('colors.brown.12')}` }}

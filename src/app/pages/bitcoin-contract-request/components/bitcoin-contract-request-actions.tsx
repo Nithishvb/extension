@@ -28,15 +28,15 @@ export function BitcoinContractRequestActions({
       bottom="0px"
       height="96px"
       position="fixed"
-      px="loose"
+      px="space.05"
       width="100%"
       zIndex={999}
     >
       <Stack
         // #4164 FIXME migrate
         // isInline
-        mt="loose"
-        gap="base"
+        mt="space.05"
+        gap="space.04"
       >
         <Button
           borderRadius="10px"

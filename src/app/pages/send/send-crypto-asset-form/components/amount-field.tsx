@@ -141,7 +141,7 @@ export function AmountField({
   return (
     <Stack
       alignItems="center"
-      px="extra-loose"
+      px="space.06"
       gap={['base', showError ? 'base' : '48px']}
       width="100%"
     >
@@ -211,7 +211,7 @@ export function AmountField({
             color={token('colors.accent.text-primary')}
             fontSize={fontSize + 'px'}
             letterSpacing="0.64px"
-            pl="tight"
+            pl="space.02"
           >
             {symbol.toUpperCase()}
           </styled.span>

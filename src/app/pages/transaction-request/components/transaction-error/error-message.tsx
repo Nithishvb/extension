@@ -17,9 +17,9 @@ export const ErrorMessage = memo(({ title, body, actions, ...rest }: ErrorMessag
       bg={token('colors.accent.background-primary')}
       border="4px solid #FCEEED"
       borderRadius="12px"
-      gap="extra-loose"
-      mb="loose"
-      p="loose"
+      gap="space.06"
+      mb="space.05"
+      p="space.05"
       {...rest}
     >
       <Stack gap="base-loose">

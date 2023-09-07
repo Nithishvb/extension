@@ -25,7 +25,7 @@ function PageTopBase() {
   const avatarUrl = profileUpdaterPayload?.profile?.image?.[0]?.contentUrl;
   return (
     <Flex justify="space-between" align="center">
-      <Stack pt="extra-loose" gap="base">
+      <Stack pt="space.06" gap="space.04">
         <Title fontWeight="bold" as="h1">
           Update Profile
         </Title>

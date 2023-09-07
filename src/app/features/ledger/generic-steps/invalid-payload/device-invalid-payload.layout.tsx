@@ -17,7 +17,7 @@ export function LedgerDeviceInvalidPayloadLayout({
       <Box>
         <img src={LedgerWithRedOutline} width="247px" height="55px" />
       </Box>
-      <Title mt="extra-loose">Data Invalid</Title>
+      <Title mt="space.06">Data Invalid</Title>
       <styled.span mt="base-tight" lineHeight="24px" color={token('colors.accent.text-subdued')}>
         Your Ledger device has rejected the payload stating it is invalid
       </styled.span>

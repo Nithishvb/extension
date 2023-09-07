@@ -31,7 +31,7 @@ export function ErrorMessage(props: ErrorMessageProps) {
     <Stack
       alignItems="center"
       bg="#FCEEED"
-      p="base"
+      p="space.04"
       borderRadius="12px"
       mt={0}
       mb={0}

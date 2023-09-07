@@ -69,7 +69,7 @@ export const BaseDrawer = memo((props: BaseDrawerProps) => {
       top={0}
       left={0}
       height="100%"
-      pt="loose"
+      pt="space.05"
       width="100%"
       alignItems={['flex-end', 'center', 'center']}
       justifyContent="center"

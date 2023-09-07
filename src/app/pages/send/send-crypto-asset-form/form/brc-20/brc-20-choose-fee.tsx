@@ -118,8 +118,8 @@ export function BrcChooseFee() {
     <Stack
       alignItems="center"
       minHeight={['unset', '630px']}
-      p="extra-loose"
-      gap="base"
+      p="space.06"
+      gap="space.04"
       width="100%"
     >
       <LoadingSpinner />

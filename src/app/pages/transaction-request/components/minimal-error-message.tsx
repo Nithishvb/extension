@@ -41,7 +41,7 @@ function MinimalErrorMessageSuspense(props: StackProps) {
       data-testid={TransactionRequestSelectors.TransactionErrorMessage}
       // TODO refctor stack isInline
       // isInline
-      p="base"
+      p="space.04"
       width="100%"
       {...props}
     >

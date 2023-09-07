@@ -8,18 +8,18 @@ import { LedgerTitle } from '../../components/ledger-title';
 
 export function UnsupportedBrowserLayout() {
   return (
-    <Flex alignItems="center" flexDirection="column" pb="loose" px="loose" textAlign="center">
-      <Box mb="loose" mt="tight">
+    <Flex alignItems="center" flexDirection="column" pb="space.05" px="space.05" textAlign="center">
+      <Box mb="space.05" mt="space.02">
         <img src={UnsupportedBrowserImg} width="239px" height="177px" />
       </Box>
-      <LedgerTitle mt="tight">Your browser isn't supported</LedgerTitle>
+      <LedgerTitle mt="space.02">Your browser isn't supported</LedgerTitle>
       <styled.span
         as="p"
         fontSize="16px"
         lineHeight="1.7"
-        mt="base"
+        mt="space.04"
         pb="base-tight"
-        mx="extra-loose"
+        mx="space.06"
         color={figmaTheme.textSubdued}
       >
         To connect your Ledger with the Leather try{' '}

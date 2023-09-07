@@ -8,8 +8,8 @@ export const SettingsMenuItem = memo((props: BoxProps) => {
   return (
     <styled.div
       width="100%"
-      px="base"
-      py="base"
+      px="space.04"
+      py="space.04"
       cursor="pointer"
       color={token('colors.accent.action-primary-default')}
       _hover={{ backgroundColor: token('colors.brown.2') }}

@@ -27,7 +27,7 @@ export const Brc20TokenAssetItemLayout = forwardRefWithAs(
 
     return (
       <Flex as={isPressable ? 'button' : 'div'} outline={0} ref={ref} {...rest} {...(bind as any)}>
-        <Flag align="middle" img={<Brc20TokenIcon />} gap="base" width="100%">
+        <Flag align="middle" img={<Brc20TokenIcon />} gap="space.04" width="100%">
           <SpaceBetween width="100%">
             <styled.span
               maxWidth="150px"

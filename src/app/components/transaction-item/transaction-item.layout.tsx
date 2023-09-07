@@ -36,7 +36,7 @@ export function TransactionItemLayout({
       >
         {txIcon && txIcon}
         <Flex flexDirection="column" justifyContent="space-between" flexGrow={1} minWidth="0px">
-          <SpaceBetween spacing="extra-loose">
+          <SpaceBetween spacing="space.06">
             {txTitle} {txValue}
           </SpaceBetween>
           <Stack

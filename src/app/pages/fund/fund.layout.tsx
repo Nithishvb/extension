@@ -22,7 +22,7 @@ export function FundLayout(props: FundLayoutProps) {
       flexDirection="column"
       minHeight={['70vh', '90vh']}
       justifyContent="start"
-      mb="loose"
+      mb="space.05"
       {...props}
     >
       <Stack

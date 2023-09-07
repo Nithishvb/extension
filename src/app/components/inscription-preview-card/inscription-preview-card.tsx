@@ -29,7 +29,7 @@ export function InscriptionPreviewCard({
       borderRadius={hideBorder ? 'unset' : '10px'}
       img={image}
       p={hideBorder ? 'unset' : 'base'}
-      spacing="base"
+      spacing="space.04"
     >
       <InscriptionMetadata
         action={action}

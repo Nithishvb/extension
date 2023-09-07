@@ -65,7 +65,12 @@ export const CryptoCurrencyAssetItemLayout = forwardRefWithAs(
         {...rest}
         {...bind}
       >
-        <Flag align="middle" img={isHovered && copyIcon ? copyIcon : icon} gap="base" width="100%">
+        <Flag
+          align="middle"
+          img={isHovered && copyIcon ? copyIcon : icon}
+          gap="space.04"
+          width="100%"
+        >
           <SpaceBetween width="100%">
             <styled.span textStyle="label.01">
               {isHovered ? truncateMiddle(address, 6) : title}

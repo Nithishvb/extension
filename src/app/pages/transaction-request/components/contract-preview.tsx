@@ -18,9 +18,9 @@ export function ContractPreviewLayout(props: ContractPreviewLayoutProps) {
 
   return (
     <Stack
-      p="base"
+      p="space.04"
       borderRadius="12px"
-      gap="base"
+      gap="space.04"
       alignItems="center"
       isInline
       border="1px solid"

@@ -19,10 +19,10 @@ export function StxTransferDetails(): React.JSX.Element | null {
       border="4px solid"
       borderColor={token('colors.accent.border-default')}
       borderRadius="12px"
-      mb="loose"
+      mb="space.05"
       px="base-loose"
-      py="extra-loose"
-      gap="loose"
+      py="space.06"
+      gap="space.05"
     >
       <Title as="h2" fontWeight="500">
         Transfer details
@@ -33,7 +33,7 @@ export function StxTransferDetails(): React.JSX.Element | null {
           thickness: '1px',
           color: token('colors.accent.border-default'),
         })}
-        gap="base"
+        gap="space.04"
       >
         <Row name="Recipient" type="Principal" value={pendingTransaction.recipient} />
         <Row name="Amount" type="uSTX" value={pendingTransaction.amount} />

@@ -15,18 +15,18 @@ export function BroadcastErrorDrawerLayout({ message, onClose }: BroadcastErrorD
       <Flex
         flexDirection="column"
         justifyContent="center"
-        mx="extra-loose"
-        mb="tight"
+        mx="space.06"
+        mb="space.02"
         position="relative"
         top="-24px"
       >
         <img src={GenericError} width="106px" height="72px" m="0 auto" />
         <Title mt="base-loose">Unable to broadcast transaction</Title>
-        <Body mt="base-tight" px="base">
+        <Body mt="base-tight" px="space.04">
           Your transaction failed to broadcast{' '}
           {message && <>because of the error: {message.toLowerCase()}</>}
         </Body>
-        <Button alignSelf="center" mt="loose" mode="tertiary" onClick={onClose}>
+        <Button alignSelf="center" mt="space.05" mode="tertiary" onClick={onClose}>
           Close
         </Button>
       </Flex>

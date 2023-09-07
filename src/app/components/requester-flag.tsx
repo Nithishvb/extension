@@ -14,7 +14,7 @@ export function RequesterFlag({ requester }: RequesterFlagProps) {
       alignItems="center"
       justifyContent="center"
       py="extra-tight"
-      px="tight"
+      px="space.02"
       borderRadius="10px"
       width="fit-content"
     >

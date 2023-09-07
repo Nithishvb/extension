@@ -30,11 +30,11 @@ export function DrawerHeader({
 
   return (
     <Flex
-      pb="base"
+      pb="space.04"
       justifyContent="space-between"
       alignItems="center"
-      pt="loose"
-      px="loose"
+      pt="space.05"
+      px="space.05"
       {...bind}
     >
       {enableGoBack ? (

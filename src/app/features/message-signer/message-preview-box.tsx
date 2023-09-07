@@ -21,9 +21,9 @@ export function MessagePreviewBox({ message, hash }: MessageBoxProps) {
         borderRadius="16px"
         fontSize={2}
         lineHeight="1.6"
-        px="loose"
-        py="loose"
-        gap="tight"
+        px="space.05"
+        py="space.05"
+        gap="space.02"
         overflowX="auto"
       >
         {message.split(/\r?\n/).map(line => (

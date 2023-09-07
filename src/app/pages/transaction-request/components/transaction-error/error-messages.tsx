@@ -13,6 +13,8 @@ import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useDrawers } from '@app/common/hooks/use-drawers';
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { stacksValue } from '@app/common/stacks-utils';
+// PETE fix this now merging my PRs
+// figure out what isInline means on <Stack
 import { truncateMiddle } from '@app/common/utils/stacks-ui';
 //FIXME - PETE rebase onto 1 PR soon to solve this
 import { LeatherButton } from '@app/components/button/button';
@@ -65,12 +67,12 @@ export const StxTransferInsufficientFundsErrorMessage = memo(props => {
     <ErrorMessage
       title="Insufficient balance"
       body={
-        <Stack gap="loose">
+        <Stack gap="space.05">
           <Caption color={token('colors.accent.text-primary')}>
             You don't have enough STX to make this transfer. Send some STX to this address, or
             switch to another account.
           </Caption>
-          <Stack gap="base" justifyContent="flex-end" textAlign="right">
+          <Stack gap="space.04" justifyContent="flex-end" textAlign="right">
             <SpaceBetween>
               <Caption>Current balance</Caption>
               <Caption>
@@ -152,7 +154,7 @@ export const ExpiredRequestErrorMessage = memo(props => {
           top={0}
           alignItems="center"
           justifyContent="center"
-          p="loose"
+          p="space.05"
           bg="rgba(0,0,0,0.35)"
           backdropFilter="blur(10px)"
           style={styles}

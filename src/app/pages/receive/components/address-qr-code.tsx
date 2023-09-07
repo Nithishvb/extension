@@ -28,7 +28,7 @@ export const QrCode = memo(({ principal, ...rest }: { principal: string } & Flex
       boxShadow="low"
       justifyContent="center"
       mx="auto"
-      p="loose"
+      p="space.05"
       position="relative"
       {...rest}
     >

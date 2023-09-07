@@ -34,7 +34,7 @@ export function RecipientDropdownItem(props: RecipientDropdownItemProps) {
         fontSize={1}
         fontWeight={isVisible ? 400 : 500}
         ml="2px"
-        mr="tight"
+        mr="space.02"
       >
         {labels[index]}
       </styled.span>

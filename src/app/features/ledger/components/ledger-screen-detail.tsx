@@ -33,7 +33,7 @@ export function LedgerScreenDetail(props: LedgerScreenDetailProps) {
           <>{title}</>
         )}
       </Caption>
-      <Flex alignItems="center" mt="base">
+      <Flex alignItems="center" mt="space.04">
         <styled.span overflowWrap="break-word" width="100%">
           {children}
         </styled.span>

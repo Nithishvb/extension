@@ -16,10 +16,10 @@ export function IncreaseFeeDrawer({ feeForm, onClose, isShowing }: IncreaseFeeDr
   return (
     <>
       <BaseDrawer isShowing={isShowing} onClose={onClose} title="Increase transaction fee">
-        <Stack px="loose" gap="loose" pb="extra-loose">
+        <Stack px="space.05" gap="space.05" pb="space.06">
           <Suspense
             fallback={
-              <Flex alignItems="center" justifyContent="center" p="extra-loose">
+              <Flex alignItems="center" justifyContent="center" p="space.06">
                 <Spinner />
               </Flex>
             }

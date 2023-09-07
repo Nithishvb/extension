@@ -10,7 +10,7 @@ import { GenericError } from '@app/components/generic-error/generic-error';
 
 const body = 'Sending bitcoin is temporarily disabled';
 const helpTextList = [
-  <styled.li mt="base" key={1}>
+  <styled.li mt="space.04" key={1}>
     <Stack alignItems="center" isInline>
       <styled.span>Learm more on Twitter at @LeatherBTC</styled.span>
       <Box as="button" onClick={() => openInNewTab('https://twitter.com/leatherbtc')}>
@@ -25,7 +25,7 @@ export function SendBtcDisabled() {
   const navigate = useNavigate();
 
   return (
-    <Box textAlign="center" px={['unset', 'loose']} py="base" width="100%">
+    <Box textAlign="center" px={['unset', 'loose']} py="space.04" width="100%">
       <GenericError
         body={body}
         helpTextList={helpTextList}

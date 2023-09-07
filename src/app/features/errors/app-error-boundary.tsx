@@ -15,7 +15,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   useRouteHeader(<Header />);
 
   return (
-    <Stack gap="extra-loose" flexGrow={1}>
+    <Stack gap="space.06" flexGrow={1}>
       <Title fontSize={3}>Something went wrong</Title>
       <Box className="error-codeblock" maxWidth="100vw" overflow="hidden">
         {value && (
@@ -35,7 +35,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
           />
         )}
       </Box>
-      <Stack mt="auto" gap="base">
+      <Stack mt="auto" gap="space.04">
         <Button onClick={resetErrorBoundary}>Reload extension</Button>
         <Button
           mode="tertiary"

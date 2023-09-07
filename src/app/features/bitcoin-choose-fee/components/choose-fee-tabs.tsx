@@ -72,7 +72,7 @@ export function ChooseFeeTabs(props: ChooseFeeTabsProps) {
   };
 
   return (
-    <Stack flexGrow={1} mt="tight" gap="base" width="100%" {...rest}>
+    <Stack flexGrow={1} mt="space.02" gap="space.04" width="100%" {...rest}>
       <Tabs
         tabs={[
           { slug: 'recommended', label: 'Recommended' },

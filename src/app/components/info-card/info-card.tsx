@@ -114,7 +114,7 @@ export function InfoCardBtn({ icon, label, onClick }: InfoCardBtnProps) {
         <styled.span mr="space.02" textStyle="label.02">
           {label}
         </styled.span>
-        <Box as={icon} mr="tight" size="14px" />
+        <Box as={icon} mr="space.02" size="14px" />
       </Flex>
     </LeatherButton>
   );
@@ -137,7 +137,7 @@ export function InfoCardFooter({ children }: InfoCardFooterProps) {
       alignItems="center"
       justifyContent="center"
       zIndex="999"
-      p="loose"
+      p="space.05"
       position={whenPageMode({
         full: 'unset',
         popup: 'fixed',

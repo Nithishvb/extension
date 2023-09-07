@@ -17,7 +17,7 @@ export function BackUpSecretKeyLayout(props: BackUpSecretKeyLayoutProps): React.
     <Flex
       flexDirection={['column', 'column', 'column', 'row']}
       mt={['space.05', 'space.06']}
-      pb="loose"
+      pb="space.05"
       px={['space.05', 'space.05', 'space.11']}
       width="100%"
       gap={['space.03', 'space.09']}
@@ -50,7 +50,7 @@ export function BackUpSecretKeyLayout(props: BackUpSecretKeyLayoutProps): React.
         <Box minWidth={['344px', '446px']}>{secretKeyDisplay}</Box>
       </Flex>
       {!desktopViewport && (
-        <Stack mt="loose" gap="space.03">
+        <Stack mt="space.05" gap="space.03">
           <BackUpSecretKeyActions onBackedUpSecretKey={onBackedUpSecretKey} />
         </Stack>
       )}

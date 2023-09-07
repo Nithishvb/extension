@@ -10,8 +10,8 @@ export function BitcoinContractRequestLayout({ children }: BitcoinContractReques
       maxHeight="calc(100vh - 72px)"
       overflowY="scroll"
       pb="120px"
-      px="loose"
-      gap="tight"
+      px="space.05"
+      gap="space.02"
       width="100%"
     >
       {children}

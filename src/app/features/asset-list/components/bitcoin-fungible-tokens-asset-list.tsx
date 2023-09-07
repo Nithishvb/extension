@@ -10,7 +10,7 @@ export function BitcoinFungibleTokenAssetList({ brc20Tokens }: BitcoinFungibleTo
   if (!brc20Tokens) return null;
 
   return (
-    <Stack gap="loose">
+    <Stack gap="space.05">
       {brc20Tokens.map(token => (
         <Brc20TokenAssetItem key={token.tick} token={token} />
       ))}

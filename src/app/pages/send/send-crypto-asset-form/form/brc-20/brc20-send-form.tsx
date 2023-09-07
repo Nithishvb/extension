@@ -38,7 +38,7 @@ export function Brc20SendForm() {
   } = useBrc20SendForm({ balance, tick, decimals });
 
   return (
-    <Box width="100%" pb="base">
+    <Box width="100%" pb="space.04">
       <Formik
         initialValues={initialValues}
         onSubmit={chooseTransactionFee}

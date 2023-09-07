@@ -11,7 +11,7 @@ export function LedgerSuccessLabel({ children, ...props }: LedgerSuccessLabelPro
   return (
     <Flex alignItems="center" color={color('feedback-success')} flexDirection="row" {...props}>
       <FiCheck />
-      <Caption color="inherited" ml="tight">
+      <Caption color="inherited" ml="space.02">
         {children}
       </Caption>
     </Flex>

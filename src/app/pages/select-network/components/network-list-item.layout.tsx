@@ -44,8 +44,8 @@ export function NetworkListItemLayout(props: NetworkListItemLayoutProps) {
               backgroundColor: token('colors.brown.2'),
             }
       }
-      px="loose"
-      py="base"
+      px="space.05"
+      py="space.04"
       onClick={!isOnline || isActive ? undefined : onSelectNetwork}
       cursor={!isOnline ? 'not-allowed' : isActive ? 'default' : 'pointer'}
       opacity={!isOnline ? 0.5 : 1}
@@ -62,7 +62,7 @@ export function NetworkListItemLayout(props: NetworkListItemLayoutProps) {
           disabled={!isOnline}
           data-testid={network.id}
         >
-          <Stack alignItems="flex-start" flex={1} gap="tight">
+          <Stack alignItems="flex-start" flex={1} gap="space.02">
             <styled.span mb="space.01" textStyle="label.01">
               {network.name}
             </styled.span>
@@ -77,7 +77,7 @@ export function NetworkListItemLayout(props: NetworkListItemLayoutProps) {
             type="button"
             variant="ghost"
             // mode="tertiary"
-            ml="base"
+            ml="space.04"
             onClick={(e: React.MouseEvent<HTMLElement>) => {
               e.stopPropagation();
               onRemoveNetwork(network.id);

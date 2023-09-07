@@ -17,7 +17,7 @@ export function PsbtRequestActions({ isLoading, onCancel, onSignPsbt }: PsbtRequ
       bottom="0px"
       height="96px"
       position="absolute"
-      px="loose"
+      px="space.05"
       width="100%"
       zIndex={999}
     >

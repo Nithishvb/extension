@@ -42,7 +42,7 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
           <styled.p mt="space.05" textStyle="label.02">
             {whenWallet({
               software: (
-                <Flag align="middle" img={<ErrorIcon />} spacing="tight">
+                <Flag align="middle" img={<ErrorIcon />} spacing="space.02">
                   If you haven't backed up your Secret Key, you will lose all your funds.
                 </Flag>
               ),
@@ -52,7 +52,7 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
           <Flex
             // as="label"
             alignItems="center"
-            mt="loose"
+            mt="space.05"
             display={walletType === 'software' ? 'flex' : 'none'}
           >
             <Box mr="space.03">
@@ -69,7 +69,7 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
           </Flex>
           <styled.label
             alignItems="center"
-            mt="tight"
+            mt="space.02"
             display={walletType === 'software' ? 'flex' : 'none'}
           >
             <Box mr="space.03">

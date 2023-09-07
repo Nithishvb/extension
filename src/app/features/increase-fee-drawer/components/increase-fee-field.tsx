@@ -50,7 +50,7 @@ export function IncreaseFeeField(props: IncreaseFeeFieldProps): React.JSX.Elemen
           <styled.span
             as="label"
             display="block"
-            mb="tight"
+            mb="space.02"
             fontSize={1}
             fontWeight="500"
             htmlFor="fee"

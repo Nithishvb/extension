@@ -36,7 +36,7 @@ export function HomeTabs({ children }: HomeTabsProps) {
   );
 
   return (
-    <Stack flexGrow={1} mt="loose" gap="extra-loose">
+    <Stack flexGrow={1} mt="space.05" gap="space.06">
       <Tabs tabs={tabs} activeTab={getActiveTab()} onTabClick={setActiveTab} />
       <Suspense fallback={<LoadingSpinner pb="72px" />}>
         <Box width="100%">{children}</Box>

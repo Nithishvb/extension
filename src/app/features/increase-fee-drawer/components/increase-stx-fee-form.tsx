@@ -92,9 +92,9 @@ export function IncreaseStxFeeForm() {
       validationSchema={validationSchema}
     >
       {props => (
-        <Stack gap="extra-loose">
+        <Stack gap="space.06">
           {tx && <StacksTransactionItem position="relative" transaction={tx} zIndex={99} />}
-          <Stack gap="base">
+          <Stack gap="space.04">
             <IncreaseFeeField currentFee={fee} />
             {balances?.stx.unlockedStx.amount && (
               <Caption>

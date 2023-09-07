@@ -1,11 +1,11 @@
 import { FiAlertCircle } from 'react-icons/fi';
 
-import { Box, Stack, StackProps } from 'leather-styles/jsx';
+import { Box, HStack, HstackProps } from 'leather-styles/jsx';
 import { token } from 'leather-styles/tokens';
 
-export function ErrorLabel({ children, ...rest }: StackProps) {
+export function ErrorLabel({ children, ...rest }: HstackProps) {
   return (
-    <Stack gap="tight" color={token('colors.error')} isInline alignItems="flex-start" {...rest}>
+    <HStack gap="space.02" color={token('colors.error')} alignItems="flex-start" {...rest}>
       <FiAlertCircle
         size="1rem"
         color={token('colors.error')}
@@ -13,6 +13,6 @@ export function ErrorLabel({ children, ...rest }: StackProps) {
         strokeWidth={1.5}
       />
       <Box>{children}</Box>
-    </Stack>
+    </HStack>
   );
 }

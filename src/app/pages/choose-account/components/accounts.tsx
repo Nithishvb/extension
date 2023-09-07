@@ -67,7 +67,7 @@ const ChooseAccountItem = memo((props: ChooseAccountItemProps) => {
   return (
     // Padding required on outer element to prevent jumpy list behaviours in
     // virtualised list library
-    <Box pb="loose">
+    <Box pb="space.05">
       <AccountListItemLayout
         index={account.index}
         stxAddress={account.address}
@@ -112,7 +112,7 @@ const AddAccountAction = memo(() => {
   };
 
   return (
-    <Box mb="loose" px="base-tight" py="tight" onClick={onCreateAccount} {...bind}>
+    <Box mb="space.05" px="base-tight" py="space.02" onClick={onCreateAccount} {...bind}>
       <Stack isInline alignItems="center">
         <FiPlusCircle width="16px" height="16px" />
         <styled.span color="currentColor">Generate new account</styled.span>
@@ -144,7 +144,7 @@ export const ChooseAccountsList = memo(() => {
   if (!accounts) return null;
 
   return (
-    <Box mt="loose" width="100%">
+    <Box mt="space.05" width="100%">
       {whenWallet({ software: <AddAccountAction />, ledger: <></> })}
       <Virtuoso
         useWindowScroll

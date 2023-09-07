@@ -49,9 +49,9 @@ export function IncreaseBtcFeeForm({ btcTx }: IncreaseBtcFeeFormProps) {
       validateOnMount={false}
       validationSchema={validationSchema}
     >
-      <Stack gap="extra-loose">
+      <Stack gap="space.06">
         {btcTx && <BitcoinTransactionItem position="relative" transaction={btcTx} zIndex={99} />}
-        <Stack gap="base">
+        <Stack gap="space.04">
           <Stack gap="extra-tight">
             <styled.spanInputField
               label={feeInputLabel}

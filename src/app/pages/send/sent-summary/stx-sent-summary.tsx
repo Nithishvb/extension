@@ -62,10 +62,10 @@ export function StxSentSummary() {
         fiatValue={txFiatValue}
         fiatSymbol={txFiatValueSymbol}
         symbol={symbol}
-        px="loose"
+        px="space.05"
       />
 
-      <Stack width="100%" px="extra-loose" pb="extra-loose">
+      <Stack width="100%" px="space.06" pb="space.06">
         <InfoCardRow title="To" value={<FormAddressDisplayer address={recipient} />} />
         <InfoCardSeparator />
         <InfoCardRow title="Total spend" value={totalSpend} />
@@ -76,7 +76,7 @@ export function StxSentSummary() {
       </Stack>
 
       <InfoCardFooter>
-        <Stack gap="base" isInline width="100%">
+        <Stack gap="space.04" isInline width="100%">
           <InfoCardBtn onClick={onClickLink} icon={FiExternalLink} label="View Details" />
           <InfoCardBtn onClick={onClickCopy} icon={FiCopy} label="Copy ID" />
         </Stack>

@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { IconButton, useMediaQuery } from '@stacks/ui';
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 import { Box, Flex, FlexProps, IconButton, Stack, useMediaQuery } from 'leather-styles/jsx';
@@ -59,7 +60,7 @@ export const Header: React.FC<HeaderProps> = memo(props => {
     <Flex
       alignItems={hideActions ? 'center' : 'flex-start'}
       justifyContent="space-between"
-      p="base"
+      p="space.04"
       minHeight={['', '80px']}
       backgroundColor={[
         token('colors.accent.background-primary'),
@@ -92,7 +93,7 @@ export const Header: React.FC<HeaderProps> = memo(props => {
               fontSize="10px"
               marginRight="10px"
               mb="-3px"
-              ml="tight"
+              ml="space.02"
               opacity={0.5}
             >
               {version}
@@ -112,7 +113,7 @@ export const Header: React.FC<HeaderProps> = memo(props => {
           {title}
         </Title>
       )}
-      <Stack alignItems="center" flexBasis="20%" isInline justifyContent="flex-end">
+      <HStack alignItems="center" flexBasis="20%" justifyContent="flex-end">
         <NetworkModeBadge />
         {!hideActions && (
           <LeatherButton
@@ -125,7 +126,7 @@ export const Header: React.FC<HeaderProps> = memo(props => {
           </LeatherButton>
         )}
         {actionButton ? actionButton : null}
-      </Stack>
+      </HStack>
     </Flex>
   );
 });

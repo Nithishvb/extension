@@ -76,7 +76,7 @@ export function CollectibleItemLayout({
             {children}
           </Box>
         </Box>
-        <Stack mt="base" pl="tight" gap="extra-tight" textAlign="left">
+        <Stack mt="space.04" pl="space.02" gap="extra-tight" textAlign="left">
           <styled.span
             color={token('colors.accent.text-primary')}
             fontWeight="500"

@@ -17,10 +17,10 @@ export function BroadcastErrorLayout(props: BroadcastErrorProps) {
 
   return (
     <Flex alignItems="center" flexDirection="column" px={['loose', 'unset']} width="100%" {...rest}>
-      <Box mt="loose">
+      <Box mt="space.05">
         <img src={BroadcastError} alt="Unhappy user interface cloud" width="106px" />
       </Box>
-      <Title fontSize={4} mx="loose" mt="base-loose" lineHeight={1.5}>
+      <Title fontSize={4} mx="space.05" mt="base-loose" lineHeight={1.5}>
         {title}
       </Title>
       <styled.span
@@ -28,19 +28,19 @@ export function BroadcastErrorLayout(props: BroadcastErrorProps) {
         // color={token('colors.accent.text-subdued')}
         fontSize="16px"
         lineHeight="1.6"
-        mt="base"
+        mt="space.04"
         textAlign="center"
       >
         {body}
       </styled.span>
       {errorPayload && (
         <Box
-          p="base"
+          p="space.04"
           borderRadius="10px"
           textAlign="left"
           fontSize="12px"
-          mx="loose"
-          mt="loose"
+          mx="space.05"
+          mt="space.05"
           background={token('colors.accent.background-secondary')}
           color="ink.600"
           fontFamily="mono"

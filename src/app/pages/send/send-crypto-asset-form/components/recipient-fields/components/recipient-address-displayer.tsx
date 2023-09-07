@@ -23,7 +23,7 @@ export function RecipientAddressDisplayer({ address }: RecipientAddressDisplayer
   }, [analytics, onCopy]);
 
   return (
-    <SpaceBetween mb="base" width="100%">
+    <SpaceBetween mb="space.04" width="100%">
       <styled.span
         color={token('colors.accent.text-subdued')}
         data-testid={SendCryptoAssetSelectors.RecipientBnsAddressLabel}

@@ -81,8 +81,8 @@ export function BitcoinCustomFee({
       {props => {
         return (
           <Form>
-            <Stack gap="extra-loose" mt="8px">
-              <Stack gap="loose">
+            <Stack gap="space.06" mt="8px">
+              <Stack gap="space.05">
                 <styled.span textStyle="body.02" maxWidth="21.5rem">
                   {'Higher fee rates typically lead to faster confirmation times. '}
                   <Link

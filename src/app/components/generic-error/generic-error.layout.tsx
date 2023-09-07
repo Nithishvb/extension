@@ -28,7 +28,7 @@ export function GenericErrorLayout(props: GenericErrorProps) {
       width="100%"
       {...rest}
     >
-      <Box mt="loose">
+      <Box mt="space.05">
         <img src={GenericError} width="106px" />
       </Box>
       <styled.h1 mt="space.05" textStyle="heading.04">
@@ -50,16 +50,16 @@ export function GenericErrorLayout(props: GenericErrorProps) {
         fontSize="14px"
         lineHeight="1.6"
         listStyleType="circle"
-        mt="extra-loose"
-        pb="loose"
+        mt="space.06"
+        pb="space.05"
         pl="40px"
-        pr="loose"
-        pt="tight"
+        pr="space.05"
+        pt="space.02"
         textAlign="left"
         width="100%"
       >
         {helpTextList}
-        <styled.li mt="base" textAlign="left">
+        <styled.li mt="space.04" textAlign="left">
           <HStack alignItems="center">
             <styled.span>Reach out to our support team</styled.span>
             {/* TODO check this button is OK */}

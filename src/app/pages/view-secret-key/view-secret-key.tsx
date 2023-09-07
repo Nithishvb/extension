@@ -33,7 +33,7 @@ export function ViewSecretKey() {
         maxWidth={token('sizes.centeredPageFullWidth')}
         pb={['loose', 'unset']}
         px={['loose', 'base-loose']}
-        gap="loose" // TODO - make sure spacing maps to gap
+        gap="space.05" // TODO - make sure spacing maps to gap
         textAlign={['left', 'center']}
         width="100%"
       >

@@ -11,7 +11,7 @@ interface SwapStatusItemLayoutProps {
 }
 export function SwapStatusItemLayout({ icon, text, timestamp }: SwapStatusItemLayoutProps) {
   return (
-    <Flag align="middle" img={icon} py="tight" spacing="base">
+    <Flag align="middle" img={icon} py="space.02" spacing="space.04">
       <SpaceBetween>
         <Stack gap="extra-tight">
           {timestamp ? <styled.span fontWeight={500}>{timestamp}</styled.span> : null}

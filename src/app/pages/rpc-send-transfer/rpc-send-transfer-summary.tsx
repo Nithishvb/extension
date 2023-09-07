@@ -133,9 +133,9 @@ export function RpcSendTransferSummary() {
           fiatSymbol={txFiatValueSymbol}
           symbol={symbol}
           icon={FiCheck}
-          mb="loose"
+          mb="space.05"
         />
-        <Stack pb="extra-loose" width="100%">
+        <Stack pb="space.06" width="100%">
           <InfoCardRow title="To" value={<FormAddressDisplayer address={recipient} />} />
           <InfoCardSeparator />
           <InfoCardRow title="Total spend" value={totalSpend} />
@@ -147,7 +147,7 @@ export function RpcSendTransferSummary() {
           <Stack
             // #4164 FIXME migrate
             //isInline
-            gap="base"
+            gap="space.04"
             width="100%"
           >
             <InfoCardBtn icon={FiExternalLink} label="View Details" onClick={onClickLink} />

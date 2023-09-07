@@ -22,7 +22,7 @@ export function Json(value: any) {
       })}
       fontSize="14px"
       lineHeight="1.7"
-      mt="loose"
+      mt="space.05"
     >
       <pre>{JSON.stringify(value, (_, v) => parseJsonReadable(v), 2)}</pre>
     </Box>

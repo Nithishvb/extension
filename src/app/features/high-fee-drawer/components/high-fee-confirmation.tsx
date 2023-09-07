@@ -20,7 +20,7 @@ export function HighFeeConfirmation(props: { learnMoreUrl: string }) {
   const { setIsShowingHighFeeConfirmation } = useDrawers();
 
   return (
-    <Stack px="loose" gap="loose" pb="extra-loose">
+    <Stack px="space.05" gap="space.05" pb="space.06">
       <Title fontSize="20px" fontWeight={400} lineHeight="28px">
         Are you sure you want to pay {values.fee} {values.feeCurrency} in fees for this transaction?
       </Title>
@@ -30,7 +30,7 @@ export function HighFeeConfirmation(props: { learnMoreUrl: string }) {
           Learn more
         </Link>
       </Caption>
-      <Stack isInline mt="loose">
+      <Stack isInline mt="space.05">
         <Button
           borderRadius="10px"
           mode="tertiary"

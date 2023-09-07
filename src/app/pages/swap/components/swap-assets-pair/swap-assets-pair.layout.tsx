@@ -1,5 +1,4 @@
 import { Box, Stack } from 'leather-styles/jsx';
-import { token } from 'leather-styles/tokens';
 
 import { ArrowDownIcon } from '@app/components/icons/arrow-down-icon';
 

@@ -46,7 +46,7 @@ export const StacksFungibleTokenAssetItemLayout = forwardRefWithAs(
               {title[0]}
             </StacksAssetAvatar>
           }
-          spacing="base"
+          spacing="space.04"
           width="100%"
         >
           <SpaceBetween width="100%">

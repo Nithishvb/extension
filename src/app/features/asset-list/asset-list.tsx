@@ -27,7 +27,7 @@ export function AssetsList() {
   const navigate = useNavigate();
 
   return (
-    <Stack pb="extra-loose" gap="loose" data-testid={HomePageSelectorsLegacy.BalancesList}>
+    <Stack pb="space.06" gap="space.05" data-testid={HomePageSelectorsLegacy.BalancesList}>
       {/* Temporary duplication during Ledger Bitcoin feature dev */}
       {whenWallet({
         software: (

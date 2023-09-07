@@ -9,7 +9,7 @@ export function NoPostConditions(): React.JSX.Element {
   return (
     <Stack
       alignItems="center"
-      gap="base"
+      gap="space.04"
       p="base-loose"
       // #4164 FIXME refactor isInline
       // isInline

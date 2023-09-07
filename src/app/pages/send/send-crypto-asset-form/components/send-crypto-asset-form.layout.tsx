@@ -14,7 +14,7 @@ export function SendCryptoAssetFormLayout({ children }: SendCryptoAssetFormLayou
       overflowY="auto"
       pb={['120px', '48px']}
       pt={['base', '48px']}
-      px="loose"
+      px="space.05"
       width="100%"
     >
       {children}

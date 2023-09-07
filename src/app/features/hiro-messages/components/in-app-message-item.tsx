@@ -19,13 +19,13 @@ export function HiroMessageItem(props: HiroMessageItemProps) {
       alignItems={[null, null, 'center']}
       justifyContent="center"
       position="relative"
-      p="base"
+      p="space.04"
     >
       {dismissible && (
         <Box
           as="button"
           position="absolute"
-          p="tight"
+          p="space.02"
           top={[0, 0, '50%']}
           mr={['tight']}
           mt={['tight', null, 'unset']}

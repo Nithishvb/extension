@@ -16,7 +16,7 @@ export function FastCheckoutBadge() {
       // #4164 FIXME migrate
       //      isInline
       justifyContent="center"
-      paddingX="tight"
+      paddingX="space.02"
       paddingY="extra-tight"
       gap="extra-tight"
     >
