@@ -4,6 +4,7 @@ import { ChainID } from '@stacks/transactions';
 
 import {
   BITCOIN_API_BASE_URL_MAINNET,
+  BITCOIN_API_BASE_URL_REGTEST,
   BITCOIN_API_BASE_URL_SIGNET,
   BITCOIN_API_BASE_URL_TESTNET,
   HIRO_API_BASE_URL_MAINNET,
@@ -28,7 +29,7 @@ export function useBitcoinClient() {
   const baseUrl = whenBitcoinNetwork(network.chain.bitcoin.network)({
     mainnet: BITCOIN_API_BASE_URL_MAINNET,
     testnet: BITCOIN_API_BASE_URL_TESTNET,
-    regtest: BITCOIN_API_BASE_URL_TESTNET,
+    regtest: BITCOIN_API_BASE_URL_REGTEST,
     signet: BITCOIN_API_BASE_URL_SIGNET,
   });
 

@@ -17,19 +17,21 @@ export interface BitcoinAccount {
   network: BitcoinNetworkModes;
 }
 
-const bitcoinNetworkToCoreNetworkMap: Record<BitcoinNetworkModes, NetworkModes> = {
+const bitcoinNetworkToCoreNetworkMap: Record<BitcoinNetworkModes, BitcoinNetworkModes> = {
   mainnet: 'mainnet',
   testnet: 'testnet',
-  regtest: 'testnet',
+  regtest: 'regtest',
   signet: 'testnet',
 };
 export function bitcoinNetworkModeToCoreNetworkMode(mode: BitcoinNetworkModes) {
   return bitcoinNetworkToCoreNetworkMap[mode];
 }
 
-const coinTypeMap: Record<NetworkModes, 0 | 1> = {
+const coinTypeMap: Record<BitcoinNetworkModes, 0 | 1> = {
   mainnet: 0,
   testnet: 1,
+  regtest: 1,
+  signet: 1,
 };
 
 export function getBitcoinCoinTypeIndexByNetwork(network: BitcoinNetworkModes) {

@@ -26,15 +26,26 @@ export function getNativeSegwitAddressIndexDerivationPath(
   return getNativeSegwitAccountDerivationPath(network, accountIndex) + `/0/${addressIndex}`;
 }
 
-export function deriveNativeSegwitAccountFromRootKeychain(keychain: HDKey, network: NetworkModes) {
+export function deriveNativeSegwitAccountFromRootKeychain(keychain: HDKey, network: BitcoinNetworkModes) {
+  console.log('deriveNativeSegwitAccountFromRootKeychain')
+  console.log('keychain', keychain)
+  console.log('network', network)
+
   if (keychain.depth !== DerivationPathDepth.Root) throw new Error('Keychain passed is not a root');
-  return (accountIndex: number): BitcoinAccount => ({
-    type: 'p2wpkh',
-    network,
-    accountIndex,
-    derivationPath: getNativeSegwitAccountDerivationPath(network, accountIndex),
-    keychain: keychain.derive(getNativeSegwitAccountDerivationPath(network, accountIndex)),
-  });
+  return (accountIndex: number): BitcoinAccount => {
+    console.log('accountIndex:', accountIndex);
+    const derivationPath = getNativeSegwitAccountDerivationPath(network, accountIndex);
+    console.log('derivationPath:', derivationPath);
+    const derivedKeychain = keychain.derive(derivationPath);
+    console.log('derivedKeychain:', derivedKeychain);
+    return {
+      type: 'p2wpkh',
+      network,
+      accountIndex,
+      derivationPath,
+      keychain: derivedKeychain,
+    };
+  };
 }
 
 export function getNativeSegWitPaymentFromAddressIndex(
