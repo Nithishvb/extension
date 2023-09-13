@@ -52,14 +52,8 @@ export const selectCurrentNetwork = createSelector(
   selectNetworks,
   selectCurrentNetworkId,
   selectAppRequestedNetworkId,
-  (networks, currentNetworkId, appRequestedNetworkId) => {
-    console.log('networks:', networks);
-    console.log('currentNetworkId:', currentNetworkId);
-    console.log('appRequestedNetworkId:', appRequestedNetworkId);
-    const selectedNetwork = networks[appRequestedNetworkId || currentNetworkId] ?? defaultCurrentNetwork;
-    console.log('selectedNetwork:', selectedNetwork);
-    return selectedNetwork;
-  }
+  (networks, currentNetworkId, appRequestedNetworkId) =>
+    networks[appRequestedNetworkId || currentNetworkId] ?? defaultCurrentNetwork
 );
 
 export function useNetworks(): Dictionary<NetworkConfiguration> {

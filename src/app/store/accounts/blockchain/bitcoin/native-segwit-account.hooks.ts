@@ -36,10 +36,8 @@ const selectNativeSegwitAccountBuilder = bitcoinAccountBuilderFactory(
 const selectCurrentNetworkNativeSegwitAccountBuilder = createSelector(
   selectNativeSegwitAccountBuilder,
   selectCurrentNetwork,
-  (nativeSegwitKeychain, network) => {
-    const coreNetworkMode = bitcoinNetworkModeToCoreNetworkMode(network.chain.bitcoin.network);
-    return nativeSegwitKeychain[coreNetworkMode];
-  }
+  (nativeSegwitKeychain, network) =>
+    nativeSegwitKeychain[bitcoinNetworkModeToCoreNetworkMode(network.chain.bitcoin.network)]
 );
 
 export function useNativeSegwitAccountBuilder() {
@@ -57,9 +55,11 @@ export function useCurrentNativeSegwitAccount() {
 }
 
 export function useNativeSegwitNetworkSigners() {
-  const { mainnet: mainnetKeychain, testnet: testnetKeychain, regtest: regtestKeychain} = useSelector(
-    selectNativeSegwitAccountBuilder
-  );
+  const {
+    mainnet: mainnetKeychain,
+    testnet: testnetKeychain,
+    regtest: regtestKeychain,
+  } = useSelector(selectNativeSegwitAccountBuilder);
 
   return useMakeBitcoinNetworkSignersForPaymentType(
     mainnetKeychain,

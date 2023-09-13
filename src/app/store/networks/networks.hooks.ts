@@ -18,12 +18,7 @@ export function useCurrentNetworkState() {
 
   return useMemo(() => {
     const isTestnet = currentNetwork.chain.stacks.chainId === ChainID.Testnet;
-    let mode: BitcoinNetworkModes = 'mainnet';
-    if (currentNetwork.chain.bitcoin.network === 'regtest')  {
-      mode = 'regtest';
-    } else if (isTestnet) {
-      mode = 'testnet';
-    }
+    const mode = (isTestnet ? 'testnet' : 'mainnet') as NetworkModes;
     return { ...currentNetwork, isTestnet, mode };
   }, [currentNetwork]);
 }

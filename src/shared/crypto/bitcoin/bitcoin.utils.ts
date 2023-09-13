@@ -23,6 +23,7 @@ const bitcoinNetworkToCoreNetworkMap: Record<BitcoinNetworkModes, BitcoinNetwork
   regtest: 'regtest',
   signet: 'testnet',
 };
+
 export function bitcoinNetworkModeToCoreNetworkMode(mode: BitcoinNetworkModes) {
   return bitcoinNetworkToCoreNetworkMap[mode];
 }
@@ -179,7 +180,7 @@ export function getHdKeyVersionsFromNetwork(network: NetworkModes) {
 export function lookUpLedgerKeysByPath(
   derivationPathFn: (network: BitcoinNetworkModes, accountIndex: number) => string
 ) {
-  return (keyMap: Record<string, { policy: string } | undefined>, network: NetworkModes) =>
+  return (keyMap: Record<string, { policy: string } | undefined>, network: BitcoinNetworkModes) =>
     (accountIndex: number) => {
       const path = derivationPathFn(network, accountIndex);
       // Single wallet mode, hardcoded default walletId

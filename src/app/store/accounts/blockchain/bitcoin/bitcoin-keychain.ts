@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { createSelector } from '@reduxjs/toolkit';
 import { HDKey, Versions } from '@scure/bip32';
 
-import { BitcoinNetworkModes, NetworkModes } from '@shared/constants';
+import { BitcoinNetworkModes } from '@shared/constants';
 import { getBtcSignerLibNetworkConfigByMode } from '@shared/crypto/bitcoin/bitcoin.network';
 import {
   BitcoinAccount,
