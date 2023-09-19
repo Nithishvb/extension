@@ -43,6 +43,7 @@ export function useSignIn() {
   const submitMnemonicForm = useCallback(
     async (passedValue: string) => {
       setIsLoading();
+      // console.log('submitMnemonicForm', passedValue);
       const parsedKeyInput = passedValue ? passedValue.trim() : '';
 
       // empty?
@@ -51,6 +52,12 @@ export function useSignIn() {
       }
 
       if (!validateMnemonic(parsedKeyInput)) {
+        // console.log(
+        //   parsedKeyInput,
+        //   'validateMnemonic(parsedKeyInput)',
+        //   validateMnemonic(parsedKeyInput),
+        //   parsedKeyInput
+        // );
         handleSetError();
         return;
       }
