@@ -124,7 +124,7 @@ export class OnboardingPage {
   async signInExistingUser() {
     await this.denyAnalytics();
     await this.page.getByTestId(OnboardingSelectors.SignInLink).click();
-
+    // this key is an .env var tests will fail without
     const key = TEST_ACCOUNT_SECRET_KEY.split(' ');
     for (let i = 0; i < key.length; i++) {
       await this.page.getByTestId(`mnemonic-input-${i}`).fill(key[i]);
