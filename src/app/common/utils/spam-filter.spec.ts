@@ -5,6 +5,7 @@ describe('Spam filter', () => {
     expect(spamFilter('This token name is OK')).not.toEqual(spamReplacement);
   });
   it('should detect spam urls in strings and replace content', () => {
+    expect(spamFilter('You won 2000STX=>www.stxwon.com')).toEqual('');
     expect(spamFilter('www.fake')).toEqual(spamReplacement);
     expect(spamFilter('https://www.fake.com')).toEqual(spamReplacement);
     expect(spamFilter('fake.com')).toEqual(spamReplacement);
@@ -17,6 +18,7 @@ describe('Spam filter', () => {
     expect(spamFilter('http://fake')).toEqual(spamReplacement);
   });
   it('should detect spam words in strings and replace content', () => {
+    expect(spamFilter('You won')).toEqual(spamReplacement);
     expect(spamFilter('You won some stx')).toEqual(spamReplacement);
     expect(spamFilter('You Win some stx')).toEqual(spamReplacement);
     expect(spamFilter('You Won some stx')).toEqual(spamReplacement);

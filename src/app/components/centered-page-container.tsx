@@ -1,5 +1,6 @@
 import { Flex, FlexProps } from '@stacks/ui';
 
+// check this on select account page
 export function CenteredPageContainer(props: FlexProps) {
   return (
     <Flex
