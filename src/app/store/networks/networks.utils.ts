@@ -88,7 +88,6 @@ function getChainData(
   chainId: ChainID,
   url: string
 ): { stacksChainId: any; stacksUrl: any; bitcoinNetwork: any; bitcoinUrl: any } {
-  console.log('getChainData', id, chainId, url);
   return id === 'bitcoin-regtest'
     ? {
         stacksChainId: ChainID.Testnet,

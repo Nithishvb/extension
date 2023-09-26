@@ -154,6 +154,6 @@ export function useMakeBitcoinNetworkSignersForPaymentType<T>(
         paymentFn,
       })({ accountIndex, addressIndex: zeroIndex });
     },
-    [mainnetKeychainFn, paymentFn, testnetKeychainFn]
+    [mainnetKeychainFn, paymentFn, testnetKeychainFn, regtestKeychainFn]
   );
 }
