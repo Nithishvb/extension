@@ -36,84 +36,163 @@ interface AddNetworkFormValues {
   key: string;
   name: string;
   url: string;
+  blockchain: 'stacks' | 'bitcoin';
 }
-const addNetworkFormValues: AddNetworkFormValues = { key: '', name: '', url: '' };
+const addNetworkFormValues: AddNetworkFormValues = {
+  key: '',
+  name: '',
+  url: '',
+  blockchain: 'stacks',
+};
 
 export function AddNetwork() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [blockchain, setBlockchain] = useState('stacks' as 'bitcoin' | 'stacks');
   const navigate = useNavigate();
   const network = useCurrentStacksNetworkState();
   const networksActions = useNetworksActions();
 
   useRouteHeader(<Header title="Add a network" onClose={() => navigate(RouteUrls.Home)} />);
 
+  const setCustomStacksNetwork = async (values: AddNetworkFormValues) => {
+    try {
+      const { name, url, key } = values;
+      if (!isValidUrl(url)) {
+        setError('Enter a valid URL');
+        return;
+      }
+      if (!key) {
+        setError('Enter a unique key');
+        return;
+      }
+      const path = removeTrailingSlash(new URL(url).href);
+      const response = await network.fetchFn(`${path}/v2/info`);
+      const chainInfo = await response.json();
+      if (!chainInfo) throw new Error('Unable to fetch info from node');
+
+      // Attention:
+      // For mainnet/testnet the v2/info response `.network_id` refers to the chain ID
+      // For subnets the v2/info response `.network_id` refers to the network ID and the chain ID (they are the same for subnets)
+      // The `.parent_network_id` refers to the actual peer network ID in both cases
+      const { network_id: chainId, parent_network_id: parentNetworkId } = chainInfo;
+
+      const isSubnet = typeof chainInfo.l1_subnet_governing_contract === 'string';
+      const isFirstLevelSubnet =
+        isSubnet &&
+        (parentNetworkId === PeerNetworkID.Mainnet || parentNetworkId === PeerNetworkID.Testnet);
+
+      // Currently, only subnets of mainnet and testnet are supported in the wallet
+      if (isFirstLevelSubnet) {
+        const parentChainId =
+          parentNetworkId === PeerNetworkID.Mainnet ? ChainID.Mainnet : ChainID.Testnet;
+        networksActions.addNetwork({
+          chainId: parentChainId, // Used for differentiating control flow in the wallet
+          subnetChainId: chainId, // Used for signing transactions (via the network object, not to be confused with the NetworkConfigurations)
+          id: key as DefaultNetworkConfigurations,
+          name,
+          url: path,
+        });
+        navigate(RouteUrls.Home);
+        return;
+      }
+
+      if (chainId === ChainID.Mainnet || chainId === ChainID.Testnet) {
+        networksActions.addNetwork({
+          chainId,
+          id: key as DefaultNetworkConfigurations,
+          name,
+          url: path,
+        });
+        navigate(RouteUrls.Home);
+        return;
+      }
+
+      setError('Unable to determine chainID from node.');
+    } catch (error) {
+      setError('Unable to fetch info from node.');
+    }
+  };
+
+  const setCustomBitcoinNetwork = async (values: AddNetworkFormValues) => {
+    try {
+      const { name, url } = values;
+      const path = removeTrailingSlash(new URL(url).href);
+
+      networksActions.addNetwork({
+        chainId: ChainID.Testnet,
+        id: 'bitcoin-regtest' as DefaultNetworkConfigurations,
+        name,
+        url: path,
+      });
+      navigate(RouteUrls.Home);
+      return;
+    } catch (error) {
+      setError('Unable to fetch info from node.');
+    }
+  };
+
   return (
     <CenteredPageContainer>
+      <Stack
+        maxWidth={token('sizes.centeredPageFullWidth')}
+        px={['loose', 'base-loose']}
+        spacing="loose"
+        textAlign={['left', 'center']}
+        padding={'loose'}
+      >
+        <Text>
+          Use this form to add a new instance of the{' '}
+          <a
+            href="https://github.com/blockstack/stacks-blockchain-api"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Stacks Blockchain API
+          </a>{' '}
+          or{' '}
+          <a href="https://github.com/Blockstream/esplora" target="_blank" rel="noreferrer">
+            Bitcoin Blockchain API
+          </a>
+          . Make sure you review and trust the host before you add it.
+        </Text>
+        <Stack justifyContent={'center'}>
+          <LeatherButton
+            onClick={() => setBlockchain('stacks')}
+            backgroundColor={
+              blockchain === 'stacks'
+                ? 'accent.component-background-default'
+                : 'accent.component-background-pressed'
+            }
+            color={'white'}
+          >
+            Stacks
+          </LeatherButton>
+          <LeatherButton
+            onClick={() => setBlockchain('bitcoin')}
+            backgroundColor={
+              blockchain === 'bitcoin'
+                ? 'accent.component-background-default'
+                : 'accent.component-background-pressed'
+            }
+            color={'white'}
+          >
+            Bitcoin
+          </LeatherButton>
+        </Stack>
+      </Stack>
       <Formik
         initialValues={addNetworkFormValues}
         onSubmit={async values => {
-          const { name, url, key } = values;
-          if (!isValidUrl(url)) {
-            setError('Enter a valid URL');
-            return;
-          }
-          if (!key) {
-            setError('Enter a unique key');
-            return;
-          }
-
           setLoading(true);
           setError('');
 
-          try {
-            const path = removeTrailingSlash(new URL(url).href);
-            const response = await network.fetchFn(`${path}/v2/info`);
-            const chainInfo = await response.json();
-            if (!chainInfo) throw new Error('Unable to fetch info from node');
-
-            // Attention:
-            // For mainnet/testnet the v2/info response `.network_id` refers to the chain ID
-            // For subnets the v2/info response `.network_id` refers to the network ID and the chain ID (they are the same for subnets)
-            // The `.parent_network_id` refers to the actual peer network ID in both cases
-            const { network_id: chainId, parent_network_id: parentNetworkId } = chainInfo;
-
-            const isSubnet = typeof chainInfo.l1_subnet_governing_contract === 'string';
-            const isFirstLevelSubnet =
-              isSubnet &&
-              (parentNetworkId === PeerNetworkID.Mainnet ||
-                parentNetworkId === PeerNetworkID.Testnet);
-
-            // Currently, only subnets of mainnet and testnet are supported in the wallet
-            if (isFirstLevelSubnet) {
-              const parentChainId =
-                parentNetworkId === PeerNetworkID.Mainnet ? ChainID.Mainnet : ChainID.Testnet;
-              networksActions.addNetwork({
-                chainId: parentChainId, // Used for differentiating control flow in the wallet
-                subnetChainId: chainId, // Used for signing transactions (via the network object, not to be confused with the NetworkConfigurations)
-                id: key as DefaultNetworkConfigurations,
-                name,
-                url: path,
-              });
-              navigate(RouteUrls.Home);
-              return;
-            }
-
-            if (chainId === ChainID.Mainnet || chainId === ChainID.Testnet) {
-              networksActions.addNetwork({
-                chainId,
-                id: key as DefaultNetworkConfigurations,
-                name,
-                url: path,
-              });
-              navigate(RouteUrls.Home);
-              return;
-            }
-
-            setError('Unable to determine chainID from node.');
-          } catch (error) {
-            setError('Unable to fetch info from node.');
+          if (blockchain === 'stacks') {
+            setCustomStacksNetwork(values);
+          } else {
+            setCustomBitcoinNetwork(values);
           }
+
           setLoading(false);
         }}
       >
@@ -125,17 +204,6 @@ export function AddNetwork() {
               spacing="loose"
               textAlign={['left', 'center']}
             >
-              <Text>
-                Use this form to add a new instance of the{' '}
-                <a
-                  href="https://github.com/blockstack/stacks-blockchain-api"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Stacks Blockchain API
-                </a>
-                . Make sure you review and trust the host before you add it.
-              </Text>
               <Input
                 autoFocus
                 borderRadius="10px"
@@ -165,6 +233,7 @@ export function AddNetwork() {
                 placeholder="Key"
                 value={values.key}
                 width="100%"
+                isDisabled={blockchain === 'bitcoin' ? true : false}
                 data-testid={NetworkSelectors.NetworkKey}
               />
               {error ? (

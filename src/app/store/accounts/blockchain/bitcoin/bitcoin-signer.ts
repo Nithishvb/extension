@@ -105,6 +105,7 @@ interface CreateSignersForAllNetworkTypesArgs {
   paymentFn: (keychain: HDKey, network: BitcoinNetworkModes) => unknown;
   mainnetKeychainFn: (accountIndex: number) => BitcoinAccount | undefined;
   testnetKeychainFn: (accountIndex: number) => BitcoinAccount | undefined;
+  regtestKeychainFn: (accountIndex: number) => BitcoinAccount | undefined;
 }
 function createSignersForAllNetworkTypes<T extends CreateSignersForAllNetworkTypesArgs>({
   mainnetKeychainFn,
@@ -114,8 +115,9 @@ function createSignersForAllNetworkTypes<T extends CreateSignersForAllNetworkTyp
   return ({ accountIndex, addressIndex }: { accountIndex: number; addressIndex: number }) => {
     const mainnetAccount = mainnetKeychainFn(accountIndex);
     const testnetAccount = testnetKeychainFn(accountIndex);
+    const regtestAccount = testnetKeychainFn(accountIndex);
 
-    if (!mainnetAccount || !testnetAccount) throw new Error('No account found');
+    if (!mainnetAccount || !testnetAccount || !regtestAccount) throw new Error('No account found');
 
     function makeNetworkSigner(keychain: HDKey, network: BitcoinNetworkModes) {
       return bitcoinAddressIndexSignerFactory({
@@ -129,7 +131,7 @@ function createSignersForAllNetworkTypes<T extends CreateSignersForAllNetworkTyp
     return {
       mainnet: makeNetworkSigner(mainnetAccount.keychain, 'mainnet'),
       testnet: makeNetworkSigner(testnetAccount.keychain, 'testnet'),
-      regtest: makeNetworkSigner(testnetAccount.keychain, 'regtest'),
+      regtest: makeNetworkSigner(regtestAccount.keychain, 'regtest'),
       signet: makeNetworkSigner(testnetAccount.keychain, 'signet'),
     };
   };
@@ -138,6 +140,7 @@ function createSignersForAllNetworkTypes<T extends CreateSignersForAllNetworkTyp
 export function useMakeBitcoinNetworkSignersForPaymentType<T>(
   mainnetKeychainFn: (index: number) => BitcoinAccount | undefined,
   testnetKeychainFn: (index: number) => BitcoinAccount | undefined,
+  regtestKeychainFn: (index: number) => BitcoinAccount | undefined,
   paymentFn: (keychain: HDKey, network: BitcoinNetworkModes) => T
 ) {
   return useCallback(
@@ -147,6 +150,7 @@ export function useMakeBitcoinNetworkSignersForPaymentType<T>(
       return createSignersForAllNetworkTypes({
         mainnetKeychainFn,
         testnetKeychainFn,
+        regtestKeychainFn,
         paymentFn,
       })({ accountIndex, addressIndex: zeroIndex });
     },

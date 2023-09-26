@@ -4,6 +4,7 @@ import { ChainID } from '@stacks/transactions';
 import {
   BITCOIN_API_BASE_URL_MAINNET,
   BITCOIN_API_BASE_URL_TESTNET,
+  HIRO_API_BASE_URL_TESTNET,
   NetworkConfiguration,
 } from '@shared/constants';
 
@@ -51,6 +52,13 @@ export function transformNetworkStateToMultichainStucture(
       .map(([key, network]) => {
         if (!network) return ['', null];
         const { id, name, chainId, subnetChainId, url } = network;
+
+        const { stacksChainId, stacksUrl, bitcoinNetwork, bitcoinUrl } = getChainData(
+          id,
+          chainId,
+          url
+        );
+
         return [
           key,
           {
@@ -59,18 +67,14 @@ export function transformNetworkStateToMultichainStucture(
             chain: {
               stacks: {
                 blockchain: 'stacks',
-                url,
-                chainId,
+                url: stacksUrl,
+                chainId: stacksChainId,
                 subnetChainId,
               },
               bitcoin: {
                 blockchain: 'bitcoin',
-                network: ChainID[chainId] ? ChainID[chainId].toLowerCase() : 'testnet',
-                url:
-                  whenStacksChainId(chainId)({
-                    [ChainID.Mainnet]: BITCOIN_API_BASE_URL_MAINNET,
-                    [ChainID.Testnet]: BITCOIN_API_BASE_URL_TESTNET,
-                  }) || BITCOIN_API_BASE_URL_TESTNET,
+                network: bitcoinNetwork,
+                url: bitcoinUrl,
               },
             },
           },
@@ -78,4 +82,28 @@ export function transformNetworkStateToMultichainStucture(
       })
       .filter(([_, value]) => value !== null)
   ) as Record<string, NetworkConfiguration>;
+}
+function getChainData(
+  id: string,
+  chainId: ChainID,
+  url: string
+): { stacksChainId: any; stacksUrl: any; bitcoinNetwork: any; bitcoinUrl: any } {
+  console.log('getChainData', id, chainId, url);
+  return id === 'bitcoin-regtest'
+    ? {
+        stacksChainId: ChainID.Testnet,
+        stacksUrl: HIRO_API_BASE_URL_TESTNET,
+        bitcoinNetwork: 'regtest',
+        bitcoinUrl: url,
+      }
+    : {
+        stacksChainId: chainId,
+        stacksUrl: url,
+        bitcoinNetwork: ChainID[chainId]?.toLowerCase() || 'testnet',
+        bitcoinUrl:
+          whenStacksChainId(chainId)({
+            [ChainID.Mainnet]: BITCOIN_API_BASE_URL_MAINNET,
+            [ChainID.Testnet]: BITCOIN_API_BASE_URL_TESTNET,
+          }) || BITCOIN_API_BASE_URL_TESTNET,
+      };
 }

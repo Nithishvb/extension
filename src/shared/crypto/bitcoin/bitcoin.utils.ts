@@ -17,19 +17,22 @@ export interface BitcoinAccount {
   network: BitcoinNetworkModes;
 }
 
-const bitcoinNetworkToCoreNetworkMap: Record<BitcoinNetworkModes, NetworkModes> = {
+const bitcoinNetworkToCoreNetworkMap: Record<BitcoinNetworkModes, BitcoinNetworkModes> = {
   mainnet: 'mainnet',
   testnet: 'testnet',
-  regtest: 'testnet',
-  signet: 'testnet',
+  regtest: 'regtest',
+  signet: 'signet',
 };
+
 export function bitcoinNetworkModeToCoreNetworkMode(mode: BitcoinNetworkModes) {
   return bitcoinNetworkToCoreNetworkMap[mode];
 }
 
-const coinTypeMap: Record<NetworkModes, 0 | 1> = {
+const coinTypeMap: Record<BitcoinNetworkModes, 0 | 1> = {
   mainnet: 0,
   testnet: 1,
+  regtest: 1,
+  signet: 1,
 };
 
 export function getBitcoinCoinTypeIndexByNetwork(network: BitcoinNetworkModes) {
@@ -159,13 +162,15 @@ export function createWalletIdDecoratedPath(policy: string, walletId: string) {
 
 // Primarily used to get the correct `Version` when passing Ledger Bitcoin
 // extended public keys to the HDKey constructor
-export function getHdKeyVersionsFromNetwork(network: NetworkModes) {
+export function getHdKeyVersionsFromNetwork(network: BitcoinNetworkModes) {
   return whenNetwork(network)({
     mainnet: undefined,
     testnet: {
       private: 0x00000000,
       public: 0x043587cf,
     } as Versions,
+    regtest: undefined,
+    signet: undefined,
   });
 }
 
@@ -174,7 +179,7 @@ export function getHdKeyVersionsFromNetwork(network: NetworkModes) {
 export function lookUpLedgerKeysByPath(
   derivationPathFn: (network: BitcoinNetworkModes, accountIndex: number) => string
 ) {
-  return (keyMap: Record<string, { policy: string } | undefined>, network: NetworkModes) =>
+  return (keyMap: Record<string, { policy: string } | undefined>, network: BitcoinNetworkModes) =>
     (accountIndex: number) => {
       const path = derivationPathFn(network, accountIndex);
       // Single wallet mode, hardcoded default walletId

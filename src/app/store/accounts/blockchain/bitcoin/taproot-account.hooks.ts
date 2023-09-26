@@ -57,12 +57,15 @@ export function useCurrentTaprootAccount() {
 }
 
 export function useTaprootNetworkSigners() {
-  const { mainnet: mainnetKeychain, testnet: testnetKeychain } = useSelector(
-    selectTaprootAccountBuilder
-  );
+  const {
+    mainnet: mainnetKeychain,
+    testnet: testnetKeychain,
+    regtest: regtestKeychain,
+  } = useSelector(selectTaprootAccountBuilder);
   return useMakeBitcoinNetworkSignersForPaymentType(
     mainnetKeychain,
     testnetKeychain,
+    regtestKeychain,
     getTaprootPaymentFromAddressIndex
   );
 }

@@ -28,7 +28,7 @@ export function useBitcoinClient() {
   const baseUrl = whenBitcoinNetwork(network.chain.bitcoin.network)({
     mainnet: BITCOIN_API_BASE_URL_MAINNET,
     testnet: BITCOIN_API_BASE_URL_TESTNET,
-    regtest: BITCOIN_API_BASE_URL_TESTNET,
+    regtest: network.chain.bitcoin.url,
     signet: BITCOIN_API_BASE_URL_SIGNET,
   });
 

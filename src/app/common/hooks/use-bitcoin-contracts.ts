@@ -4,7 +4,11 @@ import { RpcErrorCode } from '@btckit/types';
 import { JsDLCInterface } from '@dlc-link/dlc-tools';
 import { bytesToHex } from '@stacks/common';
 
-import { BITCOIN_API_BASE_URL_MAINNET, BITCOIN_API_BASE_URL_TESTNET } from '@shared/constants';
+import {
+  BITCOIN_API_BASE_URL_MAINNET,
+  BITCOIN_API_BASE_URL_SIGNET,
+  BITCOIN_API_BASE_URL_TESTNET,
+} from '@shared/constants';
 import {
   deriveAddressIndexKeychainFromAccount,
   extractAddressIndexFromPath,
@@ -25,6 +29,7 @@ import {
   useCurrentAccountNativeSegwitSigner,
   useNativeSegwitAccountBuilder,
 } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
+import { useCurrentNetwork } from '@app/store/networks/networks.selectors';
 
 import { initialSearchParams } from '../initial-search-params';
 import { i18nFormatCurrency } from '../money/format-money';
@@ -68,6 +73,7 @@ export function useBitcoinContracts() {
     const currentBitcoinNetwork = bitcoinAccountDetails.network;
     const currentAddress = bitcoinAccountDetails.address;
     const currentAccountIndex = extractAddressIndexFromPath(bitcoinAccountDetails.derivationPath);
+    const currentNetwork = useCurrentNetwork();
 
     const currentAddressPrivateKey = deriveAddressIndexKeychainFromAccount(
       nativeSegwitPrivateKeychain.keychain
@@ -78,8 +84,8 @@ export function useBitcoinContracts() {
     const blockchainAPI = whenBitcoinNetwork(currentBitcoinNetwork)({
       mainnet: BITCOIN_API_BASE_URL_MAINNET,
       testnet: BITCOIN_API_BASE_URL_TESTNET,
-      regtest: BITCOIN_API_BASE_URL_TESTNET,
-      signet: BITCOIN_API_BASE_URL_TESTNET,
+      regtest: currentNetwork.chain.bitcoin.url,
+      signet: BITCOIN_API_BASE_URL_SIGNET,
     });
 
     const bitcoinContractInterface = JsDLCInterface.new(

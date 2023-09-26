@@ -55,13 +55,16 @@ export function useCurrentNativeSegwitAccount() {
 }
 
 export function useNativeSegwitNetworkSigners() {
-  const { mainnet: mainnetKeychain, testnet: testnetKeychain } = useSelector(
-    selectNativeSegwitAccountBuilder
-  );
+  const {
+    mainnet: mainnetKeychain,
+    testnet: testnetKeychain,
+    regtest: regtestKeychain,
+  } = useSelector(selectNativeSegwitAccountBuilder);
 
   return useMakeBitcoinNetworkSignersForPaymentType(
     mainnetKeychain,
     testnetKeychain,
+    regtestKeychain,
     getNativeSegWitPaymentFromAddressIndex
   );
 }

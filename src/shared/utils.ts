@@ -1,4 +1,4 @@
-import { NetworkModes } from './constants';
+import { BitcoinNetworkModes } from './constants';
 
 export function isNumber(value: unknown): value is number {
   return typeof value === 'number';
@@ -47,7 +47,8 @@ export function ensureArray<T>(value: T | T[]): T[] {
 export function undefinedIfLengthZero<T extends any[]>(arr: T) {
   return arr.length ? arr : undefined;
 }
-type NetworkMap<T> = Record<NetworkModes, T>;
-export function whenNetwork(mode: NetworkModes) {
-  return <T extends NetworkMap<unknown>>(networkMap: T) => networkMap[mode] as T[NetworkModes];
+type NetworkMap<T> = Record<BitcoinNetworkModes, T>;
+export function whenNetwork(mode: BitcoinNetworkModes) {
+  return <T extends NetworkMap<unknown>>(networkMap: T) =>
+    networkMap[mode] as T[BitcoinNetworkModes];
 }
