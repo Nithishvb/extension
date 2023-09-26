@@ -20,7 +20,7 @@ interface GetPolicyForPaymentTypeFactoryArgs {
 interface GetExtendedPublicKeyFactoryArgs {
   bitcoinApp: BitcoinApp;
   fingerprint: string;
-  network: NetworkModes;
+  network: BitcoinNetworkModes;
   accountIndex: number;
 }
 function getPolicyForPaymentType({
@@ -52,7 +52,7 @@ const getTaprootExtendedPublicKey = getPolicyForPaymentType({
 
 interface PullBitcoinKeysFromLedgerDeviceArgs {
   onRequestKey?(keyIndex: number): void;
-  network: NetworkModes;
+  network: BitcoinNetworkModes;
 }
 export function pullBitcoinKeysFromLedgerDevice(bitcoinApp: BitcoinApp) {
   return async ({ onRequestKey, network }: PullBitcoinKeysFromLedgerDeviceArgs) => {

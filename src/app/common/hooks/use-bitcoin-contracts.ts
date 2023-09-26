@@ -62,6 +62,7 @@ export function useBitcoinContracts() {
   const getNativeSegwitSigner = useCurrentAccountNativeSegwitSigner();
   const currentIndex = useCurrentAccountIndex();
   const nativeSegwitPrivateKeychain = useNativeSegwitAccountBuilder()?.(currentIndex);
+  const currentNetwork = useCurrentNetwork();
 
   async function getBitcoinContractInterface(
     attestorURLs: string[]
@@ -73,7 +74,6 @@ export function useBitcoinContracts() {
     const currentBitcoinNetwork = bitcoinAccountDetails.network;
     const currentAddress = bitcoinAccountDetails.address;
     const currentAccountIndex = extractAddressIndexFromPath(bitcoinAccountDetails.derivationPath);
-    const currentNetwork = useCurrentNetwork();
 
     const currentAddressPrivateKey = deriveAddressIndexKeychainFromAccount(
       nativeSegwitPrivateKeychain.keychain
