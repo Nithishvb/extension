@@ -1,3 +1,77 @@
+## [6.9.2](https://github.com/leather-wallet/extension/compare/v6.9.1...v6.9.2) (2023-10-04)
+
+
+### Bug Fixes
+
+* add mnemonic field validation, closes [#4130](https://github.com/leather-wallet/extension/issues/4130) ([b7970d5](https://github.com/leather-wallet/extension/commit/b7970d5f9285388d03374ccdacf046945574b1ad))
+* adjust padding of numerical slot, closes [#4243](https://github.com/leather-wallet/extension/issues/4243) ([55019df](https://github.com/leather-wallet/extension/commit/55019dff89495dafce60d632c10ac4e2446851d0))
+* do not disable button using dirty flag ([1a31a7b](https://github.com/leather-wallet/extension/commit/1a31a7b6d134e04c8f59f5be9ac847aff0add57e))
+* filter spam transactions from activity, closes [#4017](https://github.com/leather-wallet/extension/issues/4017) ([b1bf006](https://github.com/leather-wallet/extension/commit/b1bf0061c993e09576fa1d0e12fcf846378a66d7))
+* fix prettier ([0775186](https://github.com/leather-wallet/extension/commit/0775186bda024388133f5fa278c0582575c2fbef))
+* fix responsive style of funding page, closes [#66](https://github.com/leather-wallet/extension/issues/66) ([361c970](https://github.com/leather-wallet/extension/commit/361c9709c93e7fb7f2402567af52f6a992019bfc))
+* fix spacing between content ([31850ba](https://github.com/leather-wallet/extension/commit/31850ba953820614dc36b51b503c790d0407bea0))
+* reduce zIndex so that onClick works consistently without needing to double click ([5f44d5a](https://github.com/leather-wallet/extension/commit/5f44d5a2de8dd0b0ac917766732d12fdb7862371))
+* remove legacy bip 39 library, closes [#4130](https://github.com/leather-wallet/extension/issues/4130) ([4a4185a](https://github.com/leather-wallet/extension/commit/4a4185a1eab0e550662d8f1cf93cb37fa5d98c49))
+* roll back use of useFocus as it prevents formik validation from properly indicating isTouched ([0f629b0](https://github.com/leather-wallet/extension/commit/0f629b0177d41ad326112b5957042e26af416c9d))
+* use psuedo-elements to specify borders ([586af95](https://github.com/leather-wallet/extension/commit/586af95683b45b860de2b298f02fe3696ab5f4d5))
+
+
+### Internal
+
+* apply requested changes from pr feedback ([027025f](https://github.com/leather-wallet/extension/commit/027025f0630df440318a5be89a81151d99dacce6))
+* fix readme ([4d03eb5](https://github.com/leather-wallet/extension/commit/4d03eb5f4c7430372af3715d0a1155832a68437c))
+* ordinal aware utxo query, closes [#4163](https://github.com/leather-wallet/extension/issues/4163) ([9f8291f](https://github.com/leather-wallet/extension/commit/9f8291f78b98ac48d25267bc72a236252c818f51))
+* upgrade panda & other deps ([1489864](https://github.com/leather-wallet/extension/commit/148986456e3c75bb0f82a4f629ccd58a525dcb9e))
+
+## [6.9.1](https://github.com/leather-wallet/extension/compare/v6.9.0...v6.9.1) (2023-10-02)
+
+
+### Bug Fixes
+
+* add array notation lint ([481b28d](https://github.com/leather-wallet/extension/commit/481b28d7c1a6ddbf8c1619887b7b71390e64b425))
+* add spam filtering to fungible token assets, closes [#4252](https://github.com/leather-wallet/extension/issues/4252) ([b56c27b](https://github.com/leather-wallet/extension/commit/b56c27ba5e5f8da85a9582340671aef0ba1c584f))
+* reenable transak, closes [#4267](https://github.com/leather-wallet/extension/issues/4267) ([b2fd8c3](https://github.com/leather-wallet/extension/commit/b2fd8c3ce0b503b53bc10843d4d217741a133eba))
+* send inscription error processing, closes [#4286](https://github.com/leather-wallet/extension/issues/4286) ([f73f3a4](https://github.com/leather-wallet/extension/commit/f73f3a44979aa3147537806217a2954a38acedc9))
+* set background colour of dialog for dark mode, closes [#4282](https://github.com/leather-wallet/extension/issues/4282) ([b4e9b75](https://github.com/leather-wallet/extension/commit/b4e9b75cd2b75a072a4d6517d94175de21c03d5c))
+* stx transfer test ([da669d1](https://github.com/leather-wallet/extension/commit/da669d1761d56807760da8e32f5c0704011316c5))
+* temporarily disable test ([a149517](https://github.com/leather-wallet/extension/commit/a1495171ee7509e8e52cd9db70901460918eba5b))
+
+
+### Internal
+
+* missing env var ([7f7c7c5](https://github.com/leather-wallet/extension/commit/7f7c7c526f0fa28a1c9cfb07db9f2e1a291a3316))
+* remove legacy integration tests ([6c507c2](https://github.com/leather-wallet/extension/commit/6c507c24013c7c920f4bcca36f6d824dc9e38768))
+* ugprade packages ([41ec75c](https://github.com/leather-wallet/extension/commit/41ec75c6d3ecedb694ff53eec6e907d6c4fd7fef))
+* upgrade scure/noble pkgs ([949311a](https://github.com/leather-wallet/extension/commit/949311aaaf0ab6f91e03eabbe8214ee305a0b4cb))
+
+## [6.9.0](https://github.com/leather-wallet/extension/compare/v6.8.2...v6.9.0) (2023-09-26)
+
+
+### Features
+
+* add address index for ns inscriptions ([6317dce](https://github.com/leather-wallet/extension/commit/6317dced546e0361e9fcce90f472f7b24a5ef088))
+* add ns inscription send, closes [#4019](https://github.com/leather-wallet/extension/issues/4019) ([92774e8](https://github.com/leather-wallet/extension/commit/92774e8cbb15cb8ca41f10606db3dde5fe273240))
+* display inscriptions from native segwit address, closes [#4018](https://github.com/leather-wallet/extension/issues/4018) ([4a01fae](https://github.com/leather-wallet/extension/commit/4a01fae8f30ade4add328fb1e7f842d9463e02df))
+* enable stx tests ([e99e88c](https://github.com/leather-wallet/extension/commit/e99e88c6868d5ee2489c0fead9cb26146b2fc38a))
+* remove ns address inscription warning ([ad1e940](https://github.com/leather-wallet/extension/commit/ad1e940d281f75c98650daadaf1443bebd9f34ad))
+* replaced dlc-wasm-wallet with @dlc-link/dlc-tools ([0364e26](https://github.com/leather-wallet/extension/commit/0364e26f92090c1179a68b0b77f52a6fed219f56))
+
+
+### Bug Fixes
+
+* minor css bugs ([a514265](https://github.com/leather-wallet/extension/commit/a5142655e318b0c4ed18cd70f11102e06173dd1a))
+* more explicit build instructions ([11fea38](https://github.com/leather-wallet/extension/commit/11fea384b1533979b357be4ab4937e4dc8448e08))
+* set onboarding modal background color to fix transparency in dark mode ([93a3a0f](https://github.com/leather-wallet/extension/commit/93a3a0f313efcc9f7e8bbb9b75150027fa767518))
+* styles of acc info card ([64bd214](https://github.com/leather-wallet/extension/commit/64bd21424b8422b3ca7c4e6747eedeafce43c728))
+* update leather contact email address ([5330d18](https://github.com/leather-wallet/extension/commit/5330d182f6ce4251ecadaeb66b97bfad0f2507de))
+
+
+### Internal
+
+* flag to use panda, closes [#4255](https://github.com/leather-wallet/extension/issues/4255) ([5f0306e](https://github.com/leather-wallet/extension/commit/5f0306e94a6c35ddadde2259b138c2f05d6bf889))
+* remove space between component ([2fe2b60](https://github.com/leather-wallet/extension/commit/2fe2b606add564e61f712cf1ed68f4dc7c13cb5c))
+* space between, closes [#4256](https://github.com/leather-wallet/extension/issues/4256) ([963faab](https://github.com/leather-wallet/extension/commit/963faabdffbe16317fcec9bbb519e73be665b3ff))
+
 ## [6.8.2](https://github.com/leather-wallet/extension/compare/v6.8.1...v6.8.2) (2023-09-19)
 
 

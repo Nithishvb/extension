@@ -52,3 +52,9 @@ export function whenNetwork(mode: BitcoinNetworkModes) {
   return <T extends NetworkMap<unknown>>(networkMap: T) =>
     networkMap[mode] as T[BitcoinNetworkModes];
 }
+
+export function isEmptyArray(data: unknown[]) {
+  return data.length === 0;
+}
+
+export const defaultWalletKeyId = 'default' as const;

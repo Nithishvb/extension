@@ -1,8 +1,9 @@
-import { useQueries, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
+import { HIRO_INSCRIPTIONS_API_URL } from '@shared/constants';
 import { Inscription } from '@shared/models/inscription.model';
 
-import { AppUseQueryConfig, HIRO_INSCRIPTIONS_API_URL } from '@app/query/query-config';
+import { AppUseQueryConfig } from '@app/query/query-config';
 import { QueryPrefixes } from '@app/query/query-prefixes';
 
 const inscriptionQueryOptions = {
@@ -13,7 +14,7 @@ const inscriptionQueryOptions = {
 /**
  * @param path - inscription/:inscription_id
  */
-export function fetchInscription() {
+function fetchInscription() {
   return async (id: string) => {
     const res = await fetch(`${HIRO_INSCRIPTIONS_API_URL}/${id}`);
     if (!res.ok) throw new Error('Error retrieving inscription metadata');
@@ -34,18 +35,5 @@ export function useGetInscriptionQuery<T extends unknown = FetchInscriptionResp>
     queryFn: () => fetchInscription()(id),
     ...inscriptionQueryOptions,
     ...options,
-  });
-}
-
-export function useGetInscriptionQueries(ids: string[]) {
-  return useQueries({
-    queries: ids.map(id => {
-      return {
-        enabled: !!id,
-        queryKey: [QueryPrefixes.InscriptionMetadata, id],
-        queryFn: () => fetchInscription()(id),
-        ...inscriptionQueryOptions,
-      };
-    }),
   });
 }

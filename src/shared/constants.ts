@@ -26,8 +26,8 @@ export const KEBAB_REGEX = /[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g;
 
 export const MICROBLOCKS_ENABLED = !IS_TEST_ENV && true;
 
-export const GITHUB_ORG = 'hirosystems';
-export const GITHUB_REPO = 'wallet';
+export const GITHUB_ORG = 'leather-wallet';
+export const GITHUB_REPO = 'extension';
 
 export enum WalletDefaultNetworkConfigurationIds {
   mainnet = 'mainnet',
@@ -80,6 +80,7 @@ export interface NetworkConfiguration {
 
 export const HIRO_API_BASE_URL_MAINNET = 'https://api.hiro.so';
 export const HIRO_API_BASE_URL_TESTNET = 'https://api.testnet.hiro.so';
+export const HIRO_INSCRIPTIONS_API_URL = 'https://api.hiro.so/ordinals/v1/inscriptions';
 
 export const BITCOIN_API_BASE_URL_MAINNET = 'https://blockstream.info/api';
 export const BITCOIN_API_BASE_URL_TESTNET = 'https://blockstream.info/testnet/api';

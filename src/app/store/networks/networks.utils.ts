@@ -91,7 +91,7 @@ function getChainData(
   return id === 'bitcoin-regtest'
     ? {
         stacksChainId: ChainID.Testnet,
-        stacksUrl: HIRO_API_BASE_URL_TESTNET,
+        stacksUrl: 'https://devnet.dlc.link',
         bitcoinNetwork: 'regtest',
         bitcoinUrl: url,
       }

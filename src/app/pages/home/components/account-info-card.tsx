@@ -1,4 +1,3 @@
-import { useMediaQuery } from '@stacks/ui';
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 import { Box, Divider, Flex, styled } from 'leather-styles/jsx';
 
@@ -14,7 +13,6 @@ import { AccountActions } from './account-actions';
 
 export function AccountInfoCard() {
   const name = useCurrentAccountDisplayName();
-  const [isNarrowViewport] = useMediaQuery('(max-width: 600px)');
 
   const account = useCurrentStacksAccount();
   const btcAddress = useCurrentAccountNativeSegwitAddressIndexZero();
@@ -28,12 +26,11 @@ export function AccountInfoCard() {
       bgColor={{ base: 'brown.2', sm: 'unset' }}
       rounded="10px"
       px={{ base: 'space.05', sm: '0' }}
-      pt={{ base: 'space.04', sm: 'space.07' }}
+      pt={{ base: 'space.05', sm: 'space.07' }}
       pb={{ base: 'space.02', sm: 'space.07' }}
     >
       <LeatherButton
         onClick={() => setIsShowingSwitchAccountsState(true)}
-        mt="space.01"
         variant="link"
         _before={{ bg: 'transparent' }}
       >
@@ -41,7 +38,7 @@ export function AccountInfoCard() {
           <styled.p
             data-testid={SettingsSelectors.CurrentAccountDisplayName}
             textStyle="label.01"
-            mr={isNarrowViewport ? '0' : '3'}
+            mr={['space.00', 'space.02']}
           >
             {name}
           </styled.p>
@@ -50,20 +47,15 @@ export function AccountInfoCard() {
           </Box>
         </Flex>
       </LeatherButton>
-      <Flex
-        flexDir={['column', 'row']}
-        justify="space-between"
-        alignItems={['', 'center']}
-        mt="space.04"
-      >
-        <styled.h1 textStyle="heading.02">{totalBalance?.totalUsdBalance}</styled.h1>
+      <Flex flexDir={['column', 'row']} justify="space-between" alignItems={['', 'center']}>
+        <styled.h1 textStyle="heading.02" mb="space.05" mt="space.04">
+          {totalBalance?.totalUsdBalance}
+        </styled.h1>
         <Divider
           position="relative"
-          color="brown.4"
-          left="-space.04"
-          right={0}
-          width={`calc(100% + 32px)`}
-          mt="space.05"
+          color="accent.border-default"
+          right="space.05"
+          width="calc(100% + 48px)"
           mb="space.02"
           hideFrom="sm"
         />

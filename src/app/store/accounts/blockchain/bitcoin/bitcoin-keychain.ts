@@ -42,16 +42,16 @@ export function bitcoinAccountBuilderFactory(
         return {
           mainnet: ledgerKeychainLookupFn(bitcoinLedgerKeys, 'mainnet'),
           testnet: ledgerKeychainLookupFn(bitcoinLedgerKeys, 'testnet'),
-          regtest: ledgerKeychainLookupFn(bitcoinLedgerKeys, 'regtest'),
           signet: ledgerKeychainLookupFn(bitcoinLedgerKeys, 'signet'),
+          regtest: ledgerKeychainLookupFn(bitcoinLedgerKeys, 'regtest'),
         };
       }
       if (!rootKeychain) throw new Error('No in-memory key found');
       return {
         mainnet: softwareKeychainDerivationFn(rootKeychain, 'mainnet'),
         testnet: softwareKeychainDerivationFn(rootKeychain, 'testnet'),
-        regtest: softwareKeychainDerivationFn(rootKeychain, 'regtest'),
         signet: softwareKeychainDerivationFn(rootKeychain, 'signet'),
+        regtest: softwareKeychainDerivationFn(rootKeychain, 'regtest'),
       };
     }
   );
