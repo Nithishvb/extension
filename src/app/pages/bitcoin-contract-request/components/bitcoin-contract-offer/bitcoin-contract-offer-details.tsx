@@ -12,14 +12,6 @@ export function BitcoinContractOfferDetailsSimple({
   bitcoinContractOffer,
 }: BitcoinContractOfferDetailsSimpleProps) {
   return (
-    <>
-      <BitcoinContractOfferInput
-        addressNativeSegwit={bitcoinAddress}
-        bitcoinContractOffer={bitcoinContractOffer}
-      />
-      <BitcoinContractExpirationDate
-        expirationDate={bitcoinContractOffer.bitcoinContractExpirationDate}
-      />
-    </>
+
   );
 }
