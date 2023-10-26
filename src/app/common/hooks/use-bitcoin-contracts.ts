@@ -3,13 +3,17 @@ import { useNavigate } from 'react-router-dom';
 
 import { RpcErrorCode } from '@btckit/types';
 import { bytesToHex } from '@stacks/common';
+import { hexToBytes } from '@stacks/common';
 import { JsDLCInterface } from 'dlc-tools';
 
+import { getBtcSignerLibNetworkConfigByMode } from '@shared/crypto/bitcoin/bitcoin.network';
 import {
   deriveAddressIndexKeychainFromAccount,
   extractAddressIndexFromPath,
+  getAddressFromOutScript,
 } from '@shared/crypto/bitcoin/bitcoin.utils';
 import { Money, createMoneyFromDecimal } from '@shared/models/money.model';
+import { BitcoinTx } from '@shared/models/transactions/bitcoin-transaction.model';
 import { RouteUrls } from '@shared/route-urls';
 import { BitcoinContractResponseStatus } from '@shared/rpc/methods/accept-bitcoin-contract';
 import { makeRpcSuccessResponse } from '@shared/rpc/rpc-methods';
@@ -37,7 +41,7 @@ import { useDefaultRequestParams } from './use-default-request-search-params';
 export interface SimplifiedBitcoinContract {
   bitcoinContractId: string;
   bitcoinContractCollateralAmount: number;
-  bitcoinContractGasFee: number;
+  bitcoinTxDetails: BitcoinContractTransactionDetails;
   bitcoinContractExpirationDate: string;
 }
 
@@ -60,7 +64,7 @@ export interface BitcoinContractOfferDetails {
   counterpartyWalletDetails: CounterpartyWalletDetails;
 }
 
-type BitcoinTransaction = {
+export interface RawBitcoinContractTransaction {
   input: {
     previous_output: string;
     script_sig: string;
@@ -73,7 +77,25 @@ type BitcoinTransaction = {
     value: number;
   }[];
   version: number;
-};
+}
+
+export interface BitcoinContractInput {
+  txId: string;
+  address: string;
+  value: number;
+}
+
+export interface BitcoinContractOutput {
+  address: string;
+  value: number;
+}
+
+export interface BitcoinContractTransactionDetails {
+  inputs: BitcoinContractInput[];
+  outputs: BitcoinContractOutput[];
+  fee: number;
+  rawTx: RawBitcoinContractTransaction;
+}
 
 export function useBitcoinContracts() {
   const navigate = useNavigate();
@@ -84,31 +106,59 @@ export function useBitcoinContracts() {
   const currentIndex = useCurrentAccountIndex();
   const nativeSegwitPrivateKeychain = useNativeSegwitAccountBuilder()?.(currentIndex);
   const currentBitcoinNetwork = useCurrentNetwork();
+  const btcSignerLibNetworkConfig = getBtcSignerLibNetworkConfigByMode(
+    currentBitcoinNetwork.chain.bitcoin.network
+  );
   const bitcoinClient = useBitcoinClient();
   const [bitcoinContractCollateralAmount, setBitcoinContractCollateralAmount] = useState(0);
   const [acceptedBitcoinContract, setAcceptedBitcoinContract] = useState<any>();
   const [counterpartyWalletDetails, setCounterpartyWalletDetails] = useState<any>();
 
-  async function calculateFee(fundingTX: BitcoinTransaction) {
+  async function getTxInputDetails(txId: string, outputIndex: number) {
+    const bitcoinTx: BitcoinTx = await bitcoinClient.transactionsApi.getBitcoinTransaction(txId);
+    const bitcoinAddress = bitcoinTx.vout[outputIndex].scriptpubkey_address;
+    const inputAmount = bitcoinTx.vout[outputIndex].value;
+    return { bitcoinAddress, inputAmount };
+  }
+
+  async function getBitcoinTxDetails(fundingTX: RawBitcoinContractTransaction) {
     const inputs = fundingTX.input;
     const outputs = fundingTX.output;
 
-    let outputAmount = 0;
-    let inputAmount = 0;
+    let inputValueSum = 0;
+    let outputValueSum = 0;
+
+    const bitcoinTxDetails: BitcoinContractTransactionDetails = {
+      inputs: [],
+      outputs: [],
+      fee: 0,
+      rawTx: fundingTX,
+    };
 
     for (const input of inputs) {
       const [txId, outputIndex] = input.previous_output.split(':');
-      const txDetails = await bitcoinClient.transactionsApi.getBitcoinTransaction(txId);
-      inputAmount += parseInt(txDetails.vout[parseInt(outputIndex)].value);
+      const { bitcoinAddress, inputAmount } = await getTxInputDetails(txId, parseInt(outputIndex));
+      const txInput = { txId, address: bitcoinAddress, value: inputAmount };
+      bitcoinTxDetails.inputs.push(txInput);
+      inputValueSum += inputAmount;
     }
 
     for (const output of outputs) {
-      outputAmount += output.value;
+      const outputAmount = output.value;
+      const outputAddress = getAddressFromOutScript(
+        hexToBytes(output.script_pubkey),
+        btcSignerLibNetworkConfig
+      );
+      const txOutput = { address: outputAddress, value: outputAmount };
+      bitcoinTxDetails.outputs.push(txOutput);
+      outputValueSum += outputAmount;
     }
 
-    const fee = inputAmount - outputAmount;
+    const fee = inputValueSum - outputValueSum;
 
-    return fee;
+    bitcoinTxDetails.fee = fee;
+
+    return bitcoinTxDetails;
   }
 
   async function getBitcoinContractInterface(): Promise<JsDLCInterface | undefined> {
@@ -150,7 +200,11 @@ export function useBitcoinContracts() {
     const bitcoinContractCollateralAmount =
       bitcoinContractOffer.contractInfo.singleContractInfo.totalCollateral;
 
-    let bitcoinContractGasFee = 0;
+    let bitcoinTxDetails: BitcoinContractTransactionDetails = {
+      inputs: [],
+      outputs: [],
+      fee: 0,
+    };
 
     const bitcoinContractExpirationDate = new Date(
       bitcoinContractOffer.cetLocktime * 1000
@@ -183,7 +237,7 @@ export function useBitcoinContracts() {
 
       const acceptedBitcoinContract = JSON.parse(acceptedBitcoinContractJSON);
 
-      bitcoinContractGasFee = await calculateFee(acceptedBitcoinContract.fundingTX);
+      bitcoinTxDetails = await getBitcoinTxDetails(acceptedBitcoinContract.fundingTX);
 
       setAcceptedBitcoinContract(acceptedBitcoinContract);
     } catch (error) {
@@ -201,7 +255,7 @@ export function useBitcoinContracts() {
       bitcoinContractId,
       bitcoinContractCollateralAmount,
       bitcoinContractExpirationDate,
-      bitcoinContractGasFee,
+      bitcoinTxDetails,
     };
 
     const bitcoinContractOfferDetails: BitcoinContractOfferDetails = {

@@ -1,58 +1,49 @@
-import { Box, Button, Stack, color } from '@stacks/ui';
 import { BitcoinContractRequestSelectors } from '@tests/selectors/bitcoin-contract-request.selectors';
+import { Box, HStack } from 'leather-styles/jsx';
 
-import { useBtcAssetBalance } from '@app/common/hooks/balance/btc/use-btc-balance';
 import { LeatherButton } from '@app/components/button/button';
 
 interface BitcoinContractRequestActionsProps {
   isLoading: boolean;
-  bitcoinAddress: string;
-  requiredAmount: number;
+  canAccept: boolean;
   onRejectBitcoinContractOffer(): Promise<void>;
   onAcceptBitcoinContractOffer(): Promise<void>;
 }
 export function BitcoinContractRequestActions({
   isLoading,
-  bitcoinAddress,
-  requiredAmount,
+  canAccept,
   onRejectBitcoinContractOffer,
   onAcceptBitcoinContractOffer,
 }: BitcoinContractRequestActionsProps) {
-  const { btcAvailableAssetBalance } = useBtcAssetBalance(bitcoinAddress);
-  const canAccept = btcAvailableAssetBalance.balance.amount.isGreaterThan(requiredAmount);
-
   return (
     <Box
-      bg={color('bg')}
       borderTop="1px solid #DCDDE2"
       bottom="0px"
       height="96px"
-      position="fixed"
+      position="absolute"
       px="loose"
       width="100%"
       zIndex={999}
     >
-      <Stack isInline mt="loose" spacing="base">
-        <Button
-          borderRadius="10px"
-          flexGrow={1}
-          mode="tertiary"
-          data-testid={BitcoinContractRequestSelectors.BitcoinContractRejectButton}
-          onClick={onRejectBitcoinContractOffer}
-        >
-          Reject
-        </Button>
+      <HStack gap="space.04" mt="space.05">
         <LeatherButton
-          borderRadius="10px"
+          flexGrow={1}
+          onClick={onRejectBitcoinContractOffer}
+          variant="outline"
+          data-testid={BitcoinContractRequestSelectors.BitcoinContractRejectButton}
+        >
+          Cancel
+        </LeatherButton>
+        <LeatherButton
           flexGrow={1}
           aria-busy={isLoading}
-          disabled={!canAccept}
-          data-testid={BitcoinContractRequestSelectors.BitcoinContractAcceptButton}
+          aria-disabled={!canAccept}
           onClick={onAcceptBitcoinContractOffer}
+          data-testid={BitcoinContractRequestSelectors.BitcoinContractAcceptButton}
         >
-          Accept
+          Sign
         </LeatherButton>
-      </Stack>
+      </HStack>
     </Box>
   );
 }

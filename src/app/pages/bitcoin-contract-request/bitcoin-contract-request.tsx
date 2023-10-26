@@ -1,44 +1,48 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { token } from 'leather-styles/tokens';
-
+import { createMoney } from '@shared/models/money.model';
 import { RouteUrls } from '@shared/route-urls';
 import { BitcoinContractResponseStatus } from '@shared/rpc/methods/accept-bitcoin-contract';
+import { closeWindow } from '@shared/utils';
 
-import { useBitcoinContracts } from '@app/common/hooks/use-bitcoin-contracts';
-import { BitcoinContractOfferDetails } from '@app/common/hooks/use-bitcoin-contracts';
+import { useBtcAssetBalance } from '@app/common/hooks/balance/btc/use-btc-balance';
+import {
+  BitcoinContractOfferDetails,
+  useBitcoinContracts,
+} from '@app/common/hooks/use-bitcoin-contracts';
 import { useOnMount } from '@app/common/hooks/use-on-mount';
-import { useCurrentAccountNativeSegwitIndexZeroSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
-import { initialSearchParams } from '@app/common/initial-search-params';
-import { FormAddressDisplayer } from '@app/components/address-displayer/form-address-displayer';
-import { InfoCard, InfoCardRow, InfoCardSeparator } from '@app/components/info-card/info-card';
-
-import { BitcoinContractOfferInput } from './components/bitcoin-contract-offer/bitcoin-contract-offer-input';
-import { BitcoinContractRequestActions } from './components/bitcoin-contract-request-actions';
-import { BitcoinContractRequestLayout } from './components/bitcoin-contract-request-layout';
-import { BitcoinContractRequestHeader } from './components/bitcoin-contract-request-header';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
+import { initialSearchParams } from '@app/common/initial-search-params';
+import { LoadingSpinner } from '@app/components/loading-spinner';
 import { PopupHeader } from '@app/features/current-account/popup-header';
 import { useOnOriginTabClose } from '@app/routes/hooks/use-on-tab-closed';
-import { closeWindow } from '@shared/utils';
-import { LoadingSpinner } from '@app/components/loading-spinner';
+import { useCurrentAccountNativeSegwitIndexZeroSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 import { useCurrentNetwork } from '@app/store/networks/networks.selectors';
-import { Stack } from 'leather-styles/jsx';
-import { LeatherButton } from '@app/components/button/button';
+
+import { BitcoinContractCollateralAmount } from './components/bitcoin-contract-collateral-amount';
+import { BitcoinContractExpirationDate } from './components/bitcoin-contract-expiration-date';
+import { BitcoinContractFee } from './components/bitcoin-contract-fee';
+import { BitcoinContractInputsAndOutputs } from './components/bitcoin-contract-inputs-outputs';
+import { BitcoinContractRequestRawTransaction } from './components/bitcoin-contract-raw-transaction';
+import { BitcoinContractRequestActions } from './components/bitcoin-contract-request-actions';
+import { BitcoinContractRequestDetails } from './components/bitcoin-contract-request-details';
+import { BitcoinContractRequestDetailsHeader } from './components/bitcoin-contract-request-details-header';
+import { BitcoinContractRequestHeader } from './components/bitcoin-contract-request-header';
+import { BitcoinContractRequestLayout } from './components/bitcoin-contract-request-layout';
 
 export function BitcoinContractRequest() {
   const navigate = useNavigate();
   const network = useCurrentNetwork();
   const { address: bitcoinAddress } = useCurrentAccountNativeSegwitIndexZeroSigner();
   const { handleOffer, handleSigning, handleReject, sendRpcResponse } = useBitcoinContracts();
+  const { btcAvailableAssetBalance } = useBtcAssetBalance(bitcoinAddress);
 
-  const [requiredAmount, setRequiredAmount] = useState(0);
   const [bitcoinContractOfferDetails, setBitcoinContractOfferDetails] =
     useState<BitcoinContractOfferDetails>();
   const [isProcessing, setProcessing] = useState(false);
-  const [showTransactionDetails, setShowTransactionDetails] = useState(false);
-  
+  const [canAccept, setCanAccept] = useState(false);
+
   useRouteHeader(<PopupHeader displayAddresssBalanceOf="all" />);
   useOnOriginTabClose(() => closeWindow());
 
@@ -76,91 +80,73 @@ export function BitcoinContractRequest() {
         counterpartyWalletDetailsJSON
       );
       if (!currentBitcoinContractOfferDetails) return;
-      setRequiredAmount(
-        currentBitcoinContractOfferDetails?.simplifiedBitcoinContract
-          .bitcoinContractCollateralAmount +
-          currentBitcoinContractOfferDetails?.simplifiedBitcoinContract.bitcoinContractGasFee
+
+      setCanAccept(
+        btcAvailableAssetBalance.balance.amount.isGreaterThan(
+          currentBitcoinContractOfferDetails.simplifiedBitcoinContract
+            .bitcoinContractCollateralAmount +
+            currentBitcoinContractOfferDetails?.simplifiedBitcoinContract.bitcoinTxDetails.fee
+        )
       );
       setBitcoinContractOfferDetails(currentBitcoinContractOfferDetails);
     };
     handleBitcoinContractOffer();
   });
 
-  if (!bitcoinContractOfferDetails || !bitcoinContractOfferDetails.counterpartyWalletDetails
-    .counterpartyWalletAddress) return <LoadingSpinner height="600px" />;
+  if (
+    !bitcoinContractOfferDetails ||
+    !bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletAddress
+  )
+    return <LoadingSpinner height="600px" />;
 
   return (
     <>
-        <BitcoinContractRequestLayout>
-          <BitcoinContractRequestHeader
-            counterpartyWalletName={
-              bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletName
-            }
-            counterpartyWalletIcon={
-              bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletIcon
-            }
-          />
-          <BitcoinContractRequestActions
-            isLoading={isProcessing}
+      <BitcoinContractRequestLayout>
+        <BitcoinContractRequestHeader
+          counterpartyWalletName={
+            bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletName
+          }
+          counterpartyWalletIcon={
+            bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletIcon
+          }
+        />
+        <BitcoinContractRequestDetails>
+          <BitcoinContractRequestDetailsHeader />
+          <BitcoinContractCollateralAmount
             bitcoinAddress={bitcoinAddress}
-            requiredAmount={requiredAmount}
-            onRejectBitcoinContractOffer={handleRejectClick}
-            onAcceptBitcoinContractOffer={handleSignClick}
+            collateralAmount={createMoney(
+              bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractCollateralAmount,
+              'BTC'
+            )}
           />
-          <BitcoinContractOfferInput
-            addressNativeSegwit={bitcoinAddress}
-            bitcoinContractOffer={bitcoinContractOfferDetails.simplifiedBitcoinContract}
+          <BitcoinContractInputsAndOutputs
+            inputs={bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinTxDetails.inputs}
+            outputs={bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinTxDetails.outputs}
           />
-          <Stack alignItems="flex-end" width="100%">
-            <LeatherButton
-              variant="link"
-              onClick={() => setShowTransactionDetails(!showTransactionDetails)}
-            >
-              {showTransactionDetails ? 'Hide Transaction Details' : 'Show Transaction Details'}
-            </LeatherButton>
-          </Stack>
-          {showTransactionDetails && (
-            <InfoCard mt="loose">
-              <Stack
-                width="100%"
-                padding="24px"
-                backgroundColor={token('colors.accent.background-secondary')}
-              >
-                <InfoCardRow
-                  title="To"
-                  value={
-                    <FormAddressDisplayer
-                      address={
-                        bitcoinContractOfferDetails.counterpartyWalletDetails
-                          .counterpartyWalletAddress
-                      }
-                    />
-                  }
-                />
-                <InfoCardSeparator />
-                <InfoCardRow
-                  title="Total spend"
-                  value={`${
-                    bitcoinContractOfferDetails.simplifiedBitcoinContract
-                      .bitcoinContractCollateralAmount +
-                    bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractGasFee
-                  } sats`}
-                />
-                <InfoCardRow
-                  title="Fee"
-                  value={`${bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractGasFee} sats`}
-                />
-                <InfoCardRow
-                  title="Expiration Date"
-                  value={
-                    bitcoinContractOfferDetails.simplifiedBitcoinContract
-                      .bitcoinContractExpirationDate
-                  }
-                />
-              </Stack>
-            </InfoCard>
-          )}
-        </BitcoinContractRequestLayout>
+          <BitcoinContractRequestRawTransaction
+            bitcoinContractTransaction={
+              bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinTxDetails.rawTx
+            }
+          />
+          <BitcoinContractFee
+            fee={createMoney(
+              bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinTxDetails.fee,
+              'BTC'
+            )}
+          />
+          <BitcoinContractExpirationDate
+            expirationDate={
+              bitcoinContractOfferDetails.simplifiedBitcoinContract.bitcoinContractExpirationDate
+            }
+          />
+        </BitcoinContractRequestDetails>
+        <BitcoinContractRequestActions
+          isLoading={isProcessing}
+          canAccept={canAccept}
+          onRejectBitcoinContractOffer={handleRejectClick}
+          onAcceptBitcoinContractOffer={handleSignClick}
+        />
+      </BitcoinContractRequestLayout>
     </>
   );
 }
