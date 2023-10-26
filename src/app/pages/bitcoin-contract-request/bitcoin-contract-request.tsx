@@ -1,25 +1,29 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Stack } from '@stacks/ui';
-
 import { RouteUrls } from '@shared/route-urls';
 import { BitcoinContractResponseStatus } from '@shared/rpc/methods/accept-bitcoin-contract';
 
 import { useBitcoinContracts } from '@app/common/hooks/use-bitcoin-contracts';
 import { BitcoinContractOfferDetails } from '@app/common/hooks/use-bitcoin-contracts';
 import { useOnMount } from '@app/common/hooks/use-on-mount';
+import { useCurrentAccountNativeSegwitIndexZeroSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 import { initialSearchParams } from '@app/common/initial-search-params';
-import { useCurrentAccountNativeSegwitSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 
 import { BitcoinContractOfferDetailsSimple } from './components/bitcoin-contract-offer/bitcoin-contract-offer-details';
 import { BitcoinContractRequestActions } from './components/bitcoin-contract-request-actions';
-import { BitcoinContractRequestHeader } from './components/bitcoin-contract-request-header';
 import { BitcoinContractRequestLayout } from './components/bitcoin-contract-request-layout';
-import { BitcoinContractRequestWarningLabel } from './components/bitcoin-contract-request-warning-label';
+import { BitcoinContractRequestHeader } from './components/bitcoin-contract-request-header';
+import { useRouteHeader } from '@app/common/hooks/use-route-header';
+import { PopupHeader } from '@app/features/current-account/popup-header';
+import { useOnOriginTabClose } from '@app/routes/hooks/use-on-tab-closed';
+import { closeWindow } from '@shared/utils';
+import { LoadingSpinner } from '@app/components/loading-spinner';
+import { useCurrentNetwork } from '@app/store/networks/networks.selectors';
 
 export function BitcoinContractRequest() {
-  const getNativeSegwitSigner = useCurrentAccountNativeSegwitSigner();
+  const { address: bitcoinAddress } = useCurrentAccountNativeSegwitIndexZeroSigner();
+  const network = useCurrentNetwork();
   const navigate = useNavigate();
 
   const { handleOffer, handleAccept, handleReject, sendRpcResponse } = useBitcoinContracts();
@@ -27,11 +31,12 @@ export function BitcoinContractRequest() {
   const [bitcoinContractJSON, setBitcoinContractJSON] = useState<string>();
   const [bitcoinContractOfferDetails, setBitcoinContractOfferDetails] =
     useState<BitcoinContractOfferDetails>();
-  const [bitcoinAddress, setBitcoinAddress] = useState<string>();
-  const [attestorURLs, setAttestorURLs] = useState<string[]>([]);
 
   const [isLoading, setLoading] = useState(true);
   const [isProcessing, setProcessing] = useState(false);
+  
+  useRouteHeader(<PopupHeader displayAddresssBalanceOf="all" />);
+  useOnOriginTabClose(() => closeWindow());
 
   const handleAcceptClick = async () => {
     if (!bitcoinContractJSON || !bitcoinContractOfferDetails) return;
@@ -39,7 +44,7 @@ export function BitcoinContractRequest() {
     await handleAccept(
       bitcoinContractJSON,
       bitcoinContractOfferDetails.counterpartyWalletDetails,
-      attestorURLs
+      ['']
     );
     setProcessing(false);
   };
@@ -54,13 +59,7 @@ export function BitcoinContractRequest() {
     const counterpartyWalletDetailsJSON = initialSearchParams.get('counterpartyWalletDetails');
     const attestorURLs = initialSearchParams.get('attestorURLs');
 
-    const bitcoinAccountDetails = getNativeSegwitSigner?.(0);
-
-    if (!bitcoinAccountDetails) return;
-
-    const currentBitcoinNetwork = bitcoinAccountDetails.network;
-
-    if (currentBitcoinNetwork !== 'testnet') {
+    if (network.chain.bitcoin.network !== 'testnet') {
       navigate(RouteUrls.BitcoinContractLockError, {
         state: {
           error: new Error('Invalid Network'),
@@ -72,7 +71,6 @@ export function BitcoinContractRequest() {
     }
 
     if (
-      !getNativeSegwitSigner ||
       !bitcoinContractOfferJSON ||
       !counterpartyWalletDetailsJSON ||
       !attestorURLs
@@ -84,14 +82,12 @@ export function BitcoinContractRequest() {
       counterpartyWalletDetailsJSON
     );
 
-    const currentAddress = getNativeSegwitSigner(0).address;
-
     setBitcoinContractJSON(bitcoinContractOfferJSON);
     setBitcoinContractOfferDetails(currentBitcoinContractOfferDetails);
-    setBitcoinAddress(currentAddress);
-    setAttestorURLs(JSON.parse(attestorURLs));
     setLoading(false);
   });
+
+  if (isLoading) return <LoadingSpinner height="600px" />;
 
   return (
     <>
@@ -105,11 +101,6 @@ export function BitcoinContractRequest() {
               bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletIcon
             }
           />
-          <Stack spacing="base" backgroundColor="white" borderRadius="lg">
-            <BitcoinContractRequestWarningLabel
-              appName={bitcoinContractOfferDetails.counterpartyWalletDetails.counterpartyWalletName}
-            />
-          </Stack>
           <BitcoinContractRequestActions
             isLoading={isProcessing}
             bitcoinAddress={bitcoinAddress}
