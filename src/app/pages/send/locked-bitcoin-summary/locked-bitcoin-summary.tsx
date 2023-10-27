@@ -17,9 +17,12 @@ import {
   InfoCardFooter,
 } from '@app/components/info-card/info-card';
 import { ModalHeader } from '@app/components/modal-header';
+import { BitcoinContractTransactionSummaryDetails } from '@app/common/hooks/use-bitcoin-contracts';
+import { i18nFormatCurrency } from '@app/common/money/format-money';
 
 export function LockBitcoinSummary() {
-  const { state } = useLocation();
+  const location = useLocation();
+  const { state } = location as { state: BitcoinContractTransactionSummaryDetails };
 
   const { txId, txMoney, txFiatValue, txFiatValueSymbol, symbol, txLink } = state;
 
@@ -43,7 +46,7 @@ export function LockBitcoinSummary() {
     <InfoCard>
       <InfoCardAssetValue
         value={Number(satToBtc(txMoney.amount))}
-        fiatValue={txFiatValue}
+        fiatValue={i18nFormatCurrency(txFiatValue)}
         fiatSymbol={txFiatValueSymbol}
         symbol={symbol}
         icon={FiCheck}

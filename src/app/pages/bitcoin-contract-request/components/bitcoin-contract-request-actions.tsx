@@ -6,7 +6,7 @@ import { LeatherButton } from '@app/components/button/button';
 interface BitcoinContractRequestActionsProps {
   isLoading: boolean;
   canAccept: boolean;
-  onRejectBitcoinContractOffer(): Promise<void>;
+  onRejectBitcoinContractOffer(): void;
   onAcceptBitcoinContractOffer(): Promise<void>;
 }
 export function BitcoinContractRequestActions({
@@ -17,6 +17,7 @@ export function BitcoinContractRequestActions({
 }: BitcoinContractRequestActionsProps) {
   return (
     <Box
+      backgroundColor={'Background'}
       borderTop="1px solid #DCDDE2"
       bottom="0px"
       height="96px"

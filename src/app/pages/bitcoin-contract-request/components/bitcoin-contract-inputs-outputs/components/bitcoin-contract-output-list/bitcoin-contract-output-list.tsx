@@ -1,7 +1,7 @@
 import { BitcoinContractOutput } from '@app/common/hooks/use-bitcoin-contracts';
 
-import { BitcoinContractOutputItem } from './bitcoin-contract-output-item';
-import { BitcoinContractOutputListLayout } from './bitcoin-contract-output-list.layout';
+import { BitcoinContractOutputItem } from './components/bitcoin-contract-output-item';
+import { BitcoinContractOutputListLayout } from './components/bitcoin-contract-output-list.layout';
 
 export function BitcoinContractOutputList({ outputs }: { outputs: BitcoinContractOutput[] }) {
   return (

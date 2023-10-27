@@ -1,6 +1,6 @@
 import { HStack, Stack, styled } from 'leather-styles/jsx';
 
-import { BitcoinContractRequestDetailsSectionLayout } from './bitcoin-contract-request-details-section-layout';
+import { BitcoinContractRequestDetailsSectionLayout } from './bitcoin-contract-details-section/components/bitcoin-contract-request-details-section.layout';
 
 export function BitcoinContractExpirationDate(props: { expirationDate: string }) {
   const { expirationDate } = props;

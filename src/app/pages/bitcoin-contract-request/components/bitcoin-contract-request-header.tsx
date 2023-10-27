@@ -26,7 +26,11 @@ export function BitcoinContractRequestHeader({
         contract where it will remain until a triggering event will release it.
       </styled.p>
       {caption && (
-        <Flag align="middle" img={<Favicon origin={counterpartyWalletIcon} />} pl="tight">
+        <Flag
+          align="middle"
+          img={<img src={counterpartyWalletIcon} height="32px" width="32px" />}
+          pl="tight"
+        >
           <styled.span textStyle="label.02" wordBreak="break-word">
             {caption}
           </styled.span>

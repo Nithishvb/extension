@@ -1,7 +1,7 @@
 import { BitcoinContractInput } from '@app/common/hooks/use-bitcoin-contracts';
 
-import { BitcoinContractInputItem } from './bitcoin-contract-input-item';
-import { BitcoinContractInputListLayout } from './bitcoin-contract-inputs-list-layout';
+import { BitcoinContractInputItem } from './components/bitcoin-contract-input-item';
+import { BitcoinContractInputListLayout } from './components/bitcoin-contract-input-list.layout';
 
 export function BitcoinContractInputList({ inputs }: { inputs: BitcoinContractInput[] }) {
   return (

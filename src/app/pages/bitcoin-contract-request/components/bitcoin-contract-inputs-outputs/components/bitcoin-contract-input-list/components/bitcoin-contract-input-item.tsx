@@ -5,7 +5,7 @@ import { createMoney } from '@shared/models/money.model';
 import { BitcoinContractInput } from '@app/common/hooks/use-bitcoin-contracts';
 import { formatMoney } from '@app/common/money/format-money';
 
-import { BitcoinContractInputOutputItemLayout } from './bitcoin-contract-input-output-item.layout';
+import { BitcoinContractInputOutputItemLayout } from '../../bitcoin-contract-input-output-item.layout';
 
 export function BitcoinContractInputItem({ utxo }: { utxo: BitcoinContractInput }) {
   return (
