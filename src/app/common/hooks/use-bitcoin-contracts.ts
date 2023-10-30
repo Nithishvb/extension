@@ -232,6 +232,7 @@ export function useBitcoinContracts() {
 
       const acceptedBitcoinContractJSON =
         await bitcoinContractInterface.accept_offer(bitcoinContractOfferJSON);
+      console.log('acceptedBitcoinContractJSON', acceptedBitcoinContractJSON);
       const acceptedBitcoinContract = JSON.parse(acceptedBitcoinContractJSON);
 
       const bitcoinTransactionDetails = await getBitcoinTransactionDetails(
