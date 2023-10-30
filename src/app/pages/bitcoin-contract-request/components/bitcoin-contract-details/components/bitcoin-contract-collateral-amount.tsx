@@ -30,10 +30,15 @@ export function BitcoinContractCollateralAmount({
           </styled.span>
         </Stack>
         <Stack alignItems="flex-end" gap="space.01">
-          <styled.span textStyle="label.01">{formatMoney(collateralAmountMoney)}</styled.span>
+          <styled.span
+            textStyle="label.01"
+            data-testid={BitcoinContractRequestSelectors.BitcoinContractLockAmount}
+          >
+            {formatMoney(collateralAmountMoney)}
+          </styled.span>
           <styled.span
             textStyle="caption.02"
-            data-testid={BitcoinContractRequestSelectors.BitcoinContractLockAmount}
+            data-testid={BitcoinContractRequestSelectors.BitcoinContractLockFiatAmount}
           >
             {i18nFormatCurrency(calculateBitcoinFiatValue(collateralAmountMoney))}
           </styled.span>
