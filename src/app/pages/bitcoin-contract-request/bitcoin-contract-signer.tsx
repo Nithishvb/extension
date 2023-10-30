@@ -11,7 +11,7 @@ import { BitcoinContractRequestActions } from './components/bitcoin-contract-req
 import { BitcoinContractRequestHeader } from './components/bitcoin-contract-request-header';
 import { BitcoinContractRequestLayout } from './components/bitcoin-contract-request.layout';
 
-export interface BitcoinContractSignerProps {
+interface BitcoinContractSignerProps {
   bitcoinAddress: string;
   bitcoinContractOfferDetails: BitcoinContractOfferDetails;
   isProcessing: boolean;

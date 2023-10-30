@@ -1,6 +1,6 @@
+import { BitcoinContractRequestSelectors } from '@tests/selectors/bitcoin-contract-request.selectors';
 import { Flex, styled } from 'leather-styles/jsx';
 
-import { Favicon } from '@app/components/favicon';
 import { Flag } from '@app/components/layout/flag';
 
 interface BitcoinContractRequestHeaderBaseProps {
@@ -21,7 +21,11 @@ export function BitcoinContractRequestHeader({
         <br />
         Bitcoin
       </styled.h1>
-      <styled.p mb="space.04" textStyle="label.01">
+      <styled.p
+        mb="space.04"
+        textStyle="label.01"
+        data-testid={BitcoinContractRequestSelectors.BitcoinContractOfferorText}
+      >
         By signing the contract YOU AGREE TO LOCK YOUR BITCOIN with {counterpartyWalletName} into a
         contract where it will remain until a triggering event will release it.
       </styled.p>

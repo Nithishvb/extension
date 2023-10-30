@@ -6,9 +6,11 @@ import { Stack } from '@stacks/ui';
 import { Text } from '@stacks/ui';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
+import { BitcoinContractTransactionSummaryDetails } from '@app/common/hooks/use-bitcoin-contracts';
 import { useClipboard } from '@app/common/hooks/use-copy-to-clipboard';
 import { useExplorerLink } from '@app/common/hooks/use-explorer-link';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
+import { i18nFormatCurrency } from '@app/common/money/format-money';
 import { satToBtc } from '@app/common/money/unit-conversion';
 import {
   InfoCard,
@@ -17,8 +19,6 @@ import {
   InfoCardFooter,
 } from '@app/components/info-card/info-card';
 import { ModalHeader } from '@app/components/modal-header';
-import { BitcoinContractTransactionSummaryDetails } from '@app/common/hooks/use-bitcoin-contracts';
-import { i18nFormatCurrency } from '@app/common/money/format-money';
 
 export function LockBitcoinSummary() {
   const location = useLocation();

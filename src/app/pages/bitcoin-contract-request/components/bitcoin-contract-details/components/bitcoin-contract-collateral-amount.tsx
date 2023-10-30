@@ -1,8 +1,9 @@
 import { Stack } from '@stacks/ui';
 import { truncateMiddle } from '@stacks/ui-utils';
+import { BitcoinContractRequestSelectors } from '@tests/selectors/bitcoin-contract-request.selectors';
 import { HStack, styled } from 'leather-styles/jsx';
 
-import { Money, createMoney } from '@shared/models/money.model';
+import { createMoney } from '@shared/models/money.model';
 
 import { formatMoney, i18nFormatCurrency } from '@app/common/money/format-money';
 import { useCalculateBitcoinFiatValue } from '@app/query/common/market-data/market-data.hooks';
@@ -30,7 +31,10 @@ export function BitcoinContractCollateralAmount({
         </Stack>
         <Stack alignItems="flex-end" gap="space.01">
           <styled.span textStyle="label.01">{formatMoney(collateralAmountMoney)}</styled.span>
-          <styled.span textStyle="caption.02">
+          <styled.span
+            textStyle="caption.02"
+            data-testid={BitcoinContractRequestSelectors.BitcoinContractLockAmount}
+          >
             {i18nFormatCurrency(calculateBitcoinFiatValue(collateralAmountMoney))}
           </styled.span>
         </Stack>

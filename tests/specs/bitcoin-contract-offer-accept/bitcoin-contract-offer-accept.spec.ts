@@ -60,13 +60,11 @@ test.describe('Bitcoin Contract Request Test', () => {
 
     const popup = await context.waitForEvent('page');
 
-    const offerorText = await popup
-      .getByTestId(BitcoinContractRequestSelectors.BitcoinContractOfferorText)
-      .innerText();
-    const warningLabel = popup.getByTestId(
-      BitcoinContractRequestSelectors.BitcoinContractWarningLabel
+    const offerorText = popup.getByTestId(
+      BitcoinContractRequestSelectors.BitcoinContractOfferorText
     );
-    const isWarningLabelVisible = await warningLabel.isVisible();
+    const isOfferorTextVisible = await offerorText.isVisible();
+    const offerorTextContent = await offerorText.innerText();
     const lockAmount = await popup
       .getByTestId(BitcoinContractRequestSelectors.BitcoinContractLockAmount)
       .innerText();
@@ -74,8 +72,8 @@ test.describe('Bitcoin Contract Request Test', () => {
       .getByTestId(BitcoinContractRequestSelectors.BitcoinContractExpirationDate)
       .innerText();
 
-    test.expect(offerorText).toContain(expectedOfferorName);
-    test.expect(isWarningLabelVisible).toBeTruthy();
+    test.expect(isOfferorTextVisible).toBeTruthy();
+    test.expect(offerorTextContent).toContain(expectedOfferorName);
     test.expect(lockAmount).toEqual(expectedLockAmount);
     test.expect(expirationDate).toEqual(expectedExpirationDate);
 
@@ -109,7 +107,7 @@ test.describe('Bitcoin Contract Request Test', () => {
     await popup.waitForTimeout(500);
 
     const acceptButton = popup.getByTestId(
-      BitcoinContractRequestSelectors.BitcoinContractAcceptButton
+      BitcoinContractRequestSelectors.BitcoinContractSignButton
     );
 
     const isAcceptButtonDisabled = await acceptButton.isDisabled();

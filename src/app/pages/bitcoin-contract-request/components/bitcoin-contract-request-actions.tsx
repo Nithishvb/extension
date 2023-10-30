@@ -40,7 +40,7 @@ export function BitcoinContractRequestActions({
           aria-busy={isLoading}
           aria-disabled={!canAccept}
           onClick={onAcceptBitcoinContractOffer}
-          data-testid={BitcoinContractRequestSelectors.BitcoinContractAcceptButton}
+          data-testid={BitcoinContractRequestSelectors.BitcoinContractSignButton}
         >
           Sign
         </LeatherButton>

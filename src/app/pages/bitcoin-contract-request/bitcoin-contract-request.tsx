@@ -39,6 +39,7 @@ export function BitcoinContractRequest() {
 
   useOnMount(() => {
     const bitcoinContractOfferJSON = initialSearchParams.get('bitcoinContractOffer');
+    console.log('bitcoinContractOffer', bitcoinContractOfferJSON);
     const counterpartyWalletDetailsJSON = initialSearchParams.get('counterpartyWalletDetails');
 
     if (network.chain.bitcoin.network !== 'testnet') {

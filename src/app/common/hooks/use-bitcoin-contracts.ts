@@ -88,14 +88,14 @@ export interface BitcoinContractOutput {
   value: number;
 }
 
-export interface BitcoinContractTransactionDetails {
+interface BitcoinContractTransactionDetails {
   inputs: BitcoinContractInput[];
   outputs: BitcoinContractOutput[];
   fee: number;
   rawTx: RawBitcoinContractTransaction;
 }
 
-export interface BitcoinContractTransactionSummaryDetails {
+interface BitcoinContractTransactionSummaryDetails {
   txId: string;
   txMoney: Money;
   txFiatValue: Money;
@@ -345,7 +345,10 @@ export function useBitcoinContracts() {
     }
   }
 
-  function getTransactionDetails(txId: string, bitcoinCollateral: number): BitcoinContractTransactionSummaryDetails {
+  function getTransactionDetails(
+    txId: string,
+    bitcoinCollateral: number
+  ): BitcoinContractTransactionSummaryDetails {
     const txMoney = createMoney(bitcoinCollateral, 'BTC');
     const txFiatValue = calculateBitcoinFiatValue(txMoney);
     const txFiatValueSymbol = bitcoinMarketData.price.symbol;
