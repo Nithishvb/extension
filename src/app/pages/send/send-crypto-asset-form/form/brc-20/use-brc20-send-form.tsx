@@ -1,12 +1,11 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import BigNumber from 'bignumber.js';
 import { FormikHelpers, FormikProps } from 'formik';
 import * as yup from 'yup';
 
 import { logger } from '@shared/logger';
-import { createMoney } from '@shared/models/money.model';
+import { Money, createMoney } from '@shared/models/money.model';
 import { RouteUrls } from '@shared/route-urls';
 import { noop } from '@shared/utils';
 
@@ -27,19 +26,20 @@ import { useCurrentNetwork } from '@app/store/networks/networks.selectors';
 import { createDefaultInitialFormValues } from '../../send-form.utils';
 
 interface Brc20SendFormValues {
-  recipient: string;
   amount: string;
+  recipient: string;
   symbol: string;
 }
 
 interface UseBrc20SendFormArgs {
   balance: string;
-  tick: string;
   decimals: number;
+  tick: string;
 }
 
-export function useBrc20SendForm({ balance, tick, decimals }: UseBrc20SendFormArgs) {
+export function useBrc20SendForm({ balance, decimals, tick }: UseBrc20SendFormArgs) {
   const formRef = useRef<FormikProps<Brc20SendFormValues>>(null);
+  const [balanceAsMoney, setBalanceAsMoney] = useState<Money>(createMoney(0, tick, decimals));
   const { whenWallet } = useWalletType();
   const navigate = useNavigate();
   const currentNetwork = useCurrentNetwork();
@@ -48,6 +48,11 @@ export function useBrc20SendForm({ balance, tick, decimals }: UseBrc20SendFormAr
 
   // Forcing a refetch to ensure UTXOs are fresh
   useOnMount(() => refetch());
+
+  useEffect(() => {
+    if (balanceAsMoney.amount.isEqualTo(0))
+      setBalanceAsMoney(createMoney(unitToFractionalUnit(decimals)(balance), tick, decimals));
+  }, [balance, balanceAsMoney, decimals, tick]);
 
   // TODO: change recipient to that one user iputs
   const initialValues = createDefaultInitialFormValues({
@@ -60,7 +65,7 @@ export function useBrc20SendForm({ balance, tick, decimals }: UseBrc20SendFormAr
     amount: yup
       .number()
       .concat(currencyAmountValidator())
-      .concat(tokenAmountValidator(createMoney(new BigNumber(balance), tick, 0))),
+      .concat(tokenAmountValidator(balanceAsMoney)),
     recipient: yup
       .string()
       .concat(btcAddressValidator())
@@ -79,22 +84,18 @@ export function useBrc20SendForm({ balance, tick, decimals }: UseBrc20SendFormAr
     whenWallet({
       software: () =>
         navigate(RouteUrls.SendBrc20ChooseFee.replace(':ticker', tick), {
-          state: { ...values, tick, utxos, hasHeaderTitle: true },
+          state: { ...values, balance, tick, utxos, hasHeaderTitle: true },
         }),
       ledger: noop,
     })();
   }
 
   return {
+    balanceAsMoney,
     initialValues,
     chooseTransactionFee,
     validationSchema,
     formRef,
     onFormStateChange,
-    moneyBalance: createMoney(
-      unitToFractionalUnit(decimals)(new BigNumber(balance)),
-      tick,
-      decimals
-    ),
   };
 }

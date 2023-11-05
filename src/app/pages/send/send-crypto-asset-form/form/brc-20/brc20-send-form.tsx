@@ -20,7 +20,7 @@ import { useBrc20SendForm } from './use-brc20-send-form';
 function useBrc20SendFormRouteState() {
   const { state } = useLocation();
   return {
-    balance: get(state, 'balance', '') as string,
+    balance: get(state, 'balance') as string,
     tick: get(state, 'tick', '') as string,
     decimals: get(state, 'decimals', '') as number,
   };
@@ -28,13 +28,14 @@ function useBrc20SendFormRouteState() {
 
 export function Brc20SendForm() {
   const { balance, tick, decimals } = useBrc20SendFormRouteState();
+
   const {
+    balanceAsMoney,
     initialValues,
     chooseTransactionFee,
     validationSchema,
     formRef,
     onFormStateChange,
-    moneyBalance,
   } = useBrc20SendForm({ balance, tick, decimals });
 
   return (
@@ -52,11 +53,11 @@ export function Brc20SendForm() {
             <Form>
               <SendCryptoAssetFormLayout>
                 <AmountField
-                  balance={moneyBalance}
+                  balance={balanceAsMoney}
                   bottomInputOverlay={
                     <SendMaxButton
-                      balance={moneyBalance}
-                      sendMaxBalance={moneyBalance.amount.toString()}
+                      balance={balanceAsMoney}
+                      sendMaxBalance={balanceAsMoney.amount.toString()}
                     />
                   }
                   autoComplete="off"
@@ -83,7 +84,7 @@ export function Brc20SendForm() {
               </SendCryptoAssetFormLayout>
 
               <FormFooter
-                balance={moneyBalance}
+                balance={balanceAsMoney}
                 balanceTooltipLabel="Total balance minus any amounts already represented by transfer inscriptions in your wallet."
               />
               <Outlet />
