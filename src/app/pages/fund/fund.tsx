@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { RouteUrls } from '@shared/route-urls';
 
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { Header } from '@app/components/header';
 import { FullPageLoadingSpinner } from '@app/components/loading-spinner';
 import { useCurrentStacksAccountAnchoredBalances } from '@app/query/stacks/balance/stx-balance.hooks';
 import { ModalBackgroundWrapper } from '@app/routes/components/modal-background-wrapper';
 import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-location-redirect';
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
+import { Header } from '@app/ui/components/containers/header';
 
 import { FundLayout } from './fund.layout';
 

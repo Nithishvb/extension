@@ -39,7 +39,7 @@ export function ChooseCryptoAsset() {
     [hasBitcoinLedgerKeys, hasStacksLedgerKeys]
   );
 
-  useRouteHeader(<ModalHeader hideActions defaultGoBack title=" " />);
+  useRouteHeader(<ModalHeader defaultGoBack />);
 
   function navigateToSendForm(cryptoAssetBalance: AllTransferableCryptoAssetBalances) {
     const { asset } = cryptoAssetBalance;
