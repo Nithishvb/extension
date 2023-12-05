@@ -8,7 +8,7 @@ import { useCurrentStacksAccountAnchoredBalances } from '@app/query/stacks/balan
 import { ModalBackgroundWrapper } from '@app/routes/components/modal-background-wrapper';
 import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-location-redirect';
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { FundLayout } from './fund.layout';
 

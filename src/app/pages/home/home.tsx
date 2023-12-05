@@ -11,7 +11,7 @@ import { AssetsList } from '@app/features/asset-list/asset-list';
 import { InAppMessages } from '@app/features/hiro-messages/in-app-messages';
 import { homePageModalRoutes } from '@app/routes/app-routes';
 import { ModalBackgroundWrapper } from '@app/routes/components/modal-background-wrapper';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { CurrentAccount } from './components/account-area';
 import { HomeTabs } from './components/home-tabs';
