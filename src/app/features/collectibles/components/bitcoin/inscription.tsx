@@ -7,6 +7,7 @@ import { openInNewTab } from '@app/common/utils/open-in-new-tab';
 import { convertInscriptionToSupportedInscriptionType } from '@app/query/bitcoin/ordinals/inscription.hooks';
 import { OrdinalIcon } from '@app/ui/components/icons/ordinal-icon';
 
+import { CollectibleIFrame } from '../_collectible-types/collectible-html';
 import { CollectibleImage } from '../_collectible-types/collectible-image';
 import { CollectibleOther } from '../_collectible-types/collectible-other';
 import { InscriptionText } from './inscription-text';
@@ -26,7 +27,21 @@ export function Inscription({ rawInscription }: InscriptionProps) {
   }
 
   switch (inscription.type) {
-    case 'image': {
+    case 'audio':
+    case 'html':
+    case 'video':
+      return (
+        <CollectibleIFrame
+          icon={<OrdinalIcon size="lg" />}
+          key={inscription.title}
+          onClickCallToAction={() => openInNewTab(inscription.infoUrl)}
+          onClickSend={() => openSendInscriptionModal()}
+          src="https://ordinals.com/preview/7e6b2c539f414d136b1df28cdb65f35094e4e9101ca70f914ec3ddd53231fc36i0"
+          subtitle="Ordinal inscription"
+          title={`# ${inscription.number}`}
+        />
+      );
+    case 'image':
       return (
         <CollectibleImage
           icon={<OrdinalIcon size="lg" />}
@@ -38,8 +53,7 @@ export function Inscription({ rawInscription }: InscriptionProps) {
           title={`# ${inscription.number}`}
         />
       );
-    }
-    case 'text': {
+    case 'text':
       return (
         <InscriptionText
           contentSrc={inscription.contentSrc}
@@ -48,8 +62,7 @@ export function Inscription({ rawInscription }: InscriptionProps) {
           onClickSend={() => openSendInscriptionModal()}
         />
       );
-    }
-    case 'other': {
+    case 'other':
       return (
         <CollectibleOther
           key={inscription.title}
@@ -61,9 +74,7 @@ export function Inscription({ rawInscription }: InscriptionProps) {
           <OrdinalIcon />
         </CollectibleOther>
       );
-    }
-    default: {
+    default:
       return null;
-    }
   }
 }
